@@ -1,7 +1,13 @@
+import { Link } from "react-router-dom";
+
 export default function Nav() {
   return (
     <div>
-      <h2>Nav</h2>
+      <div>Logo</div>
+      <div>
+        <Link to="login">Login</Link>
+        <Link to="register">Register</Link>
+      </div>
     </div>
   );
 }

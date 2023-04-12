@@ -15,7 +15,6 @@ export default function AppRoutes() {
           <Route path="venue" element={<Venue />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
-          <Route path="register" element={<Venue />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
