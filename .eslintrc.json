@@ -15,5 +15,7 @@
       "version": "18.2.0"
     }
   },
-  "rules": {}
+  "rules": {
+    "react/react-in-jsx-scope": "off"
+  }
 }
