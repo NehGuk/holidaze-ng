@@ -1,6 +1,8 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useState } from "react";
+import RegisterSuccess from "./RegisterSuccess";
 
 const schema = yup
   .object({
@@ -10,7 +12,6 @@ const schema = yup
       .email("Please enter a valid email address")
       .matches(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/, "Invalid email address")
       .required("Please enter a valid email address"),
-    avatar: yup.string().min(3, "The avatar should be a valid image URL").required("Please enter a avatar"),
     password: yup.string().min(3, "The password should be at least 3 characters").required("Please enter a password"),
   })
   .required();
@@ -19,18 +20,32 @@ export default function RegisterManager() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
 
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
   function onSubmit(data) {
-    console.log(data);
-    console.log(data);
+    data.venueManager = true;
     console.log("Submitting the form");
-    console.log("Add the admin true or false to the form object");
+    console.log("Add the admin true the form object");
+    console.log(data);
     console.log("Send the data to the API");
+    reset();
+    setFormSubmitted(true);
   }
+
+  if (formSubmitted === true) {
+    return (
+      <div>
+        <RegisterSuccess />
+      </div>
+    );
+  }
+
   return (
     <div>
       <h1>Register</h1>
@@ -52,12 +67,6 @@ export default function RegisterManager() {
         </label>
         <input name="password" {...register("password")} placeholder="Password" />
         <p>{errors.password?.message}</p>
-
-        <label htmlFor="avatar" hidden>
-          Avatar
-        </label>
-        <input name="avatar" {...register("avatar")} placeholder="Avatar" />
-        <p>{errors.avatar?.message}</p>
 
         <button type="submit">Submit</button>
       </form>
