@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { LoginFormContainer, LoginFormStatusMessages } from "./Login.style";
 
 const schema = yup.object().shape({
-  name: yup.string().required("Please enter your name").max(20, "Name should no more than 20 characters"),
   email: yup
     .string()
     .email("Enter a valid @noroff.no email address")
@@ -64,11 +63,6 @@ export default function Login() {
       <form onSubmit={handleSubmit(onSubmit)}>
         <LoginFormContainer>
           <h2>Login</h2>
-          <label htmlFor="name" hidden>
-            Name:
-          </label>
-          <input type="text" {...register("name")} placeholder="Name" />
-          {errors.name && <p>{errors.name.message}</p>}
 
           <label htmlFor="email" hidden>
             Email:
@@ -86,13 +80,9 @@ export default function Login() {
 
           <LoginFormStatusMessages>
             {error && <p>{errorMessage}</p>}
-            {success && (
-              <p>
-                Registration successful! Click here to <Link to="/login">Login</Link>.
-              </p>
-            )}
+            {success && <p>Logged in!</p>}
             <div>
-              Register as a <Link to="/register-traveller">traveller</Link>.
+              Or click <Link to="/register">here to create an account</Link>.
             </div>
           </LoginFormStatusMessages>
         </LoginFormContainer>
