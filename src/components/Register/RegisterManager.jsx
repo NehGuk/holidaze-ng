@@ -3,10 +3,15 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { RegisterFormContainer, RegisterFormStatusMessages } from "./RegisterManager.style";
 
 const schema = yup.object().shape({
   name: yup.string().required("Please enter your name"),
-  email: yup.string().email("Please enter a valid email address").required("Please enter your email address"),
+  email: yup
+    .string()
+    .email("Enter a valid @noroff.no email address")
+    .matches(/^[\w\-.]+@(stud\.)?noroff\.no$/, "Enter a valid @noroff.no email address")
+    .required("Please enter your email address"),
   password: yup.string().required("Please enter your password").min(8, "Password should be at least 8 characters"),
 });
 
@@ -52,27 +57,42 @@ export default function RegisterManager() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <label htmlFor="name">Name:</label>
-      <input type="text" {...register("name")} />
-      {errors.name && <p>{errors.name.message}</p>}
+    <div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <RegisterFormContainer>
+          <label htmlFor="name" hidden>
+            Name:
+          </label>
+          <input type="text" {...register("name")} placeholder="Name" />
+          {errors.name && <p>{errors.name.message}</p>}
 
-      <label htmlFor="email">Email:</label>
-      <input type="email" {...register("email")} />
-      {errors.email && <p>{errors.email.message}</p>}
+          <label htmlFor="email" hidden>
+            Email:
+          </label>
+          <input type="email" {...register("email")} placeholder="email@stud.noroff.no" />
+          {errors.email && <p>{errors.email.message}</p>}
 
-      <label htmlFor="password">Password:</label>
-      <input type="password" {...register("password")} />
-      {errors.password && <p>{errors.password.message}</p>}
+          <label htmlFor="password" hidden>
+            Password:
+          </label>
+          <input type="password" {...register("password")} placeholder="Password" />
+          {errors.password && <p>{errors.password.message}</p>}
 
-      <button type="submit">Register</button>
+          <button type="submit">Register</button>
 
-      {error && <p>{errorMessage}</p>}
-      {success && (
-        <p>
-          Registration successful! Click here to <Link to="/login">Login</Link>.
-        </p>
-      )}
-    </form>
+          <RegisterFormStatusMessages>
+            {error && <p>{errorMessage}</p>}
+            {success && (
+              <p>
+                Registration successful! Click here to <Link to="/login">Login</Link>.
+              </p>
+            )}
+            <div>
+              Register as a <Link to="/register-traveller">traveller</Link>.
+            </div>
+          </RegisterFormStatusMessages>
+        </RegisterFormContainer>
+      </form>
+    </div>
   );
 }
