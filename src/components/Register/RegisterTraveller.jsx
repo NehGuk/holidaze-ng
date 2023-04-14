@@ -3,10 +3,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { RegisterFormContainer, RegisterFormStatusMessages } from "./RegisterManager.style";
+import { RegisterFormContainer, RegisterFormStatusMessages } from "./RegisterTraveller.style";
 
 const schema = yup.object().shape({
-  name: yup.string().required("Please enter your name"),
+  name: yup.string().required("Please enter your name").max(20, "Name should no more than 20 characters"),
   email: yup
     .string()
     .email("Enter a valid @noroff.no email address")
@@ -15,7 +15,7 @@ const schema = yup.object().shape({
   password: yup.string().required("Please enter your password").min(8, "Password should be at least 8 characters"),
 });
 
-export default function RegisterManager() {
+export default function RegisterTraveller() {
   const {
     register,
     handleSubmit,
@@ -63,6 +63,7 @@ export default function RegisterManager() {
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <RegisterFormContainer>
+          <h2>Register as a traveller</h2>
           <label htmlFor="name" hidden>
             Name:
           </label>

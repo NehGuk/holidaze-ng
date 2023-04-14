@@ -7,6 +7,9 @@ export const RegisterFormContainer = styled.div`
   margin: 0 auto;
   display: grid;
   gap: 1em;
+  > h2 {
+    text-align: center;
+  }
 `;
 
 export const RegisterFormStatusMessages = styled.div`

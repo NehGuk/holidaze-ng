@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { RegisterFormContainer, RegisterFormStatusMessages } from "./RegisterManager.style";
 
 const schema = yup.object().shape({
-  name: yup.string().required("Please enter your name"),
+  name: yup.string().required("Please enter your name").max(20, "Name should no more than 20 characters"),
   email: yup
     .string()
     .email("Enter a valid @noroff.no email address")
@@ -60,6 +60,7 @@ export default function RegisterManager() {
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <RegisterFormContainer>
+          <h2>Register as a venue manager</h2>
           <label htmlFor="name" hidden>
             Name:
           </label>
