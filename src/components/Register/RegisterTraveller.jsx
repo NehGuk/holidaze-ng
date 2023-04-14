@@ -56,7 +56,10 @@ export default function RegisterTraveller() {
         setErrorMessage(result.errors[0].message);
         setSuccess(false);
       }
-    } catch (error) {}
+    } catch (error) {
+      setError(true);
+      console.log(error);
+    }
   };
 
   return (
