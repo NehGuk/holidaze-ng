@@ -6,6 +6,7 @@ import Register from "../Register/Register";
 import NotFound from "../NotFound/NotFound";
 import Layout from "../Layout/Layout";
 import RegisterManager from "../Register/RegisterManager";
+import RegisterTraveller from "../Register/RegisterTraveller";
 
 export default function AppRoutes() {
   return (
@@ -17,7 +18,7 @@ export default function AppRoutes() {
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="register-manager" element={<RegisterManager />} />
-          <Route path="register-traveller" element={<RegisterManager />} />
+          <Route path="register-traveller" element={<RegisterTraveller />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

@@ -1,21 +1,21 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { RegisterFormContainer, RegisterFormStatusMessages } from "./RegisterTraveller.style";
 
-const schema = yup
-  .object({
-    userName: yup.string().min(3, "Your user name should be at least 3 characters.").required("Please enter your user name"),
-    email: yup
-      .string()
-      .email("Please enter a valid email address")
-      .matches(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/, "Invalid email address")
-      .required("Please enter a valid email address"),
-    avatar: yup.string().min(3, "The avatar should be a valid image URL").required("Please enter a avatar"),
-    password: yup.string().min(3, "The password should be at least 3 characters").required("Please enter a password"),
-  })
-  .required();
+const schema = yup.object().shape({
+  name: yup.string().required("Please enter your name").max(20, "Name should no more than 20 characters"),
+  email: yup
+    .string()
+    .email("Enter a valid @noroff.no email address")
+    .matches(/^[\w\-.]+@(stud\.)?noroff\.no$/, "Enter a valid @noroff.no email address")
+    .required("Please enter your email address"),
+  password: yup.string().required("Please enter your password").min(8, "Password should be at least 8 characters"),
+});
 
-export default function RegisterManager() {
+export default function RegisterTraveller() {
   const {
     register,
     handleSubmit,
@@ -24,42 +24,78 @@ export default function RegisterManager() {
     resolver: yupResolver(schema),
   });
 
-  function onSubmit(data) {
-    console.log(data);
-    console.log(data);
-    console.log("Submitting the form");
-    console.log("Add the admin true or false to the form object");
-    console.log("Send the data to the API");
-  }
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const onSubmit = async (data) => {
+    data.venueManager = true;
+    try {
+      const response = await fetch("https://api.noroff.dev/api/v1/holidaze/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      const result = await response.json();
+
+      if (response.ok) {
+        console.log("Boaaaa, isso ae!!!!!!!");
+        console.log(result);
+
+        setSuccess(true);
+        setError(false);
+      }
+
+      if (!response.ok) {
+        console.log("Ops, nao deu certo!!!");
+        console.log(result.errors[0].message);
+        console.log(data);
+        setError(true);
+        setErrorMessage(result.errors[0].message);
+        setSuccess(false);
+      }
+    } catch (error) {}
+  };
+
   return (
     <div>
-      <h1>Register</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="userName" hidden>
-          User name
-        </label>
-        <input name="userName" {...register("userName")} placeholder="User name" />
-        <p>{errors.userName?.message}</p>
+        <RegisterFormContainer>
+          <h2>Register as a traveller</h2>
+          <label htmlFor="name" hidden>
+            Name:
+          </label>
+          <input type="text" {...register("name")} placeholder="Name" />
+          {errors.name && <p>{errors.name.message}</p>}
 
-        <label htmlFor="email" hidden>
-          Email
-        </label>
-        <input name="email" {...register("email")} placeholder="name@email.com" />
-        <p>{errors.email?.message}</p>
+          <label htmlFor="email" hidden>
+            Email:
+          </label>
+          <input type="email" {...register("email")} placeholder="email@stud.noroff.no" />
+          {errors.email && <p>{errors.email.message}</p>}
 
-        <label htmlFor="password" hidden>
-          Password
-        </label>
-        <input name="password" {...register("password")} placeholder="Password" />
-        <p>{errors.password?.message}</p>
+          <label htmlFor="password" hidden>
+            Password:
+          </label>
+          <input type="password" {...register("password")} placeholder="Password" />
+          {errors.password && <p>{errors.password.message}</p>}
 
-        <label htmlFor="avatar" hidden>
-          Avatar
-        </label>
-        <input name="avatar" {...register("avatar")} placeholder="Avatar" />
-        <p>{errors.avatar?.message}</p>
+          <button type="submit">Register</button>
 
-        <button type="submit">Submit</button>
+          <RegisterFormStatusMessages>
+            {error && <p>{errorMessage}</p>}
+            {success && (
+              <p>
+                Registration successful! Click here to <Link to="/login">Login</Link>.
+              </p>
+            )}
+            <div>
+              Register as a <Link to="/register-manager">venue manager</Link>.
+            </div>
+          </RegisterFormStatusMessages>
+        </RegisterFormContainer>
       </form>
     </div>
   );
