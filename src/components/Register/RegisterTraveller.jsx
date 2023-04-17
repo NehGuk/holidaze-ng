@@ -88,7 +88,11 @@ export default function RegisterTraveller() {
           <button type="submit">Register</button>
 
           <RegisterFormStatusMessages>
-            {error && <p>{errorMessage}</p>}
+            {error && (
+              <p>
+                {errorMessage}. Click here to <Link to="/login">Login</Link>.
+              </p>
+            )}
             {success && (
               <p>
                 Registration successful! Click here to <Link to="/login">Login</Link>.
