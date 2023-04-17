@@ -76,7 +76,7 @@ export default function Login() {
           <input type="password" {...register("password")} placeholder="Password" />
           {errors.password && <p>{errors.password.message}</p>}
 
-          <button type="submit">Register</button>
+          <button type="submit">Login</button>
 
           <LoginFormStatusMessages>
             {error && <p>{errorMessage}</p>}
