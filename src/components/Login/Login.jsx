@@ -5,6 +5,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { LoginFormContainer, LoginFormStatusMessages } from "./Login.style";
 
+import { useSignIn } from "react-auth-kit";
+
 const schema = yup.object().shape({
   email: yup
     .string()
@@ -26,6 +28,7 @@ export default function Login() {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const signIn = useSignIn();
 
   const onSubmit = async (data) => {
     try {
@@ -41,6 +44,10 @@ export default function Login() {
       if (response.ok) {
         console.log("Boaaaa, isso ae!!!!!!!");
         console.log(result);
+        console.log(result.name);
+        console.log(result.accessToken);
+        console.log(result.venueManager);
+        console.log(result.avatar);
         setSuccess(true);
         setError(false);
       }
@@ -52,6 +59,8 @@ export default function Login() {
         setErrorMessage(result.errors[0].message);
         setSuccess(false);
       }
+
+      signIn({ token: result.accessToken, expiresIn: 86400, tokenType: "Bearer", authState: { name: result.name, email: result.email, venueManager: result.venueManager, avatar: result.avatar } });
     } catch (error) {
       setError(true);
       console.log(error);
