@@ -17,6 +17,8 @@ const schema = yup.object().shape({
 });
 
 export default function Login() {
+  console.log(JSON.parse(localStorage.token_state));
+
   const {
     register,
     handleSubmit,
