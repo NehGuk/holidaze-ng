@@ -5,8 +5,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { RegisterFormContainer, RegisterFormStatusMessages } from "./RegisterTraveller.style";
 
-import { useAuthUser } from "react-auth-kit";
-
 const schema = yup.object().shape({
   name: yup.string().required("Please enter your name").max(20, "Name should no more than 20 characters"),
   email: yup
@@ -18,11 +16,6 @@ const schema = yup.object().shape({
 });
 
 export default function RegisterTraveller() {
-  const userInfo = useAuthUser();
-  console.log(userInfo().name);
-  console.log(userInfo().avatar);
-  console.log(userInfo().venueManager);
-
   const {
     register,
     handleSubmit,
