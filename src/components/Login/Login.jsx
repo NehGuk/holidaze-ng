@@ -7,6 +7,8 @@ import { LoginFormContainer, LoginFormStatusMessages } from "./Login.style";
 
 import { useSignIn } from "react-auth-kit";
 
+import { Navigate } from "react-router-dom";
+
 const schema = yup.object().shape({
   email: yup
     .string()
@@ -17,7 +19,7 @@ const schema = yup.object().shape({
 });
 
 export default function Login() {
-  console.log(JSON.parse(localStorage.token_state));
+  /* console.log(JSON.parse(localStorage.token_state)); */
 
   const {
     register,
@@ -31,6 +33,8 @@ export default function Login() {
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const signIn = useSignIn();
+
+  const [goToHomeLoggedIn, setGoToHomeLoggedIn] = useState(false);
 
   const onSubmit = async (data) => {
     try {
@@ -52,6 +56,8 @@ export default function Login() {
         console.log(result.avatar);
         setSuccess(true);
         setError(false);
+
+        setGoToHomeLoggedIn(true);
       }
 
       if (!response.ok) {
@@ -71,6 +77,7 @@ export default function Login() {
 
   return (
     <div>
+      {goToHomeLoggedIn && <Navigate to="/homein" />}
       <form onSubmit={handleSubmit(onSubmit)}>
         <LoginFormContainer>
           <h2>Login</h2>
