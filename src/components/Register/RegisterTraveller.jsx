@@ -29,7 +29,7 @@ export default function RegisterTraveller() {
   const [errorMessage, setErrorMessage] = useState("");
 
   const onSubmit = async (data) => {
-    data.venueManager = true;
+    data.venueManager = false;
     try {
       const response = await fetch("https://api.noroff.dev/api/v1/holidaze/auth/register", {
         method: "POST",
@@ -88,7 +88,11 @@ export default function RegisterTraveller() {
           <button type="submit">Register</button>
 
           <RegisterFormStatusMessages>
-            {error && <p>{errorMessage}</p>}
+            {error && (
+              <p>
+                {errorMessage}. Click here to <Link to="/login">Login</Link>.
+              </p>
+            )}
             {success && (
               <p>
                 Registration successful! Click here to <Link to="/login">Login</Link>.

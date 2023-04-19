@@ -29,6 +29,8 @@ export default function RegisterManager() {
   const [errorMessage, setErrorMessage] = useState("");
 
   const onSubmit = async (data) => {
+    console.log(data);
+    data.venueManager = true;
     try {
       const response = await fetch("https://api.noroff.dev/api/v1/holidaze/auth/register", {
         method: "POST",

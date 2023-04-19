@@ -1,14 +1,22 @@
-import { Link } from "react-router-dom";
-import { NavLoggedOut } from "./Nav.style";
+import NavLoggedOut from "./NavLoggedOut/NavLoggedOut";
+import NavTraveller from "./NavTraveller/NavTraveller";
+import NavVenueManager from "./NavVenueManager/NavVenueManager";
+import { useAuthUser } from "react-auth-kit";
 
 export default function Nav() {
-  return (
-    <NavLoggedOut>
-      <div>Logo</div>
-      <div>
-        <Link to="login">Login</Link>
-        <Link to="register">Register</Link>
-      </div>
-    </NavLoggedOut>
-  );
+  const userInfo = useAuthUser();
+
+  console.log(userInfo());
+
+  if (userInfo() === null) {
+    return <NavLoggedOut />;
+  }
+
+  if (userInfo().venueManager === true) {
+    return <NavVenueManager />;
+  }
+
+  if (userInfo().venueManager === false) {
+    return <NavTraveller />;
+  }
 }

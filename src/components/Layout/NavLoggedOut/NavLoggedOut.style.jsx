@@ -1,6 +1,6 @@
-/* import styled from "styled-components";
+import styled from "styled-components";
 
-export const NavStyle = styled.nav`
+export const NavLoggedOutStyle = styled.nav`
   background: lightgray;
   padding: 1em;
   display: grid;
@@ -25,4 +25,3 @@ export const NavStyle = styled.nav`
     }
   }
 `;
- */

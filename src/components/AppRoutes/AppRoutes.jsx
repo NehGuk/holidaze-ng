@@ -7,6 +7,7 @@ import NotFound from "../NotFound/NotFound";
 import Layout from "../Layout/Layout";
 import RegisterManager from "../Register/RegisterManager";
 import RegisterTraveller from "../Register/RegisterTraveller";
+import HomeLoggedIn from "../Home/HomeLoggedIn/HomeLoggedIn";
 
 export default function AppRoutes() {
   return (
@@ -14,6 +15,7 @@ export default function AppRoutes() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="homein" element={<HomeLoggedIn />} />
           <Route path="venue" element={<Venue />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
