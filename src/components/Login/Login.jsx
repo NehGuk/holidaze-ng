@@ -5,8 +5,11 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { LoginFormContainer, LoginFormStatusMessages } from "./Login.style";
 
+import { useSignIn } from "react-auth-kit";
+
+import { Navigate } from "react-router-dom";
+
 const schema = yup.object().shape({
-  name: yup.string().required("Please enter your name").max(20, "Name should no more than 20 characters"),
   email: yup
     .string()
     .email("Enter a valid @noroff.no email address")
@@ -16,6 +19,8 @@ const schema = yup.object().shape({
 });
 
 export default function Login() {
+  /* console.log(JSON.parse(localStorage.token_state)); */
+
   const {
     register,
     handleSubmit,
@@ -27,6 +32,9 @@ export default function Login() {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const signIn = useSignIn();
+
+  const [goToHomeLoggedIn, setGoToHomeLoggedIn] = useState(false);
 
   const onSubmit = async (data) => {
     try {
@@ -42,8 +50,14 @@ export default function Login() {
       if (response.ok) {
         console.log("Boaaaa, isso ae!!!!!!!");
         console.log(result);
+        console.log(result.name);
+        console.log(result.accessToken);
+        console.log(result.venueManager);
+        console.log(result.avatar);
         setSuccess(true);
         setError(false);
+
+        setGoToHomeLoggedIn(true);
       }
 
       if (!response.ok) {
@@ -53,6 +67,8 @@ export default function Login() {
         setErrorMessage(result.errors[0].message);
         setSuccess(false);
       }
+
+      signIn({ token: result.accessToken, expiresIn: 86400, tokenType: "Bearer", authState: { name: result.name, email: result.email, venueManager: result.venueManager, avatar: result.avatar } });
     } catch (error) {
       setError(true);
       console.log(error);
@@ -61,14 +77,10 @@ export default function Login() {
 
   return (
     <div>
+      {goToHomeLoggedIn && <Navigate to="/homein" />}
       <form onSubmit={handleSubmit(onSubmit)}>
         <LoginFormContainer>
           <h2>Login</h2>
-          <label htmlFor="name" hidden>
-            Name:
-          </label>
-          <input type="text" {...register("name")} placeholder="Name" />
-          {errors.name && <p>{errors.name.message}</p>}
 
           <label htmlFor="email" hidden>
             Email:
@@ -82,17 +94,13 @@ export default function Login() {
           <input type="password" {...register("password")} placeholder="Password" />
           {errors.password && <p>{errors.password.message}</p>}
 
-          <button type="submit">Register</button>
+          <button type="submit">Login</button>
 
           <LoginFormStatusMessages>
             {error && <p>{errorMessage}</p>}
-            {success && (
-              <p>
-                Registration successful! Click here to <Link to="/login">Login</Link>.
-              </p>
-            )}
+            {success && <p>Logged in!</p>}
             <div>
-              Register as a <Link to="/register-traveller">traveller</Link>.
+              Or click <Link to="/register">here to create an account</Link>.
             </div>
           </LoginFormStatusMessages>
         </LoginFormContainer>
