@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { NavTravellerStyle } from "./NavTraveller.style";
 import { useSignOut } from "react-auth-kit";
+import logo from "../../../assets/logo.png";
+import { LogoImg } from "./NavTraveller.style";
 
 export default function NavTraveller() {
   const signOut = useSignOut();
@@ -10,7 +12,12 @@ export default function NavTraveller() {
   };
   return (
     <NavTravellerStyle>
-      <div>Logo Nav Travellerrrr</div>
+      <div>
+        <Link to="/homein">
+          <LogoImg src={logo} />
+          Logo Nav Traveller:
+        </Link>
+      </div>
       <div>
         <Link to="login">Link 1</Link>
         <Link to="register">Link 2</Link>

@@ -25,3 +25,7 @@ export const NavTravellerStyle = styled.nav`
     }
   }
 `;
+
+export const LogoImg = styled.img`
+  max-width: 9em;
+`;
