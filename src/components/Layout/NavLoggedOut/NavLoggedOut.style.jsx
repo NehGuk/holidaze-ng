@@ -25,3 +25,7 @@ export const NavLoggedOutStyle = styled.nav`
     }
   }
 `;
+
+export const LogoImg = styled.img`
+  max-width: 9em;
+`;
