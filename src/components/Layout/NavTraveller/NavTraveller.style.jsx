@@ -15,18 +15,20 @@ export const NavTravellerStyle = styled.nav`
     padding: 0.5em;
     text-align: center;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 1em;
 
     > :nth-child(1) {
       background: lightcoral;
+      border: solid 1px green;
     }
     > :nth-child(2) {
-      background: lightskyblue;
+      background: lightcoral;
+      border: solid 1px green;
     }
-    > :nth-child(6) {
-      background: none;
-      border: none;
+    > :nth-child(3) {
+      background: lightcoral;
+      border: solid 1px green;
     }
   }
 `;
@@ -41,6 +43,6 @@ export const AvatarImg = styled.img`
 `;
 
 export const HamburgerMenu = styled(Menu)`
-  /* max-width: 2em; */
+  max-width: 2em;
   min-width: 2em;
 `;
