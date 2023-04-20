@@ -7,6 +7,7 @@ import { LogoImg } from "./NavTraveller.style";
 import avatar from "../../../assets/avatar.png";
 import { AvatarImg } from "./NavTraveller.style";
 import { HamburgerMenu } from "./NavTraveller.style";
+import NavTravellerModal from "./NavTravellerModal/NavTravellerModal";
 
 export default function NavTraveller() {
   const signOut = useSignOut();
@@ -15,32 +16,35 @@ export default function NavTraveller() {
     signOut();
   };
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const openModal = () => {
     console.log("OPENING MODAL");
-    console.log(isModalOpen);
-    setIsModalOpen(true);
+
+    setShowModal((prev) => !prev);
   };
 
   return (
-    <NavTravellerStyle>
-      <div>
-        <Link to="/homein">
-          <LogoImg src={logo} />
-          Logo Nav Travellerrrr
-        </Link>
-      </div>
-      <div>
-        <Link to="login">Link 1</Link>
-        <Link to="register">Link 2</Link>
-        <button onClick={handleSignOut}>Sing out</button>
-        <p>{userInfo().name}</p>
-        <AvatarImg src={avatar} />
-        <button onClick={openModal}>
-          <HamburgerMenu />
-        </button>
-      </div>
-    </NavTravellerStyle>
+    <>
+      <NavTravellerStyle>
+        <div>
+          <Link to="/homein">
+            <LogoImg src={logo} />
+            Logo Nav Travellerrrr
+          </Link>
+        </div>
+        <div>
+          <Link to="login">Link 1</Link>
+          <Link to="register">Link 2</Link>
+          <button onClick={handleSignOut}>Sing out</button>
+          <p>{userInfo().name}</p>
+          <AvatarImg src={avatar} />
+          <button onClick={openModal}>
+            <HamburgerMenu />
+          </button>
+        </div>
+      </NavTravellerStyle>
+      {showModal && <NavTravellerModal showModal={showModal} setShowModal={setShowModal} />}
+    </>
   );
 }
