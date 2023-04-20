@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import { ModalContainer, ModalContent } from "./NavTravellerModal.style";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { ModalCloseIcon } from "./NavTravellerModal.style";
+import { useSignOut } from "react-auth-kit";
 
 export default function NavTravellerModal({ showModal, setShowModal }) {
   console.log(showModal);
@@ -16,6 +16,11 @@ export default function NavTravellerModal({ showModal, setShowModal }) {
     console.log("GO TO LOGIN");
   };
 
+  const signOut = useSignOut();
+  const handleSignOut = () => {
+    signOut();
+  };
+
   return (
     <div>
       {/* {goToLogin && <Navigate to="/login" />} */}
@@ -23,12 +28,12 @@ export default function NavTravellerModal({ showModal, setShowModal }) {
         <ModalContainer>
           <ModalCloseIcon aria-label="Close modal" onClick={() => setShowModal((prev) => !prev)} />
           <ModalContent>
-            <p>Modal content hereeee</p>
-            <Link to="login">Login</Link>
-            <button onClick={handleLoginButton}>Go to login</button>
-            <button aria-label="Close modal" onClick={() => setShowModal((prev) => !prev)}>
-              Close modal button
-            </button>
+            <p>Avatar</p>
+            <p>Name</p>
+            <p>Account type: yyyy</p>
+            <button onClick={handleLoginButton}>Profile</button>
+            <button onClick={handleLoginButton}>My bookings</button>
+            <button onClick={handleSignOut}>Sing out</button>
           </ModalContent>
         </ModalContainer>
       ) : null}
