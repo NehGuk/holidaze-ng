@@ -31,6 +31,7 @@ export default function NavTravellerModal({ showModal, setShowModal }) {
             <p>Avatar</p>
             <p>Name</p>
             <p>Account type: yyyy</p>
+            <button onClick={handleLoginButton}>Home</button>
             <button onClick={handleLoginButton}>Profile</button>
             <button onClick={handleLoginButton}>My bookings</button>
             <button onClick={handleSignOut}>Sing out</button>
