@@ -29,3 +29,8 @@ export const NavTravellerStyle = styled.nav`
 export const LogoImg = styled.img`
   max-width: 9em;
 `;
+
+export const AvatarImg = styled.img`
+  max-width: 3em;
+  border-radius: 50%;
+`;
