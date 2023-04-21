@@ -6,7 +6,14 @@ import { useSignOut, useAuthUser } from "react-auth-kit";
 import avatar from "../../../../assets/avatar.png";
 import { AvatarImg } from "./NavTravellerModal.style";
 
+import { useSpring, animated } from "@react-spring/web";
+
 export default function NavTravellerModal({ showModal, setShowModal }) {
+  const springs = useSpring({
+    from: { x: 100 },
+    to: { x: 0 },
+  });
+
   console.log(showModal);
   console.log(setShowModal);
 
@@ -30,21 +37,23 @@ export default function NavTravellerModal({ showModal, setShowModal }) {
       {/* {goToLogin && <Navigate to="/login" />} */}
       {showModal ? (
         <ModalBackground>
-          <ModalContainer>
-            <ModalCloseIcon aria-label="Close modal" onClick={() => setShowModal((prev) => !prev)} />
-            <ModalContent>
-              <AvatarImg src={avatar}></AvatarImg>
+          <animated.div style={springs}>
+            <ModalContainer>
+              <ModalCloseIcon aria-label="Close modal" onClick={() => setShowModal((prev) => !prev)} />
+              <ModalContent>
+                <AvatarImg src={avatar}></AvatarImg>
 
-              <p>User name: {userInfo().name}</p>
-              {userInfo().venueManager && <p>Account type: Venue manager</p>}
-              {!userInfo().venueManager && <p>Account type: Traveller</p>}
+                <p>User name: {userInfo().name}</p>
+                {userInfo().venueManager && <p>Account type: Venue manager</p>}
+                {!userInfo().venueManager && <p>Account type: Traveller</p>}
 
-              <button onClick={handleLoginButton}>Home</button>
-              <button onClick={handleLoginButton}>Profile</button>
-              <button onClick={handleLoginButton}>My bookings</button>
-              <button onClick={handleSignOut}>Sing out</button>
-            </ModalContent>
-          </ModalContainer>
+                <button onClick={handleLoginButton}>Home</button>
+                <button onClick={handleLoginButton}>Profile</button>
+                <button onClick={handleLoginButton}>My bookings</button>
+                <button onClick={handleSignOut}>Sing out</button>
+              </ModalContent>
+            </ModalContainer>
+          </animated.div>
         </ModalBackground>
       ) : null}
     </div>
