@@ -20,7 +20,7 @@ export const ModalContainer = styled.div`
   bottom: 0;
   /* left: 0; */
 
-  background: lightgrey;
+  background: lightgreen;
 
   width: 100vw;
   height: 100vh;

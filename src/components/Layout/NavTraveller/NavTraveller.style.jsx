@@ -19,15 +19,15 @@ export const NavTravellerStyle = styled.nav`
     gap: 1em;
 
     > :nth-child(1) {
-      background: lightcoral;
+      background: lightgreen;
       border: solid 1px green;
     }
     > :nth-child(2) {
-      background: lightcoral;
+      background: lightgreen;
       border: solid 1px green;
     }
     > :nth-child(3) {
-      background: lightcoral;
+      background: lightgreen;
       border: solid 1px green;
     }
   }
