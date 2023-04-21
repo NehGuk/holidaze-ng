@@ -1,34 +1,44 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { NavVenueManagerStyle } from "./NavVenueManager.style";
-import { useSignOut, useAuthUser } from "react-auth-kit";
+
+import { useAuthUser } from "react-auth-kit";
 import logo from "../../../assets/logo.png";
 import { LogoImg } from "./NavVenueManager.style";
 import avatar from "../../../assets/avatar.png";
 import { AvatarImg } from "./NavVenueManager.style";
+import { HamburgerMenu } from "./NavVenueManager.style";
 
-export default function NavVenueManager() {
-  const signOut = useSignOut();
+import NavVenueManagerModal from "./NavVenueManagerModal/NavVenueManagerModal";
+
+export default function NavTraveller() {
   const userInfo = useAuthUser();
 
-  const handleSignOut = () => {
-    signOut();
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    console.log("OPENING MODAL");
+
+    setShowModal((prev) => !prev);
   };
 
   return (
-    <NavVenueManagerStyle>
-      <div>
-        <Link to="/homein">
-          <LogoImg src={logo} />
-          Logo Nav Venue Manager:
-        </Link>
-      </div>
-      <div>
-        <Link to="login">Link 1</Link>
-        <Link to="register">Link 2</Link>
-        <button onClick={handleSignOut}>Sing out</button>
-        <p>{userInfo().name}</p>
-        <AvatarImg src={avatar} />
-      </div>
-    </NavVenueManagerStyle>
+    <>
+      <NavVenueManagerStyle>
+        <div>
+          <Link to="/homein">
+            <LogoImg src={logo} />
+          </Link>
+        </div>
+        <div>
+          <p>{userInfo().name}</p>
+          <AvatarImg src={avatar} />
+          <button onClick={openModal}>
+            <HamburgerMenu />
+          </button>
+        </div>
+      </NavVenueManagerStyle>
+      {showModal && <NavVenueManagerModal showModal={showModal} setShowModal={setShowModal} />}
+    </>
   );
 }
