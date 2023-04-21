@@ -49,9 +49,9 @@ export default function NavVenueManagerModal({ showModal, setShowModal }) {
                 {userInfo().venueManager && <p>Account type: Venue manager</p>}
                 {!userInfo().venueManager && <p>Account type: Traveller</p>}
 
-                <button onClick={handleLoginButton}>Home</button>
                 <button onClick={handleLoginButton}>Profile</button>
-                <button onClick={handleLoginButton}>My bookings</button>
+                <button onClick={handleLoginButton}>My venues</button>
+                <button onClick={handleLoginButton}>Upcoming bookings</button>
                 <button onClick={handleSignOut}>Sing out</button>
               </ModalContent>
             </ModalContainer>
