@@ -26,7 +26,6 @@ export default function NavTraveller() {
         <div>
           <Link to="/homein">
             <LogoImg src={logo} />
-            Logo Nav Travellerrrr
           </Link>
         </div>
         <div>
