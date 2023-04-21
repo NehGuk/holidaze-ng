@@ -8,7 +8,7 @@ export default function Nav() {
 
   console.log(userInfo());
 
-  if (userInfo() === null) {
+  if (userInfo() === null || userInfo().venueManager === undefined) {
     return <NavLoggedOut />;
   }
 
