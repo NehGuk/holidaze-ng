@@ -29,6 +29,7 @@ export default function NavVenueManagerModal({ showModal, setShowModal }) {
 
   const signOut = useSignOut();
   const handleSignOut = () => {
+    navigate("/");
     signOut();
   };
 

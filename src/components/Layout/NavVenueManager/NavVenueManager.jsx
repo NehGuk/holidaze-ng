@@ -26,7 +26,7 @@ export default function NavTraveller() {
     <>
       <NavVenueManagerStyle>
         <div>
-          <Link to="/homein">
+          <Link to="/home">
             <LogoImg src={logo} />
           </Link>
         </div>

@@ -1,16 +1,16 @@
 import styled from "styled-components";
 
 export const NavLoggedOutStyle = styled.nav`
-  background: lightgray;
+  background: darkgreen;
   padding: 1em;
   display: grid;
   grid-template-columns: 1.5fr 0.5fr;
   gap: 1em;
   > :nth-child(1) {
-    background: lightgreen;
+    background: green;
   }
   > :nth-child(2) {
-    background: lightseagreen;
+    background: green;
     padding: 0.5em;
     text-align: center;
     display: grid;
@@ -18,10 +18,10 @@ export const NavLoggedOutStyle = styled.nav`
     gap: 1em;
 
     > :nth-child(1) {
-      background: lightcoral;
+      background: lightgreen;
     }
     > :nth-child(2) {
-      background: lightskyblue;
+      background: lightgreen;
     }
   }
 `;

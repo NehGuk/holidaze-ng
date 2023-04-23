@@ -24,7 +24,7 @@ export default function NavTraveller() {
     <>
       <NavTravellerStyle>
         <div>
-          <Link to="/homein">
+          <Link to="/home">
             <LogoImg src={logo} />
           </Link>
         </div>

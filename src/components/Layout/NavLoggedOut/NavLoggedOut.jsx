@@ -9,7 +9,6 @@ export default function NavLoggedOut() {
       <div>
         <Link to="/">
           <LogoImg src={logo} />
-          Logo Nav Logged out
         </Link>
       </div>
       <div>
