@@ -77,7 +77,7 @@ export default function Login() {
 
   return (
     <div>
-      {goToHomeLoggedIn && <Navigate to="/homein" />}
+      {goToHomeLoggedIn && <Navigate to="/home" />}
       <form onSubmit={handleSubmit(onSubmit)}>
         <LoginFormContainer>
           <h2>Login</h2>
