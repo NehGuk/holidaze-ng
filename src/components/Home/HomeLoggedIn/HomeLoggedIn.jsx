@@ -1,6 +1,7 @@
 import { useAuthUser } from "react-auth-kit";
 
 import HomeVenueManager from "./HomeVenueManager/HomeVenueManager";
+import HomeTraveller from "./HomeTraveller/HomeTraveller";
 
 export default function HomeLoggedIn() {
   const userInfo = useAuthUser();
@@ -10,7 +11,7 @@ export default function HomeLoggedIn() {
       <h2>HomeLoggedIn component</h2>
 
       {userInfo().venueManager && <HomeVenueManager />}
-      {!userInfo().venueManager && <p>asdasd as traveller component</p>}
+      {!userInfo().venueManager && <HomeTraveller />}
     </div>
   );
 }
