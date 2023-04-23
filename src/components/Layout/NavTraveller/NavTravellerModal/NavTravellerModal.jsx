@@ -19,10 +19,19 @@ export default function NavTravellerModal({ showModal, setShowModal }) {
 
   const navigate = useNavigate();
 
-  const handleLoginButton = () => {
+  const handleHomeButton = () => {
     setShowModal((prev) => !prev);
-    navigate("/login");
-    console.log("GO TO LOGIN");
+    navigate("/home");
+  };
+
+  const handleProfileButton = () => {
+    setShowModal((prev) => !prev);
+    navigate("/profile-traveller");
+  };
+
+  const handleMyBookingsButton = () => {
+    setShowModal((prev) => !prev);
+    navigate("/my-bookings");
   };
 
   const signOut = useSignOut();
@@ -48,9 +57,9 @@ export default function NavTravellerModal({ showModal, setShowModal }) {
                 {userInfo().venueManager && <p>Account type: Venue manager</p>}
                 {!userInfo().venueManager && <p>Account type: Traveller</p>}
 
-                <button onClick={handleLoginButton}>Home</button>
-                <button onClick={handleLoginButton}>Profile</button>
-                <button onClick={handleLoginButton}>My bookings</button>
+                <button onClick={handleHomeButton}>Home</button>
+                <button onClick={handleProfileButton}>Profile</button>
+                <button onClick={handleMyBookingsButton}>My bookings</button>
                 <button onClick={handleSignOut}>Sing out</button>
               </ModalContent>
             </ModalContainer>
