@@ -27,6 +27,7 @@ export default function NavTravellerModal({ showModal, setShowModal }) {
 
   const signOut = useSignOut();
   const handleSignOut = () => {
+    navigate("/");
     signOut();
   };
 
