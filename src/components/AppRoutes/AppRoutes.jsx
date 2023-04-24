@@ -13,6 +13,7 @@ import ProfileVenueManager from "../Profile/ProfileVenueManager";
 import MyBookings from "../MyBookings/MyBookings";
 import UpcomingBookings from "../UpcomingBookings/UpcomingBookings";
 import MyVenues from "../MyVenues/MyVenues";
+import RegistrationSuccess from "../Register/RegistrationSuccess";
 
 export default function AppRoutes() {
   return (
@@ -33,6 +34,7 @@ export default function AppRoutes() {
           <Route path="register" element={<Register />} />
           <Route path="register-manager" element={<RegisterManager />} />
           <Route path="register-traveller" element={<RegisterTraveller />} />
+          <Route path="registration-success" element={<RegistrationSuccess />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
