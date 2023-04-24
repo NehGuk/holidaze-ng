@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { RegisterFormContainer, RegisterFormStatusMessages } from "./RegisterManager.style";
 
 const schema = yup.object().shape({
@@ -93,6 +93,7 @@ export default function RegisterManager() {
                 Registration successful! Click here to <Link to="/login">Login</Link>.
               </p>
             )}
+            {success && <Navigate to="/registration-success" />}
             <div>
               Register as a <Link to="/register-traveller">traveller</Link>.
             </div>
