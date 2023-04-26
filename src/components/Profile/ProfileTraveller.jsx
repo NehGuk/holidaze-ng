@@ -20,6 +20,8 @@ export default function ProfileTraveller() {
   console.log(authHeader());
   const token = authHeader().split(" ")[1];
   console.log(token);
+  const currentUserInfo = JSON.parse(localStorage.token_state);
+  /* console.log(currentUserInfo); */
 
   const [changeAvatarButton, setChangeAvatarButton] = useState(true);
 
@@ -39,7 +41,7 @@ export default function ProfileTraveller() {
 
         {changeAvatarButton && <button onClick={showAvatarForm}>Change avatar</button>}
 
-        {avatarForm && <UpdateAvatar token={token} setAvatarForm={setAvatarForm} setChangeAvatarButton={setChangeAvatarButton} />}
+        {avatarForm && <UpdateAvatar token={token} setAvatarForm={setAvatarForm} setChangeAvatarButton={setChangeAvatarButton} currentUserInfo={currentUserInfo} />}
 
         <p>Name: {userInfo().name}</p>
         {!userInfo().venueManager && <p>Account type: Traveller</p>}

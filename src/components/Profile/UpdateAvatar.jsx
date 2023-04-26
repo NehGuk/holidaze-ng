@@ -1,19 +1,15 @@
-// Form stuff
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-// Form stuff end
 
 import { PropTypes } from "prop-types";
+import { useState } from "react";
 
-// Yup schema
 const schema = yup.object().shape({
   avatar: yup.string().url("Please enter a valid URL").required("This field is required"),
 });
-// Yup schema end
 
-export default function UpdateAvatar({ token, setAvatarForm, setChangeAvatarButton }) {
-  // More form stuff
+export default function UpdateAvatar({ token, setAvatarForm, setChangeAvatarButton, currentUserInfo }) {
   const {
     register,
     handleSubmit,
@@ -21,31 +17,40 @@ export default function UpdateAvatar({ token, setAvatarForm, setChangeAvatarButt
   } = useForm({
     resolver: yupResolver(schema),
   });
-  // More form stuff end
 
-  // Function onSubmit
-  const onSubmit = () => {
-    console.log("DO SOMTHING ON SUBMITTTT YEYYYY");
-    console.log("SUBMITTINGGG THE FORM DATAAA YAYY");
+  const [apiError, setApiError] = useState(false);
+
+  const onSubmit = async (data) => {
+    try {
+      const response = await fetch("https://api.noroff.dev/api/v1/holidaze/profiles/traveller/media", {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ avatar: data.avatar }),
+      });
+
+      if (!response.ok) {
+        setApiError(true);
+      }
+      if (response.ok) {
+        setApiError(false);
+        setAvatarForm(false);
+        // UPDATE LOCAL STORAGE
+        currentUserInfo.avatar = data.avatar;
+        localStorage.setItem("token_state", JSON.stringify(currentUserInfo));
+        window.location.reload();
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
-
-  // Function onSubmit end
-
-  console.log(token);
-  console.log(setAvatarForm);
 
   const hideAvatarForm = () => {
     setAvatarForm(false);
     setChangeAvatarButton(true);
   };
-
-  /* const handleUpdateAvatarButton = (e) => {
-    e.preventDefault();
-    // Creates an object with the avatar URL
-    const formData = new FormData(e.target.form);
-    const formDataReady = Object.fromEntries(formData);
-    console.log(formDataReady);
-  }; */
 
   return (
     <div>
@@ -57,6 +62,7 @@ export default function UpdateAvatar({ token, setAvatarForm, setChangeAvatarButt
         </label>
         <input type="text" id="url" name="avatar" placeholder="http://www..." {...register("avatar")} />
         <p>{errors.avatar?.message}</p>
+        {apiError ? <p>An error has occurred. Please try a different URL.</p> : null}
 
         <button type="submit">Update avatar</button>
         <button onClick={hideAvatarForm}>Cancel</button>
@@ -69,4 +75,5 @@ UpdateAvatar.propTypes = {
   token: PropTypes.string.isRequired,
   setAvatarForm: PropTypes.func.isRequired,
   setChangeAvatarButton: PropTypes.func.isRequired,
+  currentUserInfo: PropTypes.object.isRequired,
 };
