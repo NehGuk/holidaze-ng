@@ -31,16 +31,6 @@ export default function NavVenueManagerModal({ showModal, setShowModal }) {
     navigate("/profile-venuemanager");
   };
 
-  const handleMyVenuesButton = () => {
-    setShowModal((prev) => !prev);
-    navigate("/my-venues");
-  };
-
-  const handleUpcomingBookingsButton = () => {
-    setShowModal((prev) => !prev);
-    navigate("/upcoming-bookings");
-  };
-
   const signOut = useSignOut();
   const handleSignOut = () => {
     navigate("/");
@@ -67,8 +57,6 @@ export default function NavVenueManagerModal({ showModal, setShowModal }) {
 
                 <button onClick={handleHomeButton}>Home</button>
                 <button onClick={handleProfileButton}>Profile</button>
-                <button onClick={handleMyVenuesButton}>My venues</button>
-                <button onClick={handleUpcomingBookingsButton}>Upcoming bookings</button>
                 <button onClick={handleSignOut}>Sing out</button>
               </ModalContent>
             </ModalContainer>
