@@ -1,13 +1,21 @@
 import { Link } from "react-router-dom";
-import useApiVenues from "../../hooks/useAPIVenues";
-import { useEffect, useState } from "react";
-/* import VenueCard from "./VenueCard"; */
 
-export default function Venues() {
-  const { data, isLoading, isError } = useApiVenues("https://api.noroff.dev/api/v1/holidaze/venues?_owner=true&_bookings=true");
-  const [venuesList, setVenuesList] = useState([]);
+import { useEffect, useState } from "react";
+
+import useApiVenuesVenueManager from "../../hooks/useAPIVenuesVenueManager";
+
+import { useAuthUser } from "react-auth-kit";
+
+export default function VenuesVenueManager() {
+  const userInfo = useAuthUser();
+  console.log(userInfo().name);
+
+  const { data, isLoading, isError } = useApiVenuesVenueManager(`https://api.noroff.dev/api/v1/holidaze/profiles/johntest2/venues`);
+
+  const [myVenuesList, setMyVenuesList] = useState([]);
+
   useEffect(() => {
-    setVenuesList(data);
+    setMyVenuesList(data);
   });
 
   if (isLoading) {
@@ -22,11 +30,11 @@ export default function Venues() {
       <div>
         {isError && <p>SOME ERRORRRR</p>}
 
-        <h2>Venues component --for the venues list</h2>
+        <h2>VenuesVenueManager component --for my specific venues</h2>
 
         <p>Map below</p>
 
-        {venuesList.map((item) => (
+        {myVenuesList.map((item) => (
           <div key={item.id}>
             <div>
               <div>

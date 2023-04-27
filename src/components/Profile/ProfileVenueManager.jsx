@@ -42,8 +42,7 @@ export default function ProfileVenueManager() {
         {userInfo().venueManager && <p>Account type: Venue manager</p>}
 
         <Link to="/home">Home</Link>
-        <Link to="/my-venues">My venues</Link>
-        <Link to="/upcoming-bookings">Upcoming bookings</Link>
+
         <button onClick={handleSignOut}>Sign out</button>
       </div>
     </ProfileVenueManagerContainer>
