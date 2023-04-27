@@ -1,12 +1,15 @@
 import { useAuthUser } from "react-auth-kit";
+import VenuesVenueManager from "../../../Venues/VenuesVenueManager";
 
 export default function HomeVenueManager() {
   const userInfo = useAuthUser();
   return (
     <div>
-      <h1>Homeeee Venue Manager</h1>
-      <p>Content for the home to be displayed to the Venue Manager</p>
-      <p>Info from useAuthInfo here: {userInfo().email}</p>
+      <h1>Hello {userInfo().name}!</h1>
+      <p>You are currently managing X venues.</p>
+
+      <button>Create new venue</button>
+      <VenuesVenueManager />
     </div>
   );
 }
