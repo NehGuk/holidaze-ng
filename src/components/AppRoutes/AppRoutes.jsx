@@ -24,11 +24,9 @@ export default function AppRoutes() {
           <Route path="home" element={<HomeLoggedIn />} />
           <Route path="profile-traveller" element={<ProfileTraveller />} />
           <Route path="my-bookings" element={<MyBookings />} />
-
           <Route path="profile-venuemanager" element={<ProfileVenueManager />} />
           <Route path="my-venues" element={<MyVenues />} />
           <Route path="upcoming-bookings" element={<UpcomingBookings />} />
-
           <Route path="venue" element={<Venue />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />

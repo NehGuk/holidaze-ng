@@ -1,37 +1,31 @@
-import { useAuthUser } from "react-auth-kit";
-
-import { useAuthHeader } from "react-auth-kit";
-
-import avatar from "../../assets/avatar.png";
-
-import UpdateAvatar from "./UpdateAvatar";
-
-import { ProfileVenueManagerContainer } from "./ProfileVenueManager.style";
-
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuthUser, useAuthHeader, useSignOut } from "react-auth-kit";
+import avatar from "../../assets/avatar.png";
+import UpdateAvatar from "./UpdateAvatar";
+import { ProfileVenueManagerContainer } from "./ProfileVenueManager.style";
 
 export default function ProfileVenueManager() {
   const userInfo = useAuthUser();
-  console.log(userInfo().venueManager);
-  console.log(userInfo().avatar);
-  console.log(userInfo().name);
-
   const authHeader = useAuthHeader();
-  console.log(authHeader());
   const token = authHeader().split(" ")[1];
-  console.log(token);
   const currentUserInfo = JSON.parse(localStorage.token_state);
-  /* console.log(currentUserInfo); */
-
   const [changeAvatarButton, setChangeAvatarButton] = useState(true);
-
   const [avatarForm, setAvatarForm] = useState(false);
+  const navigate = useNavigate();
+  const signOut = useSignOut();
 
   const showAvatarForm = () => {
     console.log("SHOE AVATAR FORM");
     setAvatarForm(true);
     setChangeAvatarButton(false);
   };
+
+  const handleSignOut = () => {
+    navigate("/");
+    signOut();
+  };
+
   return (
     <ProfileVenueManagerContainer>
       <div>
@@ -47,9 +41,10 @@ export default function ProfileVenueManager() {
         {!userInfo().venueManager && <p>Account type: Traveller</p>}
         {userInfo().venueManager && <p>Account type: Venue manager</p>}
 
-        <p>Home</p>
-        <p>My bookings</p>
-        <p>Sign out</p>
+        <Link to="/home">Home</Link>
+        <Link to="/my-venues">My venues</Link>
+        <Link to="/upcoming-bookings">Upcoming bookings</Link>
+        <button onClick={handleSignOut}>Sign out</button>
       </div>
     </ProfileVenueManagerContainer>
   );
