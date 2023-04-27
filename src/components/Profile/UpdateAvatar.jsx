@@ -9,7 +9,8 @@ const schema = yup.object().shape({
   avatar: yup.string().url("Please enter a valid URL").required("This field is required"),
 });
 
-export default function UpdateAvatar({ token, setAvatarForm, setChangeAvatarButton, currentUserInfo }) {
+export default function UpdateAvatar({ token, userInfo, setAvatarForm, setChangeAvatarButton, currentUserInfo }) {
+  console.log(userInfo().name);
   const {
     register,
     handleSubmit,
@@ -22,7 +23,7 @@ export default function UpdateAvatar({ token, setAvatarForm, setChangeAvatarButt
 
   const onSubmit = async (data) => {
     try {
-      const response = await fetch("https://api.noroff.dev/api/v1/holidaze/profiles/traveller/media", {
+      const response = await fetch(`https://api.noroff.dev/api/v1/holidaze/profiles/${userInfo().name}/media`, {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -37,6 +38,7 @@ export default function UpdateAvatar({ token, setAvatarForm, setChangeAvatarButt
       if (response.ok) {
         setApiError(false);
         setAvatarForm(false);
+        setChangeAvatarButton(true);
         // UPDATE LOCAL STORAGE
         currentUserInfo.avatar = data.avatar;
         localStorage.setItem("token_state", JSON.stringify(currentUserInfo));
@@ -73,6 +75,7 @@ export default function UpdateAvatar({ token, setAvatarForm, setChangeAvatarButt
 
 UpdateAvatar.propTypes = {
   token: PropTypes.string.isRequired,
+  userInfo: PropTypes.func.isRequired,
   setAvatarForm: PropTypes.func.isRequired,
   setChangeAvatarButton: PropTypes.func.isRequired,
   currentUserInfo: PropTypes.object.isRequired,

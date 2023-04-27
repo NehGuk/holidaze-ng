@@ -41,7 +41,7 @@ export default function ProfileTraveller() {
 
         {changeAvatarButton && <button onClick={showAvatarForm}>Change avatar</button>}
 
-        {avatarForm && <UpdateAvatar token={token} setAvatarForm={setAvatarForm} setChangeAvatarButton={setChangeAvatarButton} currentUserInfo={currentUserInfo} />}
+        {avatarForm && <UpdateAvatar token={token} userInfo={userInfo} setAvatarForm={setAvatarForm} setChangeAvatarButton={setChangeAvatarButton} currentUserInfo={currentUserInfo} />}
 
         <p>Name: {userInfo().name}</p>
         {!userInfo().venueManager && <p>Account type: Traveller</p>}
