@@ -27,7 +27,7 @@ export default function AppRoutes() {
           <Route path="profile-venuemanager" element={<ProfileVenueManager />} />
           <Route path="my-venues" element={<MyVenues />} />
           <Route path="upcoming-bookings" element={<UpcomingBookings />} />
-          <Route path="venue" element={<Venue />} />
+          <Route path="venue/:id" element={<Venue />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="register-manager" element={<RegisterManager />} />

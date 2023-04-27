@@ -30,14 +30,18 @@ export default function Venues() {
           <div key={item.id}>
             <div>
               <div>
-                <Link to={`/venue?id=${item.id}`}>
+                <Link to={`/venue/${item.id}`}>
                   <img src={item.media} />
                 </Link>
               </div>
               <div>
-                <h3>{item.name}</h3>
-                <p>$ {item.price}</p>
+                <Link to={`/venue/${item.id}`}>
+                  <h3>{item.name}</h3>
+                </Link>
+
+                <p>${item.price}</p>
                 <p>Rating: {item.rating}</p>
+                <p>Max guests: {item.maxGuests}</p>
               </div>
             </div>
           </div>
