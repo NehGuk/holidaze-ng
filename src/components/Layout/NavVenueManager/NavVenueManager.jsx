@@ -32,7 +32,9 @@ export default function NavTraveller() {
         </div>
         <div>
           <p>{userInfo().name}</p>
-          <AvatarImg src={avatar} />
+          {userInfo().avatar === null && <AvatarImg src={avatar} />}
+          {userInfo().avatar !== null && <AvatarImg src={userInfo().avatar} />}
+
           <button onClick={openModal}>
             <HamburgerMenu />
           </button>

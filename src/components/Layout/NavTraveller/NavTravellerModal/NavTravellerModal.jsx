@@ -51,7 +51,9 @@ export default function NavTravellerModal({ showModal, setShowModal }) {
             <ModalContainer>
               <ModalCloseIcon aria-label="Close modal" onClick={() => setShowModal((prev) => !prev)} />
               <ModalContent>
-                <AvatarImg src={avatar}></AvatarImg>
+                {userInfo().avatar === null && <AvatarImg src={avatar} />}
+                {userInfo().avatar !== null && <AvatarImg src={userInfo().avatar} />}
+                {/* <AvatarImg src={avatar}></AvatarImg> */}
 
                 <p>User name: {userInfo().name}</p>
                 {userInfo().venueManager && <p>Account type: Venue manager</p>}
