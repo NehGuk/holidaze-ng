@@ -15,7 +15,7 @@ export default function VenueLoggedInVenueManager() {
 
   return (
     <div>
-      <p>Hi, this is the VenueLoggerInVenueManager component</p>
+      <p>Hi, this is the VenueLoggedInVenueManager component</p>
       <h1>{data.name}</h1>
       <img src={data.media} />
       <p>{data.description}</p>
