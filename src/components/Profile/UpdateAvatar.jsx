@@ -6,7 +6,7 @@ import { PropTypes } from "prop-types";
 import { useState } from "react";
 
 const schema = yup.object().shape({
-  avatar: yup.string().url("Please enter a valid URL").required("This field is required"),
+  avatar: yup.string().url("Please enter a valid URL").required("A URL is required"),
 });
 
 export default function UpdateAvatar({ token, userInfo, setAvatarForm, setChangeAvatarButton, currentUserInfo }) {
@@ -62,7 +62,7 @@ export default function UpdateAvatar({ token, userInfo, setAvatarForm, setChange
         <label htmlFor="url" hidden>
           Avatar URL
         </label>
-        <input type="text" id="url" name="avatar" placeholder="http://www..." {...register("avatar")} />
+        <input type="text" id="url" name="avatar" placeholder="http://..." {...register("avatar")} />
         <p>{errors.avatar?.message}</p>
         {apiError ? <p>An error has occurred. Please try a different URL.</p> : null}
 
