@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import useApiVenuesVenueManager from "../../hooks/useAPIVenuesVenueManager";
 
 import { useAuthUser } from "react-auth-kit";
+import { VenueManagerMyVenuesList } from "./VenuesVenueManager.style";
 
 export default function VenuesVenueManager() {
   const userInfo = useAuthUser();
@@ -34,26 +35,28 @@ export default function VenuesVenueManager() {
 
         <p>Map below</p>
 
-        {myVenuesList.map((item) => (
-          <div key={item.id}>
-            <div>
+        <VenueManagerMyVenuesList>
+          {myVenuesList.map((item) => (
+            <div key={item.id}>
               <div>
-                <Link to={`/venue/${item.id}`}>
-                  <img src={item.media} />
-                </Link>
-              </div>
-              <div>
-                <Link to={`/venue/${item.id}`}>
-                  <h3>{item.name}</h3>
-                </Link>
+                <div>
+                  <Link to={`/venue/${item.id}`}>
+                    <img src={item.media} />
+                  </Link>
+                </div>
+                <div>
+                  <Link to={`/venue/${item.id}`}>
+                    <h3>{item.name}</h3>
+                  </Link>
 
-                <p>${item.price}</p>
-                <p>Rating: {item.rating}</p>
-                <p>Max guests: {item.maxGuests}</p>
+                  <p>${item.price}</p>
+                  <p>Rating: {item.rating}</p>
+                  <p>Max guests: {item.maxGuests}</p>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </VenueManagerMyVenuesList>
       </div>
     );
   }

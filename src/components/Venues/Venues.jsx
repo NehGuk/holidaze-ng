@@ -1,14 +1,19 @@
 import { Link } from "react-router-dom";
 import useApiVenues from "../../hooks/useAPIVenues";
 import { useEffect, useState } from "react";
-/* import VenueCard from "./VenueCard"; */
+import { VenuesList } from "./Venues.style";
 
 export default function Venues() {
   const { data, isLoading, isError } = useApiVenues("https://api.noroff.dev/api/v1/holidaze/venues?_owner=true&_bookings=true");
   const [venuesList, setVenuesList] = useState([]);
+
   useEffect(() => {
     setVenuesList(data);
-  });
+  }, [data]);
+
+  //
+
+  //
 
   if (isLoading) {
     return <div>LOADINNNGGG loading component</div>;
@@ -26,26 +31,28 @@ export default function Venues() {
 
         <p>Map below</p>
 
-        {venuesList.map((item) => (
-          <div key={item.id}>
-            <div>
+        <VenuesList>
+          {venuesList.map((item) => (
+            <div key={item.id}>
               <div>
-                <Link to={`/venue/${item.id}`}>
-                  <img src={item.media} />
-                </Link>
-              </div>
-              <div>
-                <Link to={`/venue/${item.id}`}>
-                  <h3>{item.name}</h3>
-                </Link>
+                <div>
+                  <Link to={`/venue/${item.id}`}>
+                    <img src={item.media} />
+                  </Link>
+                </div>
+                <div>
+                  <Link to={`/venue/${item.id}`}>
+                    <h3>{item.name}</h3>
+                  </Link>
 
-                <p>${item.price}</p>
-                <p>Rating: {item.rating}</p>
-                <p>Max guests: {item.maxGuests}</p>
+                  <p>${item.price}</p>
+                  <p>Rating: {item.rating}</p>
+                  <p>Max guests: {item.maxGuests}</p>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </VenuesList>
       </div>
     );
   }
