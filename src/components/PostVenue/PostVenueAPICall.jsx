@@ -13,13 +13,8 @@ export default function PostVenueAPICall({ formData }) {
     },
     body: JSON.stringify(formData),
   };
-
-  //console.log(formData);
-
-  const [errorMessage, setErrorMessage] = useState(null);
-
-  // API CALL TEST
   const { data: response, isLoading, isError } = useApi("https://api.noroff.dev/api/v1/holidaze/venues", options);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   function handleErrors() {
     const errorMessage = response?.errors?.[0]?.message ?? null;
@@ -30,8 +25,6 @@ export default function PostVenueAPICall({ formData }) {
   useEffect(() => {
     handleErrors();
   }, [response]);
-
-  // API CALL TEST END
 
   return (
     <div>
