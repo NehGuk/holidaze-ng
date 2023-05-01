@@ -1,14 +1,14 @@
-import React from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 const schema = Yup.object().shape({
-  name: Yup.string().required(),
-  description: Yup.string().required(),
-  media: Yup.array().of(Yup.string()).required(),
-  price: Yup.number().required(),
-  maxGuests: Yup.number().required(),
+  name: Yup.string().required("Please enter a name").max(20, "No more than 20 characters"),
+  description: Yup.string().required("Please enter a description").max(300, "No more than 300 characters"),
+  media: Yup.string().required("Please enter the image URL"),
+  price: Yup.number().typeError("Please enter the price").required("Price must be a number"),
+  maxGuests: Yup.number().typeError("Please enter the maximum number o guests").required(),
   rating: Yup.number(),
   meta: Yup.object().shape({
     wifi: Yup.boolean(),
@@ -35,7 +35,7 @@ export default function PostVenue() {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    validationSchema: schema,
+    resolver: yupResolver(schema),
   });
 
   const onSubmit = (data) => {
