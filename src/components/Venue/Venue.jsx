@@ -3,6 +3,7 @@
 import { useIsAuthenticated } from "react-auth-kit";
 import VenueLoggedOut from "./VenueLoggedOut";
 import VenueLoggedIn from "./VenueLoggedIn";
+import { VenueInfo } from "./Venue.style";
 
 export default function Venue() {
   const isAuth = useIsAuthenticated();
@@ -21,9 +22,10 @@ export default function Venue() {
 
   return (
     <div>
-      {!isAuth() && <VenueLoggedOut />}
-      {isAuth() && <VenueLoggedIn />}
-      {/* <h1>{data.name}</h1>
+      <VenueInfo>
+        {!isAuth() && <VenueLoggedOut />}
+        {isAuth() && <VenueLoggedIn />}
+        {/* <h1>{data.name}</h1>
       <img src={data.media} />
       <p>{data.description}</p>
       <p>${data.price}</p>
@@ -32,6 +34,7 @@ export default function Venue() {
       <Link to="/login">Login</Link>
       <Link to="/register">Create an account</Link>
       <Link to="/">Back</Link> */}
+      </VenueInfo>
     </div>
   );
 }

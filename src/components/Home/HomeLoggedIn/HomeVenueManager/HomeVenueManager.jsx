@@ -1,5 +1,6 @@
 import { useAuthUser } from "react-auth-kit";
 import VenuesVenueManager from "../../../Venues/VenuesVenueManager";
+import { Link } from "react-router-dom";
 
 export default function HomeVenueManager() {
   const userInfo = useAuthUser();
@@ -8,7 +9,7 @@ export default function HomeVenueManager() {
       <h1>Hello {userInfo().name}!</h1>
       <p>You are currently managing X venues.</p>
 
-      <button>Create new venue</button>
+      <Link to="/post-new-venue">Create new venue</Link>
       <VenuesVenueManager />
     </div>
   );
