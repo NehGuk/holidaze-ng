@@ -105,7 +105,7 @@ export default function PostVenueForm() {
             <button type="submit">Submit</button>
           </form>
         </FormFields>
-        <div>{formSubmitted && <PostVenueAPICall formData={formData} formSubmitted={formSubmitted} />}</div>
+        <div>{formSubmitted && <PostVenueAPICall formData={formData} />}</div>
       </FormContainer>
     </div>
   );

@@ -4,6 +4,7 @@ export default function useApi(url, fetchOptions) {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   useEffect(() => {
     async function getData() {
@@ -18,10 +19,11 @@ export default function useApi(url, fetchOptions) {
         setIsError(true);
       } finally {
         setIsLoading(false);
+        setIsSuccess(true);
       }
     }
 
     getData();
   }, [url]);
-  return { data, isLoading, isError };
+  return { data, isLoading, isError, isSuccess };
 }

@@ -4,6 +4,7 @@ import Loading from "../Loading/Loading";
 import { useEffect, useState } from "react";
 
 export default function PostVenueAPICall({ formData }) {
+  console.log("COMPONENT RENDERED");
   const options = {
     method: "POST",
     headers: {
@@ -12,14 +13,13 @@ export default function PostVenueAPICall({ formData }) {
     },
     body: JSON.stringify(formData),
   };
-  /* console.log(options); */
-  console.log(formData);
+
+  //console.log(formData);
 
   const [errorMessage, setErrorMessage] = useState(null);
 
   // API CALL TEST
   const { data: response, isLoading, isError } = useApi("https://api.noroff.dev/api/v1/holidaze/venues", options);
-  console.log(response);
 
   function handleErrors() {
     const errorMessage = response?.errors?.[0]?.message ?? null;
@@ -46,5 +46,4 @@ export default function PostVenueAPICall({ formData }) {
 
 PostVenueAPICall.propTypes = {
   formData: PropTypes.object.isRequired,
-  formSubmitted: PropTypes.bool.isRequired,
 };
