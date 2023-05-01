@@ -12,6 +12,7 @@ import ProfileTraveller from "../Profile/ProfileTraveller";
 import ProfileVenueManager from "../Profile/ProfileVenueManager";
 import MyBookings from "../MyBookings/MyBookings";
 import RegistrationSuccess from "../Register/RegistrationSuccess";
+import PostVenue from "../PostVenue/PostVenue";
 
 export default function AppRoutes() {
   return (
@@ -24,6 +25,8 @@ export default function AppRoutes() {
           <Route path="my-bookings" element={<MyBookings />} />
           <Route path="profile-venuemanager" element={<ProfileVenueManager />} />
           <Route path="venue/:id" element={<Venue />} />
+          <Route path="post-new-venue" element={<PostVenue />} />
+
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="register-manager" element={<RegisterManager />} />
