@@ -39,9 +39,8 @@ export default function UpdateVenueAPICall({ formData }) {
       {isError && <p>An error has occurred</p>}
       {errorMessage && <p>{errorMessage}</p>}
 
-      {!isSuccess && <p>NO SUCCESS, NOOO</p>}
       {isSuccess && <p>Venue successfully Updated. Thank you!</p>}
-      {isSuccess && <Navigate to="/home" />}
+      {isSuccess && <Navigate to={`/venue/${id}`} />}
     </div>
   );
 }

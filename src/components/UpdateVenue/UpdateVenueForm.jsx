@@ -87,7 +87,7 @@ export default function UpdateVenueForm() {
                 {errors.description && <span>{errors.description.message}</span>}
 
                 <label>Media:</label>
-                <input type="text" value={data.media[0]} {...register("media")} />
+                <input type="text" defaultValue={data.media[0]} {...register("media")} />
                 {errors.media && <span>{errors.media.message}</span>}
 
                 <label>Price:</label>

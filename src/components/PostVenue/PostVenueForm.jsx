@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -103,6 +104,7 @@ export default function PostVenueForm() {
             <input type="text" {...register("location.country")} />
 
             <button type="submit">Submit</button>
+            <Link to="/home">Back</Link>
           </form>
         </FormFields>
         <div>{formSubmitted && <PostVenueAPICall formData={formData} />}</div>

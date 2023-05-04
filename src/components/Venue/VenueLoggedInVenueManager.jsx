@@ -1,5 +1,7 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import useApiVenues from "../../hooks/useAPIVenues";
+import DeleteVenue from "../DeleteVenue/DeleteVenue";
+import { useState } from "react";
 
 export default function VenueLoggedInVenueManager() {
   const params = useParams();
@@ -13,6 +15,20 @@ export default function VenueLoggedInVenueManager() {
   console.log(data.description);
   console.log(data.bookings);
 
+  const [isDeleted, setIsDeleted] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleUpdateVenueButton = () => {
+    console.log("GO TO UPDATE");
+    navigate(`/venue/${params.id}/update`);
+  };
+
+  const handleDeleteButton = () => {
+    console.log("DELETING VENUE");
+    setIsDeleted(true);
+  };
+
   return (
     <div>
       <p>Hi, this is the VenueLoggedInVenueManager component</p>
@@ -22,10 +38,13 @@ export default function VenueLoggedInVenueManager() {
       <p>${data.price}</p>
       <p>Rating: {data.rating}</p>
       <p>Show bookings here</p>
-      <Link to={`/venue/${params.id}/update`}>Update venue details</Link>
-      <Link to="">Delete venue</Link>
+
+      <button onClick={handleUpdateVenueButton}>Update venue</button>
+      {!isDeleted && <button onClick={handleDeleteButton}>Delete venue</button>}
 
       <Link to="/">Back</Link>
+
+      {isDeleted && <DeleteVenue setIsDeleted={setIsDeleted} />}
     </div>
   );
 }
