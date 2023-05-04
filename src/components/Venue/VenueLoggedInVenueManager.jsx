@@ -39,7 +39,7 @@ export default function VenueLoggedInVenueManager() {
       <p>Rating: {data.rating}</p>
       <p>Show bookings here</p>
 
-      <button onClick={handleUpdateVenueButton}>Update button</button>
+      <button onClick={handleUpdateVenueButton}>Update venue</button>
       {!isDeleted && <button onClick={handleDeleteButton}>Delete venue</button>}
 
       <Link to="/">Back</Link>
