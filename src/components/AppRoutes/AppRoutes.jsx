@@ -13,6 +13,7 @@ import ProfileVenueManager from "../Profile/ProfileVenueManager";
 import MyBookings from "../MyBookings/MyBookings";
 import RegistrationSuccess from "../Register/RegistrationSuccess";
 import PostVenue from "../PostVenue/PostVenue";
+import UpdateVenue from "../UpdateVenue/UpdateVenue";
 
 export default function AppRoutes() {
   return (
@@ -26,6 +27,7 @@ export default function AppRoutes() {
           <Route path="profile-venuemanager" element={<ProfileVenueManager />} />
           <Route path="venue/:id" element={<Venue />} />
           <Route path="post-new-venue" element={<PostVenue />} />
+          <Route path="venue/:id/update" element={<UpdateVenue />} />
 
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />

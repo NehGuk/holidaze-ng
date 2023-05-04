@@ -22,7 +22,7 @@ export default function VenueLoggedInVenueManager() {
       <p>${data.price}</p>
       <p>Rating: {data.rating}</p>
       <p>Show bookings here</p>
-      <Link to="">Update venue details</Link>
+      <Link to={`/venue/${params.id}/update`}>Update venue details</Link>
       <Link to="">Delete venue</Link>
 
       <Link to="/">Back</Link>
