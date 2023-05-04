@@ -111,13 +111,13 @@ export default function UpdateVenueForm() {
                 <input type="checkbox" defaultChecked={data.meta.parking} {...register("meta.parking")} />
 
                 <label htmlFor="address">Address</label>
-                <input type="text" value={data.location.address} {...register("location.address")} />
+                <input type="text" defaultValue={data.location.address} {...register("location.address")} />
 
                 <label htmlFor="city">City</label>
-                <input type="text" value={data.location.city} {...register("location.city")} />
+                <input type="text" defaultValue={data.location.city} {...register("location.city")} />
 
                 <label htmlFor="country">Country</label>
-                <input type="text" value={data.location.country} {...register("location.country")} />
+                <input type="text" defaultValue={data.location.country} {...register("location.country")} />
 
                 <button type="submit">Update</button>
                 <Link to={`/venue/${id}`}>Cancel</Link>

@@ -4,6 +4,7 @@ import Loading from "../Loading/Loading";
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import api_endpoints from "../../shared/shared";
 
 export default function UpdateVenueAPICall({ formData }) {
   console.log("COMPONENT RENDERED");
@@ -16,7 +17,7 @@ export default function UpdateVenueAPICall({ formData }) {
     },
     body: JSON.stringify(formData),
   };
-  const { data: response, isLoading, isError, isSuccess } = useApi(`https://api.noroff.dev/api/v1/holidaze/venues/${id}`, options);
+  const { data: response, isLoading, isError, isSuccess } = useApi(api_endpoints(null, id).putVenue, options);
   const [errorMessage, setErrorMessage] = useState(null);
 
   function handleErrors() {
