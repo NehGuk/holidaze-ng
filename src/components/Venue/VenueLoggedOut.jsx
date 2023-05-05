@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import useApiVenues from "../../hooks/useAPIVenues";
+import ShowBookings from "../ShowBookings/ShowBookings";
 
 export default function VenueLoggedOut() {
   const params = useParams();
@@ -12,6 +13,7 @@ export default function VenueLoggedOut() {
   console.log(data.name);
   console.log(data.description);
   console.log(data.bookings);
+  const venueBookings = data.bookings;
 
   return (
     <div>
@@ -21,6 +23,8 @@ export default function VenueLoggedOut() {
       <p>${data.price}</p>
       <p>Rating: {data.rating}</p>
       <p>Availability</p>
+      {venueBookings && <ShowBookings venueBookings={venueBookings} />}
+
       <Link to="/login">Login</Link>
       <Link to="/register">Create an account</Link>
       <Link to="/">Back</Link>
