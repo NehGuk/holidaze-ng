@@ -8,13 +8,26 @@ export default function ShowBookings({ venueBookings }) {
 
   useEffect(() => {
     const getBookedDates = () => {
-      /* const oneDayMs = 24 * 60 * 60 * 1000; */
-      const newBookingsArray = venueBookings.map((booking) => ({
-        start: new Date(booking.dateFrom),
-        end: new Date(booking.dateTo),
-      }));
-      setBookingsArray(newBookingsArray);
-      console.log(newBookingsArray);
+      function eliminateInvalidBookings() {
+        /*         const oneDayMs = 24 * 60 * 60 * 1000; */
+        /* console.log(oneDayMs); */
+
+        venueBookings.map((booking) => {
+          const checkIn = new Date(booking.dateFrom);
+          const checkOut = new Date(booking.dateTo);
+
+          if (checkIn.getTime() <= checkOut.getTime()) {
+            const validBooking = {
+              start: checkIn,
+              end: checkOut,
+            };
+            console.log(validBooking);
+
+            setBookingsArray((prevBookingsArray) => [...prevBookingsArray, validBooking]);
+          }
+        });
+      }
+      eliminateInvalidBookings();
     };
 
     getBookedDates();
@@ -29,7 +42,7 @@ export default function ShowBookings({ venueBookings }) {
     setEndDate(end);
   };
 
-  console.log(bookingsArray);
+  /* console.log(bookingsArray); */
 
   return (
     <div>
