@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import DatePicker from "./DatePicker";
 
 export default function ShowBookings({ venueBookings }) {
   console.log("MOUNTS SHOW BOOKINGS COMPONENT");
@@ -9,10 +8,7 @@ export default function ShowBookings({ venueBookings }) {
 
   return (
     <div>
-      <h3>Post booking options here</h3>
-      <p>See available datessss</p>
-      <input type="date" />
-      <DatePicker venueBookings={venueBookings} />
+      <h3>Show Bookings component</h3>
     </div>
   );
 }
