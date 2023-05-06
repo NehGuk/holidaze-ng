@@ -8,13 +8,15 @@ export default function ShowBookings({ venueBookings }) {
 
   useEffect(() => {
     const getBookedDates = () => {
-      const oneDayMs = 24 * 60 * 60 * 1000;
+      /* const oneDayMs = 24 * 60 * 60 * 1000; */
       const newBookingsArray = venueBookings.map((booking) => ({
-        start: new Date(booking.dateFrom).getTime() - oneDayMs,
-        end: new Date(booking.dateTo).getTime() - oneDayMs,
+        start: new Date(booking.dateFrom),
+        end: new Date(booking.dateTo),
       }));
       setBookingsArray(newBookingsArray);
+      console.log(newBookingsArray);
     };
+
     getBookedDates();
   }, [venueBookings]);
 
@@ -23,17 +25,16 @@ export default function ShowBookings({ venueBookings }) {
 
   const handleChangeDate = (dates) => {
     const [start, end] = dates;
-    /* console.log(value); */
     setStartDate(start);
     setEndDate(end);
   };
 
-  /* console.log(bookingsArray); */
+  console.log(bookingsArray);
 
   return (
     <div>
       <h3>Show Bookings component</h3>
-      <ReactDatePicker selected={startDate} onChange={handleChangeDate} startDate={startDate} endDate={endDate} selectsRange excludeDateIntervals={bookingsArray} placeholderText="Select a date other than the interval from 5 days ago to 5 days in the future" inline />
+      <ReactDatePicker selected={startDate} onChange={handleChangeDate} startDate={startDate} endDate={endDate} selectsRange excludeDateIntervals={bookingsArray} inline />
     </div>
   );
 }
