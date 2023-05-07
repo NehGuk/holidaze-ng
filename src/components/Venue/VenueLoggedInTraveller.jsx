@@ -1,12 +1,14 @@
 import { Link, useParams } from "react-router-dom";
 import useApiVenues from "../../hooks/useAPIVenues";
+/* import ShowBookings from "../ShowBookings/ShowBookings"; */
 
 export default function VenueLoggedInTraveller() {
   const params = useParams();
   console.log(params.id);
 
   const { data, isLoading, isError } = useApiVenues(`https://api.noroff.dev/api/v1/holidaze/venues/${params.id}?_owner=true&_bookings=true`);
-  console.log(data);
+  /* const venueBookings = data.bookings; */
+  /* console.log(venueBookings); */
   console.log(isLoading);
   console.log(isError);
   console.log(data.name);
@@ -22,6 +24,9 @@ export default function VenueLoggedInTraveller() {
       <p>${data.price}</p>
       <p>Rating: {data.rating}</p>
       <p>Show available dates here</p>
+
+      {/* {venueBookings && <ShowBookings venueBookings={venueBookings} />} */}
+
       <Link to="">Book now</Link>
 
       <Link to="/">Back</Link>

@@ -7,13 +7,14 @@ export default function VenueLoggedOut() {
   console.log(params.id);
 
   const { data, isLoading, isError } = useApiVenues(`https://api.noroff.dev/api/v1/holidaze/venues/${params.id}?_owner=true&_bookings=true`);
-  console.log(data);
+  /* console.log(data); */
   console.log(isLoading);
   console.log(isError);
-  console.log(data.name);
-  console.log(data.description);
-  console.log(data.bookings);
+  /* console.log(data.name); */
+  /* console.log(data.description); */
+  /* console.log(data.bookings); */
   const venueBookings = data.bookings;
+  /* console.log(venueBookings); */
 
   return (
     <div>
