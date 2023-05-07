@@ -1,5 +1,5 @@
 export default function api_endpoints(name, venueID) {
-  const object = {
+  const endPoints = {
     postRegister: `https://api.noroff.dev/api/v1/holidaze/auth/register`,
     postLogin: `https://api.noroff.dev/api/v1/holidaze/auth/login`,
     putAvatar: `https://api.noroff.dev/api/v1/holidaze/profiles/${name}/media`,
@@ -12,5 +12,5 @@ export default function api_endpoints(name, venueID) {
     testar2: "testando2",
   };
 
-  return object;
+  return endPoints;
 }
