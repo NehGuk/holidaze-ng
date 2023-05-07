@@ -42,7 +42,7 @@ export default function ShowBookings({ venueBookings }) {
     <div>
       <h3>Show Bookings component</h3>
 
-      <ReactDatePicker minDate={new Date()} todayButton="Today" selected={startDate} onChange={handleChangeDate} startDate={startDate} endDate={endDate} selectsRange selectsDisabledDaysInRange excludeDateIntervals={bookingsArray} monthsShown={2} inline></ReactDatePicker>
+      <ReactDatePicker minDate={new Date()} todayButton="Today" selected={startDate} onChange={handleChangeDate} startDate={startDate} endDate={endDate} selectsRange selectsDisabledDaysInRange excludeDateIntervals={bookingsArray} monthsShown={2} inline fixedHeight></ReactDatePicker>
     </div>
   );
 }
