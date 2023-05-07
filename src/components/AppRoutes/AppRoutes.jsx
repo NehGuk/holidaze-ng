@@ -16,6 +16,7 @@ import PostVenue from "../PostVenue/PostVenue";
 import UpdateVenue from "../UpdateVenue/UpdateVenue";
 import DeleteVenueSuccess from "../DeleteVenue/DeleteVenueSuccess";
 import BookingVenueManager from "../Booking/BookingVenueManager";
+import BookingTraveller from "../Booking/BookingTraveller";
 
 export default function AppRoutes() {
   return (
@@ -33,6 +34,7 @@ export default function AppRoutes() {
           <Route path="delete-venue-success" element={<DeleteVenueSuccess />} />
 
           <Route path="booking-venue-manager/:id" element={<BookingVenueManager />} />
+          <Route path="booking-traveller/:id" element={<BookingTraveller />} />
 
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
