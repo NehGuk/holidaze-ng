@@ -38,12 +38,10 @@ export default function ShowBookings({ venueBookings }) {
     setEndDate(end);
   };
 
-  /* console.log(bookingsArray); */
-
   return (
     <div>
       <h3>Show Bookings component</h3>
-      <ReactDatePicker selected={startDate} onChange={handleChangeDate} startDate={startDate} endDate={endDate} selectsRange excludeDateIntervals={bookingsArray} inline monthsShown={1} withPortal={true} />
+      <ReactDatePicker minDate={new Date()} todayButton="Today" selected={startDate} onChange={handleChangeDate} startDate={startDate} endDate={endDate} selectsRange selectsDisabledDaysInRange excludeDateIntervals={bookingsArray} monthsShown={2} inline />
     </div>
   );
 }
