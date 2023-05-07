@@ -1,12 +1,16 @@
 import { Link, useParams } from "react-router-dom";
-import useApiVenues from "../../hooks/useAPIVenues";
+/* import useApiVenues from "../../hooks/useAPIVenues"; */
+import useApi from "../../hooks/useAPI";
+import api_endpoints from "../../shared/shared";
 import ShowBookings from "../ShowBookings/ShowBookings";
+import Loading from "../Loading/Loading";
 
 export default function VenueLoggedOut() {
   const params = useParams();
   console.log(params.id);
 
-  const { data, isLoading, isError } = useApiVenues(`https://api.noroff.dev/api/v1/holidaze/venues/${params.id}?_owner=true&_bookings=true`);
+  const { data, isLoading, isError, isSuccess } = useApi(api_endpoints(null, params.id).getVenue);
+  console.log(isSuccess);
   /* console.log(data); */
   console.log(isLoading);
   console.log(isError);
@@ -18,6 +22,9 @@ export default function VenueLoggedOut() {
 
   return (
     <div>
+      {isError && <p>An error has occurred</p>}
+      {isLoading && <Loading />}
+
       <h1>{data.name}</h1>
       <img src={data.media} />
       <p>{data.description}</p>
