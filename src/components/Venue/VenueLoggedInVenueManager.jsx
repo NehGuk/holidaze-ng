@@ -5,7 +5,7 @@ import { useState } from "react";
 import useApi from "../../hooks/useAPI";
 import api_endpoints from "../../shared/shared";
 import Loading from "../Loading/Loading";
-import ShowBookingsListVenueManager from "../ShowBookings/ShoBookingsListVenueManager";
+import ShowBookingsListVenueManager from "../ShowBookings/ShowBookingsListVenueManager";
 /* import ShowBookings from "../ShowBookings/ShowBookings"; */
 
 export default function VenueLoggedInVenueManager() {

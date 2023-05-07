@@ -4,6 +4,14 @@ export default function ShowBookingsListVenueManager({ venueBookings }) {
   console.log("MOUNTING SHOW BOOKINGS LIST VENUE MANAGER");
   console.log(venueBookings);
 
+  const formatDate = (date) => {
+    return new Date(date).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  };
+
   return (
     <div>
       <h3>Bookings for this venue</h3>
@@ -12,9 +20,10 @@ export default function ShowBookingsListVenueManager({ venueBookings }) {
         venueBookings.map((booking) => {
           return (
             <div key={booking.id}>
-              <p>Check-in: {booking.dateFrom}</p>
-              <p>Check-out: {booking.dateTo}</p>
+              <p>Check-in: {formatDate(booking.dateFrom)}</p>
+              <p>Check-out: {formatDate(booking.dateTo)}</p>
               <p>Booking ID: {booking.id}</p>
+              <br></br>
             </div>
           );
         })}
