@@ -1,4 +1,9 @@
+import useApi from "../../hooks/useAPI";
+import api_endpoints from "../../shared/shared";
+
 export default function MyBookings() {
+  useApi(api_endpoints());
+
   return (
     <div>
       <h2>My bookings</h2>
