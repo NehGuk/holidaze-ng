@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import ShowBookings from "../ShowBookings/ShowBookings";
 import useApi from "../../hooks/useAPI";
 import api_endpoints from "../../shared/shared";
+import Loading from "../Loading/Loading";
 
 export default function VenueLoggedInTraveller() {
   const params = useParams();
@@ -21,22 +22,42 @@ export default function VenueLoggedInTraveller() {
   return (
     <div>
       {isError && <p>An error has occurred</p>}
-      {isLoading && <p>LOADINNNNGGG</p>}
-      {!isSuccess && <p>An error has occurred</p>}
+      {isLoading && <Loading />}
+      {isSuccess && (
+        <div>
+          <h1>{data.name}</h1>
+          <img src={data.media} />
+          <p>{data.description}</p>
+          <p>${data.price}</p>
+          <p>Rating: {data.rating}</p>
 
-      <p>Hi, this is the VenueLoggedInTraveller component</p>
-      <h1>{data.name}</h1>
-      <img src={data.media} />
-      <p>{data.description}</p>
-      <p>${data.price}</p>
-      <p>Rating: {data.rating}</p>
-      <p>Show available dates here</p>
+          <h3>Details</h3>
+          <p>
+            This property accepts a maximum of <strong>{data.maxGuests}</strong> guests.
+          </p>
+          {data.meta.wifi && <p>wifi</p>}
+          {data.meta.parking && <p>parking</p>}
+          {data.meta.breakfast && <p>breakfast</p>}
+          {data.meta.pets && <p>pets allowed</p>}
 
-      {venueBookings && <ShowBookings venueBookings={venueBookings} />}
+          <h3>Location</h3>
+          {(data.location.address === "" || data.location.address === "Unknown") && <p>For directions, please contact the owner.</p>}
+          <p>{data.location.address}</p>
+          <p>{data.location.city}</p>
+          <p>{data.location.country}</p>
 
-      <Link to="">Book now</Link>
+          <h3>Owner</h3>
+          <p>{data.owner.name}</p>
+          <p>{data.owner.email}</p>
 
-      <Link to="/">Back</Link>
+          <h3>Availability</h3>
+          {venueBookings && <ShowBookings venueBookings={venueBookings} />}
+
+          <Link to="">Book now</Link>
+
+          <Link to="/">Back</Link>
+        </div>
+      )}
     </div>
   );
 }

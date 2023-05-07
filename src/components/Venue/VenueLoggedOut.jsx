@@ -18,24 +18,52 @@ export default function VenueLoggedOut() {
   /* console.log(data.description); */
   /* console.log(data.bookings); */
   const venueBookings = data.bookings;
+
+  if (isSuccess) {
+    console.log(data.location.address);
+  }
+
   /* console.log(venueBookings); */
 
   return (
     <div>
       {isError && <p>An error has occurred</p>}
       {isLoading && <Loading />}
+      {isSuccess && (
+        <div>
+          <h1>{data.name}</h1>
+          <img src={data.media} />
+          <p>{data.description}</p>
+          <p>${data.price}</p>
+          <p>Rating: {data.rating}</p>
 
-      <h1>{data.name}</h1>
-      <img src={data.media} />
-      <p>{data.description}</p>
-      <p>${data.price}</p>
-      <p>Rating: {data.rating}</p>
-      <p>Availability</p>
-      {venueBookings && <ShowBookings venueBookings={venueBookings} />}
+          <h3>Details</h3>
+          <p>
+            This property accepts a maximum of <strong>{data.maxGuests}</strong> guests.
+          </p>
+          {data.meta.wifi && <p>wifi</p>}
+          {data.meta.parking && <p>parking</p>}
+          {data.meta.breakfast && <p>breakfast</p>}
+          {data.meta.pets && <p>pets allowed</p>}
 
-      <Link to="/login">Login</Link>
-      <Link to="/register">Create an account</Link>
-      <Link to="/">Back</Link>
+          <h3>Location</h3>
+          {(data.location.address === "" || data.location.address === "Unknown") && <p>For directions, please contact the owner.</p>}
+          <p>{data.location.address}</p>
+          <p>{data.location.city}</p>
+          <p>{data.location.country}</p>
+
+          <h3>Owner</h3>
+          <p>{data.owner.name}</p>
+          <p>{data.owner.email}</p>
+
+          <h3>Availability</h3>
+          {venueBookings && <ShowBookings venueBookings={venueBookings} />}
+
+          <Link to="/login">Login and book now</Link>
+          <Link to="/register">Create an account</Link>
+          <Link to="/">Back</Link>
+        </div>
+      )}
     </div>
   );
 }
