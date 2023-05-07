@@ -9,9 +9,6 @@ export default function ShowBookings({ venueBookings }) {
   useEffect(() => {
     const getBookedDates = () => {
       function eliminateInvalidBookings() {
-        /*         const oneDayMs = 24 * 60 * 60 * 1000; */
-        /* console.log(oneDayMs); */
-
         venueBookings.map((booking) => {
           const checkIn = new Date(booking.dateFrom);
           const checkOut = new Date(booking.dateTo);
@@ -21,7 +18,6 @@ export default function ShowBookings({ venueBookings }) {
               start: checkIn,
               end: checkOut,
             };
-            console.log(validBooking);
 
             setBookingsArray((prevBookingsArray) => [...prevBookingsArray, validBooking]);
           }
@@ -47,7 +43,7 @@ export default function ShowBookings({ venueBookings }) {
   return (
     <div>
       <h3>Show Bookings component</h3>
-      <ReactDatePicker selected={startDate} onChange={handleChangeDate} startDate={startDate} endDate={endDate} selectsRange excludeDateIntervals={bookingsArray} inline />
+      <ReactDatePicker selected={startDate} onChange={handleChangeDate} startDate={startDate} endDate={endDate} selectsRange excludeDateIntervals={bookingsArray} inline monthsShown={1} withPortal={true} />
     </div>
   );
 }
