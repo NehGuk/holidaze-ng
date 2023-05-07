@@ -1,14 +1,17 @@
 import { Link, useParams } from "react-router-dom";
-import useApiVenues from "../../hooks/useAPIVenues";
-/* import ShowBookings from "../ShowBookings/ShowBookings"; */
+/* import useApiVenues from "../../hooks/useAPIVenues"; */
+import ShowBookings from "../ShowBookings/ShowBookings";
+import useApi from "../../hooks/useAPI";
+import api_endpoints from "../../shared/shared";
 
 export default function VenueLoggedInTraveller() {
   const params = useParams();
   console.log(params.id);
 
-  const { data, isLoading, isError } = useApiVenues(`https://api.noroff.dev/api/v1/holidaze/venues/${params.id}?_owner=true&_bookings=true`);
-  /* const venueBookings = data.bookings; */
-  /* console.log(venueBookings); */
+  const { data, isLoading, isError, isSuccess } = useApi(api_endpoints(null, params.id).getVenue);
+  console.log(isSuccess);
+  const venueBookings = data.bookings;
+
   console.log(isLoading);
   console.log(isError);
   console.log(data.name);
@@ -17,6 +20,10 @@ export default function VenueLoggedInTraveller() {
 
   return (
     <div>
+      {isError && <p>An error has occurred</p>}
+      {isLoading && <p>LOADINNNNGGG</p>}
+      {!isSuccess && <p>An error has occurred</p>}
+
       <p>Hi, this is the VenueLoggedInTraveller component</p>
       <h1>{data.name}</h1>
       <img src={data.media} />
@@ -25,7 +32,7 @@ export default function VenueLoggedInTraveller() {
       <p>Rating: {data.rating}</p>
       <p>Show available dates here</p>
 
-      {/* {venueBookings && <ShowBookings venueBookings={venueBookings} />} */}
+      {venueBookings && <ShowBookings venueBookings={venueBookings} />}
 
       <Link to="">Book now</Link>
 
