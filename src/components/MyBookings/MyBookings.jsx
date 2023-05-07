@@ -2,6 +2,7 @@ import useApi from "../../hooks/useAPI";
 import api_endpoints from "../../shared/shared";
 import { useAuthUser } from "react-auth-kit";
 import Loading from "../Loading/Loading";
+import MyBookingsList from "./MyBookingsList";
 
 export default function MyBookings() {
   const userInfo = useAuthUser();
@@ -15,7 +16,7 @@ export default function MyBookings() {
   };
 
   const { data, isLoading, isError, isSuccess } = useApi(api_endpoints(userInfo().name).getProfile, options);
-  console.log(data);
+  const bookings = data.bookings;
 
   return (
     <div>
@@ -27,10 +28,7 @@ export default function MyBookings() {
           {data.bookings.length === 0 && <p>No bookings yet</p>}
           {data.bookings.length > 0 && (
             <div>
-              <p>List of bookings below</p>
-              <p>Booking a</p>
-              <p>Booking b</p>
-              <p>Booking c</p>
+              <MyBookingsList bookings={bookings} />
             </div>
           )}
         </div>
