@@ -1,16 +1,10 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import formatDate from "../../utilities/formatDate";
 
 export default function ShowBookingsListVenueManager({ venueBookings }) {
   console.log("MOUNTING SHOW BOOKINGS LIST VENUE MANAGER");
-  console.log(venueBookings);
-
-  const formatDate = (date) => {
-    return new Date(date).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  };
+  /* console.log(venueBookings); */
 
   return (
     <div>
@@ -23,6 +17,8 @@ export default function ShowBookingsListVenueManager({ venueBookings }) {
               <p>Check-in: {formatDate(booking.dateFrom)}</p>
               <p>Check-out: {formatDate(booking.dateTo)}</p>
               <p>Booking ID: {booking.id}</p>
+              <Link to={`/booking-venue-manager/${booking.id}`}>Details</Link>
+              <br></br>
               <br></br>
             </div>
           );
