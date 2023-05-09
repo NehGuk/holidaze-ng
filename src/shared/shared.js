@@ -19,3 +19,16 @@ export default function api_endpoints(name, venueID, bookingID) {
 
   return endPoints;
 }
+
+export default function api_authFetchMethod(methodType, content) {
+  const options = {
+    method: methodType,
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(content),
+  }
+
+  return  options
+}
