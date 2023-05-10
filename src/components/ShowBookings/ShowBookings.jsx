@@ -60,8 +60,8 @@ export default function ShowBookings({ venueBookings, maxGuests, price, id }) {
       setBookingLooksFine(false);
       setShowBookingDetails(false);
     } else {
-      setShowBookingDetails(true);
       setBookingLooksFine(true);
+      setShowBookingDetails(true);
       setHideBookThisVenueButton(true);
     }
   };
@@ -79,7 +79,7 @@ export default function ShowBookings({ venueBookings, maxGuests, price, id }) {
 
       {!hideBookThisVenueButton && <button onClick={createBookingObject}>Book this venue</button>}
 
-      {showBookingDetails && <BookVenue bookingObject={bookingObject} numberOfGuests={numberOfGuests} price={price} id={id} />}
+      {showBookingDetails && <BookVenue bookingObject={bookingObject} numberOfGuests={numberOfGuests} price={price} />}
     </div>
   );
 }
