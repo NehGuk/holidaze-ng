@@ -5,7 +5,7 @@ import api_endpoints from "../../shared/shared";
 import createMethod from "../../utilities/createMethod";
 import Loading from "../Loading/Loading";
 
-export default function BookVenueAPICall({ bookingObject }) {
+export default function BookVenueAPICall({ bookingObject, setShowConfirmAndCancel }) {
   console.log("MAKING API CALL");
   console.log(api_endpoints().postBooking);
   console.log(createMethod("POST", bookingObject));
@@ -17,11 +17,18 @@ export default function BookVenueAPICall({ bookingObject }) {
       {isLoading && <Loading />}
       {isError && <p>An error has occurred</p>}
       {isSuccess && <p>You booking has been successfully created!</p>}
-      {!isSuccess && data && data.errors && <p>{data.errors[0].message}</p>}
+      {!isSuccess && data && data.errors && (
+        <div>
+          <p>{data.errors[0].message}</p>
+          <button>Please try again</button>
+        </div>
+      )}
+      {data && data.errors && setShowConfirmAndCancel && setShowConfirmAndCancel(false)}
     </div>
   );
 }
 
 BookVenueAPICall.propTypes = {
   bookingObject: PropTypes.object.isRequired,
+  setShowConfirmAndCancel: PropTypes.func.isRequired,
 };

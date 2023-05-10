@@ -79,7 +79,7 @@ export default function ShowBookings({ venueBookings, maxGuests, price, id }) {
 
       {!hideBookThisVenueButton && <button onClick={createBookingObject}>Book this venue</button>}
 
-      {showBookingDetails && <BookVenue bookingObject={bookingObject} numberOfGuests={numberOfGuests} price={price} />}
+      {showBookingDetails && <BookVenue bookingObject={bookingObject} numberOfGuests={numberOfGuests} price={price} setBookingLooksFine={setBookingLooksFine} setShowBookingDetails={setShowBookingDetails} setHideBookThisVenueButton={setHideBookThisVenueButton} />}
     </div>
   );
 }

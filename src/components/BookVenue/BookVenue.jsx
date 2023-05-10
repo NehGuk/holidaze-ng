@@ -8,6 +8,7 @@ export default function BookVenue({ bookingObject, numberOfGuests, price }) {
   console.log("MOUNT BookVenue COMPONENT");
 
   const [isConfirmed, setIsConfirmed] = useState(false);
+  const [showConfirmAndCancel, setShowConfirmAndCancel] = useState(true);
 
   /* console.log(bookingObject); */
   /* console.log(numberOfGuests); */
@@ -31,10 +32,15 @@ export default function BookVenue({ bookingObject, numberOfGuests, price }) {
       <p>Check-in: {formatDate(bookingObject.dateFrom)}</p>
       <p>Check-out: {formatDate(bookingObject.dateTo)}</p>
       <p>Estimated price: ${estimatePrice(bookingObject.dateFrom, bookingObject.dateTo, price)}</p>
-      <button onClick={handleConfirmButton}>Confirm</button>
-      <button onClick={handleCancelButton}>Cancel</button>
 
-      {isConfirmed && <BookVenueAPICall bookingObject={bookingObject} />}
+      {showConfirmAndCancel && (
+        <div>
+          <button onClick={handleConfirmButton}>Confirm</button>
+          <button onClick={handleCancelButton}>Cancel</button>
+        </div>
+      )}
+
+      {isConfirmed && <BookVenueAPICall bookingObject={bookingObject} setShowConfirmAndCancel={setShowConfirmAndCancel} />}
     </div>
   );
 }
