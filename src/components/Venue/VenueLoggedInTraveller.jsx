@@ -10,14 +10,12 @@ export default function VenueLoggedInTraveller() {
   console.log(params.id);
 
   const { data, isLoading, isError, isSuccess } = useApi(api_endpoints(null, params.id).getVenue);
-  console.log(isSuccess);
+
   const venueBookings = data.bookings;
+  const { id, name, media, description, price, rating, maxGuests, meta, location, owner } = data;
 
   console.log(isLoading);
   console.log(isError);
-  console.log(data.name);
-  console.log(data.description);
-  console.log(data.bookings);
 
   return (
     <div>
@@ -25,35 +23,33 @@ export default function VenueLoggedInTraveller() {
       {isLoading && <Loading />}
       {isSuccess && (
         <div>
-          <h1>{data.name}</h1>
-          <img src={data.media} />
-          <p>{data.description}</p>
-          <p>${data.price}</p>
-          <p>Rating: {data.rating}</p>
+          <h1>{name}</h1>
+          <img src={media} />
+          <p>{description}</p>
+          <p>${price}</p>
+          <p>Rating: {rating}</p>
 
           <h3>Details</h3>
           <p>
-            This property accepts a maximum of <strong>{data.maxGuests}</strong> guests.
+            This property accepts a maximum of <strong>{maxGuests}</strong> guests.
           </p>
-          {data.meta.wifi && <p>wifi</p>}
-          {data.meta.parking && <p>parking</p>}
-          {data.meta.breakfast && <p>breakfast</p>}
-          {data.meta.pets && <p>pets allowed</p>}
+          {meta.wifi && <p>wifi</p>}
+          {meta.parking && <p>parking</p>}
+          {meta.breakfast && <p>breakfast</p>}
+          {meta.pets && <p>pets allowed</p>}
 
           <h3>Location</h3>
-          {(data.location.address === "" || data.location.address === "Unknown") && <p>For directions, please contact the owner.</p>}
-          <p>{data.location.address}</p>
-          <p>{data.location.city}</p>
-          <p>{data.location.country}</p>
+          {(location.address === "" || location.address === "Unknown") && <p>For directions, please contact the owner.</p>}
+          <p>{location.address}</p>
+          <p>{location.city}</p>
+          <p>{location.country}</p>
 
           <h3>Owner</h3>
-          <p>{data.owner.name}</p>
-          <p>{data.owner.email}</p>
+          <p>{owner.name}</p>
+          <p>{owner.email}</p>
 
-          <h3>Availability</h3>
-          {venueBookings && <ShowBookings venueBookings={venueBookings} />}
-
-          <Link to="">Book now</Link>
+          <h3>How to book</h3>
+          {venueBookings && <ShowBookings venueBookings={venueBookings} maxGuests={maxGuests} price={price} id={id} />}
 
           <Link to="/">Back</Link>
         </div>
