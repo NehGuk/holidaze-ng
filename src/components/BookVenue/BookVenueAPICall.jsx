@@ -26,7 +26,7 @@ export default function BookVenueAPICall({ bookingObject, setShowConfirmAndCance
           <button onClick={handlePleaseTryAgain}>Please try again</button>
         </div>
       )}
-      {isError && setShowConfirmAndCancel && setShowConfirmAndCancel(false)}
+      {isError && setShowConfirmAndCancel(false)}
 
       {isSuccess && <Navigate to="/home" />}
       {!isSuccess && data && data.errors && (
@@ -35,7 +35,7 @@ export default function BookVenueAPICall({ bookingObject, setShowConfirmAndCance
           <button onClick={handlePleaseTryAgain}>Please try again</button>
         </div>
       )}
-      {data && data.errors && setShowConfirmAndCancel && setShowConfirmAndCancel(false)}
+      {data && data.errors && setShowConfirmAndCancel(false)}
     </div>
   );
 }
