@@ -17,6 +17,7 @@ import UpdateVenue from "../UpdateVenue/UpdateVenue";
 import DeleteVenueSuccess from "../DeleteVenue/DeleteVenueSuccess";
 import BookingVenueManager from "../Booking/BookingVenueManager";
 import BookingTraveller from "../Booking/BookingTraveller";
+import BookingConfirmed from "../BookingConfirmed/BookingConfirmed";
 
 export default function AppRoutes() {
   return (
@@ -35,6 +36,8 @@ export default function AppRoutes() {
 
           <Route path="booking-venue-manager/:id" element={<BookingVenueManager />} />
           <Route path="booking-traveller/:id" element={<BookingTraveller />} />
+
+          <Route path="booking-confirmed" element={<BookingConfirmed />} />
 
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
