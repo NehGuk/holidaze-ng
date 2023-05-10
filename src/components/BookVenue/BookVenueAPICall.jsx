@@ -20,7 +20,14 @@ export default function BookVenueAPICall({ bookingObject, setShowConfirmAndCance
   return (
     <div>
       {isLoading && <Loading />}
-      {isError && <p>An error has occurred</p>}
+      {isError && (
+        <div>
+          <p>An error has occurred</p>
+          <button onClick={handlePleaseTryAgain}>Please try again</button>
+        </div>
+      )}
+      {isError && setShowConfirmAndCancel && setShowConfirmAndCancel(false)}
+
       {isSuccess && <Navigate to="/home" />}
       {!isSuccess && data && data.errors && (
         <div>
