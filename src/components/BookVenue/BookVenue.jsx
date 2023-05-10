@@ -1,30 +1,36 @@
 import PropTypes from "prop-types";
 import formatDate from "../../utilities/formatDate";
+import estimatePrice from "../../utilities/estiamatePrice";
 
-export default function BookVenue({ setBookNowClicked, price, bookingDetails, id }) {
+export default function BookVenue({ bookingObject, numberOfGuests, price, id }) {
   console.log("MOUNT BookVenue COMPONENT");
 
+  console.log(bookingObject);
+  console.log(bookingObject);
+  console.log(numberOfGuests);
+  console.log(price);
+  console.log(id);
+
   const handleCancelButton = () => {
-    setBookNowClicked(false);
+    window.location.reload();
   };
-  console.log(bookingDetails);
   return (
     <div>
-      <p>BookVenue component here </p>
-      <p>Guests: {bookingDetails.guests}</p>
-      <p>Check-in: {formatDate(bookingDetails.dateFrom)}</p>
-      <p>Check-out: {formatDate(bookingDetails.dateTo)}</p>
-      <p>Estimated price: ${price}</p>
-
-      <button>Confirm booking</button>
+      <h3>Summary</h3>
+      <p>Guests: {numberOfGuests}</p>
+      <p>Check-in: {formatDate(bookingObject.dateFrom)}</p>
+      <p>Check-out: {formatDate(bookingObject.dateTo)}</p>
+      <p>Estimated price: ${estimatePrice(bookingObject.dateFrom, bookingObject.dateTo, price)}</p>
+      <button>Confirm</button>
       <button onClick={handleCancelButton}>Cancel</button>
     </div>
   );
 }
 
 BookVenue.propTypes = {
-  setBookNowClicked: PropTypes.func.isRequired,
+  /* setBookNowClicked: PropTypes.func.isRequired, */
   price: PropTypes.number.isRequired,
-  bookingDetails: PropTypes.object.isRequired,
+  bookingObject: PropTypes.object.isRequired,
   id: PropTypes.number.isRequired,
+  numberOfGuests: PropTypes.number.isRequired,
 };

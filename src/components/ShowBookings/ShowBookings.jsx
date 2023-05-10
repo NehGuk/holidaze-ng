@@ -2,9 +2,17 @@ import PropTypes from "prop-types";
 import ReactDatePicker from "react-datepicker";
 import { useState, useEffect } from "react";
 import "react-datepicker/dist/react-datepicker.css";
-import formatDate from "../../utilities/formatDate";
+/* import formatDate from "../../utilities/formatDate"; */
+import BookVenue from "../BookVenue/BookVenue";
 
 export default function ShowBookings({ venueBookings, maxGuests, price, id }) {
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+  const [numberOfGuests, setNumberOfGuests] = useState(1);
+  const [bookingObject, setBookingObject] = useState({});
+  const [showBookingDetails, setShowBookingDetails] = useState(false);
+  const [bookingLooksFine, setBookingLooksFine] = useState(true);
+  const [hideBookThisVenueButton, setHideBookThisVenueButton] = useState(false);
   const [bookingsArray, setBookingsArray] = useState([]);
 
   useEffect(() => {
@@ -30,17 +38,6 @@ export default function ShowBookings({ venueBookings, maxGuests, price, id }) {
     getBookedDates();
   }, [venueBookings]);
 
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
-  const [numberOfGuests, setNumberOfGuests] = useState(1);
-
-  const [bookingReady, setBookingReady] = useState(false);
-
-  /* const [bookNowClicked, setBookNowClicked] = useState(false); */
-  /* const [bookNowClickedDisabled, setBookNowClickedDisabled] = useState(true); */
-
-  const [bookingObject, setBookingObject] = useState({});
-
   const handleGuests = (event) => {
     setNumberOfGuests(event.target.value);
   };
@@ -52,9 +49,6 @@ export default function ShowBookings({ venueBookings, maxGuests, price, id }) {
   };
 
   const createBookingObject = () => {
-    setBookingReady(true);
-    console.log(bookingReady);
-
     setBookingObject({
       dateFrom: startDate,
       dateTo: endDate,
@@ -62,16 +56,14 @@ export default function ShowBookings({ venueBookings, maxGuests, price, id }) {
       venueId: id,
     });
 
-    console.log(startDate);
-    console.log(endDate);
-    console.log(numberOfGuests);
-    console.log(id);
-    console.log(bookingObject);
-  };
-
-  const handleConfirmBooking = () => {
-    console.log("HANDLE CONFIRM BUTTON");
-    console.log(bookingObject);
+    if (endDate === null) {
+      setBookingLooksFine(false);
+      setShowBookingDetails(false);
+    } else {
+      setShowBookingDetails(true);
+      setBookingLooksFine(true);
+      setHideBookThisVenueButton(true);
+    }
   };
 
   return (
@@ -79,16 +71,15 @@ export default function ShowBookings({ venueBookings, maxGuests, price, id }) {
       <h4>Number of guests</h4>
       <input type="number" pattern="[0-9]*" inputMode="numeric" placeholder={numberOfGuests} max={maxGuests} min={1} onChange={handleGuests} />
       <h4>Select the dates</h4>
-      <ReactDatePicker minDate={new Date()} todayButton="Today" selected={startDate} onChange={onChange} startDate={startDate} endDate={endDate} selectsRange selectsDisabledDaysInRange excludeDateIntervals={bookingsArray} monthsShown={2} inline fixedHeight></ReactDatePicker>
+      {/* <p>Check-in/StartDate: {formatDate(startDate)} </p> */}
+      {/* <p>Check-out/EndDate: {formatDate(endDate)}</p> */}
+      <ReactDatePicker minDate={new Date()} todayButton="Today" onChange={onChange} startDate={startDate} endDate={endDate} selectsRange selectsDisabledDaysInRange excludeDateIntervals={bookingsArray} monthsShown={2} inline fixedHeight></ReactDatePicker>
 
-      <p>StartDate: {formatDate(startDate)} </p>
-      <p>EndDate: {formatDate(endDate)}</p>
-      <p>Guests: {numberOfGuests}</p>
-      <p>Estimated price: {price}</p>
-      <p>Venue ID: {id}</p>
+      {!bookingLooksFine && <p>Please add a check-out date</p>}
 
-      <button onClick={createBookingObject}>Book this venue</button>
-      <button onClick={handleConfirmBooking}>Confirm</button>
+      {!hideBookThisVenueButton && <button onClick={createBookingObject}>Book this venue</button>}
+
+      {showBookingDetails && <BookVenue bookingObject={bookingObject} numberOfGuests={numberOfGuests} price={price} id={id} />}
     </div>
   );
 }
