@@ -8,6 +8,7 @@ export default function BookVenue({ bookingObject, numberOfGuests, price, id }) 
   console.log(bookingObject);
   console.log(bookingObject);
   console.log(numberOfGuests);
+  console.log(typeof numberOfGuests);
   console.log(price);
   console.log(id);
 
@@ -31,6 +32,6 @@ BookVenue.propTypes = {
   /* setBookNowClicked: PropTypes.func.isRequired, */
   price: PropTypes.number.isRequired,
   bookingObject: PropTypes.object.isRequired,
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   numberOfGuests: PropTypes.number.isRequired,
 };
