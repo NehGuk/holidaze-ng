@@ -39,7 +39,7 @@ export default function ShowBookings({ venueBookings, maxGuests, price, id }) {
   }, [venueBookings]);
 
   const handleGuests = (event) => {
-    setNumberOfGuests(event.target.value);
+    setNumberOfGuests(Number(event.target.value));
   };
 
   const onChange = (dates) => {
