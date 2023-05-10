@@ -28,7 +28,7 @@ export default function BookVenueAPICall({ bookingObject, setShowConfirmAndCance
       )}
       {isError && setShowConfirmAndCancel(false)}
 
-      {isSuccess && <Navigate to="/home" />}
+      {isSuccess && <Navigate to="/booking-confirmed" />}
       {!isSuccess && data && data.errors && (
         <div>
           <p>{data.errors[0].message}</p>
