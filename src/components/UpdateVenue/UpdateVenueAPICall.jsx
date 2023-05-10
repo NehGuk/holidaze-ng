@@ -5,19 +5,13 @@ import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import api_endpoints from "../../shared/shared";
+import createMethod from "../../utilities/createMethod";
 
 export default function UpdateVenueAPICall({ formData }) {
   console.log("COMPONENT RENDERED");
   const { id } = useParams();
-  const options = {
-    method: "PUT",
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(formData),
-  };
-  const { data: response, isLoading, isError, isSuccess } = useApi(api_endpoints(null, id).putVenue, options);
+
+  const { data: response, isLoading, isError, isSuccess } = useApi(api_endpoints(null, id).putVenue, createMethod("PUT", formData));
   const [errorMessage, setErrorMessage] = useState(null);
 
   function handleErrors() {
