@@ -4,6 +4,7 @@ import useApi from "../../hooks/useAPI";
 import api_endpoints from "../../shared/shared";
 import createMethod from "../../utilities/createMethod";
 import Loading from "../Loading/Loading";
+import { Navigate } from "react-router-dom";
 
 export default function BookVenueAPICall({ bookingObject, setShowConfirmAndCancel }) {
   console.log("MAKING API CALL");
@@ -12,15 +13,19 @@ export default function BookVenueAPICall({ bookingObject, setShowConfirmAndCance
 
   const { data, isLoading, isError, isSuccess } = useApi(api_endpoints().postBooking, createMethod("POST", bookingObject));
 
+  const handlePleaseTryAgain = () => {
+    window.location.reload();
+  };
+
   return (
     <div>
       {isLoading && <Loading />}
       {isError && <p>An error has occurred</p>}
-      {isSuccess && <p>You booking has been successfully created!</p>}
+      {isSuccess && <Navigate to="/home" />}
       {!isSuccess && data && data.errors && (
         <div>
           <p>{data.errors[0].message}</p>
-          <button>Please try again</button>
+          <button onClick={handlePleaseTryAgain}>Please try again</button>
         </div>
       )}
       {data && data.errors && setShowConfirmAndCancel && setShowConfirmAndCancel(false)}
