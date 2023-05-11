@@ -1,4 +1,51 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import useAPI from "../../hooks/useAPI";
+import api_endpoints from "../../shared/shared";
+import Loading from "../Loading/Loading";
+import { VenuesListContainer, VenueCard } from "./Venues.style";
+import logo from "../../assets/logo.png";
+
+export default function Venues() {
+  console.log("MOUNTING Venues component");
+  const [venueList, setVenueList] = useState([]);
+  const { data, isLoading, isError, isSuccess } = useAPI(api_endpoints().getVenues);
+  /* const { id, media, name, price, maxGuests } = data; */
+  console.log(venueList);
+
+  useEffect(() => {
+    if (isSuccess) {
+      setVenueList(data);
+    }
+  }, [isSuccess, data]);
+
+  return (
+    <div>
+      {isLoading && <Loading />}
+      {isError && <p>An error has occurred</p>}
+      {isSuccess && (
+        <VenuesListContainer>
+          {data.map((venue) => {
+            return (
+              <div key={venue.id}>
+                <VenueCard>
+                  <Link to={`venue/${venue.id}`}>{venue.media.length === 0 ? <img src={logo} /> : <img src={venue.media[0]} />}</Link>
+                  <Link to={`venue/${venue.id}`}>
+                    <h3>{venue.name}</h3>
+                  </Link>
+                  <p>${venue.price}</p>
+                  <p>Maximum guests: {venue.maxGuests}</p>
+                </VenueCard>
+              </div>
+            );
+          })}
+        </VenuesListContainer>
+      )}
+    </div>
+  );
+}
+
+/* import { Link } from "react-router-dom";
 import useApiVenues from "../../hooks/useAPIVenues";
 import { useEffect, useState } from "react";
 import { VenuesList } from "./Venues.style";
@@ -57,3 +104,4 @@ export default function Venues() {
     );
   }
 }
+ */
