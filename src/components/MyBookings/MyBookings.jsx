@@ -15,8 +15,7 @@ export default function MyBookings() {
     },
   };
 
-  const { data, isLoading, isError, isSuccess } = useApi(api_endpoints(userInfo().name).getProfile, options);
-  const bookings = data.bookings;
+  const { data: bookings, isLoading, isError, isSuccess } = useApi(api_endpoints(userInfo().name).getProfileBookings, options);
 
   return (
     <div>
@@ -25,8 +24,8 @@ export default function MyBookings() {
       {isError && <p>An error has occurred</p>}
       {isSuccess && (
         <div>
-          {data.bookings.length === 0 && <p>No bookings yet</p>}
-          {data.bookings.length > 0 && (
+          {bookings.length === 0 && <p>No bookings yet</p>}
+          {bookings.length > 0 && (
             <div>
               <MyBookingsList bookings={bookings} />
             </div>
