@@ -23,7 +23,6 @@ export default function Venues() {
   const [searchTerm, setSearchTerm] = useState("");
   const handleChildData = (childData) => {
     setSearchTerm(childData);
-    console.log(searchTerm);
   };
 
   // GETTING THE SEARCH TERM FROM THE CHILD COMPONENT END
@@ -38,7 +37,7 @@ export default function Venues() {
           <VenuesListContainer>
             {venueList
               .filter((item) => {
-                return searchTerm.toLocaleLowerCase() === "" ? item : item.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || item.description.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase());
+                return searchTerm.toLocaleLowerCase() === "" ? item : item.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || item.description.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || item.location.city.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || item.location.country.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase());
               })
               .map((venue) => {
                 return (
