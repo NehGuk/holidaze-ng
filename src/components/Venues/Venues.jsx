@@ -37,15 +37,15 @@ export default function Venues() {
           <Search onChildData={handleChildData} />
           <VenuesListContainer>
             {venueList
-              .filter((venue) => {
-                return searchTerm.toLocaleLowerCase() === "" ? venue : venue.name.toLocaleLowerCase().includes(searchTerm);
+              .filter((item) => {
+                return searchTerm.toLocaleLowerCase() === "" ? item : item.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || item.description.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase());
               })
               .map((venue) => {
                 return (
                   <div key={venue.id}>
                     <VenueCard>
-                      <Link to={`venue/${venue.id}`}>{venue.media.length === 0 ? <img src={logo} /> : <img src={venue.media[0]} />}</Link>
-                      <Link to={`venue/${venue.id}`}>
+                      <Link to={`/venue/${venue.id}`}>{venue.media.length === 0 ? <img src={logo} /> : <img src={venue.media[0]} />}</Link>
+                      <Link to={`/venue/${venue.id}`}>
                         <h3>{venue.name}</h3>
                       </Link>
                       <p>${venue.price}</p>

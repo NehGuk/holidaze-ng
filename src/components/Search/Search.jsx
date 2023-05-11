@@ -15,7 +15,6 @@ export default function Search({ onChildData }) {
     <div>
       <h2>Search component</h2>
       <input onChange={handleSearchTerms} placeholder={`Search...${search}`} />
-      <button>Search button?</button>
     </div>
   );
 }
