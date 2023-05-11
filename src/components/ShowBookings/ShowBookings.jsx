@@ -5,6 +5,8 @@ import "react-datepicker/dist/react-datepicker.css";
 /* import formatDate from "../../utilities/formatDate"; */
 import BookVenue from "../BookVenue/BookVenue";
 
+import { useIsAuthenticated } from "react-auth-kit";
+
 export default function ShowBookings({ venueBookings, maxGuests, price, id }) {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
@@ -14,6 +16,8 @@ export default function ShowBookings({ venueBookings, maxGuests, price, id }) {
   const [bookingLooksFine, setBookingLooksFine] = useState(true);
   const [hideBookThisVenueButton, setHideBookThisVenueButton] = useState(false);
   const [bookingsArray, setBookingsArray] = useState([]);
+
+  const userIsAuth = useIsAuthenticated();
 
   useEffect(() => {
     const getBookedDates = () => {
@@ -65,11 +69,17 @@ export default function ShowBookings({ venueBookings, maxGuests, price, id }) {
       setHideBookThisVenueButton(true);
     }
   };
+  console.log(userIsAuth());
 
   return (
     <div>
-      <h4>Number of guests</h4>
-      <input type="number" pattern="[0-9]*" inputMode="numeric" placeholder={numberOfGuests} max={maxGuests} min={1} onChange={handleGuests} />
+      {userIsAuth() && (
+        <div>
+          <h4>Number of guests</h4>
+          <input type="number" pattern="[0-9]*" inputMode="numeric" placeholder={numberOfGuests} max={maxGuests} min={1} onChange={handleGuests} />
+        </div>
+      )}
+
       <h4>Select the dates</h4>
       {/* <p>Check-in/StartDate: {formatDate(startDate)} </p> */}
       {/* <p>Check-out/EndDate: {formatDate(endDate)}</p> */}
@@ -77,7 +87,7 @@ export default function ShowBookings({ venueBookings, maxGuests, price, id }) {
 
       {!bookingLooksFine && <p>Please add a check-out date</p>}
 
-      {!hideBookThisVenueButton && <button onClick={createBookingObject}>Book this venue</button>}
+      {userIsAuth() && !hideBookThisVenueButton && <button onClick={createBookingObject}>Book this venue</button>}
 
       {showBookingDetails && <BookVenue bookingObject={bookingObject} numberOfGuests={numberOfGuests} price={price} setBookingLooksFine={setBookingLooksFine} setShowBookingDetails={setShowBookingDetails} setHideBookThisVenueButton={setHideBookThisVenueButton} />}
     </div>
@@ -86,7 +96,7 @@ export default function ShowBookings({ venueBookings, maxGuests, price, id }) {
 
 ShowBookings.propTypes = {
   venueBookings: PropTypes.array.isRequired,
-  maxGuests: PropTypes.number.isRequired,
-  price: PropTypes.number.isRequired,
-  id: PropTypes.string.isRequired,
+  maxGuests: PropTypes.number,
+  price: PropTypes.number,
+  id: PropTypes.string,
 };
