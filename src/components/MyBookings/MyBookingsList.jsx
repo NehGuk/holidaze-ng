@@ -41,6 +41,8 @@ export default function MyBookingsList({ bookings }) {
             <div key={booking.id}>
               <img src={booking.venue.media[0]} />
               <h3>{booking.venue.name}</h3>
+              {booking.venue.location.city !== "Unknown" ? <p>{booking.venue.location.city}</p> : <p>Hidden city</p>}
+              {booking.venue.location.country !== "Unknown" ? <p>{booking.venue.location.country}</p> : <p>Faraway country</p>}
               <p>Check-in: {formatDate(booking.dateFrom)}</p>
               <p>Check-out: {formatDate(booking.dateTo)} </p>
               <p>Guests: {booking.guests}</p>
