@@ -26,9 +26,12 @@ export default function HomeVenueManager() {
         <>
           <h1>Hello {userInfo().name}!</h1>
           <p>You are currently managing {data._count.venues} venues.</p>
-          <p></p>
 
           <Link to="/post-new-venue">Create new venue</Link>
+
+          <div>
+            <Link to="/all-bookings">See upcoming bookings</Link>
+          </div>
           <VenuesVenueManager />
         </>
       )}
