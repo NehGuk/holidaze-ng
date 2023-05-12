@@ -4,6 +4,7 @@ import ShowBookings from "../ShowBookings/ShowBookings";
 import useApi from "../../hooks/useAPI";
 import api_endpoints from "../../shared/shared";
 import Loading from "../Loading/Loading";
+import logo from "../../assets/logo.png";
 
 export default function VenueLoggedInTraveller() {
   const params = useParams();
@@ -24,10 +25,12 @@ export default function VenueLoggedInTraveller() {
       {isSuccess && (
         <div>
           <h1>{name}</h1>
-          <img src={media} />
+          {media.length === 0 && <img src={logo} />}
+          {media.length > 0 && <img src={media[0]} />}
+
           <p>{description}</p>
           <p>${price}</p>
-          <p>Rating: {rating}</p>
+          <p>Ratingggg: {rating}</p>
 
           <h3>Details</h3>
           <p>
