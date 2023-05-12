@@ -5,7 +5,6 @@ import api_endpoints from "../../shared/shared";
 import Loading from "../Loading/Loading";
 import { VenuesListContainer, VenueCard } from "./Venues.style";
 import logo from "../../assets/logo.png";
-
 import Search from "../Search/Search";
 
 export default function Venues() {
@@ -19,13 +18,15 @@ export default function Venues() {
     }
   }, [isSuccess, data]);
 
-  // GETTING THE SEARCH TERM FROM THE CHILD COMPONENT
   const [searchTerm, setSearchTerm] = useState("");
   const handleChildData = (childData) => {
     setSearchTerm(childData);
   };
 
-  // GETTING THE SEARCH TERM FROM THE CHILD COMPONENT END
+  const handleClearSearch = () => {
+    /* setSearchTerm(""); */
+    window.location.reload();
+  };
 
   return (
     <div>
@@ -55,6 +56,15 @@ export default function Venues() {
                   </div>
                 );
               })}
+
+            {venueList.filter((item) => {
+              return searchTerm.toLocaleLowerCase() === "" ? item : item.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || item.description.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || item.location.city.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || item.location.country.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase());
+            }).length === 0 && (
+              <div>
+                <h4>No venues found</h4>
+                <button onClick={handleClearSearch}>Try again</button>
+              </div>
+            )}
           </VenuesListContainer>
         </div>
       )}
