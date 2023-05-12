@@ -19,17 +19,12 @@ export default function MyBookings() {
 
   return (
     <div>
-      <h2>My bookings</h2>
+      <h1>My bookings</h1>
       {isLoading && <Loading />}
       {isError && <p>An error has occurred</p>}
       {isSuccess && (
         <div>
-          {bookings.length === 0 && <p>No bookings yet</p>}
-          {bookings.length > 0 && (
-            <div>
-              <MyBookingsList bookings={bookings} />
-            </div>
-          )}
+          <MyBookingsList bookings={bookings} />
         </div>
       )}
     </div>

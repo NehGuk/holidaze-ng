@@ -6,7 +6,7 @@ import { useAuthUser } from "react-auth-kit";
 import { VenueManagerMyVenuesList } from "./VenuesVenueManager.style";
 import api_endpoints from "../../shared/shared";
 import Loading from "../Loading/Loading";
-
+import logo from "../../assets/logo.png";
 export default function VenuesVenueManager() {
   console.log("MOUNTED TWICE?");
   const userInfo = useAuthUser();
@@ -46,7 +46,7 @@ export default function VenuesVenueManager() {
       {isError && <p>An error has occurred</p>}
       {isSuccess && (
         <div>
-          <p>Map below</p>
+          {myVenuesList.length === 0 && <img src={logo} />}
 
           <VenueManagerMyVenuesList>
             {myVenuesList.map((item) => (
@@ -65,6 +65,9 @@ export default function VenuesVenueManager() {
                     <p>${item.price}</p>
                     <p>Rating: {item.rating}</p>
                     <p>Max guests: {item.maxGuests}</p>
+                    {item.bookings.length === 0 && <p>This venue has no bookings yet.</p>}
+                    {item.bookings.length === 1 && <p>This venue has 1 booking.</p>}
+                    {item.bookings.length > 1 && <p>This venue has {item.bookings.length} bookings.</p>}
                   </div>
                 </div>
               </div>

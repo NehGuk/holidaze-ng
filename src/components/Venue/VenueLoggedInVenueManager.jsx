@@ -78,11 +78,11 @@ export default function VenueLoggedInVenueManager() {
 
           <button onClick={handleShowBookingsButton}>{!showBookings ? "Show bookings for this venue" : "Hide bookings"}</button>
 
-          <Link to="/">Back</Link>
-
           {isDeleted && <DeleteVenue setIsDeleted={setIsDeleted} />}
 
           {showBookings && <ShowBookingsListVenueManager venueBookings={venueBookings} />}
+
+          <Link to="/">Back</Link>
         </div>
       )}
     </div>
