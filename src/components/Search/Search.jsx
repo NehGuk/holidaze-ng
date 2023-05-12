@@ -5,7 +5,7 @@ export default function Search({ onChildData }) {
   const [search, setSearch] = useState("");
 
   const handleSearchTerms = (event) => {
-    setSearch("Search");
+    setSearch("Search...");
     const searchTerm = event.target.value;
     setSearch(searchTerm);
     onChildData(searchTerm);
