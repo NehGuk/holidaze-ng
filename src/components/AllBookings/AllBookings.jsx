@@ -25,7 +25,7 @@ export default function AllBookings() {
   useEffect(() => {
     countTotalBookings();
   }, [data]);
-  console.log(totalBookings);
+  /* console.log(totalBookings); */
   // CALCULATE TOTAL BOOKINGS END
 
   // TEST
@@ -42,7 +42,7 @@ export default function AllBookings() {
       }
     }
   }, [data]);
-  console.log(venuesWithBookings);
+  /* console.log(venuesWithBookings); */
   // CREATE ARRAY STATE FOR VENUES WITH BOOKINGS ONLY END SUCCESS
 
   // CREATE ARRAY WITH ONE OBJECT FOR EACH BOOKING
@@ -102,6 +102,8 @@ export default function AllBookings() {
             {currentBookings.length > 0 && (
               <div>
                 <p>The venues you manage have {currentBookings.length} active bookings.</p>
+                <p>There are also {totalBookings - currentBookings.length} expired entries in your booking history.</p>
+
                 <h2>Active bookings</h2>
                 {currentBookings.map((booking) => {
                   return (
