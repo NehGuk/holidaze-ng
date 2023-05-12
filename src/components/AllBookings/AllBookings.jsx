@@ -14,12 +14,10 @@ export default function AllBookings() {
 
   const { data, isLoading, isError, isSuccess } = useApi(api_endpoints(userInfo().name).getVenuesManager, createMethod("GET"));
 
-  const [totalBookings, setTotalBookings] = useState(0);
-
   // CALCULATE TOTAL BOOKINGS
+  const [totalBookings, setTotalBookings] = useState(0);
   const countTotalBookings = () => {
     const totalBookings = data.reduce((acc, venue) => acc + venue.bookings.length, 0);
-    /* console.log("Total bookings: ", totalBookings); */
     setTotalBookings(totalBookings);
     return totalBookings;
   };
@@ -28,6 +26,8 @@ export default function AllBookings() {
     countTotalBookings();
   }, [data]);
   console.log(totalBookings);
+  // CALCULATE TOTAL BOOKINGS END
+
   // TEST
 
   // CREATE ARRAY STATE FOR VENUES WITH BOOKINGS ONLY
@@ -98,7 +98,7 @@ export default function AllBookings() {
         <AllBookingsContainer>
           <div>
             <h1>My bookings</h1>
-            {currentBookings.length === 0 && <p>The venues you manage have no active bookings at the moment.</p>}
+            {currentBookings.length === 0 && <p>No active bookings at the moment.</p>}
             {currentBookings.length > 0 && (
               <div>
                 <p>The venues you manage currently have {currentBookings.length} active bookings.</p>
@@ -119,7 +119,7 @@ export default function AllBookings() {
               </div>
             )}
 
-            {pastBookings !== 0 && (
+            {pastBookings.length !== 0 && (
               <div>
                 <button onClick={handleShowPastBookings}>{!showPastBookings ? "Show past bookings" : "Close past bookings"}</button>
                 {showPastBookings && (

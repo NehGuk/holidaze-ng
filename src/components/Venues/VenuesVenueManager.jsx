@@ -39,14 +39,24 @@ export default function VenuesVenueManager() {
 
   return (
     <div>
-      <h2>VenuesVenueManager component --for my specific venues</h2>
-      {/* {isError && <p>SOME ERRORRRR</p>} */}
+      <h1>My venues</h1>
+
+      <p>You are currently managing {myVenuesList.length} venues.</p>
 
       {isLoading && <Loading />}
       {isError && <p>An error has occurred</p>}
       {isSuccess && (
         <div>
-          {myVenuesList.length === 0 && <img src={logo} />}
+          {myVenuesList.length === 0 && (
+            <div>
+              <div>
+                <Link to="/post-new-venue">Create new venue</Link>
+              </div>
+              <div>
+                <img src={logo} />
+              </div>
+            </div>
+          )}
 
           <VenueManagerMyVenuesList>
             {myVenuesList.map((item) => (
