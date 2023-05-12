@@ -6,20 +6,20 @@ import Loading from "../Loading/Loading";
 import { useState, useEffect } from "react";
 import formatDate from "../../utilities/formatDate";
 import { Link } from "react-router-dom";
+import { AllBookingsContainer } from "./AllBookings.style";
 
 export default function AllBookings() {
-  console.log("MOUNTING ALL BOOKINGS");
+  /* console.log("MOUNTING ALL BOOKINGS"); */
   const userInfo = useAuthUser();
 
   const { data, isLoading, isError, isSuccess } = useApi(api_endpoints(userInfo().name).getVenuesManager, createMethod("GET"));
-  console.log(data);
 
   const [totalBookings, setTotalBookings] = useState(0);
 
   // CALCULATE TOTAL BOOKINGS
   const countTotalBookings = () => {
     const totalBookings = data.reduce((acc, venue) => acc + venue.bookings.length, 0);
-    console.log("Total bookings: ", totalBookings);
+    /* console.log("Total bookings: ", totalBookings); */
     setTotalBookings(totalBookings);
     return totalBookings;
   };
@@ -27,70 +27,123 @@ export default function AllBookings() {
   useEffect(() => {
     countTotalBookings();
   }, [data]);
+  console.log(totalBookings);
+  // TEST
 
-  // CALCULATE TOTAL BOOKINGS END
-
-  // CREATE A STATE ARRAY WITH PAST BOOKINGS
-  /* const [pastBookings, setPastBookings] = useState([]);
-
-  useEffect(() => {
-    // Filter past bookings
-    const filteredBookings = data.flatMap((venue) => venue.bookings.filter((booking) => new Date(booking.dateTo) < new Date()));
-    console.log("Filtered bookings: ", filteredBookings);
-    setPastBookings(filteredBookings);
-  }, [data]);
-
-  console.log(pastBookings); */
-  // CREATE A STATE ARRAY WITH PAST BOOKINGS END
-
-  // CREATE A STATE ARRAY WITH UPCOMING BOOKINGS
-  /* const [upcomingBookings, setUpcomingBookings] = useState([]);
+  // CREATE ARRAY STATE FOR VENUES WITH BOOKINGS ONLY
+  const [venuesWithBookings, setVenuesWithBookings] = useState([]);
 
   useEffect(() => {
-    // Filter past bookings
-    const filteredBookings = data.flatMap((venue) => venue.bookings.filter((booking) => new Date(booking.dateTo) > new Date()));
-    console.log("Filtered bookings: ", filteredBookings);
-    setUpcomingBookings(filteredBookings);
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].bookings.length !== 0) {
+        /* console.log(data[i]); */
+        venuesWithBookings.push(data[i]);
+        setVenuesWithBookings(venuesWithBookings);
+      }
+    }
   }, [data]);
+  console.log(venuesWithBookings);
+  // CREATE ARRAY STATE FOR VENUES WITH BOOKINGS ONLY END SUCCESS
 
-  console.log(upcomingBookings); */
+  // CREATE ARRAY WITH ONE OBJECT FOR EACH BOOKING
 
-  // CREATE A STATE ARRAY WITH UPCOMING BOOKINGS END
+  const bookingsArray = venuesWithBookings
+    .map((property) => {
+      return property.bookings.map((booking) => {
+        return { name: property.name, media: property.media, createdOn: property.created, price: property.price, city: property.location.city, country: property.location.country, ...booking };
+      });
+    })
+    .flat();
 
-  const sortedChronos = data.sort((a, b) => new Date(a.dateFrom) - new Date(b.dateFrom));
-  console.log(sortedChronos);
+  /* console.log(bookingsArray); */
+
+  // CREATE ARRAY WITH ONE OBJECT FOR EACH BOOKING END
+
+  // SORT ORDER CHRONOLOGICALLY
+
+  const bookingsArrayChronologically = bookingsArray.sort((a, b) => {
+    const dateA = new Date(a.dateFrom);
+    const dateB = new Date(b.dateFrom);
+    return dateA - dateB;
+  });
+  console.log(bookingsArrayChronologically);
+
+  // SORT ORDER CHRONOLOGICALLY END
+
+  // CREATING AN ARRAY FOR PAST BOOKINGS
+  const today = new Date();
+  const pastBookings = bookingsArrayChronologically.filter((item) => new Date(item.dateTo) < today);
+  /* console.log(pastBookings); */
+
+  // CREATING AN ARRAY FOR PAST BOOKINGS END
+
+  // CREATING AN ARRAY FOR CURRENT BOOKINGS
+  const currentBookings = bookingsArrayChronologically.filter((obj) => new Date(obj.dateFrom) >= today);
+  /* console.log(currentBookings); */
+
+  // CREATING AN ARRAY FOR UPCOMING BOOKINGS END
+
+  // TEST END
+
+  const [showPastBookings, setShowPastBookings] = useState(false);
+  const handleShowPastBookings = () => {
+    setShowPastBookings(!showPastBookings);
+  };
 
   return (
     <div>
       {isLoading && <Loading />}
       {isError && <p>An error has occurred</p>}
       {isSuccess && (
-        <div>
-          <h1>Bookings history</h1>
-          <p>You have managed a total of {totalBookings} bookings.</p>
+        <AllBookingsContainer>
+          <div>
+            <h1>My bookings</h1>
+            {currentBookings.length === 0 && <p>The venues you manage have no active bookings at the moment.</p>}
+            {currentBookings.length > 0 && (
+              <div>
+                <p>The venues you manage currently have {currentBookings.length} active bookings.</p>
+                <h2>Active bookings</h2>
+                {currentBookings.map((booking) => {
+                  return (
+                    <div key={booking.id}>
+                      <img src={booking.media[0]} />
+                      <h3>{booking.name}</h3>
+                      <p>Check-in: {formatDate(booking.dateFrom)}</p>
+                      <p>Check-out: {formatDate(booking.dateTo)}</p>
+                      <p>Guests: {booking.guests}</p>
+                      <p>Booking ID: {booking.id}</p>
+                      <Link to={`/booking-venue-manager/${booking.id}`}>Details</Link>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
 
-          {data.map((venue) => (
-            <div key={venue.id}>
-              {venue.bookings.length > 0 && (
-                <div>
-                  {venue.bookings
-                    .sort((a, b) => new Date(a.dateFrom) - new Date(b.dateFrom))
-                    .map((booking) => (
-                      <div key={booking.id}>
-                        <img src={venue.media[0]} />
-                        <h2>{venue.name}</h2>
-                        <p>Booking ID: {booking.id}</p>
-                        <p>Check-in: {formatDate(booking.dateFrom)}</p>
-                        <p>Check-out: {formatDate(booking.dateTo)}</p>
-                        <p>Number of guests: {booking.guests}</p>
-                        <Link to={`/booking-venue-manager/${booking.id}`}>Details</Link>
-                      </div>
-                    ))}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
+            {pastBookings !== 0 && (
+              <div>
+                <button onClick={handleShowPastBookings}>{!showPastBookings ? "Show past bookings" : "Close past bookings"}</button>
+                {showPastBookings && (
+                  <div>
+                    <h2>Past bookings</h2>
+                    {pastBookings.map((booking) => {
+                      return (
+                        <div key={booking.id}>
+                          <img src={booking.media[0]} />
+                          <h3>{booking.name}</h3>
+                          <p>Check-in: {formatDate(booking.dateFrom)}</p>
+                          <p>Check-out: {formatDate(booking.dateTo)}</p>
+                          <p>Guests: {booking.guests}</p>
+                          <p>Booking ID: {booking.id}</p>
+                          <Link to={`/booking-venue-manager/${booking.id}`}>Details</Link>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        </AllBookingsContainer>
       )}
     </div>
   );
