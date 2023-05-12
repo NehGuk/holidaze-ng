@@ -48,8 +48,10 @@ export default function Venues() {
                       <Link to={`/venue/${venue.id}`}>
                         <h3>{venue.name}</h3>
                       </Link>
-                      {venue.location.city !== "Unknown" && venue.location.city !== "unknown" ? <p>{venue.location.city}</p> : <p></p>}
-                      {venue.location.country !== "Unknown" && venue.location.country !== "unknown" && venue.location.country.length > 2 ? <p>{venue.location.country}</p> : <p>Planet Earth</p>}
+
+                      {venue.location.city !== "Unknown" && venue.location.city !== "" ? <p>{venue.location.city}</p> : <p>Hidden city</p>}
+                      {venue.location.country !== "Unknown" && venue.location.country !== "" ? <p>{venue.location.country}</p> : <p>Faraway country</p>}
+
                       <p>Maximum guests: {venue.maxGuests}</p>
                       <p>${venue.price}</p>
                     </VenueCard>
