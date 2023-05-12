@@ -10,7 +10,7 @@ export default function api_endpoints(name, venueID, bookingID) {
     getVenue: `https://api.noroff.dev/api/v1/holidaze/venues/${venueID}?_owner=true&_bookings=true`,
     deleteVenue: `https://api.noroff.dev/api/v1/holidaze/venues/${venueID}`,
     getProfile: `https://api.noroff.dev/api/v1/holidaze/profiles/${name}?_bookings=true`,
-    getVenuesManager: `https://api.noroff.dev/api/v1/holidaze/profiles/${name}/venues`,
+    getVenuesManager: `https://api.noroff.dev/api/v1/holidaze/profiles/${name}/venues?_bookings=true&sort=created&sortOrder=desc`,
 
     getProfileBookings: `https://api.noroff.dev/api/v1/holidaze/profiles/${name}/bookings?_venue=true&sort=dateFrom&sortOrder=asc`,
 
