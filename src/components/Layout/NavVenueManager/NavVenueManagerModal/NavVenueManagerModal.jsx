@@ -26,6 +26,16 @@ export default function NavVenueManagerModal({ showModal, setShowModal }) {
     navigate("/home");
   };
 
+  const handleMyVenuesButton = () => {
+    setShowModal((prev) => !prev);
+    navigate("/my-venues");
+  };
+
+  const handleMyBookingsButton = () => {
+    setShowModal((prev) => !prev);
+    navigate("/all-bookings");
+  };
+
   const handleProfileButton = () => {
     setShowModal((prev) => !prev);
     navigate("/profile-venuemanager");
@@ -56,6 +66,8 @@ export default function NavVenueManagerModal({ showModal, setShowModal }) {
                 {!userInfo().venueManager && <p>Account type: Traveller</p>}
 
                 <button onClick={handleHomeButton}>Home</button>
+                <button onClick={handleMyVenuesButton}>My venues</button>
+                <button onClick={handleMyBookingsButton}>My bookings</button>
                 <button onClick={handleProfileButton}>Profile</button>
                 <button onClick={handleSignOut}>Sing out</button>
               </ModalContent>

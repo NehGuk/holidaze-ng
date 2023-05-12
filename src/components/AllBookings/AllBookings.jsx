@@ -101,7 +101,7 @@ export default function AllBookings() {
             {currentBookings.length === 0 && <p>No active bookings at the moment.</p>}
             {currentBookings.length > 0 && (
               <div>
-                <p>The venues you manage currently have {currentBookings.length} active bookings.</p>
+                <p>The venues you manage have {currentBookings.length} active bookings.</p>
                 <h2>Active bookings</h2>
                 {currentBookings.map((booking) => {
                   return (
