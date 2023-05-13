@@ -4,6 +4,7 @@ import estimatePrice from "../../utilities/estiamatePrice";
 import formatDate from "../../utilities/formatDate";
 import { MyBookingsListContainer } from "./MyBookingsList.style";
 import { useState } from "react";
+import logo from "../../assets/logo.png";
 
 export default function MyBookingsList({ bookings }) {
   console.log("MOUNTING MY BOOKINGS LIST");
@@ -30,16 +31,22 @@ export default function MyBookingsList({ bookings }) {
           <div>
             <h3>You have no upcoming bookings.</h3>
             <p>
-              Have a look at our <Link to="/">home page</Link> and maybe you will get inspired!
+              But no worries! Go to our <Link to="/">home page</Link> and find the perfect place to stay!
             </p>
           </div>
         )}
-        {upcomingBookings.length > 0 && <h2>Upcoming bookings</h2>}
+        {upcomingBookings.length > 0 && (
+          <h2>
+            Upcoming bookings <span>({upcomingBookings.length})</span>
+          </h2>
+        )}
 
         {upcomingBookings.map((booking) => {
           return (
             <div key={booking.id}>
-              <img src={booking.venue.media[0]} />
+              {booking.venue.media.length === 0 && <img src={logo} />}
+              {booking.venue.media.length > 0 && <img src={booking.venue.media[0]} />}
+
               <h3>{booking.venue.name}</h3>
               {booking.venue.location.city !== "Unknown" && booking.venue.location.city !== "" ? <p>{booking.venue.location.city}</p> : <p>Hidden city</p>}
               {booking.venue.location.country !== "Unknown" && booking.venue.location.country !== "" ? <p>{booking.venue.location.country}</p> : <p>Faraway country</p>}
@@ -47,7 +54,7 @@ export default function MyBookingsList({ bookings }) {
               <p>Check-out: {formatDate(booking.dateTo)} </p>
               <p>Guests: {booking.guests}</p>
               <p>Estimated price: ${estimatePrice(booking.dateFrom, booking.dateTo, booking.venue.price)}</p>
-              <Link to={`/booking-traveller/${booking.id}`}>Details</Link>
+              <Link to={`/booking-traveller/${booking.id}`}>Booking details</Link>
               <br></br>
               <br></br>
               <br></br>
@@ -60,17 +67,21 @@ export default function MyBookingsList({ bookings }) {
 
         {showPastBookings && (
           <div>
-            <h2>Past bookings</h2>
+            <h2>
+              Past bookings <span>({pastBookings.length})</span>
+            </h2>
             {pastBookings.map((booking) => {
               return (
                 <div key={booking.id}>
-                  <img src={booking.venue.media[0]} />
+                  {booking.venue.media.length === 0 && <img src={logo} />}
+                  {booking.venue.media.length > 0 && <img src={booking.venue.media[0]} />}
+
                   <h3>{booking.venue.name}</h3>
                   <p>Check-in: {formatDate(booking.dateFrom)}</p>
                   <p>Check-out: {formatDate(booking.dateTo)} </p>
                   <p>Guests: {booking.guests}</p>
                   <p>Estimated price: ${estimatePrice(booking.dateFrom, booking.dateTo, booking.venue.price)}</p>
-                  <Link to={`/booking-traveller/${booking.id}`}>Details</Link>
+                  <Link to={`/booking-traveller/${booking.id}`}>Booking details</Link>
                   <br></br>
                   <br></br>
                   <br></br>

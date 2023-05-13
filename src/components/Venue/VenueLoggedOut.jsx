@@ -4,6 +4,7 @@ import useApi from "../../hooks/useAPI";
 import api_endpoints from "../../shared/shared";
 import ShowBookings from "../ShowBookings/ShowBookings";
 import Loading from "../Loading/Loading";
+import logo from "../../assets/logo.png";
 
 export default function VenueLoggedOut() {
   const params = useParams();
@@ -32,7 +33,9 @@ export default function VenueLoggedOut() {
       {isSuccess && (
         <div>
           <h1>{data.name}</h1>
-          <img src={data.media} />
+          {data.media.length === 0 && <img src={logo} />}
+          {data.media.length > 0 && <img src={data.media[0]} />}
+
           <p>{data.description}</p>
           <p>${data.price}</p>
           <p>Rating: {data.rating}</p>

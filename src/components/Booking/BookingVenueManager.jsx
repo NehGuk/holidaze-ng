@@ -6,6 +6,7 @@ import Loading from "../Loading/Loading";
 import estimatePrice from "../../utilities/estiamatePrice";
 import { BookingVenueManagerContainer } from "./BookingVenueManager.style";
 import formatDate from "../../utilities/formatDate";
+import logo from "../../assets/logo.png";
 
 export default function BookingVenueManager() {
   console.log("MOUNTING BOOKING VENUE MANAGER");
@@ -30,21 +31,27 @@ export default function BookingVenueManager() {
         <div>
           <BookingVenueManagerContainer>
             <h1>Booking</h1>
+            <p>Booking ID: {data.id}</p>
             <p>Check-in: {formatDate(data.dateFrom)}</p>
             <p>Check-out: {formatDate(data.dateTo)}</p>
             <p>Number of guests: {data.guests}</p>
             <p>Estimated price: ${estimatePrice(data.dateFrom, data.dateTo, data.venue.price)} </p>
-            <p>Booking ID: {data.id}</p>
+
             <h2>Guest details</h2>
             <p>Name: {data.customer.name}</p>
             <p>Email: {data.customer.email}</p>
 
             <h2>Venue details</h2>
-            <img src={data.venue.media} />
+            {data.venue.media.length === 0 && <img src={logo} />}
+            {data.venue.media.length > 0 && <img src={data.venue.media[0]} />}
+
             <p>Property name: {data.venue.name}</p>
             <p>Price per night: ${data.venue.price}</p>
 
-            <Link to={`/venue/${data.venue.id}`}>Back to property details</Link>
+            <Link to={`/venue/${data.venue.id}`}>Manage venue</Link>
+            <Link to={`/my-venues`}>Check all venues I manage</Link>
+            <Link to={`/all-bookings`}>See all bookings</Link>
+            <Link to={`/venue/${data.venue.id}`}>Home</Link>
           </BookingVenueManagerContainer>
         </div>
       )}
