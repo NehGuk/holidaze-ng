@@ -1,12 +1,12 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
-/* import useApiVenues from "../../hooks/useAPIVenues"; */
+
 import DeleteVenue from "../DeleteVenue/DeleteVenue";
 import { useState } from "react";
 import useApi from "../../hooks/useAPI";
 import api_endpoints from "../../shared/shared";
 import Loading from "../Loading/Loading";
 import ShowBookingsListVenueManager from "../ShowBookings/ShowBookingsListVenueManager";
-/* import ShowBookings from "../ShowBookings/ShowBookings"; */
+
 import logo from "../../assets/logo.png";
 
 export default function VenueLoggedInVenueManager() {
@@ -14,12 +14,7 @@ export default function VenueLoggedInVenueManager() {
   console.log(params.id);
 
   const { data, isLoading, isError, isSuccess } = useApi(api_endpoints(null, params.id).getVenue);
-  /* console.log(data); */
-  /* console.log(isLoading); */
-  /* console.log(isError); */
-  /* console.log(data.name); */
-  /* console.log(data.description); */
-  /* console.log(data.bookings); */
+
   const venueBookings = data.bookings;
 
   const [isDeleted, setIsDeleted] = useState(false);

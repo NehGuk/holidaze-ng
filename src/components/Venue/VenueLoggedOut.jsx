@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-/* import useApiVenues from "../../hooks/useAPIVenues"; */
+
 import useApi from "../../hooks/useAPI";
 import api_endpoints from "../../shared/shared";
 import ShowBookings from "../ShowBookings/ShowBookings";
@@ -12,19 +12,15 @@ export default function VenueLoggedOut() {
 
   const { data, isLoading, isError, isSuccess } = useApi(api_endpoints(null, params.id).getVenue);
   console.log(isSuccess);
-  /* console.log(data); */
+
   console.log(isLoading);
   console.log(isError);
-  /* console.log(data.name); */
-  /* console.log(data.description); */
-  /* console.log(data.bookings); */
+
   const venueBookings = data.bookings;
 
   if (isSuccess) {
     console.log(data.location.address);
   }
-
-  /* console.log(venueBookings); */
 
   return (
     <div>
