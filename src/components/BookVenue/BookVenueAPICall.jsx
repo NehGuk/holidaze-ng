@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-
 import useApi from "../../hooks/useAPI";
 import api_endpoints from "../../shared/shared";
 import createMethod from "../../utilities/createMethod";
