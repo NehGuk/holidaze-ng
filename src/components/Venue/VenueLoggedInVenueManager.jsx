@@ -70,7 +70,6 @@ export default function VenueLoggedInVenueManager() {
           <p>{data.location.country}</p>
 
           <h3>Admin</h3>
-          {/* {venueBookings && <ShowBookings venueBookings={venueBookings} />} */}
 
           <button onClick={handleUpdateVenueButton}>Update venue</button>
           {!isDeleted && <button onClick={handleDeleteButton}>Delete venue</button>}

@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import ReactDatePicker from "react-datepicker";
 import { useState, useEffect } from "react";
 import "react-datepicker/dist/react-datepicker.css";
-/* import formatDate from "../../utilities/formatDate"; */
 import BookVenue from "../BookVenue/BookVenue";
 
 import { useIsAuthenticated } from "react-auth-kit";
@@ -81,8 +80,7 @@ export default function ShowBookings({ venueBookings, maxGuests, price, id }) {
       )}
 
       <h4>Select the dates</h4>
-      {/* <p>Check-in/StartDate: {formatDate(startDate)} </p> */}
-      {/* <p>Check-out/EndDate: {formatDate(endDate)}</p> */}
+
       <ReactDatePicker minDate={new Date()} todayButton="Today" onChange={onChange} startDate={startDate} endDate={endDate} selectsRange selectsDisabledDaysInRange excludeDateIntervals={bookingsArray} monthsShown={2} inline fixedHeight></ReactDatePicker>
 
       {!bookingLooksFine && <p>Please add a check-out date</p>}

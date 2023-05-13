@@ -24,7 +24,6 @@ export default function Venues() {
   };
 
   const handleClearSearch = () => {
-    /* setSearchTerm(""); */
     window.location.reload();
   };
 

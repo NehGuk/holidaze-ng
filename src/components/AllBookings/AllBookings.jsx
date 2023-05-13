@@ -10,7 +10,6 @@ import { AllBookingsContainer } from "./AllBookings.style";
 import logo from "../../assets/logo.png";
 
 export default function AllBookings() {
-  /* console.log("MOUNTING ALL BOOKINGS"); */
   const userInfo = useAuthUser();
 
   const { data, isLoading, isError, isSuccess } = useApi(api_endpoints(userInfo().name).getVenuesManager, createMethod("GET"));
@@ -26,7 +25,7 @@ export default function AllBookings() {
   useEffect(() => {
     countTotalBookings();
   }, [data]);
-  /* console.log(totalBookings); */
+
   // CALCULATE TOTAL BOOKINGS END
 
   // TEST
@@ -43,7 +42,7 @@ export default function AllBookings() {
       }
     }
   }, [data]);
-  /* console.log(venuesWithBookings); */
+
   // CREATE ARRAY STATE FOR VENUES WITH BOOKINGS ONLY END SUCCESS
 
   // CREATE ARRAY WITH ONE OBJECT FOR EACH BOOKING
@@ -56,8 +55,6 @@ export default function AllBookings() {
     })
     .flat();
 
-  /* console.log(bookingsArray); */
-
   // CREATE ARRAY WITH ONE OBJECT FOR EACH BOOKING END
 
   // SORT ORDER CHRONOLOGICALLY
@@ -67,20 +64,17 @@ export default function AllBookings() {
     const dateB = new Date(b.dateFrom);
     return dateA - dateB;
   });
-  console.log(bookingsArrayChronologically);
 
   // SORT ORDER CHRONOLOGICALLY END
 
   // CREATING AN ARRAY FOR PAST BOOKINGS
   const today = new Date();
   const pastBookings = bookingsArrayChronologically.filter((item) => new Date(item.dateTo) < today);
-  /* console.log(pastBookings); */
 
   // CREATING AN ARRAY FOR PAST BOOKINGS END
 
   // CREATING AN ARRAY FOR CURRENT BOOKINGS
   const currentBookings = bookingsArrayChronologically.filter((obj) => new Date(obj.dateFrom) >= today);
-  /* console.log(currentBookings); */
 
   // CREATING AN ARRAY FOR UPCOMING BOOKINGS END
 

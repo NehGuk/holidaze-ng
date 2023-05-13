@@ -1,5 +1,4 @@
 import { useAuthUser } from "react-auth-kit";
-/* import VenuesVenueManager from "../../../Venues/VenuesVenueManager"; */
 import { Link } from "react-router-dom";
 import useApi from "../../../../hooks/useAPI";
 import api_endpoints from "../../../../shared/shared";
@@ -8,17 +7,7 @@ import createMethod from "../../../../utilities/createMethod";
 export default function HomeVenueManager() {
   const userInfo = useAuthUser();
 
-  /* const options = {
-    method: "GET",
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-      "Content-Type": "application/json",
-    },
-  }; */
-
   const { data, isSuccess, isError } = useApi(api_endpoints(userInfo().name).getProfile, createMethod("GET"));
-  /* console.log(data); */
-  /* console.log(isSuccess); */
 
   const { data: data2 } = useApi(api_endpoints(userInfo().name).getVenuesManager, createMethod("GET"));
   console.log(data2);
@@ -57,7 +46,6 @@ export default function HomeVenueManager() {
           <div>
             <Link to="/all-bookings">See upcoming bookings</Link>
           </div>
-          {/* <VenuesVenueManager /> */}
         </>
       )}
     </div>

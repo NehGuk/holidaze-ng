@@ -1,5 +1,4 @@
 import { Link, useParams } from "react-router-dom";
-
 import useApi from "../../hooks/useAPI";
 import api_endpoints from "../../shared/shared";
 import ShowBookings from "../ShowBookings/ShowBookings";

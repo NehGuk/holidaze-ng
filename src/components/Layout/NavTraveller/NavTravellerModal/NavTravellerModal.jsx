@@ -44,7 +44,6 @@ export default function NavTravellerModal({ showModal, setShowModal }) {
 
   return (
     <div>
-      {/* {goToLogin && <Navigate to="/login" />} */}
       {showModal ? (
         <ModalBackground>
           <animated.div style={springs}>
