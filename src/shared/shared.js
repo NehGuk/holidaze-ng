@@ -19,6 +19,7 @@ export default function api_endpoints(name, venueID, bookingID) {
     putVenue: `https://api.noroff.dev/api/v1/holidaze/venues/${venueID}`,
     getBooking: `https://api.noroff.dev/api/v1/holidaze/bookings/${bookingID}?_customer=true&_venue=true`,
     postBooking: `https://api.noroff.dev/api/v1/holidaze/bookings`,
+    deleteBooking: `https://api.noroff.dev/api/v1/holidaze/bookings/${bookingID}`,
   };
 
   return endPoints;
