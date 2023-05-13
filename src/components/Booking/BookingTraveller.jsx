@@ -7,6 +7,8 @@ import estimatePrice from "../../utilities/estiamatePrice";
 import formatDate from "../../utilities/formatDate";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
+import { useState } from "react";
+import CancelBooking from "../CancelBooking/CancelBooking";
 
 export default function BookingTraveller() {
   console.log("MOUNTING BOOKING TRAVELLER COMPONENT");
@@ -27,6 +29,12 @@ export default function BookingTraveller() {
   console.log(isError);
   console.log(isSuccess);
   const { id: bid, dateFrom, dateTo, guests, created, venue } = data;
+
+  const [cancelClicked, setCancelClicked] = useState(false);
+
+  const handleCancelBookingButton = () => {
+    setCancelClicked(!cancelClicked);
+  };
 
   return (
     <div>
@@ -58,7 +66,8 @@ export default function BookingTraveller() {
           {venue.meta.breakfast && <p>breakfast</p>}
           {venue.meta.pets && <p>pets allowed</p>}
 
-          <button>Cancel this booking</button>
+          {!cancelClicked && <button onClick={handleCancelBookingButton}>Cancel this booking</button>}
+          {cancelClicked && <CancelBooking setCancelClicked={setCancelClicked} bid={bid} />}
 
           <Link to="/my-bookings">See all my Bookings</Link>
           <Link to="/">Back to home</Link>

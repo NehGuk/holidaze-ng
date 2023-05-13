@@ -20,6 +20,7 @@ import BookingTraveller from "../Booking/BookingTraveller";
 import BookingConfirmed from "../BookingConfirmed/BookingConfirmed";
 import AllBookings from "../AllBookings/AllBookings";
 import VenuesVenueManager from "../Venues/VenuesVenueManager";
+import CancelBookingConfirmed from "../CancelBooking/CancelBookingConfirmed";
 
 export default function AppRoutes() {
   return (
@@ -40,6 +41,9 @@ export default function AppRoutes() {
           <Route path="booking-traveller/:id" element={<BookingTraveller />} />
           <Route path="all-bookings" element={<AllBookings />} />
           <Route path="booking-confirmed" element={<BookingConfirmed />} />
+
+          <Route path="booking-canceled-confirmed" element={<CancelBookingConfirmed />} />
+
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="register-manager" element={<RegisterManager />} />
