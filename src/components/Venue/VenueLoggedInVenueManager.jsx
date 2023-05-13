@@ -7,6 +7,7 @@ import api_endpoints from "../../shared/shared";
 import Loading from "../Loading/Loading";
 import ShowBookingsListVenueManager from "../ShowBookings/ShowBookingsListVenueManager";
 /* import ShowBookings from "../ShowBookings/ShowBookings"; */
+import logo from "../../assets/logo.png";
 
 export default function VenueLoggedInVenueManager() {
   const params = useParams();
@@ -50,7 +51,10 @@ export default function VenueLoggedInVenueManager() {
       {isSuccess && (
         <div>
           <h1>{data.name}</h1>
-          <img src={data.media} />
+
+          {data.media.length === 0 && <img src={logo} />}
+          {data.media.length > 0 && <img src={data.media[0]} />}
+
           <p>{data.description}</p>
           <p>${data.price}</p>
           <p>Rating: {data.rating}</p>
@@ -82,7 +86,7 @@ export default function VenueLoggedInVenueManager() {
 
           {showBookings && <ShowBookingsListVenueManager venueBookings={venueBookings} />}
 
-          <Link to="/">Back</Link>
+          <Link to="/my-venues">Back to my venues</Link>
         </div>
       )}
     </div>

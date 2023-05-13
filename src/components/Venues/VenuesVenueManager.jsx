@@ -7,6 +7,7 @@ import { VenueManagerMyVenuesList } from "./VenuesVenueManager.style";
 import api_endpoints from "../../shared/shared";
 import Loading from "../Loading/Loading";
 import logo from "../../assets/logo.png";
+
 export default function VenuesVenueManager() {
   console.log("MOUNTED TWICE?");
   const userInfo = useAuthUser();
@@ -64,7 +65,8 @@ export default function VenuesVenueManager() {
                 <div>
                   <div>
                     <Link to={`/venue/${item.id}`}>
-                      <img src={item.media} />
+                      {item.media.length === 0 && <img src={logo} />}
+                      {item.media.length > 0 && <img src={item.media[0]} />}
                     </Link>
                   </div>
                   <div>
@@ -78,6 +80,7 @@ export default function VenuesVenueManager() {
                     {item.bookings.length === 0 && <p>This venue has no bookings yet.</p>}
                     {item.bookings.length === 1 && <p>This venue has 1 booking.</p>}
                     {item.bookings.length > 1 && <p>This venue has {item.bookings.length} bookings.</p>}
+                    <Link to={`/venue/${item.id}`}>Manage</Link>
                   </div>
                 </div>
               </div>

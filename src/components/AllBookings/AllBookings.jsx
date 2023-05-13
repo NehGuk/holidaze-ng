@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import formatDate from "../../utilities/formatDate";
 import { Link } from "react-router-dom";
 import { AllBookingsContainer } from "./AllBookings.style";
+import logo from "../../assets/logo.png";
 
 export default function AllBookings() {
   /* console.log("MOUNTING ALL BOOKINGS"); */
@@ -108,7 +109,9 @@ export default function AllBookings() {
                 {currentBookings.map((booking) => {
                   return (
                     <div key={booking.id}>
-                      <img src={booking.media[0]} />
+                      {booking.media.length === 0 && <img src={logo} />}
+                      {booking.media.length > 0 && <img src={booking.media[0]} />}
+
                       <h3>{booking.name}</h3>
                       <p>Check-in: {formatDate(booking.dateFrom)}</p>
                       <p>Check-out: {formatDate(booking.dateTo)}</p>
@@ -130,7 +133,9 @@ export default function AllBookings() {
                     {pastBookings.map((booking) => {
                       return (
                         <div key={booking.id}>
-                          <img src={booking.media[0]} />
+                          {booking.media.length === 0 && <img src={logo} />}
+                          {booking.media.length > 0 && <img src={booking.media[0]} />}
+
                           <h3>{booking.name}</h3>
                           <p>Check-in: {formatDate(booking.dateFrom)}</p>
                           <p>Check-out: {formatDate(booking.dateTo)}</p>
