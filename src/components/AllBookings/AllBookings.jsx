@@ -126,7 +126,7 @@ export default function AllBookings() {
 
             {pastBookings.length !== 0 && (
               <div>
-                <button onClick={handleShowPastBookings}>{!showPastBookings ? "Show past bookings" : "Close past bookings"}</button>
+                <button onClick={handleShowPastBookings}>{!showPastBookings ? "Show past bookings" : "Hide past bookings"}</button>
                 {showPastBookings && (
                   <div>
                     <h2>Past bookings</h2>

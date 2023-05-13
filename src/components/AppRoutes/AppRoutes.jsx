@@ -41,9 +41,7 @@ export default function AppRoutes() {
           <Route path="booking-traveller/:id" element={<BookingTraveller />} />
           <Route path="all-bookings" element={<AllBookings />} />
           <Route path="booking-confirmed" element={<BookingConfirmed />} />
-
           <Route path="booking-canceled-confirmed" element={<CancelBookingConfirmed />} />
-
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="register-manager" element={<RegisterManager />} />
