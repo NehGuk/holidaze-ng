@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-/* import useApiVenuesVenueManager from "../../hooks/useAPIVenuesVenueManager"; */
 import useApi from "../../hooks/useAPI";
 import { useAuthUser } from "react-auth-kit";
 import { VenueManagerMyVenuesList } from "./VenuesVenueManager.style";
@@ -21,7 +20,6 @@ export default function VenuesVenueManager() {
   };
 
   const { data, isLoading, isError, isSuccess } = useApi(api_endpoints(userInfo().name).getVenuesManager, options);
-  /* const { data, isLoading, isError } = useApiVenuesVenueManager(`https://api.noroff.dev/api/v1/holidaze/profiles/${userInfo().name}/venues`); */
 
   const [myVenuesList, setMyVenuesList] = useState([]);
 
@@ -30,13 +28,6 @@ export default function VenuesVenueManager() {
       setMyVenuesList(data);
     }
   }, [data]);
-
-  /*   if (isLoading) {
-    return <div>LOADINNNGGG loading component</div>;
-  }
-  if (isError) {
-    return <div>ERRORRR component</div>;
-  } */
 
   return (
     <div>

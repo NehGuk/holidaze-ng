@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuthUser } from "react-auth-kit";
-import logo from "../../../assets/logo.png";
+import logolight from "../../../assets/logolight.png";
 import avatar from "../../../assets/avatar.png";
 import { NavVenueManagerStyle } from "./NavVenueManager.style";
 import { LogoImg } from "./NavVenueManager.style";
@@ -22,7 +22,7 @@ export default function NavTraveller() {
       <NavVenueManagerStyle>
         <div>
           <Link to="/home">
-            <LogoImg src={logo} />
+            <LogoImg src={logolight} />
           </Link>
         </div>
         <div>

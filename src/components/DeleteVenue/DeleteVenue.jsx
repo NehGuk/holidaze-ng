@@ -4,7 +4,6 @@ import DeleteVenueAPICall from "./DeleteVenueAPICall";
 
 export default function DeleteVenue({ setIsDeleted }) {
   console.log("MOUNTING DeleteVenue");
-  console.log(setIsDeleted);
 
   const handleCancelButton = () => {
     console.log("Testing cancel button");

@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 
 export default function BookingConfirmed() {
-  console.log("MOUNTING BOOKING CONFIRMED");
-
   return (
     <div>
       <h1>Thank you!</h1>

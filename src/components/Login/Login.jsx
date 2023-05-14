@@ -19,8 +19,6 @@ const schema = yup.object().shape({
 });
 
 export default function Login() {
-  /* console.log(JSON.parse(localStorage.token_state)); */
-
   const {
     register,
     handleSubmit,
@@ -48,12 +46,6 @@ export default function Login() {
       const result = await response.json();
 
       if (response.ok) {
-        console.log("Boaaaa, isso ae!!!!!!!");
-        console.log(result);
-        console.log(result.name);
-        console.log(result.accessToken);
-        console.log(result.venueManager);
-        console.log(result.avatar);
         setSuccess(true);
         setError(false);
 

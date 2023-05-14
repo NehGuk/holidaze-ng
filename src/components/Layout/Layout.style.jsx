@@ -17,3 +17,18 @@ export const MainGrid = styled.div`
     grid-area: footer;
   }
 `;
+
+export const NavStyled = styled.nav`
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 999;
+`;
+
+export const OutletGrid = styled.div`
+  padding-top: 9em;
+  padding-bottom: 5em;
+  max-width: 1200px;
+  /* min-width: 70vw; */
+  /* margin: 0 auto; */
+`;

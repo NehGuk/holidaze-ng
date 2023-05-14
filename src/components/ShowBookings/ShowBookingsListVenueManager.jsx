@@ -4,7 +4,6 @@ import formatDate from "../../utilities/formatDate";
 
 export default function ShowBookingsListVenueManager({ venueBookings }) {
   console.log("MOUNTING SHOW BOOKINGS LIST VENUE MANAGER");
-  /* console.log(venueBookings); */
 
   const sortedBookings = venueBookings.sort((a, b) => new Date(a.dateFrom) - new Date(b.dateFrom));
 

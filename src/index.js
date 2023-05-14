@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import "./index.css";
+/* import "./index.css"; */
+import "./components/styles/index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
@@ -10,11 +11,13 @@ import { AuthProvider } from "react-auth-kit";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // <React.StrictMode>
+
   <AuthProvider authType="localstorage" authName="token">
     <BrowserRouter>
       <App />
     </BrowserRouter>
   </AuthProvider>
+
   //   </React.StrictMode>
 );
 

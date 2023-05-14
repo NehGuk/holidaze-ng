@@ -10,12 +10,6 @@ export default function BookVenue({ bookingObject, numberOfGuests, price }) {
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [showConfirmAndCancel, setShowConfirmAndCancel] = useState(true);
 
-  /* console.log(bookingObject); */
-  /* console.log(numberOfGuests); */
-  /* console.log(typeof numberOfGuests); */
-  /* console.log(price); */
-  /* console.log(id); */
-
   const handleCancelButton = () => {
     window.location.reload();
   };
@@ -46,9 +40,7 @@ export default function BookVenue({ bookingObject, numberOfGuests, price }) {
 }
 
 BookVenue.propTypes = {
-  /* setBookNowClicked: PropTypes.func.isRequired, */
   price: PropTypes.number.isRequired,
   bookingObject: PropTypes.object.isRequired,
-  /* id: PropTypes.string.isRequired, */
   numberOfGuests: PropTypes.number.isRequired,
 };
