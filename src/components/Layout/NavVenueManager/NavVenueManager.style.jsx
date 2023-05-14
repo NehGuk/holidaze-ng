@@ -4,7 +4,7 @@ import { Menu } from "@styled-icons/material/Menu";
 export const NavVenueManagerStyle = styled.nav`
   background: #293d51;
   min-height: 80px;
-  padding: 1em;
+  padding: 1em 0.1em 1em 1em;
   display: grid;
   grid-template-columns: 1.6fr 0.4fr;
   gap: 1em;
@@ -16,8 +16,8 @@ export const NavVenueManagerStyle = styled.nav`
   > :nth-child(2) {
     /* background: lightcyan; */
     /* border: solid 3px blue; */
-    padding: 0.5em;
-    text-align: center;
+    /* padding: 0.5em; */
+    /* margin-right: 3em; */
     align-items: center;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
