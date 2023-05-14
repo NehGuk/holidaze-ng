@@ -26,8 +26,8 @@ export const NavStyled = styled.nav`
 `;
 
 export const OutletGrid = styled.div`
-  margin-top: 9em;
-  margin-bottom: 5em;
+  padding-top: 9em;
+  padding-bottom: 5em;
   max-width: 1200px;
   /* min-width: 70vw; */
   /* margin: 0 auto; */

@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 
 export const NavLoggedOutStyle = styled.nav`
   background: #eaf5fb;
-
-  min-height: 3em;
+  /* height: 80px; */
   padding: 1em;
   display: grid;
   grid-template-columns: 1.6fr 0.4fr;
