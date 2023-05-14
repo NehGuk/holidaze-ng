@@ -1,13 +1,17 @@
 import { Outlet } from "react-router-dom";
 import Nav from "./Nav";
 import Footer from "./Footer";
-import { MainGrid } from "./Layout.style";
+import { MainGrid, NavStyled, OutletGrid } from "./Layout.style";
 
 export default function Layout() {
   return (
     <MainGrid>
-      <Nav />
-      <Outlet />
+      <NavStyled>
+        <Nav />
+      </NavStyled>
+      <OutletGrid>
+        <Outlet />
+      </OutletGrid>
       <Footer />
     </MainGrid>
   );

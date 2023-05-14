@@ -3,12 +3,20 @@ import styled from "styled-components";
 export const VenuesListContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 2em;
-  padding: 2em;
+  gap: 1em;
+  padding: 1em;
 
   background: lightgreen;
   img {
     max-width: 12em;
+  }
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
   }
 `;
 
