@@ -20,7 +20,7 @@ export const ModalContainer = styled.div`
   bottom: 0;
   /* left: 0; */
 
-  background: lightsalmon;
+  background: #293d51;
 
   width: 100vw;
   height: 100vh;
@@ -32,17 +32,80 @@ export const ModalCloseIcon = styled(Close)`
   top: 5%;
   right: 2%;
   z-index: 999;
+  color: #eaf5fb;
+  scale: 60%;
+  cursor: pointer;
 `;
 
 export const ModalContent = styled.div`
-  background: lightpink;
+  /* background: lightpink; */
+
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-`;
 
-export const AvatarImg = styled.img`
-  max-width: 7em;
-  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  gap: 1em;
+
+  /* border: solid 1em white; */
+
+  > :nth-child(1) {
+    /* border: solid green 0.3em; */
+
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+
+    > img {
+      width: 7em;
+      height: 7em;
+      border: 0.3em solid #5879a2;
+      border-radius: 50%;
+      object-fit: cover;
+
+      @media (min-width: 600px) {
+        width: 9em;
+        height: 9em;
+      }
+    }
+  }
+
+  > :nth-child(2) {
+    /* border: solid green 0.3em; */
+    text-align: center;
+    > span {
+      text-transform: uppercase;
+      font-size: small;
+      margin-bottom: 0;
+      color: #d4e4e8;
+    }
+    > p {
+      margin-top: 0.3em;
+      font-size: larger;
+      color: #eaf5fb;
+    }
+  }
+
+  > :nth-child(3) {
+    /* border: solid green 0.3em; */
+    display: grid;
+    gap: 1em;
+    > button {
+      background: #d4e4e8;
+      border: none;
+      padding: 1em 3em;
+      color: #293d51;
+      cursor: pointer;
+      font-weight: 600;
+      border-radius: 5px;
+      :hover {
+        background: white;
+      }
+      @media (min-width: 600px) {
+        min-width: 400px;
+      }
+    }
+  }
 `;

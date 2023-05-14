@@ -6,7 +6,7 @@ import { ModalCloseIcon } from "./NavVenueManagerModal.style";
 import { useSignOut, useAuthUser } from "react-auth-kit";
 import avatar from "../../../../assets/avatar.png";
 
-import { AvatarImg } from "../NavVenueManager.style";
+/* import { AvatarImg } from "../NavVenueManager.style"; */
 
 import { useSpring, animated } from "@react-spring/web";
 
@@ -57,18 +57,38 @@ export default function NavVenueManagerModal({ showModal, setShowModal }) {
             <ModalContainer>
               <ModalCloseIcon aria-label="Close modal" onClick={() => setShowModal((prev) => !prev)} />
               <ModalContent>
-                {userInfo().avatar === null && <AvatarImg src={avatar} />}
-                {userInfo().avatar !== null && <AvatarImg src={userInfo().avatar} />}
-
-                <p>User name: {userInfo().name}</p>
-                {userInfo().venueManager && <p>Account type: Venue manager</p>}
-                {!userInfo().venueManager && <p>Account type: Traveller</p>}
-
-                <button onClick={handleHomeButton}>Home</button>
-                <button onClick={handleMyVenuesButton}>My venues</button>
-                <button onClick={handleMyBookingsButton}>My bookings</button>
-                <button onClick={handleProfileButton}>Profile</button>
-                <button onClick={handleSignOut}>Sing out</button>
+                <div>
+                  {userInfo().avatar === null && <img src={avatar} />}
+                  {userInfo().avatar !== null && <img src={userInfo().avatar} />}
+                </div>
+                <div>
+                  <span>
+                    <strong>User name</strong>
+                  </span>
+                  <p>
+                    <strong>{userInfo().name}</strong>
+                  </p>
+                  <span>
+                    <strong>Account type</strong>
+                  </span>
+                  {userInfo().venueManager && (
+                    <>
+                      <p>Venue manager</p>
+                    </>
+                  )}
+                  {!userInfo().venueManager && (
+                    <>
+                      <p>Traveller</p>
+                    </>
+                  )}
+                </div>
+                <div>
+                  <button onClick={handleHomeButton}>Home</button>
+                  <button onClick={handleMyVenuesButton}>My venues</button>
+                  <button onClick={handleMyBookingsButton}>My bookings</button>
+                  <button onClick={handleProfileButton}>Profile</button>
+                  <button onClick={handleSignOut}>Sing out</button>
+                </div>
               </ModalContent>
             </ModalContainer>
           </animated.div>
