@@ -8,15 +8,18 @@ import reportWebVitals from "./reportWebVitals";
 
 import { AuthProvider } from "react-auth-kit";
 
+import Theme from "./components/styles/theme";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // <React.StrictMode>
-
-  <AuthProvider authType="localstorage" authName="token">
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </AuthProvider>
+  <Theme>
+    <AuthProvider authType="localstorage" authName="token">
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </AuthProvider>
+  </Theme>
 
   //   </React.StrictMode>
 );

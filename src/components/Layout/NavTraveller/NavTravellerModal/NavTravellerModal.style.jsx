@@ -7,8 +7,7 @@ export const ModalBackground = styled.div`
   right: 0;
   bottom: 0;
   /* left: 0; */
-  background: black;
-  background-color: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.7);
   width: 100vw;
   height: 100vh;
 `;
@@ -20,7 +19,7 @@ export const ModalContainer = styled.div`
   bottom: 0;
   /* left: 0; */
 
-  background: #5879a2;
+  background: ${(props) => props.theme.color.lightblue};
 
   width: 100vw;
   height: 100vh;
@@ -32,7 +31,7 @@ export const ModalCloseIcon = styled(Close)`
   top: 5%;
   right: 2%;
   z-index: 999;
-  color: #eaf5fb;
+  color: ${(props) => props.theme.color.white};
   scale: 60%;
   cursor: pointer;
 `;
@@ -79,12 +78,12 @@ export const ModalContent = styled.div`
       text-transform: uppercase;
       font-size: small;
       margin-bottom: 0;
-      color: #293d51;
+      color: ${(props) => props.theme.color.blue};
     }
     > p {
       margin-top: 0.3em;
       font-size: larger;
-      color: #eaf5fb;
+      color: ${(props) => props.theme.color.white};
     }
   }
 
