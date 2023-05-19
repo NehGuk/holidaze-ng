@@ -91,7 +91,7 @@ export const ModalContent = styled.div`
     /* border: solid green 0.3em; */
     display: grid;
     gap: 1em;
-    > button {
+    /* > button {
       background: #d4e4e8;
       border: none;
       padding: 1em 3em;
@@ -105,6 +105,6 @@ export const ModalContent = styled.div`
       @media (min-width: 600px) {
         min-width: 400px;
       }
-    }
+    } */
   }
 `;

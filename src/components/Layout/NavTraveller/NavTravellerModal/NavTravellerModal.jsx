@@ -6,7 +6,7 @@ import { useSignOut, useAuthUser } from "react-auth-kit";
 import avatar from "../../../../assets/avatar.png";
 
 import { useSpring, animated } from "@react-spring/web";
-import { SimgAvatarMenu } from "../../../styles/globalstyles";
+import { SimgAvatarMenu, Sbutton } from "../../../styles/globalstyles";
 
 export default function NavTravellerModal({ showModal, setShowModal }) {
   const springs = useSpring({
@@ -76,10 +76,12 @@ export default function NavTravellerModal({ showModal, setShowModal }) {
                   )}
                 </div>
                 <div>
-                  <button onClick={handleHomeButton}>Home</button>
-                  <button onClick={handleMyBookingsButton}>My bookings</button>
-                  <button onClick={handleProfileButton}>Profile</button>
-                  <button onClick={handleSignOut}>Sing out</button>
+                  <Sbutton onClick={handleHomeButton}>Home</Sbutton>
+                  <Sbutton onClick={handleMyBookingsButton}>My bookings</Sbutton>
+                  <Sbutton onClick={handleProfileButton}>Profile</Sbutton>
+                  <Sbutton $modalMenu onClick={handleSignOut}>
+                    Sing out
+                  </Sbutton>
                 </div>
               </ModalContent>
             </ModalContainer>
