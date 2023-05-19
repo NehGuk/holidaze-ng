@@ -26,7 +26,7 @@ export const Sbutton = styled.button`
   }
 
   ${(props) =>
-    props.$modalMenu &&
+    props.$negative &&
     css`
       background: ${(props) => props.theme.color.shade};
       color: ${(props) => props.theme.color.white};

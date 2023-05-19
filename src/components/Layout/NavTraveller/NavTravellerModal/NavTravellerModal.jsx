@@ -79,7 +79,7 @@ export default function NavTravellerModal({ showModal, setShowModal }) {
                   <Sbutton onClick={handleHomeButton}>Home</Sbutton>
                   <Sbutton onClick={handleMyBookingsButton}>My bookings</Sbutton>
                   <Sbutton onClick={handleProfileButton}>Profile</Sbutton>
-                  <Sbutton $modalMenu onClick={handleSignOut}>
+                  <Sbutton $negative onClick={handleSignOut}>
                     Sing out
                   </Sbutton>
                 </div>
