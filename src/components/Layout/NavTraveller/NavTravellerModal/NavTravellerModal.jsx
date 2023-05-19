@@ -6,6 +6,7 @@ import { useSignOut, useAuthUser } from "react-auth-kit";
 import avatar from "../../../../assets/avatar.png";
 
 import { useSpring, animated } from "@react-spring/web";
+import { SimgAvatarMenu } from "../../../styles/globalstyles";
 
 export default function NavTravellerModal({ showModal, setShowModal }) {
   const springs = useSpring({
@@ -50,8 +51,8 @@ export default function NavTravellerModal({ showModal, setShowModal }) {
               <ModalCloseIcon aria-label="Close modal" onClick={() => setShowModal((prev) => !prev)} />
               <ModalContent>
                 <div>
-                  {userInfo().avatar === null && <img src={avatar} />}
-                  {userInfo().avatar !== null && <img src={userInfo().avatar} />}
+                  {userInfo().avatar === null && <SimgAvatarMenu src={avatar} />}
+                  {userInfo().avatar !== null && <SimgAvatarMenu src={userInfo().avatar} />}
                 </div>
                 <div>
                   <span>

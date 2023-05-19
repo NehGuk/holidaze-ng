@@ -57,7 +57,7 @@ export const ModalContent = styled.div`
     justify-content: center;
     align-items: center; */
 
-    > img {
+    /* > img {
       width: 7em;
       height: 7em;
       border: 0.3em solid #293d51;
@@ -68,7 +68,7 @@ export const ModalContent = styled.div`
         width: 9em;
         height: 9em;
       }
-    }
+    } */
   }
 
   > :nth-child(2) {
