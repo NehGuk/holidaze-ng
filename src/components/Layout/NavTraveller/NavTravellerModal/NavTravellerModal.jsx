@@ -6,6 +6,7 @@ import { useSignOut, useAuthUser } from "react-auth-kit";
 import avatar from "../../../../assets/avatar.png";
 
 import { useSpring, animated } from "@react-spring/web";
+import { SimgAvatarMenu, Sbutton } from "../../../styles/globalstyles";
 
 export default function NavTravellerModal({ showModal, setShowModal }) {
   const springs = useSpring({
@@ -50,8 +51,8 @@ export default function NavTravellerModal({ showModal, setShowModal }) {
               <ModalCloseIcon aria-label="Close modal" onClick={() => setShowModal((prev) => !prev)} />
               <ModalContent>
                 <div>
-                  {userInfo().avatar === null && <img src={avatar} />}
-                  {userInfo().avatar !== null && <img src={userInfo().avatar} />}
+                  {userInfo().avatar === null && <SimgAvatarMenu src={avatar} />}
+                  {userInfo().avatar !== null && <SimgAvatarMenu src={userInfo().avatar} />}
                 </div>
                 <div>
                   <span>
@@ -75,10 +76,12 @@ export default function NavTravellerModal({ showModal, setShowModal }) {
                   )}
                 </div>
                 <div>
-                  <button onClick={handleHomeButton}>Home</button>
-                  <button onClick={handleMyBookingsButton}>My bookings</button>
-                  <button onClick={handleProfileButton}>Profile</button>
-                  <button onClick={handleSignOut}>Sing out</button>
+                  <Sbutton onClick={handleHomeButton}>Home</Sbutton>
+                  <Sbutton onClick={handleMyBookingsButton}>My bookings</Sbutton>
+                  <Sbutton onClick={handleProfileButton}>Profile</Sbutton>
+                  <Sbutton $negative onClick={handleSignOut}>
+                    Sing out
+                  </Sbutton>
                 </div>
               </ModalContent>
             </ModalContainer>

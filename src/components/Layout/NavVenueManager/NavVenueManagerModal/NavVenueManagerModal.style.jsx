@@ -20,7 +20,7 @@ export const ModalContainer = styled.div`
   bottom: 0;
   /* left: 0; */
 
-  background: #293d51;
+  background: ${(props) => props.theme.color.lightblue};
 
   width: 100vw;
   height: 100vh;
@@ -58,7 +58,7 @@ export const ModalContent = styled.div`
     justify-content: center;
     align-items: center; */
 
-    > img {
+    /* > img {
       width: 7em;
       height: 7em;
       border: 0.3em solid #5879a2;
@@ -69,7 +69,7 @@ export const ModalContent = styled.div`
         width: 9em;
         height: 9em;
       }
-    }
+    } */
   }
 
   > :nth-child(2) {
@@ -92,7 +92,7 @@ export const ModalContent = styled.div`
     /* border: solid green 0.3em; */
     display: grid;
     gap: 1em;
-    > button {
+    /* > button {
       background: #d4e4e8;
       border: none;
       padding: 1em 3em;
@@ -106,6 +106,6 @@ export const ModalContent = styled.div`
       @media (min-width: 600px) {
         min-width: 400px;
       }
-    }
+    } */
   }
 `;
