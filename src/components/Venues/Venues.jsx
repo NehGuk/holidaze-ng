@@ -6,6 +6,7 @@ import Loading from "../Loading/Loading";
 import { VenuesListContainer, VenueCard } from "./Venues.style";
 import logo from "../../assets/logo.png";
 import Search from "../Search/Search";
+import NoResults from "../Search/NoResults";
 
 export default function Venues() {
   console.log("MOUNTING Venues component");
@@ -21,10 +22,6 @@ export default function Venues() {
   const [searchTerm, setSearchTerm] = useState("");
   const handleChildData = (childData) => {
     setSearchTerm(childData);
-  };
-
-  const handleClearSearch = () => {
-    window.location.reload();
   };
 
   // scroll
@@ -64,16 +61,10 @@ export default function Venues() {
                   </div>
                 );
               })}
-
-            {venueList.filter((item) => {
-              return searchTerm.toLocaleLowerCase() === "" ? item : item.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || item.description.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || item.location.city.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || item.location.country.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase());
-            }).length === 0 && (
-              <div>
-                <h4>No venues found</h4>
-                <button onClick={handleClearSearch}>Try again</button>
-              </div>
-            )}
           </VenuesListContainer>
+          {venueList.filter((item) => {
+            return searchTerm.toLocaleLowerCase() === "" ? item : item.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || item.description.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || item.location.city.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || item.location.country.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase());
+          }).length === 0 && <NoResults />}
         </div>
       )}
     </div>
