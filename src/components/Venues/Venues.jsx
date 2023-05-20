@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import useAPI from "../../hooks/useAPI";
 import api_endpoints from "../../shared/shared";
 import Loading from "../Loading/Loading";
-import { VenuesListContainer, VenueListGrid, VenueCard } from "./Venues.style";
-import logo from "../../assets/logo.png";
+import { VenuesListContainer, VenueListGrid, VenueCard, VenueCardImg, VenueCardTitle, VenueCardRating, VenueCardCountry, VenueCardCity, VenueCardGuests, VenueCardPrice, VenueCardCTA } from "./Venues.style";
+import logoemptyvenue from "../../assets/logo-empty-venue.png";
 import Search from "../Search/Search";
 import NoResults from "../Search/NoResults";
+import { Sh3CardTitle } from "../styles/globalstyles";
+/* import { Sh3CardTitle } from "../styles/globalstyles"; */
 
 export default function Venues() {
   console.log("MOUNTING Venues component");
@@ -48,16 +50,24 @@ export default function Venues() {
                   return (
                     <div key={venue.id}>
                       <VenueCard>
-                        <Link to={`/venue/${venue.id}`}>{venue.media.length === 0 ? <img src={logo} /> : <img src={venue.media[0]} />}</Link>
-                        <Link to={`/venue/${venue.id}`}>
-                          <h3>{venue.name}</h3>
-                        </Link>
+                        {venue.media.length === 0 ? <VenueCardImg src={logoemptyvenue} /> : <VenueCardImg src={venue.media[0]} />}
 
-                        {venue.location.city !== "Unknown" && venue.location.city !== "" ? <p>{venue.location.city}</p> : <p>Hidden city</p>}
-                        {venue.location.country !== "Unknown" && venue.location.country !== "" ? <p>{venue.location.country}</p> : <p>Faraway country</p>}
+                        <VenueCardTitle>
+                          <Link to={`/venue/${venue.id}`}>
+                            <Sh3CardTitle>{venue.name}</Sh3CardTitle>
+                          </Link>
+                        </VenueCardTitle>
+                        <VenueCardRating>Rating: {venue.rating}</VenueCardRating>
+                        <VenueCardCity>{venue.location.city !== "Unknown" && venue.location.city !== "" ? <p>{venue.location.city}</p> : <p>Hidden city</p>}</VenueCardCity>
+                        <VenueCardCountry>{venue.location.country !== "Unknown" && venue.location.country !== "" ? <p>{venue.location.country}</p> : <p>Faraway country</p>}</VenueCardCountry>
+                        <VenueCardGuests>
+                          <p>Maximum guests: {venue.maxGuests}</p>
+                        </VenueCardGuests>
+                        <VenueCardPrice>
+                          <h4>${venue.price}</h4>
+                        </VenueCardPrice>
 
-                        <p>Maximum guests: {venue.maxGuests}</p>
-                        <p>${venue.price}</p>
+                        <VenueCardCTA to={`/venue/${venue.id}`}>Book</VenueCardCTA>
                       </VenueCard>
                     </div>
                   );

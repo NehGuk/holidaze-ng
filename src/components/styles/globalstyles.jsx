@@ -71,3 +71,8 @@ export const SRegButton = styled.button`
     /* min-width: 3em; */
   }
 `;
+
+// typography
+export const Sh3CardTitle = styled.h2`
+  color: ${(props) => props.theme.color.blue};
+`;
