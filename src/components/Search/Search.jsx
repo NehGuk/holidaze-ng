@@ -7,7 +7,7 @@ import { SearchContainer, SearchInputArea } from "./Search.style";
 
 /* import logoname from "../../assets/logolight-name.png"; */
 
-export default function Search({ onChildData }) {
+export default function Search({ onChildData, scrollToVenuesList }) {
   const [search, setSearch] = useState("");
 
   const handleSearchTerms = (event) => {
@@ -17,6 +17,9 @@ export default function Search({ onChildData }) {
     onChildData(searchTerm);
   };
 
+  const handleButtonClick = () => {
+    scrollToVenuesList();
+  };
   return (
     <SearchContainer>
       {/* <SimgHero src={hero} /> */}
@@ -27,7 +30,7 @@ export default function Search({ onChildData }) {
         <div>
           <h1>Your journey starts here!</h1>
           <input onChange={handleSearchTerms} placeholder={`Search venues...${search}`} />
-          <button>Go</button>
+          <button onClick={handleButtonClick}>Go</button>
         </div>
         <div></div>
       </SearchInputArea>
@@ -37,4 +40,5 @@ export default function Search({ onChildData }) {
 
 Search.propTypes = {
   onChildData: PropTypes.func.isRequired,
+  scrollToVenuesList: PropTypes.func.isRequired,
 };
