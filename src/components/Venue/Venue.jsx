@@ -1,7 +1,7 @@
 import { useIsAuthenticated } from "react-auth-kit";
 import VenueLoggedOut from "./VenueLoggedOut";
 import VenueLoggedIn from "./VenueLoggedIn";
-import { VenueInfo } from "./Venue.style";
+/* import { VenueInfo } from "./Venue.style"; */
 
 import { useParams } from "react-router-dom";
 
@@ -14,10 +14,8 @@ export default function Venue() {
 
   return (
     <div>
-      <VenueInfo>
-        {!isAuth() && <VenueLoggedOut />}
-        {isAuth() && <VenueLoggedIn />}
-      </VenueInfo>
+      {!isAuth() && <VenueLoggedOut />}
+      {isAuth() && <VenueLoggedIn />}
     </div>
   );
 }
