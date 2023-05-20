@@ -116,7 +116,7 @@ export const VenueCardCity = styled.div`
 export const VenueCardGuests = styled.div`
   grid-area: guests;
   padding: 0 1em;
-  margin: 0;
+  margin: 0 0 1em 0;
   > p {
     margin: 0;
   }
