@@ -136,3 +136,12 @@ export const SSpanTitle = styled.span`
   font-size: smaller;
   font-weight: 800;
 `;
+
+export const Shr = styled.hr`
+  border: none;
+  border-top: 1px solid ${(props) => props.theme.color.lightblue};
+  height: 2px;
+  margin-top: 1em;
+  margin-bottom: -2em;
+  opacity: 80%;
+`;

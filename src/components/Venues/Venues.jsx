@@ -7,7 +7,7 @@ import { VenuesListContainer, VenueListGrid, VenueCard, VenueCardImg, VenueCardT
 import logoemptyvenue from "../../assets/logo-empty-venue.png";
 import Search from "../Search/Search";
 import NoResults from "../Search/NoResults";
-import { SLinkButton, SSpanTitle, Sh2CardTitle } from "../styles/globalstyles";
+import { SLinkButton, SSpanTitle, Sh2CardTitle, Shr } from "../styles/globalstyles";
 /* import { Sh3CardTitle } from "../styles/globalstyles"; */
 
 export default function Venues() {
@@ -51,7 +51,6 @@ export default function Venues() {
                     <div key={venue.id}>
                       <VenueCard>
                         {venue.media.length === 0 ? <VenueCardImg src={logoemptyvenue} /> : <VenueCardImg src={venue.media[0]} />}
-
                         <VenueCardTitle>
                           <Link to={`/venue/${venue.id}`}>
                             <Sh2CardTitle>{venue.name}</Sh2CardTitle>
@@ -73,13 +72,19 @@ export default function Venues() {
                         </VenueCardCity>
                         <VenueCardCountry>
                           {venue.location.country !== "Unknown" && venue.location.country !== "" ? (
-                            <p>
-                              <em>{venue.location.country}</em>
-                            </p>
+                            <>
+                              <p>
+                                <em>{venue.location.country}</em>
+                              </p>
+                              <Shr></Shr>
+                            </>
                           ) : (
-                            <p>
-                              <em>Faraway country</em>
-                            </p>
+                            <>
+                              <p>
+                                <em>Faraway country</em>
+                              </p>
+                              <Shr></Shr>
+                            </>
                           )}
                         </VenueCardCountry>
                         <VenueCardGuests>

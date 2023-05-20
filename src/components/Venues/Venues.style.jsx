@@ -31,6 +31,8 @@ export const VenueListGrid = styled.div`
 
   @media (max-width: 600px) {
     grid-template-columns: 1fr;
+    padding: 2em;
+    max-width: 300px;
   }
 `;
 
@@ -38,7 +40,7 @@ export const VenueCard = styled.div`
   background: ${(props) => props.theme.color.white};
   /* border: solid 0.3em darkgreen; */
   border-radius: 10px;
-  min-height: 30em;
+  min-height: 33em;
 
   word-break: break-word;
   display: grid;
@@ -49,7 +51,7 @@ export const VenueCard = styled.div`
     "guests guests"
     "city city"
     "country country"
-    "price price";
+    "price cta";
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   transition: ease-in-out 0.2s;
 
@@ -125,12 +127,17 @@ export const VenueCardGuests = styled.div`
 export const VenueCardPrice = styled.div`
   grid-area: price;
   padding: 1em;
+  align-self: self-end;
+  /*   align-self: end; */
   > h4 {
-    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-size: x-large;
   }
 `;
 
 export const VenueCardCTA = styled.div`
   padding: 0 1em;
   margin: 0 0 2em 0;
+  justify-self: end;
+  align-self: self-end;
 `;
