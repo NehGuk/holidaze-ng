@@ -125,15 +125,46 @@ export const SLinkButton = styled(Link)`
 `;
 
 // typography
+
+export const Sh1Title = styled.h1`
+  color: ${(props) => props.theme.color.blue};
+`;
+
 export const Sh2CardTitle = styled.h2`
   color: ${(props) => props.theme.color.blue};
   padding-bottom: 1em;
+
+  ${(props) =>
+    props.$details &&
+    css`
+      color: ${(props) => props.theme.color.blue};
+      position: relative;
+      margin: 2em 0 -1em 0;
+
+      ::after {
+        content: "";
+        position: absolute;
+        top: -1px; /* Adjust the distance of the dash from the text */
+        left: 0;
+        width: 100%;
+        height: 2px; /* Adjust the height of the dash */
+        background-color: ${(props) => props.theme.color.blue}; /* Adjust the color of the dash */
+        opacity: 40%;
+      }
+    `};
 `;
 
 export const SSpanTitle = styled.span`
   color: ${(props) => props.theme.color.lightblue};
   text-transform: uppercase;
   font-size: smaller;
+  font-weight: 800;
+`;
+
+export const SSpanPrice = styled.span`
+  color: ${(props) => props.theme.color.blue};
+  text-transform: uppercase;
+  font-size: x-large;
   font-weight: 800;
 `;
 

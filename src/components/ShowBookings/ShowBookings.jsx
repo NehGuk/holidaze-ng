@@ -81,7 +81,7 @@ export default function ShowBookings({ venueBookings, maxGuests, price, id }) {
 
       <h4>Select the dates</h4>
 
-      <ReactDatePicker minDate={new Date()} todayButton="Today" onChange={onChange} startDate={startDate} endDate={endDate} selectsRange selectsDisabledDaysInRange excludeDateIntervals={bookingsArray} monthsShown={2} inline fixedHeight></ReactDatePicker>
+      <ReactDatePicker minDate={new Date()} todayButton="Today" onChange={onChange} startDate={startDate} endDate={endDate} selectsRange selectsDisabledDaysInRange excludeDateIntervals={bookingsArray} monthsShown={1} inline fixedHeight></ReactDatePicker>
 
       {!bookingLooksFine && <p>Please add a check-out date</p>}
 
