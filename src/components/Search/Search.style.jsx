@@ -7,6 +7,7 @@ export const SearchContainer = styled.div`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  overflow-x: hidden;
 
   min-width: 100vw;
   min-height: 100vh;
