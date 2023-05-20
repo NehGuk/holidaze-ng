@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 export const VenuesListContainer = styled.div`
   > div {
@@ -60,7 +59,7 @@ export const VenueCard = styled.div`
   -ms-filter: grayscale(50%);
   -o-filter: grayscale(50%);
   :hover {
-    scale: 1.03;
+    scale: 1.01;
     transition: ease-in-out 0.2s;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 
@@ -131,21 +130,7 @@ export const VenueCardPrice = styled.div`
   }
 `;
 
-export const VenueCardCTA = styled(Link)`
-  margin-bottom: 1em;
-
-  padding: 0.5em 2em;
-  margin: 1em 1em 1em 1em;
-  background: ${(props) => props.theme.color.blue};
-  color: ${(props) => props.theme.color.white};
-  font-weight: 600;
-  border-radius: 5px;
-  width: 4em;
-  text-align: center;
-  transition: ease-in-out 0.2s;
-  :hover {
-    transition: ease-in-out 0.2s;
-    background: ${(props) => props.theme.color.green};
-    color: ${(props) => props.theme.color.white};
-  }
+export const VenueCardCTA = styled.div`
+  padding: 0 1em;
+  margin: 0 0 1em 0;
 `;

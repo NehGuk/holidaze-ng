@@ -75,8 +75,6 @@ export const SearchInputArea = styled.div`
     }
 
     @media (max-width: 600px) {
-      background: green;
-      border: green;
     }
   }
 
