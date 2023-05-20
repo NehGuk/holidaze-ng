@@ -126,11 +126,11 @@ export const VenueCardPrice = styled.div`
   grid-area: price;
   padding: 1em;
   > h4 {
-    margin: 0;
+    margin-top: 0;
   }
 `;
 
 export const VenueCardCTA = styled.div`
   padding: 0 1em;
-  margin: 0 0 1em 0;
+  margin: 0 0 2em 0;
 `;
