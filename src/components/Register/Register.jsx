@@ -1,6 +1,7 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+
 import { RegisterGrid } from "./Register.style";
+import { SLinkButton, Sh1Title } from "../styles/globalstyles";
 
 export default function Register() {
   useEffect(() => {
@@ -8,9 +9,15 @@ export default function Register() {
   }, []);
   return (
     <RegisterGrid>
-      <h1>Sign up</h1>
-      <Link to="../register-traveller">I am a traveller</Link>
-      <Link to="../register-manager">I am a venue manager</Link>
+      <Sh1Title>Sign up</Sh1Title>
+
+      <SLinkButton $lightblue to="../register-traveller">
+        I am a traveller
+      </SLinkButton>
+
+      <SLinkButton $lightblue to="../register-manager">
+        I am a venue manager
+      </SLinkButton>
     </RegisterGrid>
   );
 }
