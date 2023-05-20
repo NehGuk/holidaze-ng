@@ -13,6 +13,7 @@ export const SimgAvatarMenu = styled.img`
   }
 `;
 
+// modal buttons
 export const Sbutton = styled.button`
   background: ${(props) => props.theme.color.white};
   border: none;
@@ -38,5 +39,34 @@ export const Sbutton = styled.button`
 
   @media (min-width: 600px) {
     min-width: 400px;
+  }
+`;
+
+// regular buttons
+export const SRegButton = styled.button`
+  background: ${(props) => props.theme.color.lightblue};
+  border: none;
+  padding: 1em 3em;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 5px;
+  :hover {
+    background: white;
+  }
+
+  ${(props) =>
+    props.$negative &&
+    css`
+      background: ${(props) => props.theme.color.shade};
+      color: ${(props) => props.theme.color.white};
+      :hover {
+        color: white;
+        background: ${(props) => props.theme.color.dark};
+      }
+    `};
+
+  @media (min-width: 600px) {
+    /* min-width: 3em; */
   }
 `;
