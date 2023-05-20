@@ -55,6 +55,7 @@ export const Area1 = styled.div`
   max-width: 100%;
   height: 6em;
   border-radius: 10px;
+
   /* color: white; */
   display: grid;
   place-items: center;
@@ -70,6 +71,7 @@ export const Area2 = styled.div`
   background: ${(props) => props.theme.color.white};
   max-width: 100%;
   border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   padding: 1em;
   display: grid;
   place-items: center;
@@ -92,7 +94,8 @@ export const Area2 = styled.div`
 export const Area3 = styled.div`
   margin-top: 2em;
   /* background: ${(props) => props.theme.color.white}; */
-  border: 2px solid ${(props) => props.theme.color.lightblue};
+  /* border: 2px solid ${(props) => props.theme.color.lightblue}; */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   max-width: 100%;
   border-radius: 10px;
   padding: 1em;
