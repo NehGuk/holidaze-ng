@@ -76,8 +76,8 @@ export const SearchInputArea = styled.div`
     }
 
     @media (max-width: 600px) {
-      background: ${(props) => props.theme.color.blue};
-      border: 0.3em solid ${(props) => props.theme.color.blue};
+      background: green;
+      border: green;
     }
   }
 
