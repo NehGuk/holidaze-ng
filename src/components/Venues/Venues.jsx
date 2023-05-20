@@ -7,7 +7,7 @@ import { VenuesListContainer, VenueListGrid, VenueCard, VenueCardImg, VenueCardT
 import logoemptyvenue from "../../assets/logo-empty-venue.png";
 import Search from "../Search/Search";
 import NoResults from "../Search/NoResults";
-import { SLinkButton, Sh2CardTitle } from "../styles/globalstyles";
+import { SLinkButton, SSpanTitle, Sh2CardTitle } from "../styles/globalstyles";
 /* import { Sh3CardTitle } from "../styles/globalstyles"; */
 
 export default function Venues() {
@@ -57,11 +57,35 @@ export default function Venues() {
                             <Sh2CardTitle>{venue.name}</Sh2CardTitle>
                           </Link>
                         </VenueCardTitle>
-                        <VenueCardRating>Rating: {venue.rating}</VenueCardRating>
-                        <VenueCardCity>{venue.location.city !== "Unknown" && venue.location.city !== "" ? <p>{venue.location.city}</p> : <p>Hidden city</p>}</VenueCardCity>
-                        <VenueCardCountry>{venue.location.country !== "Unknown" && venue.location.country !== "" ? <p>{venue.location.country}</p> : <p>Faraway country</p>}</VenueCardCountry>
+                        <VenueCardRating>
+                          <SSpanTitle>Rating: </SSpanTitle> {venue.rating}
+                        </VenueCardRating>
+                        <VenueCardCity>
+                          {venue.location.city !== "Unknown" && venue.location.city !== "" ? (
+                            <p>
+                              <em>{venue.location.city}</em>
+                            </p>
+                          ) : (
+                            <p>
+                              <em>Hidden city</em>
+                            </p>
+                          )}
+                        </VenueCardCity>
+                        <VenueCardCountry>
+                          {venue.location.country !== "Unknown" && venue.location.country !== "" ? (
+                            <p>
+                              <em>{venue.location.country}</em>
+                            </p>
+                          ) : (
+                            <p>
+                              <em>Faraway country</em>
+                            </p>
+                          )}
+                        </VenueCardCountry>
                         <VenueCardGuests>
-                          <p>Maximum guests: {venue.maxGuests}</p>
+                          <p>
+                            <SSpanTitle>Guests: </SSpanTitle> {venue.maxGuests}
+                          </p>
                         </VenueCardGuests>
                         <VenueCardPrice>
                           <h4>${venue.price}</h4>
