@@ -51,9 +51,11 @@ export const SRegButton = styled.button`
   cursor: pointer;
   font-weight: 600;
   border-radius: 5px;
+  transition: ease-in-out 0.2s;
   :hover {
-    background: white;
-    color: ${(props) => props.theme.color.blue};
+    transition: ease-in-out 0.2s;
+    background: ${(props) => props.theme.color.blue};
+    color: ${(props) => props.theme.color.white};
   }
 
   ${(props) =>
