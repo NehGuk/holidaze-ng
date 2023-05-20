@@ -5,6 +5,6 @@ export const NoResultsContainer = styled.div`
   min-height: 50vh;
   min-height: 50svh;
   max-width: 800px;
-  margin: 12em auto 0 auto;
+  margin: 3em auto 0 auto;
   text-align: center;
 `;

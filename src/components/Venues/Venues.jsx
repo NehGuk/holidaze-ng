@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import useAPI from "../../hooks/useAPI";
 import api_endpoints from "../../shared/shared";
 import Loading from "../Loading/Loading";
-import { VenuesListContainer, VenueCard } from "./Venues.style";
+import { VenuesListContainer, VenueListGrid, VenueCard } from "./Venues.style";
 import logo from "../../assets/logo.png";
 import Search from "../Search/Search";
 import NoResults from "../Search/NoResults";
@@ -39,28 +39,30 @@ export default function Venues() {
         <div>
           <Search onChildData={handleChildData} scrollToVenuesList={scrollToVenuesList} />
           <VenuesListContainer ref={venuesListRef}>
-            {venueList
-              .filter((item) => {
-                return searchTerm.toLocaleLowerCase() === "" ? item : item.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || item.description.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || item.location.city.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || item.location.country.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase());
-              })
-              .map((venue) => {
-                return (
-                  <div key={venue.id}>
-                    <VenueCard>
-                      <Link to={`/venue/${venue.id}`}>{venue.media.length === 0 ? <img src={logo} /> : <img src={venue.media[0]} />}</Link>
-                      <Link to={`/venue/${venue.id}`}>
-                        <h3>{venue.name}</h3>
-                      </Link>
+            <VenueListGrid>
+              {venueList
+                .filter((item) => {
+                  return searchTerm.toLocaleLowerCase() === "" ? item : item.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || item.description.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || item.location.city.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || item.location.country.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase());
+                })
+                .map((venue) => {
+                  return (
+                    <div key={venue.id}>
+                      <VenueCard>
+                        <Link to={`/venue/${venue.id}`}>{venue.media.length === 0 ? <img src={logo} /> : <img src={venue.media[0]} />}</Link>
+                        <Link to={`/venue/${venue.id}`}>
+                          <h3>{venue.name}</h3>
+                        </Link>
 
-                      {venue.location.city !== "Unknown" && venue.location.city !== "" ? <p>{venue.location.city}</p> : <p>Hidden city</p>}
-                      {venue.location.country !== "Unknown" && venue.location.country !== "" ? <p>{venue.location.country}</p> : <p>Faraway country</p>}
+                        {venue.location.city !== "Unknown" && venue.location.city !== "" ? <p>{venue.location.city}</p> : <p>Hidden city</p>}
+                        {venue.location.country !== "Unknown" && venue.location.country !== "" ? <p>{venue.location.country}</p> : <p>Faraway country</p>}
 
-                      <p>Maximum guests: {venue.maxGuests}</p>
-                      <p>${venue.price}</p>
-                    </VenueCard>
-                  </div>
-                );
-              })}
+                        <p>Maximum guests: {venue.maxGuests}</p>
+                        <p>${venue.price}</p>
+                      </VenueCard>
+                    </div>
+                  );
+                })}
+            </VenueListGrid>
           </VenuesListContainer>
           {venueList.filter((item) => {
             return searchTerm.toLocaleLowerCase() === "" ? item : item.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || item.description.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || item.location.city.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || item.location.country.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase());
