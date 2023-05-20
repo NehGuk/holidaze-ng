@@ -127,4 +127,12 @@ export const SLinkButton = styled(Link)`
 // typography
 export const Sh2CardTitle = styled.h2`
   color: ${(props) => props.theme.color.blue};
+  padding-bottom: 1em;
+`;
+
+export const SSpanTitle = styled.span`
+  color: ${(props) => props.theme.color.lightblue};
+  text-transform: uppercase;
+  font-size: smaller;
+  font-weight: 800;
 `;
