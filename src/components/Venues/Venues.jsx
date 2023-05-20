@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import useAPI from "../../hooks/useAPI";
 import api_endpoints from "../../shared/shared";
@@ -27,14 +27,21 @@ export default function Venues() {
     window.location.reload();
   };
 
+  // scroll
+  const venuesListRef = useRef(null); // step 1
+
+  const scrollToVenuesList = () => {
+    venuesListRef.current.scrollIntoView({ behavior: "smooth" }); // Step 2: Create a function to scroll to the VenuesListContainer
+  };
+
   return (
     <div>
       {isLoading && <Loading />}
       {isError && <p>An error has occurred</p>}
       {isSuccess && (
         <div>
-          <Search onChildData={handleChildData} />
-          <VenuesListContainer>
+          <Search onChildData={handleChildData} scrollToVenuesList={scrollToVenuesList} />
+          <VenuesListContainer ref={venuesListRef}>
             {venueList
               .filter((item) => {
                 return searchTerm.toLocaleLowerCase() === "" ? item : item.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || item.description.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || item.location.city.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || item.location.country.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase());
