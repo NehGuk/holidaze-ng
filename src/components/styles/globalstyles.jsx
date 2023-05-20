@@ -139,18 +139,8 @@ export const Sh2CardTitle = styled.h2`
     css`
       color: ${(props) => props.theme.color.blue};
       position: relative;
-      margin: 2em 0 -1em 0;
-
-      ::after {
-        content: "";
-        position: absolute;
-        top: -1px; /* Adjust the distance of the dash from the text */
-        left: 0;
-        width: 100%;
-        height: 2px; /* Adjust the height of the dash */
-        background-color: ${(props) => props.theme.color.blue}; /* Adjust the color of the dash */
-        opacity: 40%;
-      }
+      margin: 0.5em 0 -1em 0;
+      padding-bottom: 0.5em;
     `};
 `;
 
