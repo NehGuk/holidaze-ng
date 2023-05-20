@@ -5,6 +5,8 @@ import { useState } from "react";
 
 import { SearchContainer, SearchInputArea } from "./Search.style";
 
+/* import logoname from "../../assets/logolight-name.png"; */
+
 export default function Search({ onChildData }) {
   const [search, setSearch] = useState("");
 
@@ -18,11 +20,16 @@ export default function Search({ onChildData }) {
   return (
     <SearchContainer>
       {/* <SimgHero src={hero} /> */}
-      <h1>Holidaze</h1>
+
+      {/* <img src={logoname} /> */}
 
       <SearchInputArea>
-        <h2>Let us explore!</h2>
-        <input onChange={handleSearchTerms} placeholder={`Search our venues...${search}`} />
+        <div>
+          <h1>Your journey starts here!</h1>
+          <input onChange={handleSearchTerms} placeholder={`Search venues...${search}`} />
+          <button>Go</button>
+        </div>
+        <div></div>
       </SearchInputArea>
     </SearchContainer>
   );
