@@ -7,6 +7,7 @@ export const SearchContainer = styled.div`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  overflow-x: hidden;
 
   min-width: 100vw;
   min-height: 100vh;
@@ -44,40 +45,37 @@ export const SearchInputArea = styled.div`
     padding: 1em 2em;
     border-radius: 10px;
     border: none;
-    outline: blue;
+    font-size: large;
+
     margin-right: 1em;
     margin-bottom: 2em;
-    border: 0.3em solid ${(props) => props.theme.color.white}; /* Add border */
 
     :focus {
       background: white;
       border: none;
-      outline: red;
-      border: 0.3em solid ${(props) => props.theme.color.white}; /* Add border */
+
       outline: none;
     }
   }
 
   > div > button {
     background: ${(props) => props.theme.color.lightblue};
-    border: 0.3em solid green;
-
+    border: none;
+    font-size: large;
     padding: 1em 2em;
     color: ${(props) => props.theme.color.white};
-    background: green;
+    background: ${(props) => props.theme.color.green};
     cursor: pointer;
     font-weight: 600;
     border-radius: 10px;
     transition: ease-in-out 0.3s;
     :hover {
-      background: lightgreen;
-      border: 0.3em solid lightgreen;
-      color: ${(props) => props.theme.color.dark};
+      transition: ease-in-out 0.3s;
+      background: ${(props) => props.theme.color.darkgreen};
+      color: white;
     }
 
     @media (max-width: 600px) {
-      background: green;
-      border: green;
     }
   }
 
