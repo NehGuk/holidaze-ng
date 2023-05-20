@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { RegisterFormContainer, RegisterFormStatusMessages } from "./RegisterManager.style";
 
@@ -16,6 +16,10 @@ const schema = yup.object().shape({
 });
 
 export default function RegisterManager() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const {
     register,
     handleSubmit,
