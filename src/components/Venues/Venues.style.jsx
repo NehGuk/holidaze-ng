@@ -41,6 +41,7 @@ export const VenueCard = styled.div`
   border-radius: 10px;
   min-height: 30em;
 
+  word-break: break-word;
   display: grid;
   grid-template-areas:
     "cardimg cardimg"
@@ -84,8 +85,9 @@ export const VenueCardTitle = styled.div`
   padding: 0 1em;
   margin: 0;
 
-  > a > h3 {
-    /* color: yellow; */
+  > a > h2 {
+    margin: 0;
+    overflow-wrap: break-word;
   }
 `;
 

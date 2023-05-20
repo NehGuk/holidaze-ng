@@ -7,7 +7,7 @@ import { VenuesListContainer, VenueListGrid, VenueCard, VenueCardImg, VenueCardT
 import logoemptyvenue from "../../assets/logo-empty-venue.png";
 import Search from "../Search/Search";
 import NoResults from "../Search/NoResults";
-import { Sh3CardTitle } from "../styles/globalstyles";
+import { Sh2CardTitle } from "../styles/globalstyles";
 /* import { Sh3CardTitle } from "../styles/globalstyles"; */
 
 export default function Venues() {
@@ -54,7 +54,7 @@ export default function Venues() {
 
                         <VenueCardTitle>
                           <Link to={`/venue/${venue.id}`}>
-                            <Sh3CardTitle>{venue.name}</Sh3CardTitle>
+                            <Sh2CardTitle>{venue.name}</Sh2CardTitle>
                           </Link>
                         </VenueCardTitle>
                         <VenueCardRating>Rating: {venue.rating}</VenueCardRating>

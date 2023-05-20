@@ -73,6 +73,6 @@ export const SRegButton = styled.button`
 `;
 
 // typography
-export const Sh3CardTitle = styled.h2`
+export const Sh2CardTitle = styled.h2`
   color: ${(props) => props.theme.color.blue};
 `;
