@@ -53,6 +53,7 @@ export const SRegButton = styled.button`
   border-radius: 5px;
   :hover {
     background: white;
+    color: ${(props) => props.theme.color.blue};
   }
 
   ${(props) =>
