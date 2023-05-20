@@ -1,5 +1,11 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
+/* import hero from "../../assets/hero.jpg"; */
+/* import { SimgHero } from "./Search.style"; */
+
+import { SearchContainer, SearchInputArea } from "./Search.style";
+
+/* import logoname from "../../assets/logolight-name.png"; */
 
 export default function Search({ onChildData }) {
   const [search, setSearch] = useState("");
@@ -12,10 +18,20 @@ export default function Search({ onChildData }) {
   };
 
   return (
-    <div>
-      <h2>Search component</h2>
-      <input onChange={handleSearchTerms} placeholder={`Search...${search}`} />
-    </div>
+    <SearchContainer>
+      {/* <SimgHero src={hero} /> */}
+
+      {/* <img src={logoname} /> */}
+
+      <SearchInputArea>
+        <div>
+          <h1>Your journey starts here!</h1>
+          <input onChange={handleSearchTerms} placeholder={`Search venues...${search}`} />
+          <button>Go</button>
+        </div>
+        <div></div>
+      </SearchInputArea>
+    </SearchContainer>
   );
 }
 

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { NavLoggedOutStyle, LinkStyled1, LinkStyled2 } from "./NavLoggedOut.style";
-import logo from "../../../assets/logo.png";
+import logobluename from "../../../assets/logoblue-name.png";
 import { LogoImg } from "./NavLoggedOut.style";
 
 export default function NavLoggedOut() {
@@ -8,12 +8,12 @@ export default function NavLoggedOut() {
     <NavLoggedOutStyle>
       <div>
         <Link to="/">
-          <LogoImg src={logo} />
+          <LogoImg src={logobluename} />
         </Link>
       </div>
       <div>
         <LinkStyled1 to="login">Login</LinkStyled1>
-        <LinkStyled2 to="register">Register</LinkStyled2>
+        <LinkStyled2 to="register">Sign up</LinkStyled2>
       </div>
     </NavLoggedOutStyle>
   );
