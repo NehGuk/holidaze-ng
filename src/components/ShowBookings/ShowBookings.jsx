@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import BookVenue from "../BookVenue/BookVenue";
 
 import { useIsAuthenticated } from "react-auth-kit";
+import { BookingMessageParagraph } from "./ShowBookings.style";
 
 export default function ShowBookings({ venueBookings, maxGuests, price, id }) {
   const [startDate, setStartDate] = useState(new Date());
@@ -78,12 +79,12 @@ export default function ShowBookings({ venueBookings, maxGuests, price, id }) {
           <input type="number" pattern="[0-9]*" inputMode="numeric" placeholder={numberOfGuests} max={maxGuests} min={1} onChange={handleGuests} />
         </div>
       )}
-
-      <h4>Select the dates</h4>
+      <BookingMessageParagraph>Select dates:</BookingMessageParagraph>
+      {/* <p>Select the dates</p> */}
 
       <ReactDatePicker minDate={new Date()} todayButton="Today" onChange={onChange} startDate={startDate} endDate={endDate} selectsRange selectsDisabledDaysInRange excludeDateIntervals={bookingsArray} monthsShown={1} inline fixedHeight></ReactDatePicker>
 
-      {!bookingLooksFine && <p>Please add a check-out date</p>}
+      {!bookingLooksFine && <BookingMessageParagraph>Please add a check-out date.</BookingMessageParagraph>}
 
       {userIsAuth() && !hideBookThisVenueButton && <button onClick={createBookingObject}>Book this venue</button>}
 
