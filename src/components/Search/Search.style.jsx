@@ -44,7 +44,7 @@ export const SearchInputArea = styled.div`
     padding: 1em 2em;
     border-radius: 10px;
     border: none;
-    outline: none;
+    outline: blue;
     margin-right: 1em;
     margin-bottom: 2em;
     border: 0.3em solid ${(props) => props.theme.color.white}; /* Add border */
@@ -60,15 +60,19 @@ export const SearchInputArea = styled.div`
 
   > div > button {
     background: ${(props) => props.theme.color.lightblue};
-    border: 0.3em solid ${(props) => props.theme.color.lightblue};
+    border: 0.3em solid green;
 
     padding: 1em 2em;
     color: ${(props) => props.theme.color.white};
+    background: green;
     cursor: pointer;
     font-weight: 600;
     border-radius: 10px;
+    transition: ease-in-out 0.3s;
     :hover {
-      background: ${(props) => props.theme.color.blue};
+      background: lightgreen;
+      border: 0.3em solid lightgreen;
+      color: ${(props) => props.theme.color.dark};
     }
 
     @media (max-width: 600px) {
