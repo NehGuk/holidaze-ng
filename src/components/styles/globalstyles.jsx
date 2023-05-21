@@ -135,6 +135,12 @@ export const SLinkButton = styled(Link)`
         background: ${(props) => props.theme.color.blue};
       }
     `};
+
+  @media (max-width: 400px) {
+    font-size: small;
+    font-weight: 600;
+    padding: 1em 1em;
+  }
 `;
 
 // typography
@@ -210,6 +216,15 @@ export const Shr = styled.hr`
   height: 2px;
   margin-top: 1em;
   margin-bottom: -2em;
+  opacity: 80%;
+`;
+
+export const Shr2 = styled.hr`
+  border: none;
+  border-top: 1px solid ${(props) => props.theme.color.lightblue};
+  height: 2px;
+  /* margin-top: 1em; */
+  /* margin-bottom: -2em; */
   opacity: 80%;
 `;
 
