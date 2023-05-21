@@ -2,8 +2,9 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useState, useEffect } from "react";
-import { Link, Navigate } from "react-router-dom";
-import { RegisterFormContainer, RegisterFormStatusMessages } from "./RegisterTraveller.style";
+/* import { Link, Navigate } from "react-router-dom"; */
+import { RegisterFormContainer } from "./RegisterTraveller.style";
+import RegisterAPICall from "./RegisterAPICall";
 
 const schema = yup.object().shape({
   name: yup.string().required("Please enter your name").max(20, "Name should no more than 20 characters"),
@@ -28,12 +29,17 @@ export default function RegisterTraveller() {
     resolver: yupResolver(schema),
   });
 
-  const [success, setSuccess] = useState(false);
+  /* const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState(""); */
+  const [data, setData] = useState(null);
+  const [formDataCreated, setFormDataCreated] = useState(false);
 
   const onSubmit = async (data) => {
-    data.venueManager = false;
+    setData(data);
+    console.log(formDataCreated);
+    setFormDataCreated(true);
+    /* data.venueManager = false;
     try {
       const response = await fetch("https://api.noroff.dev/api/v1/holidaze/auth/register", {
         method: "POST",
@@ -63,7 +69,7 @@ export default function RegisterTraveller() {
     } catch (error) {
       setError(true);
       console.log(error);
-    }
+    } */
   };
 
   return (
@@ -91,7 +97,9 @@ export default function RegisterTraveller() {
 
           <button type="submit">Register</button>
 
-          <RegisterFormStatusMessages>
+          {formDataCreated && data && <RegisterAPICall data={data} />}
+
+          {/* <RegisterFormStatusMessages>
             {error && (
               <p>
                 {errorMessage}. Click here to <Link to="/login">Login</Link>.
@@ -106,7 +114,7 @@ export default function RegisterTraveller() {
             <div>
               Register as a <Link to="/register-manager">venue manager</Link>.
             </div>
-          </RegisterFormStatusMessages>
+          </RegisterFormStatusMessages> */}
         </RegisterFormContainer>
       </form>
     </div>
