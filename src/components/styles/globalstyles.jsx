@@ -179,6 +179,17 @@ export const SpAPIErrorMessage = styled.p`
   color: ${(props) => props.theme.color.blue};
 `;
 
+export const SpWarning = styled.p`
+  /* text-align: center; */
+  text-transform: uppercase;
+  font-size: smaller;
+  font-weight: 800;
+  color: ${(props) => props.theme.color.blue};
+  border: solid 2px ${(props) => props.theme.color.shade};
+  padding: 1em;
+  border-radius: 5px;
+`;
+
 export const SSpanTitle = styled.span`
   color: ${(props) => props.theme.color.lightblue};
   text-transform: uppercase;
