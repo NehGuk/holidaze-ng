@@ -3,6 +3,8 @@ import formatDate from "../../utilities/formatDate";
 import estimatePrice from "../../utilities/estiamatePrice";
 import BookVenueAPICall from "./BookVenueAPICall";
 import { useState } from "react";
+import { SRegButton, Sh2CardTitle } from "../styles/globalstyles";
+import { BookingConfirmArea } from "./BookVenue.style";
 
 export default function BookVenue({ bookingObject, numberOfGuests, price }) {
   console.log("MOUNT BookVenue COMPONENT");
@@ -20,22 +22,34 @@ export default function BookVenue({ bookingObject, numberOfGuests, price }) {
   };
 
   return (
-    <div>
-      <h3>Summary</h3>
-      <p>Guests: {numberOfGuests}</p>
-      <p>Check-in: {formatDate(bookingObject.dateFrom)}</p>
-      <p>Check-out: {formatDate(bookingObject.dateTo)}</p>
-      <p>Estimated price: ${estimatePrice(bookingObject.dateFrom, bookingObject.dateTo, price)}</p>
+    <BookingConfirmArea>
+      <Sh2CardTitle>Summary</Sh2CardTitle>
+      <p>
+        <span>Guests:</span> {numberOfGuests}
+      </p>
+      <p>
+        <span>Check-in:</span> {formatDate(bookingObject.dateFrom)}
+      </p>
+      <p>
+        <span>Check-out:</span> {formatDate(bookingObject.dateTo)}
+      </p>
+      <p>
+        <span>Estimated price:</span> ${estimatePrice(bookingObject.dateFrom, bookingObject.dateTo, price)}
+      </p>
 
       {showConfirmAndCancel && (
         <div>
-          <button onClick={handleConfirmButton}>Confirm</button>
-          <button onClick={handleCancelButton}>Cancel</button>
+          <SRegButton $green onClick={handleConfirmButton}>
+            Confirm
+          </SRegButton>
+          <SRegButton $negative onClick={handleCancelButton}>
+            Cancel
+          </SRegButton>
         </div>
       )}
 
       {isConfirmed && <BookVenueAPICall bookingObject={bookingObject} setShowConfirmAndCancel={setShowConfirmAndCancel} />}
-    </div>
+    </BookingConfirmArea>
   );
 }
 

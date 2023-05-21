@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import ShowBookings from "../ShowBookings/ShowBookings";
 import useApi from "../../hooks/useAPI";
@@ -6,7 +6,12 @@ import api_endpoints from "../../shared/shared";
 import Loading from "../Loading/Loading";
 import logo from "../../assets/logo.png";
 
+import { SLinkButton, SSpanPrice, SSpanTitle, Sh1Title, Sh2CardTitle } from "../styles/globalstyles";
+import { VenueContainer, StarIcon, ParkingIcon, WifiIcon, BreakfastIcon, PetsIcon, Area1, Area2, Area3, Area4, AreaCTAs } from "./VenueLoggedInTraveller.style";
+
 export default function VenueLoggedInTraveller() {
+  <VenueContainer />;
+
   const params = useParams();
   console.log(params.id);
 
@@ -15,47 +20,106 @@ export default function VenueLoggedInTraveller() {
   const venueBookings = data.bookings;
   const { id, name, media, description, price, rating, maxGuests, meta, location, owner } = data;
 
-  console.log(isLoading);
-  console.log(isError);
-
   return (
     <div>
       {isError && <p>An error has occurred</p>}
       {isLoading && <Loading />}
       {isSuccess && (
-        <div>
-          <h1>{name}</h1>
+        <VenueContainer>
+          <Sh1Title>{name}</Sh1Title>
           {media.length === 0 && <img src={logo} />}
           {media.length > 0 && <img src={media[0]} />}
 
-          <p>{description}</p>
-          <p>${price}</p>
-          <p>Ratingggg: {rating}</p>
+          <div>
+            {description.length > 10 && (
+              <p>
+                <SSpanTitle>Description: </SSpanTitle> {description}
+              </p>
+            )}
+            {description.length < 10 && (
+              <p>
+                <SSpanTitle>Description: </SSpanTitle> The venue manager has not provided a description of this property yet. Please reach out to them if you want to konw more.
+              </p>
+            )}
+          </div>
 
-          <h3>Details</h3>
-          <p>
-            This property accepts a maximum of <strong>{maxGuests}</strong> guests.
-          </p>
-          {meta.wifi && <p>wifi</p>}
-          {meta.parking && <p>parking</p>}
-          {meta.breakfast && <p>breakfast</p>}
-          {meta.pets && <p>pets allowed</p>}
+          <Area1>
+            <p>
+              <SSpanPrice> ${price}</SSpanPrice> per night
+            </p>
+          </Area1>
 
-          <h3>Location</h3>
-          {(location.address === "" || location.address === "Unknown") && <p>For directions, please contact the owner.</p>}
-          <p>{location.address}</p>
-          <p>{location.city}</p>
-          <p>{location.country}</p>
+          <Area2>
+            <h2>Details</h2>
 
-          <h3>Owner</h3>
-          <p>{owner.name}</p>
-          <p>{owner.email}</p>
+            <p>
+              This property accepts a maximum of <strong>{maxGuests}</strong> guests.
+            </p>
+            <div>
+              <>
+                <StarIcon /> <p>Rating: {rating}</p>
+              </>
+              {meta.wifi && (
+                <>
+                  <WifiIcon /> <p>Wifi </p>
+                </>
+              )}
+              {meta.parking && (
+                <>
+                  <ParkingIcon /> <p>Parking </p>
+                </>
+              )}
+              {meta.breakfast && (
+                <>
+                  <BreakfastIcon /> <p>Breakfast</p>
+                </>
+              )}
+              {meta.pets && (
+                <>
+                  <PetsIcon /> <p>Pets allowed</p>
+                </>
+              )}
+            </div>
+          </Area2>
 
-          <h3>How to book</h3>
-          {venueBookings && <ShowBookings venueBookings={venueBookings} maxGuests={maxGuests} price={price} id={id} />}
+          <Area3>
+            <Sh2CardTitle $details>Location</Sh2CardTitle>
+            {(location.address === "" || location.address === "Unknown") && (
+              <p>
+                <em>For directions, please contact the owner.</em>
+              </p>
+            )}
+            <p>
+              <SSpanTitle>Address </SSpanTitle>
+              {location.address}
+            </p>
+            <p>
+              <SSpanTitle>City </SSpanTitle>
+              {location.city}
+            </p>
+            <p>
+              <SSpanTitle>Country </SSpanTitle>
+              {location.country}
+            </p>
 
-          <Link to="/">Back</Link>
-        </div>
+            <Sh2CardTitle $details>Owner</Sh2CardTitle>
+            <p>
+              <SSpanTitle>Name</SSpanTitle> {owner.name}
+            </p>
+            <p>
+              <SSpanTitle>Email </SSpanTitle>
+              {owner.email}
+            </p>
+          </Area3>
+
+          <Area4>
+            {/* <Sh2CardTitle>How to book</Sh2CardTitle> */}
+            {venueBookings && <ShowBookings venueBookings={venueBookings} maxGuests={maxGuests} price={price} id={id} />}
+          </Area4>
+          <AreaCTAs>
+            <SLinkButton to="/">Back</SLinkButton>
+          </AreaCTAs>
+        </VenueContainer>
       )}
     </div>
   );

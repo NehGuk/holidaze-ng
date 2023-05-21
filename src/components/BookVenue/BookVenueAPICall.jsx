@@ -4,6 +4,7 @@ import api_endpoints from "../../shared/shared";
 import createMethod from "../../utilities/createMethod";
 import Loading from "../Loading/Loading";
 import { Navigate } from "react-router-dom";
+import { SRegButton, SpWarning } from "../styles/globalstyles";
 
 export default function BookVenueAPICall({ bookingObject, setShowConfirmAndCancel }) {
   console.log("MAKING API CALL");
@@ -30,8 +31,11 @@ export default function BookVenueAPICall({ bookingObject, setShowConfirmAndCance
       {isSuccess && <Navigate to="/booking-confirmed" />}
       {!isSuccess && data && data.errors && (
         <div>
-          <p>{data.errors[0].message}</p>
-          <button onClick={handlePleaseTryAgain}>Please try again</button>
+          <SpWarning>{data.errors[0].message}</SpWarning>
+
+          <SRegButton $negative onClick={handlePleaseTryAgain}>
+            Please try again
+          </SRegButton>
         </div>
       )}
       {data && data.errors && setShowConfirmAndCancel(false)}
