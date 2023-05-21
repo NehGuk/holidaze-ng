@@ -3,6 +3,7 @@ import api_endpoints from "../../shared/shared";
 import { useAuthUser } from "react-auth-kit";
 import Loading from "../Loading/Loading";
 import MyBookingsList from "./MyBookingsList";
+import { Sh1Title } from "../styles/globalstyles";
 
 export default function MyBookings() {
   const userInfo = useAuthUser();
@@ -19,7 +20,7 @@ export default function MyBookings() {
 
   return (
     <div>
-      <h1>My bookings</h1>
+      <Sh1Title>My bookings</Sh1Title>
       {isLoading && <Loading />}
       {isError && <p>An error has occurred</p>}
       {isSuccess && (

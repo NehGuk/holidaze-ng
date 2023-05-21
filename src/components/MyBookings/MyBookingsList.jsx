@@ -2,9 +2,11 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import estimatePrice from "../../utilities/estiamatePrice";
 import formatDate from "../../utilities/formatDate";
-import { MyBookingsListContainer } from "./MyBookingsList.style";
+import { MyBookingsGrid, MyBookingsListContainer } from "./MyBookingsList.style";
 import { useState } from "react";
 import logo from "../../assets/logo.png";
+/* import imgtest from "../../assets/hero3.jpg"; */
+import { Sh1Title } from "../styles/globalstyles";
 
 export default function MyBookingsList({ bookings }) {
   console.log("MOUNTING MY BOOKINGS LIST");
@@ -27,6 +29,7 @@ export default function MyBookingsList({ bookings }) {
   return (
     <div>
       <MyBookingsListContainer>
+        <Sh1Title>My bookings</Sh1Title>
         {upcomingBookings.length === 0 && (
           <div>
             <h3>You have no upcoming bookings.</h3>
@@ -44,12 +47,31 @@ export default function MyBookingsList({ bookings }) {
         {upcomingBookings.map((booking) => {
           return (
             <div key={booking.id}>
+              <MyBookingsGrid>
+                <div>
+                  <img src={booking.venue.media[0]} />
+                </div>
+                <div>
+                  <div>
+                    <h3>property</h3>
+                  </div>
+                  <div>city</div>
+                  <div>country</div>
+                  <div>checkin</div>
+                  <div>checkout</div>
+                  <div>guest</div>
+                  <div>price</div>
+                  <div>cta</div>
+                </div>
+              </MyBookingsGrid>
+
               {booking.venue.media.length === 0 && <img src={logo} />}
               {booking.venue.media.length > 0 && <img src={booking.venue.media[0]} />}
 
               <h3>{booking.venue.name}</h3>
               {booking.venue.location.city !== "Unknown" && booking.venue.location.city !== "" ? <p>{booking.venue.location.city}</p> : <p>Hidden city</p>}
               {booking.venue.location.country !== "Unknown" && booking.venue.location.country !== "" ? <p>{booking.venue.location.country}</p> : <p>Faraway country</p>}
+
               <p>Check-in: {formatDate(booking.dateFrom)}</p>
               <p>Check-out: {formatDate(booking.dateTo)} </p>
               <p>Guests: {booking.guests}</p>
