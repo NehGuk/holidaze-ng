@@ -41,7 +41,7 @@ export default function RegisterTraveller() {
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <RegisterFormContainer>
-          <Sh1Title>Register as a traveller</Sh1Title>
+          <Sh1Title>Sign up as a traveller</Sh1Title>
 
           <label htmlFor="name" hidden>
             Name:

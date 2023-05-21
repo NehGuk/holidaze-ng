@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const RegisterGrid = styled.div`
-  background: white;
+  background: ${(props) => props.theme.color.white};
   max-width: 400px;
   margin: 3em auto 0 auto;
   border-radius: 10px;
@@ -10,6 +10,7 @@ export const RegisterGrid = styled.div`
   gap: 1em;
   place-items: center;
   text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
   > a {
     width: 70%;
