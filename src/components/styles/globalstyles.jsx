@@ -241,3 +241,25 @@ export const SinputNumber = styled.input`
     outline: solid 3px ${(props) => props.theme.color.lightblue};
   }
 `;
+
+// layout templates
+export const PageArea1Container = styled.div`
+  margin: 3em auto 0 auto;
+  padding: 2em;
+  max-width: 600px;
+  background: ${(props) => props.theme.color.white};
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  display: grid;
+  place-items: center;
+
+  @media (max-width: 700px) {
+    max-width: 50%;
+  }
+`;
+
+export const CTAArea = styled.div`
+  display: grid;
+  gap: 1em;
+  margin-top: 2em;
+`;

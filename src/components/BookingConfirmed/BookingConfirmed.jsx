@@ -1,13 +1,17 @@
-import { Link } from "react-router-dom";
+import { CTAArea, PageArea1Container, SLinkButton, Sh1Title } from "../styles/globalstyles";
 
 export default function BookingConfirmed() {
   return (
-    <div>
-      <h1>Thank you!</h1>
+    <PageArea1Container>
+      <Sh1Title>Nice one!</Sh1Title>
       <p>Your booking has been confirmed.</p>
 
-      <Link to="/my-bookings">My bookings</Link>
-      <Link to="/home">Back to homepage</Link>
-    </div>
+      <CTAArea>
+        <SLinkButton to="/my-bookings">My bookings</SLinkButton>
+        <SLinkButton $lightblue to="/home">
+          Back to homepage
+        </SLinkButton>
+      </CTAArea>
+    </PageArea1Container>
   );
 }
