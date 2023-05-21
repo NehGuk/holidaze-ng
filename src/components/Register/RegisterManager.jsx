@@ -2,9 +2,10 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useState, useEffect } from "react";
-import { RegisterFormContainer } from "./RegisterManager.style";
+import { RegisterFormContainer, RegisterAsOther } from "./RegisterManager.style";
 import RegisterAPICall from "./RegisterAPICall";
 import { Sh1Title, Sinput, SRegButton, SpFormError } from "../styles/globalstyles";
+import { Link } from "react-router-dom";
 
 const schema = yup.object().shape({
   name: yup.string().required("Please enter your name").max(20, "Name should be no more than 20 characters"),
@@ -61,11 +62,18 @@ export default function RegisterManager() {
           <Sinput type="password" {...register("password")} placeholder="Password" />
           {errors.password && <SpFormError>{errors.password.message}</SpFormError>}
 
-          <SRegButton type="submit">Register</SRegButton>
+          <SRegButton $green type="submit">
+            Register
+          </SRegButton>
 
           {formDataCreated && data && <RegisterAPICall data={data} />}
         </RegisterFormContainer>
       </form>
+      <RegisterAsOther>
+        <p>
+          Or click <Link to="/register-traveller">here</Link> to sign up as a venue manager instead.
+        </p>
+      </RegisterAsOther>
     </div>
   );
 }

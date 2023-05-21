@@ -3,11 +3,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { LoginFormContainer, LoginFormStatusMessages } from "./Login.style";
+import { LoginFormContainer, RegisterAsOther } from "./Login.style";
+import LoginAPICall from "./LoginAPICall";
+import { Sh1Title, SpFormError, Sinput, SRegButton } from "../styles/globalstyles";
 
-import { useSignIn } from "react-auth-kit";
+/* import { useSignIn } from "react-auth-kit"; */
 
-import { Navigate } from "react-router-dom";
+/* import { Navigate } from "react-router-dom"; */
 
 const schema = yup.object().shape({
   email: yup
@@ -31,15 +33,21 @@ export default function Login() {
     resolver: yupResolver(schema),
   });
 
-  const [success, setSuccess] = useState(false);
+  /* const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const signIn = useSignIn();
+  const signIn = useSignIn(); */
 
-  const [goToHomeLoggedIn, setGoToHomeLoggedIn] = useState(false);
+  /* const [goToHomeLoggedIn, setGoToHomeLoggedIn] = useState(false); */
+
+  const [data, setData] = useState(null);
+  const [createFormData, setCreateFormData] = useState(false);
 
   const onSubmit = async (data) => {
-    try {
+    setData(data);
+    setCreateFormData(true);
+
+    /* try {
       const response = await fetch("https://api.noroff.dev/api/v1/holidaze/auth/login", {
         method: "POST",
         headers: {
@@ -68,39 +76,43 @@ export default function Login() {
     } catch (error) {
       setError(true);
       console.log(error);
-    }
+    } */
   };
 
   return (
     <div>
-      {goToHomeLoggedIn && <Navigate to="/home" />}
+      {/* {goToHomeLoggedIn && <Navigate to="/home" />} */}
       <form onSubmit={handleSubmit(onSubmit)}>
         <LoginFormContainer>
-          <h2>Login</h2>
+          <Sh1Title>Login</Sh1Title>
 
           <label htmlFor="email" hidden>
             Email:
           </label>
-          <input type="email" {...register("email")} placeholder="email@stud.noroff.no" />
-          {errors.email && <p>{errors.email.message}</p>}
+          <Sinput type="email" {...register("email")} placeholder="email@stud.noroff.no" />
+          {errors.email && <SpFormError>{errors.email.message}</SpFormError>}
 
           <label htmlFor="password" hidden>
             Password:
           </label>
-          <input type="password" {...register("password")} placeholder="Password" />
-          {errors.password && <p>{errors.password.message}</p>}
+          <Sinput type="password" {...register("password")} placeholder="Password" />
+          {errors.password && <SpFormError>{errors.password.message}</SpFormError>}
 
-          <button type="submit">Login</button>
+          <SRegButton $green type="submit">
+            Login
+          </SRegButton>
 
-          <LoginFormStatusMessages>
+          {createFormData && data && <LoginAPICall data={data} />}
+
+          {/* <LoginFormStatusMessages>
             {error && <p>{errorMessage}</p>}
             {success && <p>Logged in!</p>}
-            <div>
-              Or click <Link to="/register">here to create an account</Link>.
-            </div>
-          </LoginFormStatusMessages>
+          </LoginFormStatusMessages> */}
         </LoginFormContainer>
       </form>
+      <RegisterAsOther>
+        Or <Link to="/register">click here</Link> to create an account.
+      </RegisterAsOther>
     </div>
   );
 }
