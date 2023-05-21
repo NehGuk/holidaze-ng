@@ -2,8 +2,9 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useState, useEffect } from "react";
-import { Link, Navigate } from "react-router-dom";
-import { RegisterFormContainer, RegisterFormStatusMessages } from "./RegisterManager.style";
+/* import { Link, Navigate } from "react-router-dom"; */
+import { RegisterFormContainer } from "./RegisterManager.style";
+import RegisterAPICall from "./RegisterAPICall";
 
 const schema = yup.object().shape({
   name: yup.string().required("Please enter your name").max(20, "Name should be no more than 20 characters"),
@@ -28,41 +29,13 @@ export default function RegisterManager() {
     resolver: yupResolver(schema),
   });
 
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [data, setData] = useState(null);
+  const [formDataCreated, setFormDataCreated] = useState(false);
 
   const onSubmit = async (data) => {
-    console.log(data);
     data.venueManager = true;
-    try {
-      const response = await fetch("https://api.noroff.dev/api/v1/holidaze/auth/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-      const result = await response.json();
-
-      if (response.ok) {
-        console.log("Boaaaa, isso ae!!!!!!!");
-        console.log(result);
-        setSuccess(true);
-        setError(false);
-      }
-
-      if (!response.ok) {
-        console.log("Ops, nao deu certo!!!");
-        console.log(result.errors[0].message);
-        setError(true);
-        setErrorMessage(result.errors[0].message);
-        setSuccess(false);
-      }
-    } catch (error) {
-      setError(true);
-      console.log(error);
-    }
+    setData(data);
+    setFormDataCreated(true);
   };
 
   return (
@@ -90,18 +63,7 @@ export default function RegisterManager() {
 
           <button type="submit">Register</button>
 
-          <RegisterFormStatusMessages>
-            {error && <p>{errorMessage}</p>}
-            {success && (
-              <p>
-                Registration successful! Click here to <Link to="/login">Login</Link>.
-              </p>
-            )}
-            {success && <Navigate to="/registration-success" />}
-            <div>
-              Register as a <Link to="/register-traveller">traveller</Link>.
-            </div>
-          </RegisterFormStatusMessages>
+          {formDataCreated && data && <RegisterAPICall data={data} />}
         </RegisterFormContainer>
       </form>
     </div>

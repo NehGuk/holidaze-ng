@@ -2,7 +2,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useState, useEffect } from "react";
-/* import { Link, Navigate } from "react-router-dom"; */
 import { RegisterFormContainer } from "./RegisterTraveller.style";
 import RegisterAPICall from "./RegisterAPICall";
 
@@ -29,47 +28,12 @@ export default function RegisterTraveller() {
     resolver: yupResolver(schema),
   });
 
-  /* const [success, setSuccess] = useState(false);
-  const [error, setError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(""); */
   const [data, setData] = useState(null);
   const [formDataCreated, setFormDataCreated] = useState(false);
 
   const onSubmit = async (data) => {
     setData(data);
-    console.log(formDataCreated);
     setFormDataCreated(true);
-    /* data.venueManager = false;
-    try {
-      const response = await fetch("https://api.noroff.dev/api/v1/holidaze/auth/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-      const result = await response.json();
-
-      if (response.ok) {
-        console.log("Boaaaa, isso ae!!!!!!!");
-        console.log(result);
-
-        setSuccess(true);
-        setError(false);
-      }
-
-      if (!response.ok) {
-        console.log("Ops, nao deu certo!!!");
-        console.log(result.errors[0].message);
-        console.log(data);
-        setError(true);
-        setErrorMessage(result.errors[0].message);
-        setSuccess(false);
-      }
-    } catch (error) {
-      setError(true);
-      console.log(error);
-    } */
   };
 
   return (
@@ -98,23 +62,6 @@ export default function RegisterTraveller() {
           <button type="submit">Register</button>
 
           {formDataCreated && data && <RegisterAPICall data={data} />}
-
-          {/* <RegisterFormStatusMessages>
-            {error && (
-              <p>
-                {errorMessage}. Click here to <Link to="/login">Login</Link>.
-              </p>
-            )}
-            {success && (
-              <p>
-                Registration successful! Click here to <Link to="/login">Login</Link>.
-              </p>
-            )}
-            {success && <Navigate to="/registration-success" />}
-            <div>
-              Register as a <Link to="/register-manager">venue manager</Link>.
-            </div>
-          </RegisterFormStatusMessages> */}
         </RegisterFormContainer>
       </form>
     </div>
