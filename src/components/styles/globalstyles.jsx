@@ -216,3 +216,17 @@ export const Sinput = styled.input`
     outline: solid 3px ${(props) => props.theme.color.lightblue};
   }
 `;
+
+export const SinputNumber = styled.input`
+  padding: 0.5em 1em;
+  width: 4em;
+  border-radius: 10px;
+  border: none;
+  font-size: large;
+
+  :focus {
+    background: white;
+    border: none;
+    outline: solid 3px ${(props) => props.theme.color.lightblue};
+  }
+`;
