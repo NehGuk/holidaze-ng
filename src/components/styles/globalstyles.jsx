@@ -51,7 +51,7 @@ export const SRegButton = styled.button`
   color: white;
   cursor: pointer;
   font-weight: 600;
-  border-radius: 5px;
+  border-radius: 10px;
   transition: ease-in-out 0.2s;
   :hover {
     transition: ease-in-out 0.2s;
@@ -67,6 +67,19 @@ export const SRegButton = styled.button`
       :hover {
         color: white;
         background: ${(props) => props.theme.color.dark};
+      }
+    `};
+
+  ${(props) =>
+    props.$green &&
+    css`
+      background: ${(props) => props.theme.color.green};
+      color: white;
+      font-weight: 800;
+      font-size: large;
+      :hover {
+        color: white;
+        background: ${(props) => props.theme.color.darkgreen};
       }
     `};
 
@@ -144,6 +157,20 @@ export const Sh2CardTitle = styled.h2`
     `};
 `;
 
+export const SpFormError = styled.p`
+  margin: -0.5em 0 1em 0.5em;
+  font-weight: 600;
+  font-size: small;
+  color: ${(props) => props.theme.color.blue};
+`;
+
+export const SpAPIErrorMessage = styled.p`
+  /* margin: em 0 1em 0.5em; */
+  font-weight: 600;
+  font-size: medium;
+  color: ${(props) => props.theme.color.blue};
+`;
+
 export const SSpanTitle = styled.span`
   color: ${(props) => props.theme.color.lightblue};
   text-transform: uppercase;
@@ -165,4 +192,19 @@ export const Shr = styled.hr`
   margin-top: 1em;
   margin-bottom: -2em;
   opacity: 80%;
+`;
+
+// input
+
+export const Sinput = styled.input`
+  padding: 0.5em 1em;
+  border-radius: 10px;
+  border: none;
+  font-size: large;
+
+  :focus {
+    background: white;
+    border: none;
+    outline: solid 3px ${(props) => props.theme.color.lightblue};
+  }
 `;

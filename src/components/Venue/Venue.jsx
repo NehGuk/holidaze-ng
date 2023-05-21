@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useIsAuthenticated } from "react-auth-kit";
 import VenueLoggedOut from "./VenueLoggedOut";
 import VenueLoggedIn from "./VenueLoggedIn";
@@ -6,6 +7,10 @@ import VenueLoggedIn from "./VenueLoggedIn";
 import { useParams } from "react-router-dom";
 
 export default function Venue() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const isAuth = useIsAuthenticated();
   console.log(isAuth());
   console.log("IM IN VENUUUEEEEEE");

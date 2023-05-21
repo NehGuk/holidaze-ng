@@ -1,12 +1,23 @@
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+
 import { RegisterGrid } from "./Register.style";
+import { SLinkButton, Sh1Title } from "../styles/globalstyles";
 
 export default function Register() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <RegisterGrid>
-      <h1>Register</h1>
-      <Link to="../register-traveller">I am a traveller</Link>
-      <Link to="../register-manager">I am a venue manager</Link>
+      <Sh1Title>Sign up</Sh1Title>
+
+      <SLinkButton $lightblue to="../register-traveller">
+        I am a traveller
+      </SLinkButton>
+
+      <SLinkButton $lightblue to="../register-manager">
+        I am a venue manager
+      </SLinkButton>
     </RegisterGrid>
   );
 }

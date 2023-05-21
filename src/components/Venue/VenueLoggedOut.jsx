@@ -36,7 +36,7 @@ export default function VenueLoggedOut() {
           <div>
             {data.description.length > 10 && (
               <p>
-                <SSpanTitle>Description: </SSpanTitle> {data.description} {data.description.length}
+                <SSpanTitle>Description: </SSpanTitle> {data.description}
               </p>
             )}
             {data.description.length < 10 && (
