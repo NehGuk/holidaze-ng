@@ -4,6 +4,7 @@ import api_endpoints from "../../shared/shared";
 import createUnAuthMethod from "../../utilities/createUnAuthMethod";
 import Loading from "../Loading/Loading";
 import { Navigate } from "react-router-dom";
+import { SpAPIErrorMessage } from "../styles/globalstyles";
 
 export default function RegisterAPICall({ data }) {
   const { data: response, isLoading, isError, isSuccess } = useApi(api_endpoints().postRegister, createUnAuthMethod("POST", data));
@@ -15,7 +16,7 @@ export default function RegisterAPICall({ data }) {
 
       {!isSuccess && response?.errors && (
         <div>
-          <p>{response.errors[0].message}</p>
+          <SpAPIErrorMessage>{response.errors[0].message}</SpAPIErrorMessage>
         </div>
       )}
       {isSuccess && (

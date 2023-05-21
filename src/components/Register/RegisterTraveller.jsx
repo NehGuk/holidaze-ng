@@ -4,6 +4,7 @@ import * as yup from "yup";
 import { useState, useEffect } from "react";
 import { RegisterFormContainer } from "./RegisterTraveller.style";
 import RegisterAPICall from "./RegisterAPICall";
+import { Sh1Title, Sinput, SRegButton, SpFormError } from "../styles/globalstyles";
 
 const schema = yup.object().shape({
   name: yup.string().required("Please enter your name").max(20, "Name should no more than 20 characters"),
@@ -40,26 +41,29 @@ export default function RegisterTraveller() {
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <RegisterFormContainer>
-          <h2>Register as a traveller</h2>
+          <Sh1Title>Register as a traveller</Sh1Title>
+
           <label htmlFor="name" hidden>
             Name:
           </label>
-          <input type="text" {...register("name")} placeholder="Name" />
-          {errors.name && <p>{errors.name.message}</p>}
+          <Sinput type="text" {...register("name")} placeholder="Name" />
+          {errors.name && <SpFormError>{errors.name.message}</SpFormError>}
 
           <label htmlFor="email" hidden>
             Email:
           </label>
-          <input type="email" {...register("email")} placeholder="email@stud.noroff.no" />
-          {errors.email && <p>{errors.email.message}</p>}
+          <Sinput type="email" {...register("email")} placeholder="email@stud.noroff.no" />
+          {errors.email && <SpFormError>{errors.email.message}</SpFormError>}
 
           <label htmlFor="password" hidden>
             Password:
           </label>
-          <input type="password" {...register("password")} placeholder="Password" />
-          {errors.password && <p>{errors.password.message}</p>}
+          <Sinput type="password" {...register("password")} placeholder="Password" />
+          {errors.password && <SpFormError>{errors.password.message}</SpFormError>}
 
-          <button type="submit">Register</button>
+          <SRegButton $green type="submit">
+            Register
+          </SRegButton>
 
           {formDataCreated && data && <RegisterAPICall data={data} />}
         </RegisterFormContainer>

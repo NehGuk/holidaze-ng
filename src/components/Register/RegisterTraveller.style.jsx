@@ -1,19 +1,18 @@
 import styled from "styled-components";
 
 export const RegisterFormContainer = styled.div`
-  background: lightpink;
-  max-width: 800px;
-  padding: 1em;
-  margin: 0 auto;
+  background: ${(props) => props.theme.color.white};
+  border-radius: 10px;
+  max-width: 400px;
+  margin: 3em auto 0 auto;
+  padding: 2em;
   display: grid;
   gap: 1em;
-  > h2 {
-    text-align: center;
-  }
-`;
+  /* place-items: stretch; */
+  /* text-align: center; */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
-export const RegisterFormStatusMessages = styled.div`
-  border: 0.2em solid white;
-  padding: 1em;
-  text-align: center;
+  @media (max-width: 600px) {
+    margin: 3em 2em;
+  }
 `;
