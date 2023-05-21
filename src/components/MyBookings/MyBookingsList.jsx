@@ -6,7 +6,7 @@ import { MyBookingsGrid, MyBookingsListContainer } from "./MyBookingsList.style"
 import { useState } from "react";
 import logo from "../../assets/logo.png";
 /* import imgtest from "../../assets/hero3.jpg"; */
-import { Sh1Title, Shr2, SLinkButton, SSpanTitle } from "../styles/globalstyles";
+import { CTAArea, Sbutton, Sh1Title, Shr2, SLinkButton, SSpanTitle } from "../styles/globalstyles";
 
 export default function MyBookingsList({ bookings }) {
   console.log("MOUNTING MY BOOKINGS LIST");
@@ -91,8 +91,13 @@ export default function MyBookingsList({ bookings }) {
           );
         })}
 
-        {pastBookings.length > 0 && <button onClick={handleShowPastBookings}>{!showPastBookings ? "Show past bookings" : "Hide past bookings"}</button>}
-
+        <CTAArea>
+          {pastBookings.length > 0 && (
+            <Sbutton $negative onClick={handleShowPastBookings}>
+              {!showPastBookings ? "Show past bookings" : "Hide past bookings"}
+            </Sbutton>
+          )}
+        </CTAArea>
         {showPastBookings && (
           <div>
             <h2>
@@ -101,7 +106,48 @@ export default function MyBookingsList({ bookings }) {
             {pastBookings.map((booking) => {
               return (
                 <div key={booking.id}>
-                  {booking.venue.media.length === 0 && <img src={logo} />}
+                  <MyBookingsGrid>
+                    <div>
+                      {booking.venue.media.length === 0 && <img src={logo} />}
+                      {booking.venue.media.length > 0 && <img src={booking.venue.media[0]} />}
+                      {/* <img src={booking.venue.media[0]} /> */}
+                    </div>
+                    <div>
+                      <div>
+                        <h3>{booking.venue.name}</h3>
+                      </div>
+                      <Shr2></Shr2>
+                      <div>
+                        <p>
+                          <SSpanTitle>Check-in:</SSpanTitle> {formatDate(booking.dateFrom)}
+                        </p>
+                      </div>
+                      <div>
+                        <p>
+                          <SSpanTitle>Check-out:</SSpanTitle> {formatDate(booking.dateTo)}{" "}
+                        </p>
+                      </div>
+                      <div>
+                        <p>
+                          <SSpanTitle>Guests:</SSpanTitle> {booking.guests}
+                        </p>
+                      </div>
+                      <div>
+                        <p>
+                          <SSpanTitle>Estimated price:</SSpanTitle> ${estimatePrice(booking.dateFrom, booking.dateTo, booking.venue.price)}
+                        </p>
+                      </div>
+                      {/* <div>{booking.venue.location.city !== "Unknown" && booking.venue.location.city !== "" ? <p>{booking.venue.location.city}</p> : <p>Hidden city</p>}</div>
+                  <div>{booking.venue.location.country !== "Unknown" && booking.venue.location.country !== "" ? <p>{booking.venue.location.country}</p> : <p>Faraway country</p>}</div> */}
+                      <div>
+                        <SLinkButton $lightblue to={`/booking-traveller/${booking.id}`}>
+                          Booking details
+                        </SLinkButton>
+                      </div>
+                    </div>
+                  </MyBookingsGrid>
+
+                  {/* {booking.venue.media.length === 0 && <img src={logo} />}
                   {booking.venue.media.length > 0 && <img src={booking.venue.media[0]} />}
 
                   <h3>{booking.venue.name}</h3>
@@ -113,7 +159,7 @@ export default function MyBookingsList({ bookings }) {
                   <br></br>
                   <br></br>
                   <br></br>
-                  <br></br>
+                  <br></br> */}
                 </div>
               );
             })}
