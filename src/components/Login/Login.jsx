@@ -7,10 +7,6 @@ import { LoginFormContainer, RegisterAsOther } from "./Login.style";
 import LoginAPICall from "./LoginAPICall";
 import { Sh1Title, SpFormError, Sinput, SRegButton } from "../styles/globalstyles";
 
-/* import { useSignIn } from "react-auth-kit"; */
-
-/* import { Navigate } from "react-router-dom"; */
-
 const schema = yup.object().shape({
   email: yup
     .string()
@@ -33,55 +29,16 @@ export default function Login() {
     resolver: yupResolver(schema),
   });
 
-  /* const [success, setSuccess] = useState(false);
-  const [error, setError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-  const signIn = useSignIn(); */
-
-  /* const [goToHomeLoggedIn, setGoToHomeLoggedIn] = useState(false); */
-
   const [data, setData] = useState(null);
   const [createFormData, setCreateFormData] = useState(false);
 
   const onSubmit = async (data) => {
     setData(data);
     setCreateFormData(true);
-
-    /* try {
-      const response = await fetch("https://api.noroff.dev/api/v1/holidaze/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-      const result = await response.json();
-
-      if (response.ok) {
-        setSuccess(true);
-        setError(false);
-
-        setGoToHomeLoggedIn(true);
-      }
-
-      if (!response.ok) {
-        console.log("Ops, nao deu certo!!!");
-        console.log(result.errors[0].message);
-        setError(true);
-        setErrorMessage(result.errors[0].message);
-        setSuccess(false);
-      }
-
-      signIn({ token: result.accessToken, expiresIn: 86400, tokenType: "Bearer", authState: { name: result.name, email: result.email, venueManager: result.venueManager, avatar: result.avatar } });
-    } catch (error) {
-      setError(true);
-      console.log(error);
-    } */
   };
 
   return (
     <div>
-      {/* {goToHomeLoggedIn && <Navigate to="/home" />} */}
       <form onSubmit={handleSubmit(onSubmit)}>
         <LoginFormContainer>
           <Sh1Title>Login</Sh1Title>
@@ -103,11 +60,6 @@ export default function Login() {
           </SRegButton>
 
           {createFormData && data && <LoginAPICall data={data} />}
-
-          {/* <LoginFormStatusMessages>
-            {error && <p>{errorMessage}</p>}
-            {success && <p>Logged in!</p>}
-          </LoginFormStatusMessages> */}
         </LoginFormContainer>
       </form>
       <RegisterAsOther>
