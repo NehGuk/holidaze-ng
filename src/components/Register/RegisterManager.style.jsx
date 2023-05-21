@@ -16,3 +16,9 @@ export const RegisterFormContainer = styled.div`
     margin: 3em 2em;
   }
 `;
+
+export const RegisterAsOther = styled.div`
+  text-align: center;
+  margin: 1em auto 0 auto;
+  max-width: 80%;
+`;

@@ -2,9 +2,10 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useState, useEffect } from "react";
-import { RegisterFormContainer } from "./RegisterTraveller.style";
+import { RegisterFormContainer, RegisterAsOther } from "./RegisterTraveller.style";
 import RegisterAPICall from "./RegisterAPICall";
 import { Sh1Title, Sinput, SRegButton, SpFormError } from "../styles/globalstyles";
+import { Link } from "react-router-dom";
 
 const schema = yup.object().shape({
   name: yup.string().required("Please enter your name").max(20, "Name should no more than 20 characters"),
@@ -68,6 +69,11 @@ export default function RegisterTraveller() {
           {formDataCreated && data && <RegisterAPICall data={data} />}
         </RegisterFormContainer>
       </form>
+      <RegisterAsOther>
+        <p>
+          Or click <Link to="/register-manager">here</Link> to sign up as a venue manager instead.
+        </p>
+      </RegisterAsOther>
     </div>
   );
 }
