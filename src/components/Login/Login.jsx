@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { LoginFormContainer } from "./Login.style";
 import LoginAPICall from "./LoginAPICall";
+import { SpFormError } from "../styles/globalstyles";
 
 /* import { useSignIn } from "react-auth-kit"; */
 
@@ -89,13 +90,13 @@ export default function Login() {
             Email:
           </label>
           <input type="email" {...register("email")} placeholder="email@stud.noroff.no" />
-          {errors.email && <p>{errors.email.message}</p>}
+          {errors.email && <SpFormError>{errors.email.message}</SpFormError>}
 
           <label htmlFor="password" hidden>
             Password:
           </label>
           <input type="password" {...register("password")} placeholder="Password" />
-          {errors.password && <p>{errors.password.message}</p>}
+          {errors.password && <SpFormError>{errors.password.message}</SpFormError>}
 
           <button type="submit">Login</button>
 
