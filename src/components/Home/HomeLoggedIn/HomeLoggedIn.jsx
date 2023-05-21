@@ -8,7 +8,7 @@ export default function HomeLoggedIn() {
 
   return (
     <div>
-      <h2>HomeLoggedIn component</h2>
+      {/* <h2>HomeLoggedIn component</h2> */}
 
       {userInfo().venueManager && <HomeVenueManager />}
       {!userInfo().venueManager && <HomeTraveller />}

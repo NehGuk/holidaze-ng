@@ -155,6 +155,14 @@ export const Sh2CardTitle = styled.h2`
       margin: 0.5em 0 -1em 0;
       padding-bottom: 0.5em;
     `};
+
+  ${(props) =>
+    props.$generic &&
+    css`
+      color: ${(props) => props.theme.color.dark};
+      font-size: medium;
+      text-transform: uppercase;
+    `};
 `;
 
 export const SpFormError = styled.p`

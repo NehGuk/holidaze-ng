@@ -1,14 +1,12 @@
-import { useAuthUser } from "react-auth-kit";
-import Venues from "../../../Venues/Venues";
+/* import { useAuthUser } from "react-auth-kit"; */
+/* import VenuesTraveller from "../../../Venues/Venues"; */
+import VenuesTraveller from "../../../Venues/VenuesTraveller";
 
 export default function HomeTraveller() {
-  const userInfo = useAuthUser();
+  /* const userInfo = useAuthUser(); */
   return (
     <div>
-      <h1>Homeeee traveller</h1>
-      <p>Content for the home to be displayed to the traveller</p>
-      <p>Info from useAuthInfo here: {userInfo().email}</p>
-      <Venues />
+      <VenuesTraveller />
     </div>
   );
 }
