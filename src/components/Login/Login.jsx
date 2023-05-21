@@ -3,9 +3,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { LoginFormContainer } from "./Login.style";
+import { LoginFormContainer, RegisterAsOther } from "./Login.style";
 import LoginAPICall from "./LoginAPICall";
-import { SpFormError } from "../styles/globalstyles";
+import { Sh1Title, SpFormError, Sinput, SRegButton } from "../styles/globalstyles";
 
 /* import { useSignIn } from "react-auth-kit"; */
 
@@ -84,21 +84,23 @@ export default function Login() {
       {/* {goToHomeLoggedIn && <Navigate to="/home" />} */}
       <form onSubmit={handleSubmit(onSubmit)}>
         <LoginFormContainer>
-          <h2>Login</h2>
+          <Sh1Title>Login</Sh1Title>
 
           <label htmlFor="email" hidden>
             Email:
           </label>
-          <input type="email" {...register("email")} placeholder="email@stud.noroff.no" />
+          <Sinput type="email" {...register("email")} placeholder="email@stud.noroff.no" />
           {errors.email && <SpFormError>{errors.email.message}</SpFormError>}
 
           <label htmlFor="password" hidden>
             Password:
           </label>
-          <input type="password" {...register("password")} placeholder="Password" />
+          <Sinput type="password" {...register("password")} placeholder="Password" />
           {errors.password && <SpFormError>{errors.password.message}</SpFormError>}
 
-          <button type="submit">Login</button>
+          <SRegButton $green type="submit">
+            Login
+          </SRegButton>
 
           {createFormData && data && <LoginAPICall data={data} />}
 
@@ -108,9 +110,9 @@ export default function Login() {
           </LoginFormStatusMessages> */}
         </LoginFormContainer>
       </form>
-      <div>
-        Or click <Link to="/register">here to create an account</Link>.
-      </div>
+      <RegisterAsOther>
+        Or <Link to="/register">click here</Link> to create an account.
+      </RegisterAsOther>
     </div>
   );
 }

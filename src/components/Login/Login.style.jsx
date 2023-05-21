@@ -17,8 +17,8 @@ export const LoginFormContainer = styled.div`
   }
 `;
 
-export const LoginFormStatusMessages = styled.div`
-  border: 0.2em solid white;
-  padding: 1em;
+export const RegisterAsOther = styled.div`
   text-align: center;
+  margin: 1em auto 0 auto;
+  max-width: 80%;
 `;
