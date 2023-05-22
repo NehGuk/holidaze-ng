@@ -1,10 +1,17 @@
 import { useAuthUser } from "react-auth-kit";
-import { Link } from "react-router-dom";
+
 import useApi from "../../../../hooks/useAPI";
 import api_endpoints from "../../../../shared/shared";
 import createMethod from "../../../../utilities/createMethod";
+import { useEffect } from "react";
+
+import { BookingIcon, DashboardGrid, ManagerDashboardArea, StatsSquare, VenueIcon } from "./HomeVenueManager.style";
+import { CTAArea, SLinkButton, Sh1Title } from "../../../styles/globalstyles";
 
 export default function HomeVenueManager() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const userInfo = useAuthUser();
 
   const { data, isSuccess, isError } = useApi(api_endpoints(userInfo().name).getProfile, createMethod("GET"));
@@ -31,23 +38,51 @@ export default function HomeVenueManager() {
   // TOTAL CURRENT BOOKINGS END
 
   return (
-    <div>
+    <ManagerDashboardArea>
       {isError && <p>An error has occurred</p>}
       {isSuccess && (
         <>
-          <h1>Hello {userInfo().name}!</h1>
-          <p>You are currently managing {data._count.venues} venues.</p>
+          <Sh1Title>
+            Welcome back, <strong>{userInfo().name}</strong>!
+          </Sh1Title>
 
-          <Link to="/my-venues">See my venues</Link>
-          <Link to="/post-new-venue">Create new venue</Link>
+          <DashboardGrid>
+            <div>
+              <StatsSquare>
+                <VenueIcon />
+                <p>
+                  You are currently managing <span> {data._count.venues} venues</span>
+                </p>
+              </StatsSquare>
+            </div>
+            <div>
+              <StatsSquare $secondary>
+                <BookingIcon />
+                <p>
+                  Your venues have been booked <span> {totalBookingsHistory} times</span>
+                </p>
+              </StatsSquare>
+            </div>
+            <div>
+              <h2>What is next? Here are a few suggestions:</h2>
+            </div>
+            <div>
+              <CTAArea>
+                <SLinkButton $green to="/post-new-venue">
+                  Create new venue
+                </SLinkButton>
+                <SLinkButton $white to="/my-venues">
+                  See my venues
+                </SLinkButton>
 
-          <p>Your venues have been booked {totalBookingsHistory} times!</p>
-
-          <div>
-            <Link to="/all-bookings">See upcoming bookings</Link>
-          </div>
+                <SLinkButton $white to="/all-bookings">
+                  See upcoming bookings
+                </SLinkButton>
+              </CTAArea>
+            </div>
+          </DashboardGrid>
         </>
       )}
-    </div>
+    </ManagerDashboardArea>
   );
 }
