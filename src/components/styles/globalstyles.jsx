@@ -277,7 +277,7 @@ export const PageArea0Container = styled.div`
   /* border-radius: 10px; */
   /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); */
   display: grid;
-  place-items: center;
+  /* place-items: center; */
   /* text-align: center; */
   @media (max-width: 700px) {
     max-width: 50%;
