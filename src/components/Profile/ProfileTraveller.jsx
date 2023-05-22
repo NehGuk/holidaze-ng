@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuthUser, useAuthHeader, useSignOut } from "react-auth-kit";
+import { useAuthUser, useSignOut } from "react-auth-kit";
 import avatar from "../../assets/avatar.png";
 import UpdateAvatar from "./UpdateAvatar";
 import { ProfileTravellerContainer } from "./ProfileTraveller.style";
 
 export default function ProfileTraveller() {
   const userInfo = useAuthUser();
-  const authHeader = useAuthHeader();
-  const token = authHeader().split(" ")[1];
-  const currentUserInfo = JSON.parse(localStorage.token_state);
+  /* const authHeader = useAuthHeader(); */
+  /* const token = authHeader().split(" ")[1]; */
+  /* const currentUserInfo = JSON.parse(localStorage.token_state); */
   const [changeAvatarButton, setChangeAvatarButton] = useState(true);
   const [avatarForm, setAvatarForm] = useState(false);
   const navigate = useNavigate();
@@ -35,7 +35,7 @@ export default function ProfileTraveller() {
 
         {changeAvatarButton && <button onClick={showAvatarForm}>Change avatar</button>}
 
-        {avatarForm && <UpdateAvatar token={token} userInfo={userInfo} setAvatarForm={setAvatarForm} setChangeAvatarButton={setChangeAvatarButton} currentUserInfo={currentUserInfo} />}
+        {avatarForm && <UpdateAvatar userInfo={userInfo} setAvatarForm={setAvatarForm} setChangeAvatarButton={setChangeAvatarButton} />}
 
         <p>Name: {userInfo().name}</p>
         {!userInfo().venueManager && <p>Account type: Traveller</p>}

@@ -4,13 +4,13 @@ import * as yup from "yup";
 
 import { PropTypes } from "prop-types";
 import { useState } from "react";
+import UpdateAvatarAPICall from "./UpdateAvatarAPICall";
 
 const schema = yup.object().shape({
   avatar: yup.string().url("Please enter a valid URL").required("A URL is required"),
 });
 
-export default function UpdateAvatar({ token, userInfo, setAvatarForm, setChangeAvatarButton, currentUserInfo }) {
-  console.log(userInfo().name);
+export default function UpdateAvatar({ setAvatarForm, setChangeAvatarButton }) {
   const {
     register,
     handleSubmit,
@@ -19,10 +19,17 @@ export default function UpdateAvatar({ token, userInfo, setAvatarForm, setChange
     resolver: yupResolver(schema),
   });
 
-  const [apiError, setApiError] = useState(false);
+  /* const [apiError, setApiError] = useState(false); */
+
+  const [formDataCreated, setFormDataCreated] = useState(false);
+  const [formData, setFormData] = useState(null);
 
   const onSubmit = async (data) => {
-    try {
+    console.log(data);
+    setFormDataCreated(true);
+    setFormData(data);
+
+    /* try {
       const response = await fetch(`https://api.noroff.dev/api/v1/holidaze/profiles/${userInfo().name}/media`, {
         method: "PUT",
         headers: {
@@ -46,7 +53,7 @@ export default function UpdateAvatar({ token, userInfo, setAvatarForm, setChange
       }
     } catch (error) {
       console.error(error);
-    }
+    } */
   };
 
   const hideAvatarForm = () => {
@@ -64,19 +71,19 @@ export default function UpdateAvatar({ token, userInfo, setAvatarForm, setChange
         </label>
         <input type="text" id="url" name="avatar" placeholder="http://..." {...register("avatar")} />
         <p>{errors.avatar?.message}</p>
-        {apiError ? <p>An error has occurred. Please try a different URL.</p> : null}
+        {/* {apiError ? <p>An error has occurred. Please try a different URL.</p> : null} */}
 
         <button type="submit">Update avatar</button>
         <button onClick={hideAvatarForm}>Cancel</button>
+
+        {formDataCreated && formData && <UpdateAvatarAPICall data={formData} />}
       </form>
     </div>
   );
 }
 
 UpdateAvatar.propTypes = {
-  token: PropTypes.string.isRequired,
   userInfo: PropTypes.func.isRequired,
   setAvatarForm: PropTypes.func.isRequired,
   setChangeAvatarButton: PropTypes.func.isRequired,
-  currentUserInfo: PropTypes.object.isRequired,
 };
