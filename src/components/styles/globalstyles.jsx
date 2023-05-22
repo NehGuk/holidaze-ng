@@ -136,6 +136,17 @@ export const SLinkButton = styled(Link)`
       }
     `};
 
+  ${(props) =>
+    props.$white &&
+    css`
+      background: ${(props) => props.theme.color.white};
+      color: ${(props) => props.theme.color.blue};
+      :hover {
+        color: ${(props) => props.theme.color.blue};
+        background: white;
+      }
+    `};
+
   @media (max-width: 400px) {
     font-size: small;
     font-weight: 600;
@@ -258,6 +269,21 @@ export const SinputNumber = styled.input`
 `;
 
 // layout templates
+export const PageArea0Container = styled.div`
+  margin: 3em auto 0 auto;
+  padding: 2em;
+  max-width: 900px;
+  /* background: ${(props) => props.theme.color.white}; */
+  /* border-radius: 10px; */
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); */
+  display: grid;
+  place-items: center;
+  /* text-align: center; */
+  @media (max-width: 700px) {
+    max-width: 50%;
+  }
+`;
+
 export const PageArea1Container = styled.div`
   margin: 3em auto 0 auto;
   padding: 2em;

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import useApi from "../../hooks/useAPI";
 import api_endpoints from "../../shared/shared";
 import { useAuthUser } from "react-auth-kit";
@@ -6,6 +7,10 @@ import MyBookingsList from "./MyBookingsList";
 /* import { Sh1Title } from "../styles/globalstyles"; */
 
 export default function MyBookings() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const userInfo = useAuthUser();
 
   const options = {
