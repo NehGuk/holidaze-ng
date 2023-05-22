@@ -4,6 +4,8 @@ import * as yup from "yup";
 import { PropTypes } from "prop-types";
 import { useState } from "react";
 import UpdateAvatarAPICall from "./UpdateAvatarAPICall";
+import { CTAArea, Sbutton, Sinput, SpFormError } from "../styles/globalstyles";
+import { FormArea } from "./UpdateAvatar.style";
 
 const schema = yup.object().shape({
   avatar: yup.string().url("Please enter a valid URL").required("A URL is required"),
@@ -33,22 +35,27 @@ export default function UpdateAvatar({ setAvatarForm, setChangeAvatarButton }) {
   };
 
   return (
-    <div>
+    <FormArea>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <h2>Update avatar</h2>
+        {/* <Sh2CardTitle>Update avatar</Sh2CardTitle> */}
 
         <label htmlFor="url" hidden>
           Avatar URL
         </label>
-        <input type="text" id="url" name="avatar" placeholder="http://..." {...register("avatar")} />
-        <p>{errors.avatar?.message}</p>
+        <Sinput type="text" id="url" name="avatar" placeholder="http://..." {...register("avatar")} />
 
-        <button type="submit">Update avatar</button>
-        <button onClick={hideAvatarForm}>Cancel</button>
-
+        <SpFormError>{errors.avatar?.message}</SpFormError>
+        <CTAArea>
+          <Sbutton $green type="submit">
+            Update avatar
+          </Sbutton>
+          <Sbutton $negative onClick={hideAvatarForm}>
+            Cancel
+          </Sbutton>
+        </CTAArea>
         {formDataCreated && formData && <UpdateAvatarAPICall data={formData} />}
       </form>
-    </div>
+    </FormArea>
   );
 }
 

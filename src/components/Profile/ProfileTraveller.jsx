@@ -59,8 +59,12 @@ export default function ProfileTraveller() {
         </Area1>
 
         <CTAArea>
-          <SLinkButton to="/home">Home</SLinkButton>
-          <SLinkButton to="/my-bookings">My bookings</SLinkButton>
+          <SLinkButton $white to="/home">
+            Home
+          </SLinkButton>
+          <SLinkButton $white to="/my-bookings">
+            My bookings
+          </SLinkButton>
           <Sbutton $negative onClick={handleSignOut}>
             Sign out
           </Sbutton>

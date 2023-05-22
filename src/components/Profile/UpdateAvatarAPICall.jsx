@@ -5,6 +5,7 @@ import api_endpoints from "../../shared/shared.js";
 import createMethod from "../../utilities/createMethod.js";
 
 import { useAuthUser } from "react-auth-kit";
+import { SpWarning } from "../styles/globalstyles.jsx";
 
 export default function UpdateAvatarAPICall({ data }) {
   console.log("MOUNTING UPDATEAvatarAPICall");
@@ -21,9 +22,9 @@ export default function UpdateAvatarAPICall({ data }) {
   return (
     <div>
       {isLoading && <Loading />}
-      {isError && <p>An error has occurred</p>}
-      {!isSuccess && response.errors && <p>{response.errors[0].message}</p>}
-      {isSuccess && <p>Successss</p>}
+      {isError && <SpWarning>An error has occurred</SpWarning>}
+      {!isSuccess && response.errors && <SpWarning>{response.errors[0].message}</SpWarning>}
+      {isSuccess && <p>Success!</p>}
     </div>
   );
 }

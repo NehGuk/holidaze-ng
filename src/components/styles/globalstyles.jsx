@@ -136,6 +136,17 @@ export const SLinkButton = styled(Link)`
       }
     `};
 
+  ${(props) =>
+    props.$white &&
+    css`
+      background: ${(props) => props.theme.color.white};
+      color: ${(props) => props.theme.color.blue};
+      :hover {
+        color: ${(props) => props.theme.color.blue};
+        background: white;
+      }
+    `};
+
   @media (max-width: 400px) {
     font-size: small;
     font-weight: 600;
