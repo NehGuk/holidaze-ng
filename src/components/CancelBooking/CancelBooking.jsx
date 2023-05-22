@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import CancelBookingAPICall from "./CancelBookingAPICall";
+import { CTAArea, SRegButton } from "../styles/globalstyles";
+import { ConfirmationQuestion } from "./CancelBooking.style";
 
 export default function CancelBooking({ setCancelClicked, bid }) {
   console.log("CANCEL BOOKING MOUNTS");
@@ -15,12 +17,14 @@ export default function CancelBooking({ setCancelClicked, bid }) {
   };
 
   return (
-    <div>
-      <h4>Are you sure you want to cancel this booking?</h4>
-      <button onClick={handleConfirmCancelButton}>Yes, cancel this booking</button>
-      <button onClick={handleNevermindButton}>Nevermind, keep it</button>
+    <CTAArea>
+      <ConfirmationQuestion>Are you sure you want to cancel this booking?</ConfirmationQuestion>
+      <SRegButton $negative onClick={handleConfirmCancelButton}>
+        Yes, cancel this booking
+      </SRegButton>
+      <SRegButton onClick={handleNevermindButton}>Nevermind, keep it</SRegButton>
       {cancelConfirmed && <CancelBookingAPICall bid={bid} />}
-    </div>
+    </CTAArea>
   );
 }
 

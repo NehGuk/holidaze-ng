@@ -268,6 +268,8 @@ export const PageArea1Container = styled.div`
   display: grid;
   place-items: center;
 
+  text-align: center;
+
   @media (max-width: 700px) {
     max-width: 50%;
   }
