@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthUser, useSignOut } from "react-auth-kit";
 import avatar from "../../assets/avatar.png";
@@ -7,6 +7,10 @@ import { Area1, ProfileImgArea, ProfileTravellerContainer } from "./ProfileTrave
 import { CTAArea, PageArea0Container, SLinkButton, Sbutton, Sh1Title } from "../styles/globalstyles";
 
 export default function ProfileTraveller() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const userInfo = useAuthUser();
   const [changeAvatarButton, setChangeAvatarButton] = useState(true);
   const [avatarForm, setAvatarForm] = useState(false);
