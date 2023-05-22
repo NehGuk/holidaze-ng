@@ -1,11 +1,9 @@
 import { useParams } from "react-router-dom";
-
 import ShowBookings from "../ShowBookings/ShowBookings";
 import useApi from "../../hooks/useAPI";
 import api_endpoints from "../../shared/shared";
 import Loading from "../Loading/Loading";
 import logo from "../../assets/logo.png";
-
 import { SLinkButton, SSpanPrice, SSpanTitle, Sh1Title, Sh2CardTitle } from "../styles/globalstyles";
 import { VenueContainer, StarIcon, ParkingIcon, WifiIcon, BreakfastIcon, PetsIcon, Area1, Area2, Area3, Area4, AreaCTAs } from "./VenueLoggedInTraveller.style";
 
