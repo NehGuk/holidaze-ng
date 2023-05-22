@@ -4,7 +4,6 @@ import api_endpoints from "../../shared/shared";
 import Loading from "../Loading/Loading";
 import estimatePrice from "../../utilities/estiamatePrice";
 import formatDate from "../../utilities/formatDate";
-
 import logo from "../../assets/logo.png";
 import { useState } from "react";
 import CancelBooking from "../CancelBooking/CancelBooking";

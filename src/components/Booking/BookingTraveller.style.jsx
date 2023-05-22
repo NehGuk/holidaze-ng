@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 import { Star } from "@styled-icons/fa-solid";
 import { Car } from "@styled-icons/boxicons-solid";
 import { Wifi } from "@styled-icons/heroicons-solid";
@@ -13,12 +12,9 @@ export const BookingTravellerContainer = styled.div`
 `;
 
 export const VenueContainer = styled.div`
-  /* background: yellow; */
-  /* border: solid 0.3em blue; */
   max-width: 600px;
   margin: 0 auto;
   padding: 2em;
-
   gap: 1em;
 
   img {
