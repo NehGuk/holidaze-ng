@@ -1,15 +1,13 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useAuthUser, useAuthHeader, useSignOut } from "react-auth-kit";
+import { useNavigate } from "react-router-dom";
+import { useAuthUser, useSignOut } from "react-auth-kit";
 import avatar from "../../assets/avatar.png";
 import UpdateAvatar from "./UpdateAvatar";
-import { ProfileVenueManagerContainer } from "./ProfileVenueManager.style";
+import { Area1, ProfileImgArea, ProfileTravellerContainer } from "./ProfileVenueManager.style";
+import { CTAArea, PageArea0Container, SLinkButton, Sbutton, Sh1Title } from "../styles/globalstyles";
 
-export default function ProfileVenueManager() {
+export default function ProfileTraveller() {
   const userInfo = useAuthUser();
-  const authHeader = useAuthHeader();
-  const token = authHeader().split(" ")[1];
-  const currentUserInfo = JSON.parse(localStorage.token_state);
   const [changeAvatarButton, setChangeAvatarButton] = useState(true);
   const [avatarForm, setAvatarForm] = useState(false);
   const navigate = useNavigate();
@@ -27,24 +25,52 @@ export default function ProfileVenueManager() {
   };
 
   return (
-    <ProfileVenueManagerContainer>
-      <div>
-        <h1>Profile</h1>
-        {userInfo().avatar === null && <img src={avatar} />}
-        {userInfo().avatar !== null && <img src={userInfo().avatar} />}
+    <PageArea0Container>
+      <ProfileTravellerContainer>
+        <Sh1Title>Profile</Sh1Title>
+        <ProfileImgArea>
+          {userInfo().avatar === null && <img src={avatar} />}
+          {userInfo().avatar !== null && <img src={userInfo().avatar} />}
+        </ProfileImgArea>
 
-        {changeAvatarButton && <button onClick={showAvatarForm}>Change avatar</button>}
+        <CTAArea>
+          {changeAvatarButton && <Sbutton onClick={showAvatarForm}>Change avatar</Sbutton>}
+          {avatarForm && <UpdateAvatar userInfo={userInfo} setAvatarForm={setAvatarForm} setChangeAvatarButton={setChangeAvatarButton} />}
+        </CTAArea>
+        <Area1>
+          <p>
+            <span>User name</span>
+            <br></br> {userInfo().name}
+          </p>
+          {!userInfo().venueManager && (
+            <p>
+              <span>Account type</span>
+              <br></br> Traveller
+            </p>
+          )}
+          {userInfo().venueManager && (
+            <p>
+              <span>Account type</span>
+              <br></br> Venue manager
+            </p>
+          )}
+        </Area1>
 
-        {avatarForm && <UpdateAvatar token={token} userInfo={userInfo} setAvatarForm={setAvatarForm} setChangeAvatarButton={setChangeAvatarButton} currentUserInfo={currentUserInfo} />}
-
-        <p>Name: {userInfo().name}</p>
-        {!userInfo().venueManager && <p>Account type: Traveller</p>}
-        {userInfo().venueManager && <p>Account type: Venue manager</p>}
-
-        <Link to="/home">Home</Link>
-
-        <button onClick={handleSignOut}>Sign out</button>
-      </div>
-    </ProfileVenueManagerContainer>
+        <CTAArea>
+          <SLinkButton $white to="/home">
+            Home
+          </SLinkButton>
+          <SLinkButton $white to="/my-venues">
+            My venues
+          </SLinkButton>
+          <SLinkButton $white to="/all-bookings">
+            All bookings
+          </SLinkButton>
+          <Sbutton $negative onClick={handleSignOut}>
+            Sign out
+          </Sbutton>
+        </CTAArea>
+      </ProfileTravellerContainer>
+    </PageArea0Container>
   );
 }

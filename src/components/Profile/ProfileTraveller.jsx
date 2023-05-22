@@ -8,9 +8,6 @@ import { CTAArea, PageArea0Container, SLinkButton, Sbutton, Sh1Title } from "../
 
 export default function ProfileTraveller() {
   const userInfo = useAuthUser();
-  /* const authHeader = useAuthHeader(); */
-  /* const token = authHeader().split(" ")[1]; */
-  /* const currentUserInfo = JSON.parse(localStorage.token_state); */
   const [changeAvatarButton, setChangeAvatarButton] = useState(true);
   const [avatarForm, setAvatarForm] = useState(false);
   const navigate = useNavigate();

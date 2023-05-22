@@ -6,5 +6,6 @@ export const FormArea = styled.div`
   margin: 0 auto;
   > form > :nth-child(2) {
     margin-bottom: 1em;
+    width: 60%;
   }
 `;
