@@ -1,15 +1,16 @@
 import { useParams } from "react-router-dom";
 import useApi from "../../hooks/useAPI";
 import api_endpoints from "../../shared/shared";
-import { BookingTravellerContainer } from "./BookingTraveller.style";
 import Loading from "../Loading/Loading";
 import estimatePrice from "../../utilities/estiamatePrice";
 import formatDate from "../../utilities/formatDate";
-import { Link } from "react-router-dom";
+
 import logo from "../../assets/logo.png";
 import { useState } from "react";
 import CancelBooking from "../CancelBooking/CancelBooking";
 import createMethod from "../../utilities/createMethod";
+import { CTAArea, SLinkButton, SRegButton, Sh1Title, Sh2CardTitle, SpWarning } from "../styles/globalstyles";
+import { Area1, Area2, VenueContainer, ParkingIcon, WifiIcon, BreakfastIcon, PetsIcon, AreaNav } from "./BookingTraveller.style";
 
 export default function BookingTraveller() {
   const { id } = useParams();
@@ -28,40 +29,103 @@ export default function BookingTraveller() {
       {isError && <p>An error has occurred</p>}
       {isLoading && <Loading />}
       {isSuccess && (
-        <BookingTravellerContainer>
-          <h2>Booking</h2>
+        <VenueContainer>
+          <Sh1Title>Booking</Sh1Title>
 
           {venue.media.length === 0 && <img src={logo} />}
           {venue.media.length > 0 && <img src={venue.media[0]} />}
 
-          <h2>{venue.name}</h2>
-          <p>Check-in: {formatDate(dateFrom)}</p>
-          <p>Check-out: {formatDate(dateTo)}</p>
-          <p>Number of guests: {guests}</p>
-          <p>Estimated cost: ${estimatePrice(dateFrom, dateTo, venue.price)}</p>
-          <p>Booked on {formatDate(created)}</p>
-          <p>Booking ID: {bid}</p>
+          <Area1>
+            <Sh2CardTitle>{venue.name}</Sh2CardTitle>
+            <p>
+              <span>Check-in:</span> {formatDate(dateFrom)}
+            </p>
+            <p>
+              <span>Check-out:</span> {formatDate(dateTo)}
+            </p>
+            <p>
+              <span>Number of guests:</span> {guests}
+            </p>
+            <p>
+              <span>Estimated cost:</span> ${estimatePrice(dateFrom, dateTo, venue.price)}
+            </p>
+            <p>
+              <span>Booked on</span> {formatDate(created)}
+            </p>
+          </Area1>
 
-          <h3>Venue details</h3>
-          {(venue.location.address === "" || venue.location.address === "Unknown") && <p>For directions, please contact the owner.</p>}
-          <p>Address: {venue.location.address}</p>
-          <p>City: {venue.location.city}</p>
-          <p>Country: {venue.location.country}</p>
-          <p>Price per night: ${venue.price}</p>
+          <SpWarning>Booking ID: {bid}</SpWarning>
 
-          {venue.meta.wifi && <p>wifi</p>}
-          {venue.meta.parking && <p>parking</p>}
-          {venue.meta.breakfast && <p>breakfast</p>}
-          {venue.meta.pets && <p>pets allowed</p>}
+          <Area2>
+            <Sh2CardTitle>Venue details</Sh2CardTitle>
 
-          {new Date(dateFrom) >= todayEnd && <div>{!cancelClicked && <button onClick={handleCancelBookingButton}>Cancel this booking</button>}</div>}
-          {new Date(dateTo) < todayMidnight && <h3>This booking is no longer active.</h3>}
-          {new Date() <= new Date(dateTo).setHours(23, 59, 0, 0) && new Date() >= new Date(dateFrom).setHours(0, 0, 0, 0) && <p>This booking is currently ongoing. Enjoy your stay!</p>}
-          {cancelClicked && <CancelBooking setCancelClicked={setCancelClicked} bid={bid} />}
+            {(venue.location.address === "" || venue.location.address === "Unknown") && <p>For directions, please contact the owner.</p>}
+            <p>
+              <span>Address:</span> {venue.location.address}
+            </p>
+            <p>
+              <span>City:</span> {venue.location.city}
+            </p>
+            <p>
+              <span>Country:</span> {venue.location.country}
+            </p>
+            <p>
+              <span>Price per night:</span> ${venue.price}
+            </p>
+            <hr></hr>
+            <h3>Facilities</h3>
 
-          <Link to="/my-bookings">See all my Bookings</Link>
-          <Link to="/">Back to home</Link>
-        </BookingTravellerContainer>
+            {venue.meta.wifi === false && venue.meta.parking === false && venue.meta.breakfast === false && venue.meta.pets === false && <p>This venue does not offer wifi, parking or breakfast. Pets are not allowed.</p>}
+
+            {venue.meta.wifi && (
+              <p>
+                <WifiIcon />
+                <span>Wifi</span>
+              </p>
+            )}
+            {venue.meta.parking && (
+              <p>
+                <ParkingIcon />
+                <span>Parking</span>
+              </p>
+            )}
+            {venue.meta.breakfast && (
+              <p>
+                <BreakfastIcon />
+                <span>Breakfast</span>
+              </p>
+            )}
+            {venue.meta.pets && (
+              <p>
+                <PetsIcon />
+                <span>Pet-friendly</span>
+              </p>
+            )}
+          </Area2>
+
+          <CTAArea>
+            {new Date(dateFrom) >= todayEnd && (
+              <>
+                {!cancelClicked && (
+                  <SRegButton $negative onClick={handleCancelBookingButton}>
+                    Cancel this booking
+                  </SRegButton>
+                )}
+              </>
+            )}
+            {new Date(dateTo) < todayMidnight && <h4>This booking is no longer active.</h4>}
+            {new Date() <= new Date(dateTo).setHours(23, 59, 0, 0) && new Date() >= new Date(dateFrom).setHours(0, 0, 0, 0) && <h4>This booking is currently ongoing. Enjoy your stay!</h4>}
+            {cancelClicked && <CancelBooking setCancelClicked={setCancelClicked} bid={bid} />}
+            <hr></hr>
+
+            <AreaNav>
+              <SLinkButton $green to="/my-bookings">
+                See all my bookings
+              </SLinkButton>
+              <SLinkButton to="/">Back to home</SLinkButton>
+            </AreaNav>
+          </CTAArea>
+        </VenueContainer>
       )}
     </div>
   );
