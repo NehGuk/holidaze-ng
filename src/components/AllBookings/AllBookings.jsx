@@ -8,8 +8,11 @@ import formatDate from "../../utilities/formatDate";
 import { Link } from "react-router-dom";
 import { AllBookingsContainer } from "./AllBookings.style";
 import logo from "../../assets/logo.png";
+import useScrollTop from "../../hooks/useScrollTop";
 
 export default function AllBookings() {
+  useScrollTop();
+
   const userInfo = useAuthUser();
 
   const { data, isLoading, isError, isSuccess } = useApi(api_endpoints(userInfo().name).getVenuesManager, createMethod("GET"));
