@@ -11,7 +11,7 @@ import { CTAArea, SLinkButton, Sbutton, Sh1Title, Sinput, SpFormError, Stextarea
 const schema = Yup.object().shape({
   name: Yup.string().required("Please enter a name").max(100, "No more than 20 characters"),
   description: Yup.string().required("Please enter a description").max(800, "No more than 300 characters"),
-  media: Yup.string().required("Please enter the image URL"),
+  media: Yup.string().required("Please enter a valid image URL"),
   price: Yup.number().typeError("Please enter the price").required("Price must be a number"),
   maxGuests: Yup.number().typeError("Please enter the maximum number of guests").required(),
   rating: Yup.number(),
@@ -59,7 +59,7 @@ export default function PostVenueForm() {
     <div>
       <FormContainer>
         <div>
-          <Sh1Title>Add new venue</Sh1Title>
+          <Sh1Title>Add venue</Sh1Title>
         </div>
 
         <Sform onSubmit={handleSubmit(onSubmit)}>

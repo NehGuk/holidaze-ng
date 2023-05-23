@@ -16,8 +16,7 @@ export const Sform = styled.form`
     "media media"
     "price guests"
     "facilities facilities"
-    "address address"
-    "city city"
+    "address city"
     "country country"
     "ctas ctas";
   gap: 1em;
@@ -25,6 +24,10 @@ export const Sform = styled.form`
   > div {
     display: grid;
     /* width: 100%; */
+  }
+
+  > div > p {
+    margin-top: 0.7em;
   }
   > div > textarea {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -100,7 +103,9 @@ export const FormFacilities = styled.div`
     margin-bottom: 1em;
   }
   > div > label {
-    font-size: large;
+    font-size: medium;
+    font-weight: 600;
+    text-transform: uppercase;
     padding-left: 1em;
     color: ${(props) => props.theme.color.white};
   }
