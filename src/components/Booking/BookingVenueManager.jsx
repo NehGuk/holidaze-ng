@@ -4,11 +4,14 @@ import api_endpoints from "../../shared/shared";
 import { Link } from "react-router-dom";
 import Loading from "../Loading/Loading";
 import estimatePrice from "../../utilities/estiamatePrice";
-import { BookingVenueManagerContainer } from "./BookingVenueManager.style";
+import { BookingDetails, BookingVenueManagerContainer, GuestDetails, VenueDetails } from "./BookingVenueManager.style";
 import formatDate from "../../utilities/formatDate";
-import logo from "../../assets/logo.png";
+/* import logo from "../../assets/logo.png"; */
+import { CTAArea, SLinkButton, Sh1Title, SpWarning } from "../styles/globalstyles";
+import useScrollTop from "../../hooks/useScrollTop";
 
 export default function BookingVenueManager() {
+  useScrollTop();
   console.log("MOUNTING BOOKING VENUE MANAGER");
   const { id } = useParams();
   console.log(id);
@@ -30,28 +33,51 @@ export default function BookingVenueManager() {
       {isSuccess && (
         <div>
           <BookingVenueManagerContainer>
-            <h1>Booking</h1>
-            <p>Booking ID: {data.id}</p>
-            <p>Check-in: {formatDate(data.dateFrom)}</p>
-            <p>Check-out: {formatDate(data.dateTo)}</p>
-            <p>Number of guests: {data.guests}</p>
-            <p>Estimated price: ${estimatePrice(data.dateFrom, data.dateTo, data.venue.price)} </p>
+            <Sh1Title>Booking</Sh1Title>
+            <SpWarning>ID: {data.id}</SpWarning>
 
-            <h2>Guest details</h2>
-            <p>Name: {data.customer.name}</p>
-            <p>Email: {data.customer.email}</p>
+            <BookingDetails>
+              <p>
+                <span>Check-in:</span> {formatDate(data.dateFrom)}
+              </p>
+              <p>
+                <span>Check-out:</span> {formatDate(data.dateTo)}
+              </p>
+              <p>
+                <span>Estimated price:</span> ${estimatePrice(data.dateFrom, data.dateTo, data.venue.price)}{" "}
+              </p>
+            </BookingDetails>
 
-            <h2>Venue details</h2>
-            {data.venue.media.length === 0 && <img src={logo} />}
-            {data.venue.media.length > 0 && <img src={data.venue.media[0]} />}
+            <GuestDetails>
+              <h2>Guest details</h2>
+              <p>
+                <span>Guest name:</span> {data.customer.name}
+              </p>
+              <p>
+                <span>Guest email:</span> {data.customer.email}
+              </p>
+              <p>
+                <span>Number of guests:</span> {data.guests}
+              </p>
+            </GuestDetails>
 
-            <p>Property name: {data.venue.name}</p>
-            <p>Price per night: ${data.venue.price}</p>
+            <VenueDetails>
+              <h2>Venue details</h2>
+              {/* {data.venue.media.length === 0 && <img src={logo} />}
+              {data.venue.media.length > 0 && <img src={data.venue.media[0]} />} */}
 
-            <Link to={`/venue/${data.venue.id}`}>Manage venue</Link>
-            <Link to={`/my-venues`}>Check all venues I manage</Link>
-            <Link to={`/all-bookings`}>See all bookings</Link>
-            <Link to={`/venue/${data.venue.id}`}>Home</Link>
+              <p>
+                <span>Venue name:</span> <Link to={`/venue/${data.venue.id}`}>{data.venue.name}</Link>{" "}
+              </p>
+              <p>
+                <span>Price per night:</span> ${data.venue.price}
+              </p>
+            </VenueDetails>
+
+            <CTAArea>
+              <SLinkButton to={`/all-bookings`}>All bookings</SLinkButton>
+              <SLinkButton to={`/venue/${data.venue.id}`}>Back to home</SLinkButton>
+            </CTAArea>
           </BookingVenueManagerContainer>
         </div>
       )}
