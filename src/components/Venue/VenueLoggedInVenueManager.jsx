@@ -125,9 +125,7 @@ export default function VenueLoggedInVenueManager() {
 
               {showBookings && <ShowBookingsListVenueManager venueBookings={venueBookings} />}
 
-              <SLinkButton $green to="/my-venues">
-                Back to my venues
-              </SLinkButton>
+              <SLinkButton to="/my-venues">Back to my venues</SLinkButton>
             </CTAArea>
           </Area4>
         </div>
