@@ -75,8 +75,8 @@ export default function BookingVenueManager() {
             </VenueDetails>
 
             <CTAArea>
-              <SLinkButton to={`/all-bookings`}>All bookings</SLinkButton>
-              <SLinkButton to={`/venue/${data.venue.id}`}>Back to home</SLinkButton>
+              <SLinkButton to="/all-bookings">All bookings</SLinkButton>
+              <SLinkButton to="/home">Back to home</SLinkButton>
             </CTAArea>
           </BookingVenueManagerContainer>
         </div>
