@@ -133,6 +133,7 @@ export const SLinkButton = styled(Link)`
   font-weight: 600;
   padding: 1em 2em;
   border-radius: 7px;
+  display: inline-block;
   transition: ease-in-out 0.2s;
   :hover {
     transition: ease-in-out 0.2s;
