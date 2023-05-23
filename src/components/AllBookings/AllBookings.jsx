@@ -5,10 +5,11 @@ import createMethod from "../../utilities/createMethod";
 import Loading from "../Loading/Loading";
 import { useState, useEffect } from "react";
 import formatDate from "../../utilities/formatDate";
-import { Link } from "react-router-dom";
-import { AllBookingsContainer } from "./AllBookings.style";
+
+import { AllBookingsGrid, AllBookingsListContainer } from "./AllBookings.style";
 import logo from "../../assets/logo.png";
 import useScrollTop from "../../hooks/useScrollTop";
+import { CTAArea, SLinkButton, SSpanTitle, Sbutton } from "../styles/globalstyles";
 
 export default function AllBookings() {
   useScrollTop();
@@ -93,28 +94,45 @@ export default function AllBookings() {
       {isLoading && <Loading />}
       {isError && <p>An error has occurred</p>}
       {isSuccess && (
-        <AllBookingsContainer>
+        <AllBookingsListContainer>
           <div>
             <h1>My bookings</h1>
             {currentBookings.length === 0 && <p>No active bookings at the moment.</p>}
             {currentBookings.length > 0 && (
               <div>
-                <p>The venues you manage have {currentBookings.length} active bookings.</p>
-                <p>There are also {totalBookings - currentBookings.length} expired entries in your booking history.</p>
-
-                <h2>Active bookings</h2>
+                <h2>Active bookings &#40;{currentBookings.length}&#41;</h2>
                 {currentBookings.map((booking) => {
                   return (
                     <div key={booking.id}>
-                      {booking.media.length === 0 && <img src={logo} />}
-                      {booking.media.length > 0 && <img src={booking.media[0]} />}
+                      <AllBookingsGrid>
+                        <div>
+                          {booking.media.length === 0 && <img src={logo} />}
+                          {booking.media.length > 0 && <img src={booking.media[0]} />}
+                        </div>
+                        <div>
+                          <h3>{booking.name}</h3>
 
-                      <h3>{booking.name}</h3>
-                      <p>Check-in: {formatDate(booking.dateFrom)}</p>
-                      <p>Check-out: {formatDate(booking.dateTo)}</p>
-                      <p>Guests: {booking.guests}</p>
-                      <p>Booking ID: {booking.id}</p>
-                      <Link to={`/booking-venue-manager/${booking.id}`}>Details</Link>
+                          <p>
+                            <SSpanTitle>Check-in:</SSpanTitle> {formatDate(booking.dateFrom)}
+                          </p>
+                          <p>
+                            <SSpanTitle>Check-out:</SSpanTitle> {formatDate(booking.dateTo)}
+                          </p>
+                          <p>
+                            <SSpanTitle>Guests:</SSpanTitle> {booking.guests}
+                          </p>
+
+                          <p>
+                            <SSpanTitle>Booking ID:</SSpanTitle> {booking.id}
+                          </p>
+
+                          <p></p>
+
+                          <div>
+                            <SLinkButton to={`/booking-venue-manager/${booking.id}`}>Details</SLinkButton>
+                          </div>
+                        </div>
+                      </AllBookingsGrid>
                     </div>
                   );
                 })}
@@ -123,11 +141,51 @@ export default function AllBookings() {
 
             {pastBookings.length !== 0 && (
               <div>
-                <button onClick={handleShowPastBookings}>{!showPastBookings ? "Show past bookings" : "Hide past bookings"}</button>
+                <CTAArea>
+                  <Sbutton onClick={handleShowPastBookings}>{!showPastBookings ? "Show past bookings" : "Hide past bookings"}</Sbutton>
+                </CTAArea>
+
                 {showPastBookings && (
                   <div>
-                    <h2>Past bookings</h2>
+                    <h2>Past bookings &#40;{totalBookings - currentBookings.length}&#41;</h2>
+
                     {pastBookings.map((booking) => {
+                      return (
+                        <div key={booking.id}>
+                          <AllBookingsGrid>
+                            <div>
+                              {booking.media.length === 0 && <img src={logo} />}
+                              {booking.media.length > 0 && <img src={booking.media[0]} />}
+                            </div>
+                            <div>
+                              <h3>{booking.name}</h3>
+
+                              <p>
+                                <SSpanTitle>Check-in:</SSpanTitle> {formatDate(booking.dateFrom)}
+                              </p>
+                              <p>
+                                <SSpanTitle>Check-out:</SSpanTitle> {formatDate(booking.dateTo)}
+                              </p>
+                              <p>
+                                <SSpanTitle>Guests:</SSpanTitle> {booking.guests}
+                              </p>
+
+                              <p>
+                                <SSpanTitle>Booking ID:</SSpanTitle> {booking.id}
+                              </p>
+
+                              <p></p>
+
+                              <div>
+                                <SLinkButton to={`/booking-venue-manager/${booking.id}`}>Details</SLinkButton>
+                              </div>
+                            </div>
+                          </AllBookingsGrid>
+                        </div>
+                      );
+                    })}
+
+                    {/* {pastBookings.map((booking) => {
                       return (
                         <div key={booking.id}>
                           {booking.media.length === 0 && <img src={logo} />}
@@ -141,13 +199,13 @@ export default function AllBookings() {
                           <Link to={`/booking-venue-manager/${booking.id}`}>Details</Link>
                         </div>
                       );
-                    })}
+                    })} */}
                   </div>
                 )}
               </div>
             )}
           </div>
-        </AllBookingsContainer>
+        </AllBookingsListContainer>
       )}
     </div>
   );
