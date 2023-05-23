@@ -6,7 +6,7 @@ import { MyVenuesGrid, MyVenuesListContainer } from "./VenuesVenueManager.style"
 import api_endpoints from "../../shared/shared";
 import Loading from "../Loading/Loading";
 import logo from "../../assets/logo.png";
-import { CTAArea, SLinkButton, Sh1Title } from "../styles/globalstyles";
+import { CTAArea, SLinkButton, SSpanTitle, Sh1Title } from "../styles/globalstyles";
 import useScrollTop from "../../hooks/useScrollTop";
 
 export default function VenuesVenueManager() {
@@ -66,20 +66,32 @@ export default function VenuesVenueManager() {
                       <h3>{item.name}</h3>
                     </div>
 
-                    <div>{item.location.city}</div>
-
-                    <div>{item.location.country}</div>
-
-                    {/* <div>Maximum {item.maxGuests} guests</div> */}
-
-                    <div>Rating: {item.rating}</div>
-
-                    <div>${item.price} per night</div>
+                    <div>
+                      <p>{item.location.city}</p>
+                    </div>
 
                     <div>
-                      {item.bookings.length === 0 && <p>This venue has no bookings yet.</p>}
-                      {item.bookings.length === 1 && <p>This venue has 1 booking.</p>}
-                      {item.bookings.length > 1 && <p>This venue has {item.bookings.length} bookings.</p>}
+                      <p>{item.location.country}</p>
+                    </div>
+
+                    <div>
+                      <p>
+                        <strong>${item.price}</strong> per night
+                      </p>
+                    </div>
+
+                    <div>
+                      <p>
+                        <SSpanTitle>Rating: {item.rating}</SSpanTitle>
+                      </p>
+                    </div>
+
+                    <div>
+                      <p>
+                        {item.bookings.length === 0 && <>This venue has no bookings yet.</>}
+                        {item.bookings.length === 1 && <>This venue has 1 booking.</>}
+                        {item.bookings.length > 1 && <>This venue has {item.bookings.length} bookings.</>}
+                      </p>
                     </div>
 
                     <div>
