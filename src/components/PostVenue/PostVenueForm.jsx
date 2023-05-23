@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+/* import { Link } from "react-router-dom"; */
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import PostVenueAPICall from "./PostVenueAPICall";
-import { FormContainer, FormFields } from "./PostVenueForm.style";
-import { Sh1Title, Sinput, Stextarea } from "../styles/globalstyles";
+import { CTAs, FormAddress, FormCity, FormContainer, FormCountry, FormDesc, FormFacilities, FormGuests, FormMedia, FormName, FormPrice, Sform } from "./PostVenueForm.style";
+import { CTAArea, SLinkButton, Sbutton, Sh1Title, Sinput, SpFormError, Stextarea } from "../styles/globalstyles";
 
 const schema = Yup.object().shape({
   name: Yup.string().required("Please enter a name").max(100, "No more than 20 characters"),
@@ -61,53 +61,99 @@ export default function PostVenueForm() {
         <div>
           <Sh1Title>Add new venue</Sh1Title>
         </div>
-        <FormFields>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <label>Name:</label>
+
+        <Sform onSubmit={handleSubmit(onSubmit)}>
+          <FormName>
+            <label hidden>Name:</label>
             <Sinput type="text" placeholder="Venue name" {...register("name")} />
-            {errors.name && <span>{errors.name.message}</span>}
+            {errors.name && <SpFormError>{errors.name.message}</SpFormError>}
+          </FormName>
 
-            <label>Description:</label>
+          <FormDesc>
+            <label hidden>Description:</label>
             <Stextarea type="text" rows="6" placeholder="Description" {...register("description")} />
-            {errors.description && <span>{errors.description.message}</span>}
+            {errors.description && <SpFormError>{errors.description.message}</SpFormError>}
+          </FormDesc>
 
-            <label>Cover picture URL:</label>
+          <FormMedia>
+            <label hidden>Cover picture URL:</label>
             <Sinput type="text" placeholder="Cover picture URL" {...register("media")} />
-            {errors.media && <span>{errors.media.message}</span>}
+            {errors.media && <SpFormError>{errors.media.message}</SpFormError>}
+          </FormMedia>
 
-            <label>Price per night:</label>
-            <Sinput type="number" placeholder="8" min="0" {...register("price")} />
-            {errors.price && <span>{errors.price.message}</span>}
+          <FormPrice>
+            <label>
+              <h3>Price</h3>
+            </label>
+            <Sinput type="number" min="0" {...register("price")} />
+            {errors.price && <SpFormError>{errors.price.message}</SpFormError>}
+          </FormPrice>
 
-            <label>Maximum guests:</label>
+          <FormGuests>
+            <label>
+              <h3>Maximum guests</h3>
+            </label>
             <Sinput type="number" min="1" {...register("maxGuests")} />
-            {errors.maxGuests && <span>{errors.maxGuests.message}</span>}
+            {errors.maxGuests && <SpFormError>{errors.maxGuests.message}</SpFormError>}
+          </FormGuests>
 
-            <label htmlFor="pets">Pets</label>
-            <input type="checkbox" {...register("meta.pets")} />
+          <FormFacilities>
+            {/* <h3>Facilities</h3> */}
+            <h3>Facilities</h3>
+            <div>
+              <input type="checkbox" {...register("meta.pets")} />
+              <label htmlFor="pets">Pets</label>
+            </div>
 
-            <label htmlFor="breakfast">Breakfast</label>
-            <input type="checkbox" {...register("meta.breakfast")} />
+            <div>
+              <input type="checkbox" {...register("meta.breakfast")} />
+              <label htmlFor="breakfast">Breakfast</label>
+            </div>
 
-            <label htmlFor="breakfast">Wifi</label>
-            <input type="checkbox" {...register("meta.wifi")} />
+            <div>
+              <input type="checkbox" {...register("meta.wifi")} />
+              <label htmlFor="breakfast">Wifi</label>
+            </div>
+            <div>
+              <input type="checkbox" {...register("meta.parking")} />
+              <label htmlFor="parking">Parking</label>
+            </div>
+          </FormFacilities>
 
-            <label htmlFor="parking">Parking</label>
-            <input type="checkbox" {...register("meta.parking")} />
-
-            <label htmlFor="address">Address</label>
+          <FormAddress>
+            <label hidden htmlFor="address">
+              Address
+            </label>
             <Sinput type="text" placeholder="Address" {...register("location.address")} />
+          </FormAddress>
 
-            <label htmlFor="city">City</label>
+          <FormCity>
+            <label hidden htmlFor="city">
+              City
+            </label>
             <Sinput type="text" placeholder="City" {...register("location.city")} />
+          </FormCity>
 
-            <label htmlFor="country">Country</label>
+          <FormCountry>
+            <label hidden htmlFor="country">
+              Country
+            </label>
             <Sinput type="text" placeholder="Country" {...register("location.country")} />
+          </FormCountry>
 
-            <button type="submit">Submit</button>
-            <Link to="/home">Back</Link>
-          </form>
-        </FormFields>
+          <CTAs>
+            <CTAArea>
+              <Sbutton $green type="submit">
+                Submit
+              </Sbutton>
+
+              <SLinkButton $dark to="/home">
+                Back
+              </SLinkButton>
+            </CTAArea>
+          </CTAs>
+        </Sform>
+
         <div>{formSubmitted && <PostVenueAPICall formData={formData} />}</div>
       </FormContainer>
     </div>
