@@ -1,13 +1,17 @@
-import { Link } from "react-router-dom";
+/* import { Link } from "react-router-dom"; */
 import { useEffect, useState } from "react";
 import useApi from "../../hooks/useAPI";
 import { useAuthUser } from "react-auth-kit";
-import { VenueManagerMyVenuesList } from "./VenuesVenueManager.style";
+import { MyVenuesGrid, MyVenuesListContainer } from "./VenuesVenueManager.style";
 import api_endpoints from "../../shared/shared";
 import Loading from "../Loading/Loading";
 import logo from "../../assets/logo.png";
+import { CTAArea, SLinkButton, Sh1Title } from "../styles/globalstyles";
+import useScrollTop from "../../hooks/useScrollTop";
 
 export default function VenuesVenueManager() {
+  useScrollTop();
+
   console.log("MOUNTED TWICE?");
   const userInfo = useAuthUser();
 
@@ -31,54 +35,68 @@ export default function VenuesVenueManager() {
 
   return (
     <div>
-      <h1>My venues</h1>
+      <MyVenuesListContainer>
+        <Sh1Title>My venues</Sh1Title>
 
-      <p>You are currently managing {myVenuesList.length} venues.</p>
+        {myVenuesList.length === 0 && <h2>You are not managing any venues yet.</h2>}
+        {myVenuesList.length > 0 && <h2>You are currently managing {myVenuesList.length} venues.</h2>}
 
-      {isLoading && <Loading />}
-      {isError && <p>An error has occurred</p>}
-      {isSuccess && (
-        <div>
-          {myVenuesList.length === 0 && (
+        {/* {myVenuesList.length === 0 && (
+          <div>
             <div>
-              <div>
-                <Link to="/post-new-venue">Create new venue</Link>
-              </div>
-              <div>
-                <img src={logo} />
-              </div>
+              <Link to="/post-new-venue">Create new venue</Link>
             </div>
-          )}
-
-          <VenueManagerMyVenuesList>
+          </div>
+        )} */}
+        {isLoading && <Loading />}
+        {isError && <p>An error has occurred</p>}
+        {isSuccess && (
+          <div>
             {myVenuesList.map((item) => (
               <div key={item.id}>
-                <div>
+                <MyVenuesGrid>
                   <div>
-                    <Link to={`/venue/${item.id}`}>
-                      {item.media.length === 0 && <img src={logo} />}
-                      {item.media.length > 0 && <img src={item.media[0]} />}
-                    </Link>
+                    {item.media.length === 0 && <img src={logo} />}
+                    {item.media.length > 0 && <img src={item.media[0]} />}
+                    {/* <img src={imgtest} /> */}
                   </div>
-                  <div>
-                    <Link to={`/venue/${item.id}`}>
-                      <h3>{item.name}</h3>
-                    </Link>
 
-                    <p>${item.price}</p>
-                    <p>Rating: {item.rating}</p>
-                    <p>Max guests: {item.maxGuests}</p>
-                    {item.bookings.length === 0 && <p>This venue has no bookings yet.</p>}
-                    {item.bookings.length === 1 && <p>This venue has 1 booking.</p>}
-                    {item.bookings.length > 1 && <p>This venue has {item.bookings.length} bookings.</p>}
-                    <Link to={`/venue/${item.id}`}>Manage</Link>
+                  <div>
+                    <div>
+                      <h3>{item.name}</h3>
+                    </div>
+
+                    <div>{item.location.city}</div>
+
+                    <div>{item.location.country}</div>
+
+                    {/* <div>Maximum {item.maxGuests} guests</div> */}
+
+                    <div>Rating: {item.rating}</div>
+
+                    <div>${item.price} per night</div>
+
+                    <div>
+                      {item.bookings.length === 0 && <p>This venue has no bookings yet.</p>}
+                      {item.bookings.length === 1 && <p>This venue has 1 booking.</p>}
+                      {item.bookings.length > 1 && <p>This venue has {item.bookings.length} bookings.</p>}
+                    </div>
+
+                    <div>
+                      <SLinkButton to={`/venue/${item.id}`}>Manage</SLinkButton>
+                    </div>
                   </div>
-                </div>
+                </MyVenuesGrid>
               </div>
             ))}
-          </VenueManagerMyVenuesList>
-        </div>
-      )}
+          </div>
+        )}
+        <CTAArea>
+          <SLinkButton $green to="/post-new-venue">
+            Create new venue
+          </SLinkButton>
+        </CTAArea>
+      </MyVenuesListContainer>
     </div>
   );
 }
