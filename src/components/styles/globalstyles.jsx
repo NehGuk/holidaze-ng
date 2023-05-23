@@ -305,4 +305,5 @@ export const CTAArea = styled.div`
   display: grid;
   gap: 1em;
   margin-top: 2em;
+  text-align: center;
 `;
