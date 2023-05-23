@@ -1,18 +1,10 @@
 import styled from "styled-components";
 
-export const AllBookingsContainer = styled.div`
-  background: lightgoldenrodyellow;
-  img {
-    max-width: 12em;
-  }
-`;
-
-////////
-
 export const AllBookingsListContainer = styled.div`
   /* display: none; */
   /* background: green; */
   max-width: 900px;
+  /* max-width: 90vw; */
   margin: 0 auto;
 
   > h2 {
@@ -26,7 +18,6 @@ export const AllBookingsListContainer = styled.div`
 
   @media (max-width: 450px) {
     /* display: none; */
-    max-width: 80vw;
   }
 `;
 
