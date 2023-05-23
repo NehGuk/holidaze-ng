@@ -14,18 +14,55 @@ export const SimgAvatarMenu = styled.img`
   }
 `;
 
-// modal buttons
+// buttons
 export const Sbutton = styled.button`
   background: ${(props) => props.theme.color.white};
   border: none;
   padding: 1em 3em;
+  margin: 0.3em;
+  display: block;
   color: ${(props) => props.theme.color.blue};
   cursor: pointer;
   font-weight: 600;
   border-radius: 5px;
+  transition: ease-in-out 0.2s;
   :hover {
+    transition: ease-in-out 0.2s;
     background: white;
   }
+
+  ${(props) =>
+    props.$blue &&
+    css`
+      background: ${(props) => props.theme.color.blue};
+      color: ${(props) => props.theme.color.white};
+      :hover {
+        color: white;
+        background: ${(props) => props.theme.color.lightblue};
+      }
+    `};
+
+  ${(props) =>
+    props.$lightblue &&
+    css`
+      background: ${(props) => props.theme.color.lightblue};
+      color: ${(props) => props.theme.color.white};
+      :hover {
+        color: white;
+        background: ${(props) => props.theme.color.blue};
+      }
+    `};
+
+  ${(props) =>
+    props.$green &&
+    css`
+      background: ${(props) => props.theme.color.green};
+      color: ${(props) => props.theme.color.white};
+      :hover {
+        color: white;
+        background: ${(props) => props.theme.color.darkgreen};
+      }
+    `};
 
   ${(props) =>
     props.$negative &&
@@ -96,6 +133,7 @@ export const SLinkButton = styled(Link)`
   font-weight: 600;
   padding: 1em 2em;
   border-radius: 7px;
+  display: inline-block;
   transition: ease-in-out 0.2s;
   :hover {
     transition: ease-in-out 0.2s;

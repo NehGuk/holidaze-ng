@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import DeleteVenueAPICall from "./DeleteVenueAPICall";
+import { Sbutton } from "../styles/globalstyles";
+import { DeleteArea } from "./DeleteVenue.style";
 
 export default function DeleteVenue({ setIsDeleted }) {
   console.log("MOUNTING DeleteVenue");
@@ -17,12 +19,17 @@ export default function DeleteVenue({ setIsDeleted }) {
   };
 
   return (
-    <div>
-      <h3>Are you sure?</h3>
-      <button onClick={handleConfirmDeleteButton}>Yes, delete!</button>
-      <button onClick={handleCancelButton}>Cancel</button>
+    <DeleteArea>
+      <h3>Are you sure you want to delete this venue?</h3>
+      <Sbutton $negative onClick={handleConfirmDeleteButton}>
+        Yes, delete!
+      </Sbutton>
+
+      <Sbutton $green onClick={handleCancelButton}>
+        Cancel
+      </Sbutton>
       {confirmDelete && <DeleteVenueAPICall />}
-    </div>
+    </DeleteArea>
   );
 }
 

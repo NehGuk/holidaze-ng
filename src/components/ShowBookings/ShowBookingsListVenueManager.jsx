@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+/* import { Link } from "react-router-dom"; */
 import formatDate from "../../utilities/formatDate";
+import { SLinkButton, SpWarning } from "../styles/globalstyles";
+import { BookingListGrid } from "./ShowBookingsListVenueManager.style";
 
 export default function ShowBookingsListVenueManager({ venueBookings }) {
   console.log("MOUNTING SHOW BOOKINGS LIST VENUE MANAGER");
@@ -9,20 +11,28 @@ export default function ShowBookingsListVenueManager({ venueBookings }) {
 
   return (
     <div>
-      {sortedBookings.length === 0 && <p>No bookings yet</p>}
-      {sortedBookings.length === 1 && <p>This venue has only {sortedBookings.length} booking at the moment</p>}
-      {sortedBookings.length > 1 && <p>This venue has {sortedBookings.length} bookings at the moment</p>}
-
+      <SpWarning>Total: {sortedBookings.length} bookings</SpWarning>
       {sortedBookings.length > 0 &&
         sortedBookings.map((booking) => {
           return (
             <div key={booking.id}>
-              <p>Check-in: {formatDate(booking.dateFrom)}</p>
-              <p>Check-out: {formatDate(booking.dateTo)}</p>
-              <p>Booking ID: {booking.id}</p>
-              <Link to={`/booking-venue-manager/${booking.id}`}>Details</Link>
-              <br></br>
-              <br></br>
+              <BookingListGrid>
+                <div>
+                  <p>
+                    <span>Check-in:</span> {formatDate(booking.dateFrom)}
+                  </p>
+                  <p>
+                    <span>Check-out:</span> {formatDate(booking.dateTo)}
+                  </p>
+                  <p>
+                    <span>Booking ID:</span> {booking.id}
+                  </p>
+
+                  <SLinkButton $white to={`/booking-venue-manager/${booking.id}`}>
+                    Details
+                  </SLinkButton>
+                </div>
+              </BookingListGrid>
             </div>
           );
         })}
