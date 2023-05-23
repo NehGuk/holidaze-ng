@@ -121,7 +121,7 @@ export default function VenueLoggedInVenueManager() {
               {!isDeleted && <Sbutton onClick={handleDeleteButton}>Delete venue</Sbutton>}
 
               {isDeleted && <DeleteVenue setIsDeleted={setIsDeleted} />}
-              <Sbutton onClick={handleShowBookingsButton}>{!showBookings ? "Show booking history" : "Hide booking history"}</Sbutton>
+              <Sbutton onClick={handleShowBookingsButton}>{!showBookings ? "Show bookings" : "Hide bookings"}</Sbutton>
 
               {showBookings && <ShowBookingsListVenueManager venueBookings={venueBookings} />}
 
