@@ -5,6 +5,7 @@ export const FormContainer = styled.div`
   display: grid;
   max-width: 800px;
   margin: 0 auto;
+  padding: 2em;
 `;
 
 export const FormFields = styled.div`
@@ -12,5 +13,10 @@ export const FormFields = styled.div`
     background: lightgoldenrodyellow;
     display: grid;
     gap: 0.5em;
+  }
+
+  > form > textarea {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    opacity: 90%;
   }
 `;

@@ -6,6 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import PostVenueAPICall from "./PostVenueAPICall";
 import { FormContainer, FormFields } from "./PostVenueForm.style";
+import { Sh1Title, Sinput, Stextarea } from "../styles/globalstyles";
 
 const schema = Yup.object().shape({
   name: Yup.string().required("Please enter a name").max(100, "No more than 20 characters"),
@@ -58,28 +59,28 @@ export default function PostVenueForm() {
     <div>
       <FormContainer>
         <div>
-          <h1>Add new venue</h1>
+          <Sh1Title>Add new venue</Sh1Title>
         </div>
         <FormFields>
           <form onSubmit={handleSubmit(onSubmit)}>
             <label>Name:</label>
-            <input type="text" {...register("name")} />
+            <Sinput type="text" placeholder="Venue name" {...register("name")} />
             {errors.name && <span>{errors.name.message}</span>}
 
             <label>Description:</label>
-            <textarea type="text" {...register("description")} />
+            <Stextarea type="text" rows="6" placeholder="Description" {...register("description")} />
             {errors.description && <span>{errors.description.message}</span>}
 
-            <label>Media:</label>
-            <input type="text" {...register("media")} />
+            <label>Cover picture URL:</label>
+            <Sinput type="text" placeholder="Cover picture URL" {...register("media")} />
             {errors.media && <span>{errors.media.message}</span>}
 
-            <label>Price:</label>
-            <input type="number" {...register("price")} />
+            <label>Price per night:</label>
+            <Sinput type="number" placeholder="8" min="0" {...register("price")} />
             {errors.price && <span>{errors.price.message}</span>}
 
-            <label>Max Guests:</label>
-            <input type="number" {...register("maxGuests")} />
+            <label>Maximum guests:</label>
+            <Sinput type="number" min="1" {...register("maxGuests")} />
             {errors.maxGuests && <span>{errors.maxGuests.message}</span>}
 
             <label htmlFor="pets">Pets</label>
@@ -95,13 +96,13 @@ export default function PostVenueForm() {
             <input type="checkbox" {...register("meta.parking")} />
 
             <label htmlFor="address">Address</label>
-            <input type="text" {...register("location.address")} />
+            <Sinput type="text" placeholder="Address" {...register("location.address")} />
 
             <label htmlFor="city">City</label>
-            <input type="text" {...register("location.city")} />
+            <Sinput type="text" placeholder="City" {...register("location.city")} />
 
             <label htmlFor="country">Country</label>
-            <input type="text" {...register("location.country")} />
+            <Sinput type="text" placeholder="Country" {...register("location.country")} />
 
             <button type="submit">Submit</button>
             <Link to="/home">Back</Link>
