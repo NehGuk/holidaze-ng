@@ -2,7 +2,8 @@ import PropTypes from "prop-types";
 import useApi from "../../hooks/useAPI";
 import api_endpoints from "../../shared/shared";
 import createMethod from "../../utilities/createMethod";
-import Loading from "../Loading/Loading";
+import LoadingForm from "../Loading/LoadingForm";
+
 import { Navigate } from "react-router-dom";
 import { SRegButton, SpWarning } from "../styles/globalstyles";
 
@@ -19,7 +20,7 @@ export default function BookVenueAPICall({ bookingObject, setShowConfirmAndCance
 
   return (
     <div>
-      {isLoading && <Loading />}
+      {isLoading && <LoadingForm />}
       {isError && (
         <div>
           <p>An error has occurred</p>
