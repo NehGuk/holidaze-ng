@@ -1,48 +1,40 @@
 import styled, { css } from "styled-components";
-
 import { House } from "@styled-icons/fa-solid";
-
 import { CalendarCheck } from "@styled-icons/fa-regular";
+
 export const ManagerDashboardArea = styled.div`
-  /* background: green; */
   max-width: 900px;
   margin: 0 auto;
-
   @media (max-width: 900px) {
     margin: 0 2em;
   }
-
   > h1 {
     text-align: center;
   }
 `;
 
 export const DashboardGrid = styled.div`
-  /* background: lightcyan; */
   display: grid;
   gap: 2em;
   grid-template-areas:
     "venues bookings"
     "info info"
     "ctas ctas";
-
   margin-top: 4em;
 
   > :nth-child(1) {
     grid-area: venues;
-    /* border: solid 3px red; */
+
     width: 100%;
   }
 
   > :nth-child(2) {
     grid-area: bookings;
-    /* border: solid 3px red; */
     width: 100%;
   }
 
   > :nth-child(3) {
     grid-area: info;
-    /* border: solid 3px black; */
     > h2 {
       font-size: medium;
       text-align: center;
@@ -51,7 +43,6 @@ export const DashboardGrid = styled.div`
 
   > :nth-child(4) {
     grid-area: ctas;
-    /* border: solid 3px black; */
 
     > div {
       text-align: center;

@@ -1,4 +1,3 @@
-/* import { Link } from "react-router-dom"; */
 import { useEffect, useState } from "react";
 import useApi from "../../hooks/useAPI";
 import { useAuthUser } from "react-auth-kit";
@@ -7,26 +6,14 @@ import api_endpoints from "../../shared/shared";
 import Loading from "../Loading/Loading";
 import logo from "../../assets/logo.png";
 import { CTAArea, SLinkButton, SSpanTitle, Sh1Title } from "../styles/globalstyles";
-import useScrollTop from "../../hooks/useScrollTop";
+import useScrollTopAlways from "../../hooks/useScrollTopAlways";
+import createMethod from "../../utilities/createMethod";
 
 export default function VenuesVenueManager() {
-  useScrollTop();
-
-  console.log("MOUNTED TWICE?");
+  useScrollTopAlways();
   const userInfo = useAuthUser();
-
-  const options = {
-    method: "GET",
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-      "Content-Type": "application/json",
-    },
-  };
-
-  const { data, isLoading, isError, isSuccess } = useApi(api_endpoints(userInfo().name).getVenuesManager, options);
-
+  const { data, isLoading, isError, isSuccess } = useApi(api_endpoints(userInfo().name).getVenuesManager, createMethod("GET"));
   const [myVenuesList, setMyVenuesList] = useState([]);
-
   useEffect(() => {
     if (data.length !== 0) {
       setMyVenuesList(data);

@@ -5,17 +5,15 @@ import Loading from "../Loading/Loading";
 import estimatePrice from "../../utilities/estiamatePrice";
 import formatDate from "../../utilities/formatDate";
 import logo from "../../assets/logo.png";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import CancelBooking from "../CancelBooking/CancelBooking";
 import createMethod from "../../utilities/createMethod";
 import { CTAArea, SLinkButton, SRegButton, Sh1Title, Sh2CardTitle, SpWarning } from "../styles/globalstyles";
 import { Area1, Area2, VenueContainer, ParkingIcon, WifiIcon, BreakfastIcon, PetsIcon, AreaNav } from "./BookingTraveller.style";
+import useScrollTopAlways from "../../hooks/useScrollTopAlways";
 
 export default function BookingTraveller() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
+  useScrollTopAlways();
   const { id } = useParams();
   const { data, isLoading, isError, isSuccess } = useApi(api_endpoints(null, null, id).getBooking, createMethod("GET"));
   const { id: bid, dateFrom, dateTo, guests, created, venue } = data;

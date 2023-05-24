@@ -1,5 +1,5 @@
 import { FooterContainer, FooterContent1, FooterContent2, FooterContent3, FooterContent4, FooterLink, FooterLogo } from "./Footer.style";
-import logo from "../../assets/logolight-name.png";
+import logo from "../../assets/logo-name-offwhite.png";
 
 export default function Footer() {
   return (

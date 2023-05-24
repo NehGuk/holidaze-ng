@@ -5,12 +5,9 @@ import { CTAArea, SRegButton } from "../styles/globalstyles";
 import { ConfirmationQuestion } from "./CancelBooking.style";
 
 export default function CancelBooking({ setCancelClicked, bid }) {
-  console.log("CANCEL BOOKING MOUNTS");
-
   const handleNevermindButton = () => {
     setCancelClicked(false);
   };
-
   const [cancelConfirmed, setCancelConfirmed] = useState(false);
   const handleConfirmCancelButton = () => {
     setCancelConfirmed(true);

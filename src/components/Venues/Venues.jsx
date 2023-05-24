@@ -8,29 +8,22 @@ import logoemptyvenue from "../../assets/logo-empty-venue.png";
 import Search from "../Search/Search";
 import NoResults from "../Search/NoResults";
 import { SLinkButton, SSpanTitle, Sh2CardTitle, Shr } from "../styles/globalstyles";
-/* import { Sh3CardTitle } from "../styles/globalstyles"; */
 
 export default function Venues() {
-  console.log("MOUNTING Venues component");
   const [venueList, setVenueList] = useState([]);
   const { data, isLoading, isError, isSuccess } = useAPI(api_endpoints().getVenues);
-
   useEffect(() => {
     if (isSuccess) {
       setVenueList(data);
     }
   }, [isSuccess, data]);
-
   const [searchTerm, setSearchTerm] = useState("");
   const handleChildData = (childData) => {
     setSearchTerm(childData);
   };
-
-  // scroll
-  const venuesListRef = useRef(null); // step 1
-
+  const venuesListRef = useRef(null);
   const scrollToVenuesList = () => {
-    venuesListRef.current.scrollIntoView({ behavior: "smooth" }); // Step 2: Create a function to scroll to the VenuesListContainer
+    venuesListRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
   return (

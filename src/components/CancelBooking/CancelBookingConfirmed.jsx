@@ -1,11 +1,8 @@
-import { useEffect } from "react";
 import { CTAArea, PageArea1Container, SLinkButton, Sh1Title } from "../styles/globalstyles";
+import useScrollTopAlways from "../../hooks/useScrollTopAlways";
 
 export default function CancelBookingConfirmed() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  });
-  console.log("CONFIRMED");
+  useScrollTopAlways();
 
   return (
     <PageArea1Container>

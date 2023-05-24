@@ -1,14 +1,10 @@
 import PropTypes from "prop-types";
 import { ModalBackground, ModalContainer, ModalContent } from "./NavVenueManagerModal.style";
 import { useNavigate } from "react-router-dom";
-
 import { ModalCloseIcon } from "./NavVenueManagerModal.style";
 import { useSignOut, useAuthUser } from "react-auth-kit";
 import avatar from "../../../../assets/avatar.png";
-
-/* import { AvatarImg } from "../NavVenueManager.style"; */
 import { SimgAvatarMenu, Sbutton } from "../../../styles/globalstyles";
-
 import { useSpring, animated } from "@react-spring/web";
 
 export default function NavVenueManagerModal({ showModal, setShowModal }) {

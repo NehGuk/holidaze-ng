@@ -15,11 +15,6 @@ export const VenueListGrid = styled.div`
   max-width: 900px;
   margin: 0 auto;
 
-  /* background: lightgreen; */
-  img {
-    /* width: 100%; */
-  }
-
   @media (min-width: 2300px) {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     max-width: 1200px;
@@ -38,7 +33,6 @@ export const VenueListGrid = styled.div`
 
 export const VenueCard = styled.div`
   background: ${(props) => props.theme.color.white};
-  /* border: solid 0.3em darkgreen; */
   border-radius: 10px;
   min-height: 33em;
 
@@ -128,7 +122,6 @@ export const VenueCardPrice = styled.div`
   grid-area: price;
   padding: 1em;
   align-self: self-end;
-  /*   align-self: end; */
   > h4 {
     margin-bottom: 0.5em;
     font-size: x-large;

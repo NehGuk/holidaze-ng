@@ -8,8 +8,7 @@ export const RegisterFormContainer = styled.div`
   padding: 2em;
   display: grid;
   gap: 1em;
-  /* place-items: stretch; */
-  /* text-align: center; */
+
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
   @media (max-width: 600px) {

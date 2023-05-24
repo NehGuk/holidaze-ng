@@ -1,20 +1,14 @@
 import styled from "styled-components";
-/* import { StarFill } from "@styled-icons/bootstrap"; */
-
 import { Star } from "@styled-icons/fa-solid";
 import { Car } from "@styled-icons/boxicons-solid";
 import { Wifi } from "@styled-icons/heroicons-solid";
 import { FreeBreakfast } from "@styled-icons/material";
-
 import { Pets } from "@styled-icons/material";
 
 export const VenueContainer = styled.div`
-  /* background: yellow; */
-  /* border: solid 0.3em blue; */
   max-width: 600px;
   margin: 0 auto;
   padding: 2em;
-
   gap: 1em;
 
   img {
@@ -55,11 +49,8 @@ export const Area1 = styled.div`
   max-width: 100%;
   height: 6em;
   border-radius: 10px;
-
-  /* color: white; */
   display: grid;
   place-items: center;
-  /* text-align: center; */
   > p,
   p span {
     color: white;
@@ -93,15 +84,10 @@ export const Area2 = styled.div`
 
 export const Area3 = styled.div`
   margin-top: 2em;
-  /* background: ${(props) => props.theme.color.white}; */
-  /* border: 2px solid ${(props) => props.theme.color.lightblue}; */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   max-width: 100%;
   border-radius: 10px;
   padding: 2em 3em;
-  /* display: grid; */
-  /* place-items: start; */
-  /* text-align: center; */
   > h2 {
     margin-bottom: 0em;
   }
@@ -112,13 +98,7 @@ export const Area3 = styled.div`
 
 export const Area4 = styled.div`
   margin-top: 4em;
-  /* border: 2px solid ${(props) => props.theme.color.lightblue}; */
-  /* max-width: 100%; */
   border-radius: 10px;
-  /* padding: 1em; */
-  /* display: grid;
-  place-items: center; */
-
   > div > h2 {
     margin-bottom: 0;
   }
@@ -126,7 +106,6 @@ export const Area4 = styled.div`
 
 export const AreaCTAs = styled.div`
   margin-top: 2em;
-  /* border: 2px solid ${(props) => props.theme.color.lightblue}; */
   max-width: 100%;
   border-radius: 10px;
   padding: 1em;
@@ -137,7 +116,4 @@ export const AreaCTAs = styled.div`
     display: grid;
     gap: 1em;
   }
-
-  /* display: grid; */
-  /* place-items: center; */
 `;

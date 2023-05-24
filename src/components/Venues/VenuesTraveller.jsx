@@ -5,19 +5,14 @@ import api_endpoints from "../../shared/shared";
 import Loading from "../Loading/Loading";
 import { VenuesListContainer, VenueListGrid, VenueCard, VenueCardImg, VenueCardTitle, VenueCardRating, VenueCardCountry, VenueCardCity, VenueCardGuests, VenueCardPrice, VenueCardCTA, GreetingArea, GlobeIcon } from "./VenuesTraveller.style";
 import logoemptyvenue from "../../assets/logo-empty-venue.png";
-
 import SearchTraveller from "../Search/SearchTraveller";
-
 import { SLinkButton, SSpanTitle, Sh1Title, Sh2CardTitle, Shr } from "../styles/globalstyles";
-/* import { Sh3CardTitle } from "../styles/globalstyles"; */
-
 import { useAuthUser } from "react-auth-kit";
 import NoResultsTraveller from "../Search/NoResultsTraveller";
+import useScrollTopAlways from "../../hooks/useScrollTopAlways";
 
 export default function VenuesTraveller() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  useScrollTopAlways();
 
   const userInfo = useAuthUser();
   const [venueList, setVenueList] = useState([]);
@@ -34,12 +29,6 @@ export default function VenuesTraveller() {
     setSearchTerm(childData);
   };
 
-  // scroll
-
-  /* const scrollToVenuesList = () => {
-    venuesListRef.current.scrollIntoView({ behavior: "smooth" }); // Step 2: Create a function to scroll to the VenuesListContainer
-  }; */
-
   return (
     <div>
       {isLoading && <Loading />}
@@ -54,7 +43,6 @@ export default function VenuesTraveller() {
             <GlobeIcon />
           </GreetingArea>
           <SearchTraveller onChildData={handleChildData} />
-          {/* <SearchTraveller onChildData={handleChildData} scrollToVenuesList={scrollToVenuesList} /> */}
           <VenuesListContainer>
             <VenueListGrid>
               {venueList

@@ -6,25 +6,14 @@ import Loading from "../Loading/Loading";
 import estimatePrice from "../../utilities/estiamatePrice";
 import { BookingDetails, BookingVenueManagerContainer, GuestDetails, VenueDetails } from "./BookingVenueManager.style";
 import formatDate from "../../utilities/formatDate";
-/* import logo from "../../assets/logo.png"; */
 import { CTAArea, SLinkButton, Sh1Title, SpWarning } from "../styles/globalstyles";
-import useScrollTop from "../../hooks/useScrollTop";
+import useScrollTopAlways from "../../hooks/useScrollTopAlways";
+import createMethod from "../../utilities/createMethod";
 
 export default function BookingVenueManager() {
-  useScrollTop();
-  console.log("MOUNTING BOOKING VENUE MANAGER");
+  useScrollTopAlways();
   const { id } = useParams();
-  console.log(id);
-
-  const options = {
-    method: "GET",
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-      "Content-Type": "application/json",
-    },
-  };
-
-  const { data, isLoading, isError, isSuccess } = useApi(api_endpoints(null, null, id).getBooking, options);
+  const { data, isLoading, isError, isSuccess } = useApi(api_endpoints(null, null, id).getBooking, createMethod("GET"));
 
   return (
     <div>
@@ -63,9 +52,6 @@ export default function BookingVenueManager() {
 
             <VenueDetails>
               <h2>Venue details</h2>
-              {/* {data.venue.media.length === 0 && <img src={logo} />}
-              {data.venue.media.length > 0 && <img src={data.venue.media[0]} />} */}
-
               <p>
                 <span>Venue name:</span> <Link to={`/venue/${data.venue.id}`}>{data.venue.name}</Link>{" "}
               </p>

@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const BookingVenueManagerContainer = styled.div`
-  /* background: yellow; */
-  /* border: solid 0.3em blue; */
   max-width: 600px;
   margin: 0 auto;
   padding: 2em;
@@ -13,10 +11,6 @@ export const BookingVenueManagerContainer = styled.div`
     object-fit: cover;
     border-radius: 10px;
   }
-
-  /*   @media (max-width: 400px) {
-    max-width: 90vw;
-  } */
 `;
 
 export const BookingDetails = styled.div`

@@ -7,8 +7,6 @@ import { SRegButton, Sh2CardTitle } from "../styles/globalstyles";
 import { BookingConfirmArea } from "./BookVenue.style";
 
 export default function BookVenue({ bookingObject, numberOfGuests, price }) {
-  console.log("MOUNT BookVenue COMPONENT");
-
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [showConfirmAndCancel, setShowConfirmAndCancel] = useState(true);
 

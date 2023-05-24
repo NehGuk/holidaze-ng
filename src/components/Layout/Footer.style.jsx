@@ -44,7 +44,6 @@ export const FooterLogo = styled.div`
 `;
 
 export const FooterContent1 = styled.div`
-  /* background: green; */
   display: grid;
   justify-content: end;
   padding: 1em;
@@ -66,7 +65,6 @@ export const FooterContent1 = styled.div`
 `;
 
 export const FooterContent2 = styled.div`
-  /* background: lightseagreen; */
   display: grid;
   justify-content: center;
   padding: 1em;
@@ -88,7 +86,6 @@ export const FooterContent2 = styled.div`
 `;
 
 export const FooterContent3 = styled.div`
-  /* background: ${(props) => props.theme.color.lightblue}; */
   display: grid;
   justify-content: start;
   padding: 1em;
