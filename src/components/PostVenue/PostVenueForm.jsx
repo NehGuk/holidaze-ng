@@ -13,7 +13,7 @@ const schema = Yup.object().shape({
   description: Yup.string().required("Please enter a description").max(800, "No more than 300 characters"),
   media: Yup.string().required("Please enter a valid image URL"),
   price: Yup.number().typeError("Please enter the price").required("Price must be a number"),
-  maxGuests: Yup.number().typeError("Please enter the maximum number of guests").required(),
+  maxGuests: Yup.number().typeError("Please enter the maximum number of guests (up to 100)").required(),
   rating: Yup.number(),
   meta: Yup.object().shape({
     wifi: Yup.boolean(),
@@ -93,12 +93,11 @@ export default function PostVenueForm() {
             <label>
               <h3>Maximum guests</h3>
             </label>
-            <Sinput type="number" min="1" {...register("maxGuests")} />
+            <Sinput type="number" min="1" max="100" {...register("maxGuests")} />
             {errors.maxGuests && <SpFormError>{errors.maxGuests.message}</SpFormError>}
           </FormGuests>
 
           <FormFacilities>
-            {/* <h3>Facilities</h3> */}
             <div>
               <h3>Facilities</h3>
             </div>

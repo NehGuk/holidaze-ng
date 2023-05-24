@@ -5,19 +5,20 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import UpdateVenueAPICall from "./UpdateVenueAPICall";
 
-import { FormContainer, FormFields } from "./UpdateVenueForm.style";
-import { Link } from "react-router-dom";
+/* import { Link } from "react-router-dom"; */
 import { useParams } from "react-router-dom";
 
 import useApi from "../../hooks/useAPI";
 import api_endpoints from "../../shared/shared";
+import { FormContainer, FormMedia, FormDesc, FormName, Sform, FormPrice, FormGuests, FormFacilities, FormAddress, FormCity, FormCountry, CTAs } from "./UpdateVenueForm.style";
+import { CTAArea, SLinkButton, Sbutton, Sh1Title, Sinput, SpFormError, Stextarea } from "../styles/globalstyles";
 
 const schema = Yup.object().shape({
   name: Yup.string().required("Please enter a name").max(100, "No more than 20 characters"),
   description: Yup.string().required("Please enter a description").max(800, "No more than 300 characters"),
   media: Yup.string().required("Please enter the image URL"),
   price: Yup.number().typeError("Please enter the price").required("Price must be a number"),
-  maxGuests: Yup.number().typeError("Please enter the maximum number of guests").required(),
+  maxGuests: Yup.number().typeError("Please enter the maximum number of guests (up to 100)").required(),
   rating: Yup.number(),
   meta: Yup.object().shape({
     wifi: Yup.boolean(),
@@ -74,55 +75,102 @@ export default function UpdateVenueForm() {
         <>
           <FormContainer>
             <div>
-              <h1>Update venue</h1>
+              <Sh1Title>Update venue</Sh1Title>
             </div>
-            <FormFields>
-              <form onSubmit={handleSubmit(onSubmit)}>
-                <label>Name:</label>
-                <input type="text" defaultValue={data.name} {...register("name")} />
-                {errors.name && <span>{errors.name.message}</span>}
 
-                <label>Description:</label>
-                <textarea type="text" defaultValue={data.description} {...register("description")} />
-                {errors.description && <span>{errors.description.message}</span>}
+            <Sform onSubmit={handleSubmit(onSubmit)}>
+              <FormName>
+                <label hidden>Name:</label>
+                <Sinput type="text" defaultValue={data.name} {...register("name")} />
+                {errors.name && <SpFormError>{errors.name.message}</SpFormError>}
+              </FormName>
 
-                <label>Media:</label>
-                <input type="text" defaultValue={data.media[0]} {...register("media")} />
-                {errors.media && <span>{errors.media.message}</span>}
+              <FormDesc>
+                <label hidden>Description:</label>
+                <Stextarea type="text" rows="6" defaultValue={data.description} {...register("description")} />
+                {errors.description && <SpFormError>{errors.description.message}</SpFormError>}
+              </FormDesc>
 
-                <label>Price:</label>
-                <input type="number" defaultValue={data.price} {...register("price")} />
-                {errors.price && <span>{errors.price.message}</span>}
+              <FormMedia>
+                <label hidden>Cover picture URL:</label>
+                <Sinput type="text" defaultValue={data.media[0]} {...register("media")} />
+                {errors.media && <SpFormError>{errors.media.message}</SpFormError>}
+              </FormMedia>
 
-                <label>Max Guests:</label>
-                <input type="number" defaultValue={data.maxGuests} {...register("maxGuests")} />
-                {errors.maxGuests && <span>{errors.maxGuests.message}</span>}
+              <FormPrice>
+                <label>
+                  <h3>Price</h3>
+                </label>
+                <Sinput type="number" min="0" defaultValue={data.price} {...register("price")} />
+                {errors.price && <SpFormError>{errors.price.message}</SpFormError>}
+              </FormPrice>
 
-                <label htmlFor="pets">Pets</label>
-                <input type="checkbox" defaultChecked={data.meta.pets} {...register("meta.pets")} />
+              <FormGuests>
+                <label>
+                  <h3>Maximum guests</h3>
+                </label>
+                <Sinput type="number" min="1" max="100" defaultValue={data.maxGuests} {...register("maxGuests")} />
+                {errors.maxGuests && <SpFormError>{errors.maxGuests.message}</SpFormError>}
+              </FormGuests>
 
-                <label htmlFor="breakfast">Breakfast</label>
-                <input type="checkbox" defaultChecked={data.meta.breakfast} {...register("meta.breakfast")} />
+              <FormFacilities>
+                <div>
+                  <h3>Facilities</h3>
+                </div>
+                <div>
+                  <input type="checkbox" defaultChecked={data.meta.pets} {...register("meta.pets")} />
+                  <label htmlFor="pets">Pets</label>
+                </div>
 
-                <label htmlFor="breakfast">Wifi</label>
-                <input type="checkbox" defaultChecked={data.meta.wifi} {...register("meta.wifi")} />
+                <div>
+                  <input type="checkbox" defaultChecked={data.meta.breakfast} {...register("meta.breakfast")} />
+                  <label htmlFor="breakfast">Breakfast</label>
+                </div>
 
-                <label htmlFor="parking">Parking</label>
-                <input type="checkbox" defaultChecked={data.meta.parking} {...register("meta.parking")} />
+                <div>
+                  <input type="checkbox" defaultChecked={data.meta.wifi} {...register("meta.wifi")} />
+                  <label htmlFor="breakfast">Wifi</label>
+                </div>
 
-                <label htmlFor="address">Address</label>
-                <input type="text" defaultValue={data.location.address} {...register("location.address")} />
+                <div>
+                  <input type="checkbox" defaultChecked={data.meta.parking} {...register("meta.parking")} />
+                  <label htmlFor="parking">Parking</label>
+                </div>
+              </FormFacilities>
 
-                <label htmlFor="city">City</label>
-                <input type="text" defaultValue={data.location.city} {...register("location.city")} />
+              <FormAddress>
+                <label hidden htmlFor="address">
+                  Address
+                </label>
+                <Sinput type="text" defaultValue={data.location.address} {...register("location.address")} />
+              </FormAddress>
 
-                <label htmlFor="country">Country</label>
-                <input type="text" defaultValue={data.location.country} {...register("location.country")} />
+              <FormCity>
+                <label hidden htmlFor="city">
+                  City
+                </label>
+                <Sinput type="text" defaultValue={data.location.city} {...register("location.city")} />
+              </FormCity>
 
-                <button type="submit">Update</button>
-                <Link to={`/venue/${id}`}>Cancel</Link>
-              </form>
-            </FormFields>
+              <FormCountry>
+                <label hidden htmlFor="country">
+                  Country
+                </label>
+                <Sinput type="text" defaultValue={data.location.country} {...register("location.country")} />
+              </FormCountry>
+
+              <CTAs>
+                <CTAArea>
+                  <Sbutton $green type="submit">
+                    Update
+                  </Sbutton>
+
+                  <SLinkButton $dark to="/home">
+                    Cancel
+                  </SLinkButton>
+                </CTAArea>
+              </CTAs>
+            </Sform>
 
             <div>{formSubmitted && <UpdateVenueAPICall formData={formData} />}</div>
           </FormContainer>
