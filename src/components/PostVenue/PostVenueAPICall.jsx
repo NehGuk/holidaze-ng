@@ -3,6 +3,7 @@ import useApi from "../../hooks/useAPI";
 import Loading from "../Loading/Loading";
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
+import { SpWarning } from "../styles/globalstyles";
 
 export default function PostVenueAPICall({ formData }) {
   console.log("COMPONENT RENDERED");
@@ -30,15 +31,13 @@ export default function PostVenueAPICall({ formData }) {
   console.log(isSuccess);
   return (
     <div>
-      <h3>helloo feedback here</h3>
-
       {isLoading && <Loading />}
       {isError && <p>An error has occurred</p>}
-      {errorMessage && <p>{errorMessage}</p>}
+      {errorMessage && <SpWarning>{errorMessage}</SpWarning>}
 
-      {!isSuccess && <p>NO SUCCESS, NOOO</p>}
-      {isSuccess && <p>Venue successfully uploaded. Thank you!</p>}
-      {isSuccess && <Navigate to="/home" />}
+      {/* {!isSuccess && <p>Something went wrong.</p>} */}
+      {isSuccess && <p>Venue successfully uploaded.</p>}
+      {isSuccess && <Navigate to="/my-venues" />}
     </div>
   );
 }

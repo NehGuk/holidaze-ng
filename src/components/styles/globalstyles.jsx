@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
+/* import PropTypes from "prop-types"; */
 
 export const SimgAvatarMenu = styled.img`
   width: 7em;
@@ -243,6 +244,7 @@ export const SpWarning = styled.p`
   border: solid 2px ${(props) => props.theme.color.shade};
   padding: 1em;
   border-radius: 5px;
+  text-align: center;
 `;
 
 export const SSpanTitle = styled.span`
@@ -291,6 +293,28 @@ export const Sinput = styled.input`
     outline: solid 3px ${(props) => props.theme.color.lightblue};
   }
 `;
+
+export const Stextarea = styled.textarea`
+  padding: 0.5em 1em;
+  border-radius: 10px;
+
+  border: none;
+  font-size: large;
+
+  :focus {
+    background: white;
+    border: none;
+    outline: solid 3px ${(props) => props.theme.color.lightblue};
+  }
+`;
+
+/* export const StextareaTrick = ({ rows, ...rest }) => {
+  return <Stextarea rows={rows} {...rest} />;
+}; */
+
+/* StextareaTrick.propTypes = {
+  rows: PropTypes.number, // Add this prop validation
+}; */
 
 export const SinputNumber = styled.input`
   padding: 0.5em 1em;
