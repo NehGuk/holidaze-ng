@@ -166,7 +166,7 @@ export default function UpdateVenueForm() {
                   </Sbutton>
 
                   <SLinkButton $dark to="/home">
-                    Back
+                    Cancel
                   </SLinkButton>
                 </CTAArea>
               </CTAs>
