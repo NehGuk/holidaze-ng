@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import useApi from "../../hooks/useAPI";
 import api_endpoints from "../../shared/shared";
 import createUnAuthMethod from "../../utilities/createUnAuthMethod";
-import Loading from "../Loading/Loading";
+import LoadingForm from "../Loading/LoadingForm";
 import { SpAPIErrorMessage } from "../styles/globalstyles";
 import { useSignIn } from "react-auth-kit";
 import { useState, useEffect } from "react";
@@ -22,7 +22,7 @@ export default function LoginAPICall({ data }) {
 
   return (
     <div>
-      {isLoading && <Loading />}
+      {isLoading && <LoadingForm />}
       {isError && <SpAPIErrorMessage>An error has occurred.</SpAPIErrorMessage>}
 
       {!isSuccess && response?.errors && (
