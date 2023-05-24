@@ -97,7 +97,15 @@ export default function AllBookings() {
         <AllBookingsListContainer>
           <div>
             <h1>My bookings</h1>
-            {currentBookings.length === 0 && <p>No active bookings at the moment.</p>}
+
+            {currentBookings.length === 0 && (
+              <>
+                <h2>No active bookings.</h2>
+                <SLinkButton $dark to="/home">
+                  Back to home
+                </SLinkButton>
+              </>
+            )}
             {currentBookings.length > 0 && (
               <div>
                 <h2>Active bookings &#40;{currentBookings.length}&#41;</h2>
@@ -142,7 +150,9 @@ export default function AllBookings() {
             {pastBookings.length !== 0 && (
               <div>
                 <CTAArea>
-                  <Sbutton onClick={handleShowPastBookings}>{!showPastBookings ? "Show past bookings" : "Hide past bookings"}</Sbutton>
+                  <Sbutton $negative onClick={handleShowPastBookings}>
+                    {!showPastBookings ? "Show past bookings" : "Hide past bookings"}
+                  </Sbutton>
                 </CTAArea>
 
                 {showPastBookings && (

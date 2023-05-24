@@ -17,6 +17,11 @@ export const NavTravellerStyle = styled.nav`
     /* background: lightcyan; */
     /* border: solid 3px blue; */
     /* padding: 1em; */
+    > p {
+      color: ${(props) => props.theme.color.blue};
+      font-weight: 600;
+      font-size: small;
+    }
 
     align-items: center;
     display: grid;
@@ -71,4 +76,5 @@ export const AvatarImg = styled.img`
 export const HamburgerMenu = styled(Menu)`
   max-width: 2em;
   min-width: 2em;
+  margin-right: 2em;
 `;

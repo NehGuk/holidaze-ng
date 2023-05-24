@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 import estimatePrice from "../../utilities/estiamatePrice";
 import formatDate from "../../utilities/formatDate";
 import { MyBookingsGrid, MyBookingsListContainer } from "./MyBookingsList.style";
@@ -33,9 +32,8 @@ export default function MyBookingsList({ bookings }) {
         {upcomingBookings.length === 0 && (
           <div>
             <h3>You have no upcoming bookings.</h3>
-            <p>
-              But no worries! Go to our <Link to="/">home page</Link> and find the perfect place to stay!
-            </p>
+            <h4>No worries! Check out home page and find the perfect place to stay!</h4>
+            <SLinkButton to="/home">Home</SLinkButton>
           </div>
         )}
         {upcomingBookings.length > 0 && (

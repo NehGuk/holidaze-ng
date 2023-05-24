@@ -23,6 +23,12 @@ export const NavVenueManagerStyle = styled.nav`
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1em;
 
+    > p {
+      color: ${(props) => props.theme.color.blue};
+      font-weight: 600;
+      font-size: small;
+    }
+
     > :nth-child(1) {
       /* background: red; */
       /* border: solid 3px white; */
@@ -73,4 +79,5 @@ export const AvatarImg = styled.img`
 export const HamburgerMenu = styled(Menu)`
   max-width: 2em;
   min-width: 2em;
+  margin-right: 2em;
 `;

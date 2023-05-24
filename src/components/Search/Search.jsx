@@ -29,7 +29,7 @@ export default function Search({ onChildData, scrollToVenuesList }) {
       <SearchInputArea>
         <div>
           <h1>Your journey starts here.</h1>
-          <input onChange={handleSearchTerms} placeholder={`Search venues...${search}`} />
+          <input type="search" onChange={handleSearchTerms} placeholder={`Search venues...${search}`} />
           <button onClick={handleButtonClick}>Go!</button>
         </div>
         <div></div>

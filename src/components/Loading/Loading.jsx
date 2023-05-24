@@ -1,7 +1,10 @@
+import { LoaderArea } from "./Loading.style";
+import { BounceLoader } from "react-spinners";
+
 export default function Loading() {
   return (
-    <div>
-      <h1>LOADINNGG COMPONENT HERE</h1>
-    </div>
+    <LoaderArea>
+      <BounceLoader color="#5879A2" />
+    </LoaderArea>
   );
 }

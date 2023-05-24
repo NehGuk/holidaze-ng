@@ -2,16 +2,16 @@ import PropTypes from "prop-types";
 import useApi from "../../hooks/useAPI";
 import api_endpoints from "../../shared/shared";
 import createUnAuthMethod from "../../utilities/createUnAuthMethod";
-import Loading from "../Loading/Loading";
 import { Navigate } from "react-router-dom";
 import { SpAPIErrorMessage } from "../styles/globalstyles";
+import LoadingForm from "../Loading/LoadingForm";
 
 export default function RegisterAPICall({ data }) {
   const { data: response, isLoading, isError, isSuccess } = useApi(api_endpoints().postRegister, createUnAuthMethod("POST", data));
 
   return (
     <div>
-      {isLoading && <Loading />}
+      {isLoading && <LoadingForm />}
       {isError && <p>An error has occurred</p>}
 
       {!isSuccess && response?.errors && (

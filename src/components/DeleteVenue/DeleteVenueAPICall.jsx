@@ -2,7 +2,7 @@ import useApi from "../../hooks/useAPI";
 import api_endpoints from "../../shared/shared";
 import createMethod from "../../utilities/createMethod";
 import { Navigate, useParams } from "react-router-dom";
-import Loading from "../Loading/Loading";
+import LoadingForm from "../Loading/LoadingForm";
 
 export default function DeleteVenueAPICall() {
   const { id } = useParams();
@@ -13,7 +13,7 @@ export default function DeleteVenueAPICall() {
 
   return (
     <div>
-      {isLoading && <Loading />}
+      {isLoading && <LoadingForm />}
       {!isError && <p>An error has occurred</p>}
       {!isSuccess && <Navigate to="/delete-venue-success" />}
     </div>
