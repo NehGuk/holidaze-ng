@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import Loading from "../Loading/Loading.jsx";
+import LoadingForm from "../Loading/LoadingForm.jsx";
 import useAPI from "../../hooks/useAPI.jsx";
 import api_endpoints from "../../shared/shared.js";
 import createMethod from "../../utilities/createMethod.js";
@@ -21,7 +21,7 @@ export default function UpdateAvatarAPICall({ data }) {
 
   return (
     <div>
-      {isLoading && <Loading />}
+      {isLoading && <LoadingForm />}
       {isError && <SpWarning>An error has occurred</SpWarning>}
       {!isSuccess && response.errors && <SpWarning>{response.errors[0].message}</SpWarning>}
       {isSuccess && <p>Success!</p>}
