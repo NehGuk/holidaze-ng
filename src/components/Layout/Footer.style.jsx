@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const FooterContainer = styled.footer`
   background: ${(props) => props.theme.color.blue};
@@ -12,6 +13,10 @@ export const FooterContainer = styled.footer`
 
   > div > h3 {
     margin-bottom: 0;
+  }
+
+  > div > ul {
+    list-style-type: square;
   }
 
   > div > ul > li {
@@ -50,7 +55,7 @@ export const FooterContent1 = styled.div`
   }
 
   > ul > li {
-    list-style: none;
+    margin-left: 1em;
   }
 
   @media (max-width: 900px) {
@@ -72,7 +77,7 @@ export const FooterContent2 = styled.div`
   }
 
   > ul > li {
-    list-style: none;
+    margin-left: 1em;
   }
 
   @media (max-width: 900px) {
@@ -114,84 +119,19 @@ export const FooterContent4 = styled.div`
   > p {
     font-weight: 600;
     width: 12em;
+    text-align: center;
   }
 `;
 
-///
-
-/* export const FooterContainer = styled.footer`
-  background: ${(props) => props.theme.color.blue};
-
+export const FooterLink = styled(Link)`
   color: ${(props) => props.theme.color.white};
-  width: 100vw;
-  display: grid;
-  gap: 2em;
-  grid-template-areas:
-    "logo content1 content2"
-    "logo content1 content2"
-    "content3 content3 content3";
-  grid-template-columns: 0.5fr 0.5fr 2fr;
+  transition: ease-in-out 0.2s;
+  position: relative;
 
-  @media (max-width: 900px) {
-    grid-template-areas:
-      "logo"
-      "content1"
-      "content2"
-      "content3";
+  :hover {
+    position: relative;
+    transition: ease-in-out 0.2s;
+    font-weight: 600;
+    color: white;
   }
 `;
-
-export const FooterLogo = styled.div`
-  
-  padding: 3em;
-  grid-area: logo;
-  display: grid;
-  justify-items: end;
-  align-items: start;
-  > img {
-    max-width: 12em;
-  }
-  @media (max-width: 900px) {
-    width: 100%;
-    place-content: center;
-  }
-`;
-
-export const FooterContent1 = styled.div`
-  grid-area: content1;
-  padding: 3em;
-  
-  display: grid;
-
-  justify-content: center;
-  align-content: start;
-
-  > h3 {
-    place-items: center;
-  }
-`;
-
-export const FooterContent2 = styled.div`
-  grid-area: content2;
-  padding: 3em;
-  
-  display: grid;
-  justify-content: start;
-  align-content: start;
-
-  > p {
-    max-width: 400px;
-  }
-`;
-
-export const FooterContent3 = styled.div`
-  grid-area: content3;
-  padding: 1em;
-  height: 3em;
-  background: ${(props) => props.theme.color.dark};
-  text-align: center;
-  > p {
-    font-weight: 400;
-  }
-`;
- */

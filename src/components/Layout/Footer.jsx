@@ -1,4 +1,4 @@
-import { FooterContainer, FooterContent1, FooterContent2, FooterContent3, FooterContent4, FooterLogo } from "./Footer.style";
+import { FooterContainer, FooterContent1, FooterContent2, FooterContent3, FooterContent4, FooterLink, FooterLogo } from "./Footer.style";
 import logo from "../../assets/logolight-name.png";
 
 export default function Footer() {
@@ -11,19 +11,51 @@ export default function Footer() {
       <FooterContent1>
         <h3>Built with</h3>
         <ul>
-          <li>React</li>
-          <li>Styled Components</li>
-          <li>Adobe XD</li>
-          <li>Norof API</li>
+          <li>
+            <FooterLink to="https://react.dev" target="_blank">
+              React
+            </FooterLink>
+          </li>
+          <li>
+            <FooterLink to="https://styled-components.com" target="_blank">
+              Styled Components
+            </FooterLink>
+          </li>
+          <li>
+            <FooterLink to="https://helpx.adobe.com/xd/get-started.html" target="_blank">
+              Adobe XD
+            </FooterLink>
+          </li>
+          <li>
+            <FooterLink to="https://docs.noroff.dev" target="_blank">
+              Noroff API
+            </FooterLink>
+          </li>
         </ul>
       </FooterContent1>
 
       <FooterContent2>
         <h3>Contact</h3>
         <ul>
-          <li>Linkedin</li>
-          <li>Github</li>
-          <li>Email</li>
+          <li>
+            <FooterLink to="https://no.linkedin.com/in/henri-kugler-78218422b?trk=people-guest_people_search-card" target="_blank">
+              Linkedin
+            </FooterLink>
+          </li>
+          <li>
+            <FooterLink to="https://github.com/NehGuk" target="_blank">
+              Github
+            </FooterLink>
+          </li>
+          <li>
+            <FooterLink to="https://nehguk.no" target="_blank">
+              Portfolio
+            </FooterLink>
+          </li>
+
+          <li>
+            <FooterLink to="mailto:bidders-gave.0t@icloud.com">Email</FooterLink>
+          </li>
         </ul>
       </FooterContent2>
 
