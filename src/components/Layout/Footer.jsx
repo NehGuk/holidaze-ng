@@ -29,7 +29,7 @@ export default function Footer() {
 
       <FooterContent3>
         <h3>About</h3>
-        <p>This website has been developed as part of my Frontend Development studies at the Norwegian School of Technology and Digital media, Noroff.</p>
+        <p>This website has been developed as part of my Frontend Development studies at the Norwegian School of Technology and Digital Media, Noroff.</p>
       </FooterContent3>
 
       <FooterContent4>
