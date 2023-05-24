@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { CTAArea, PageArea1Container, SLinkButton } from "../styles/globalstyles";
+import { CTAArea, PageArea1Container, SLinkButton, Sh1Title } from "../styles/globalstyles";
 
 export default function CancelBookingConfirmed() {
   useEffect(() => {
@@ -9,7 +9,7 @@ export default function CancelBookingConfirmed() {
 
   return (
     <PageArea1Container>
-      <h1>Booking canceled</h1>
+      <Sh1Title>Booking canceled</Sh1Title>
       <p>Your booking has been cancelled.</p>
 
       <CTAArea>
