@@ -14,6 +14,10 @@ export const FooterContainer = styled.footer`
     margin-bottom: 0;
   }
 
+  > div > ul > li {
+    margin-top: 1em;
+  }
+
   @media (max-width: 900px) {
     grid-template-areas:
       "logo logo logo"
@@ -86,8 +90,9 @@ export const FooterContent3 = styled.div`
   grid-area: about;
 
   > p {
-    max-width: 12em;
+    max-width: 18em;
     padding-right: 2em;
+    line-height: 1.5em;
   }
 
   @media (max-width: 900px) {
