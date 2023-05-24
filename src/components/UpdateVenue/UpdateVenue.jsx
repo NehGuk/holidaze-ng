@@ -1,10 +1,10 @@
 import UpdateVenueForm from "./UpdateVenueForm";
+import useScrollTop from "../../hooks/useScrollTop";
 
 export default function UpdateVenue() {
+  useScrollTop();
   return (
     <div>
-      <h2>Update Venue Component</h2>
-
       <UpdateVenueForm />
     </div>
   );
