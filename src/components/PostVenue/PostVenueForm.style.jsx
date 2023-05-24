@@ -67,7 +67,6 @@ export const FormMedia = styled.div`
 export const FormPrice = styled.div`
   /* background: green; */
   grid-area: price;
-  display: none;
 
   > label > h3 {
     color: ${(props) => props.theme.color.blue};
@@ -76,6 +75,7 @@ export const FormPrice = styled.div`
 
 export const FormGuests = styled.div`
   grid-area: guests;
+
   > label > h3 {
     color: ${(props) => props.theme.color.blue};
   }
