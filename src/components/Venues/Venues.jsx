@@ -46,7 +46,7 @@ export default function Venues() {
                         {venue.media.length === 0 ? <VenueCardImg src={logoemptyvenue} /> : <VenueCardImg src={venue.media[0]} />}
                         <VenueCardTitle>
                           <Link to={`/venue/${venue.id}`}>
-                            <Sh2CardTitle>{venue.name}</Sh2CardTitle>
+                            <Sh2CardTitle>sss{venue.name}</Sh2CardTitle>
                           </Link>
                         </VenueCardTitle>
                         <VenueCardRating>

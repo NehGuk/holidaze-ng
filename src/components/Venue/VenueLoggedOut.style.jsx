@@ -89,7 +89,7 @@ export const Area3 = styled.div`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   max-width: 100%;
   border-radius: 10px;
-  padding: 1em;
+  padding: 2em 3em;
 
   > h2 {
     margin-bottom: 0em;

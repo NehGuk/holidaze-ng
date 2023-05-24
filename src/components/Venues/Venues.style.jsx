@@ -83,6 +83,8 @@ export const VenueCardTitle = styled.div`
   > a > h2 {
     margin: 0;
     overflow-wrap: break-word;
+    color: ${(props) => props.theme.color.blue};
+    text-transform: capitalize;
   }
 `;
 
