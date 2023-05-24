@@ -150,7 +150,9 @@ export default function AllBookings() {
             {pastBookings.length !== 0 && (
               <div>
                 <CTAArea>
-                  <Sbutton onClick={handleShowPastBookings}>{!showPastBookings ? "Show past bookings" : "Hide past bookings"}</Sbutton>
+                  <Sbutton $negative onClick={handleShowPastBookings}>
+                    {!showPastBookings ? "Show past bookings" : "Hide past bookings"}
+                  </Sbutton>
                 </CTAArea>
 
                 {showPastBookings && (
