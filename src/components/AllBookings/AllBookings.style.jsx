@@ -7,7 +7,7 @@ export const AllBookingsListContainer = styled.div`
   /* max-width: 90vw; */
   margin: 0 auto;
 
-  > h2 {
+  > div > h2 {
     font-size: medium;
     margin-bottom: 3em;
   }
