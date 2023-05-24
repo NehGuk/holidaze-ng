@@ -244,6 +244,7 @@ export const SpWarning = styled.p`
   border: solid 2px ${(props) => props.theme.color.shade};
   padding: 1em;
   border-radius: 5px;
+  text-align: center;
 `;
 
 export const SSpanTitle = styled.span`
