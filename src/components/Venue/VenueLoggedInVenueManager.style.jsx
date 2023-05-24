@@ -98,7 +98,7 @@ export const Area3 = styled.div`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   max-width: 100%;
   border-radius: 10px;
-  padding: 3em;
+  padding: 2em 3em;
   /* display: grid; */
   /* place-items: start; */
   /* text-align: center; */
