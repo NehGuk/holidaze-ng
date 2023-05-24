@@ -8,13 +8,8 @@ import { SLinkButton, SSpanPrice, SSpanTitle, Sh1Title, Sh2CardTitle } from "../
 import { VenueContainer, StarIcon, ParkingIcon, WifiIcon, BreakfastIcon, PetsIcon, Area1, Area2, Area3, Area4, AreaCTAs } from "./VenueLoggedInTraveller.style";
 
 export default function VenueLoggedInTraveller() {
-  <VenueContainer />;
-
   const params = useParams();
-  console.log(params.id);
-
   const { data, isLoading, isError, isSuccess } = useApi(api_endpoints(null, params.id).getVenue);
-
   const venueBookings = data.bookings;
   const { id, name, media, description, price, rating, maxGuests, meta, location, owner } = data;
 
@@ -110,10 +105,7 @@ export default function VenueLoggedInTraveller() {
             </p>
           </Area3>
 
-          <Area4>
-            {/* <Sh2CardTitle>How to book</Sh2CardTitle> */}
-            {venueBookings && <ShowBookings venueBookings={venueBookings} maxGuests={maxGuests} price={price} id={id} />}
-          </Area4>
+          <Area4>{venueBookings && <ShowBookings venueBookings={venueBookings} maxGuests={maxGuests} price={price} id={id} />}</Area4>
           <AreaCTAs>
             <SLinkButton to="/">Back</SLinkButton>
           </AreaCTAs>

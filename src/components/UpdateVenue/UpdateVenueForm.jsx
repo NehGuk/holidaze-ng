@@ -2,16 +2,13 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-
 import UpdateVenueAPICall from "./UpdateVenueAPICall";
-
-/* import { Link } from "react-router-dom"; */
 import { useParams } from "react-router-dom";
-
 import useApi from "../../hooks/useAPI";
 import api_endpoints from "../../shared/shared";
 import { FormContainer, FormMedia, FormDesc, FormName, Sform, FormPrice, FormGuests, FormFacilities, FormAddress, FormCity, FormCountry, CTAs } from "./UpdateVenueForm.style";
 import { CTAArea, SLinkButton, Sbutton, Sh1Title, Sinput, SpFormError, Stextarea } from "../styles/globalstyles";
+import useScrollTopAlways from "../../hooks/useScrollTopAlways";
 
 const schema = Yup.object().shape({
   name: Yup.string().required("Please enter a name").max(100, "No more than 20 characters"),
@@ -38,10 +35,10 @@ const schema = Yup.object().shape({
 });
 
 export default function UpdateVenueForm() {
+  useScrollTopAlways();
   const [formData, setformData] = useState(null);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const { id } = useParams();
-
   const {
     register,
     handleSubmit,
@@ -49,25 +46,14 @@ export default function UpdateVenueForm() {
   } = useForm({
     resolver: yupResolver(schema),
   });
-
   const onSubmit = (formData) => {
     formData.price = parseFloat(formData.price);
     formData.maxGuests = parseFloat(formData.maxGuests);
     formData.media = [formData.media];
     setFormSubmitted(true);
-    /* console.log(formData); */
     setformData(formData);
   };
-
-  /* console.log(formSubmitted); */
-
-  // API CALL FOR PRE-FILLING THE FORM
-  console.log(`HEREEEE: ${api_endpoints(null, id).getVenue}`);
-
   const { data } = useApi(api_endpoints(null, id).getVenue);
-  console.log(data);
-
-  // API CALL FOR PRE-FILLING THE FORM END
 
   return (
     <div>

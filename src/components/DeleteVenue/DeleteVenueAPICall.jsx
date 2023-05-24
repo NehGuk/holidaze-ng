@@ -6,9 +6,6 @@ import LoadingForm from "../Loading/LoadingForm";
 
 export default function DeleteVenueAPICall() {
   const { id } = useParams();
-
-  console.log(api_endpoints(null, id).deleteVenue);
-
   const { isLoading, isError, isSuccess } = useApi(api_endpoints(null, id).deleteVenue, createMethod("DELETE"));
 
   return (

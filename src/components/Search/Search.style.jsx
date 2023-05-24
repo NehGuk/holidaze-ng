@@ -2,7 +2,6 @@ import styled from "styled-components";
 import hero from "../../assets/hero.jpg";
 
 export const SearchContainer = styled.div`
-  /* background: blue; */
   background-image: url("${hero}");
   background-size: cover;
   background-position: center;
@@ -29,10 +28,8 @@ export const SearchInputArea = styled.div`
   text-align: center;
   position: absolute;
   bottom: 3em;
-  /* background: ${(props) => props.theme.color.lightblue}; */
   border-radius: 10px;
   backdrop-filter: blur(7px);
-  /* opacity: 50%; */
   padding: 1em 3em;
 
   > div > h1 {
@@ -78,14 +75,6 @@ export const SearchInputArea = styled.div`
     @media (max-width: 600px) {
     }
   }
-
-  /* > div > h1 {
-    position: absolute;
-    top: 4.5em;
-    color: ${(props) => props.theme.color.white};
-    padding: 0.6em 3em;
-    background: rgba(${(props) => props.theme.color.blue}, 0.5);
-  } */
 
   @media (max-width: 600px) {
     padding: 10em 3em 7em 3em;

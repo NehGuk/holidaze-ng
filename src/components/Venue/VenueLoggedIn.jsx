@@ -4,7 +4,7 @@ import VenueLoggedInVenueManager from "./VenueLoggedInVenueManager";
 
 export default function VenueLoggedIn() {
   const userInfo = useAuthUser();
-  console.log(userInfo().venueManager);
+
   return (
     <div>
       {userInfo().venueManager && <VenueLoggedInVenueManager />}

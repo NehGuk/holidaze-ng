@@ -9,14 +9,8 @@ export const NavTravellerStyle = styled.nav`
   grid-template-columns: 1.6fr 0.4fr;
   gap: 1em;
   align-items: center;
-  > :nth-child(1) {
-    /* background: lightgreen; */
-    /* border: solid 3px blue; */
-  }
+
   > :nth-child(2) {
-    /* background: lightcyan; */
-    /* border: solid 3px blue; */
-    /* padding: 1em; */
     > p {
       color: ${(props) => props.theme.color.blue};
       font-weight: 600;
@@ -28,14 +22,7 @@ export const NavTravellerStyle = styled.nav`
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1em;
 
-    > :nth-child(1) {
-      /* background: red; */
-      /* border: solid 3px white; */
-    }
     > :nth-child(2) {
-      /* background: lightgreen; */
-      /* border: solid 3px blue; */
-
       img {
         height: 2em;
         width: 2em;
@@ -43,10 +30,7 @@ export const NavTravellerStyle = styled.nav`
         object-fit: cover;
       }
     }
-    > :nth-child(3) {
-      /* background: lightgreen; */
-      /* border: solid 3px blue; */
-    }
+
     > button {
       background: none;
       border: none;

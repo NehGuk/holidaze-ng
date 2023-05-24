@@ -1,15 +1,14 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthUser, useSignOut } from "react-auth-kit";
 import avatar from "../../assets/avatar.png";
 import UpdateAvatar from "./UpdateAvatar";
 import { Area1, ProfileImgArea, ProfileTravellerContainer } from "./ProfileVenueManager.style";
 import { CTAArea, PageArea0Container, SLinkButton, Sbutton, Sh1Title } from "../styles/globalstyles";
+import useScrollTopAlways from "../../hooks/useScrollTopAlways";
 
 export default function ProfileTraveller() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  useScrollTopAlways();
 
   const userInfo = useAuthUser();
   const [changeAvatarButton, setChangeAvatarButton] = useState(true);
@@ -18,7 +17,6 @@ export default function ProfileTraveller() {
   const signOut = useSignOut();
 
   const showAvatarForm = () => {
-    console.log("SHOE AVATAR FORM");
     setAvatarForm(true);
     setChangeAvatarButton(false);
   };

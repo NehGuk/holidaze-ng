@@ -6,7 +6,6 @@ export const ModalBackground = styled.div`
   top: 0;
   right: 0;
   bottom: 0;
-  /* left: 0; */
   background: black;
   background-color: rgba(0, 0, 0, 0.7);
   width: 100vw;
@@ -18,10 +17,7 @@ export const ModalContainer = styled.div`
   top: 0;
   right: 0;
   bottom: 0;
-  /* left: 0; */
-
   background: ${(props) => props.theme.color.lightblue};
-
   width: 100vw;
   height: 100vh;
 `;
@@ -38,8 +34,6 @@ export const ModalCloseIcon = styled(Close)`
 `;
 
 export const ModalContent = styled.div`
-  /* background: lightpink; */
-
   position: absolute;
   top: 50%;
   left: 50%;
@@ -49,31 +43,7 @@ export const ModalContent = styled.div`
   place-items: center;
   gap: 1em;
 
-  /* border: solid 1em white; */
-
-  > :nth-child(1) {
-    /* border: solid green 0.3em; */
-
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-
-    /* > img {
-      width: 7em;
-      height: 7em;
-      border: 0.3em solid #5879a2;
-      border-radius: 50%;
-      object-fit: cover;
-
-      @media (min-width: 600px) {
-        width: 9em;
-        height: 9em;
-      }
-    } */
-  }
-
   > :nth-child(2) {
-    /* border: solid green 0.3em; */
     text-align: center;
     > span {
       text-transform: uppercase;
@@ -89,23 +59,7 @@ export const ModalContent = styled.div`
   }
 
   > :nth-child(3) {
-    /* border: solid green 0.3em; */
     display: grid;
     gap: 1em;
-    /* > button {
-      background: #d4e4e8;
-      border: none;
-      padding: 1em 3em;
-      color: #293d51;
-      cursor: pointer;
-      font-weight: 600;
-      border-radius: 5px;
-      :hover {
-        background: white;
-      }
-      @media (min-width: 600px) {
-        min-width: 400px;
-      }
-    } */
   }
 `;

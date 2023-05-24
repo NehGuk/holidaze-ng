@@ -1,10 +1,7 @@
 import { NoResultsContainer } from "./NoResultsTraveller.style";
-/* import globalstyles from "../styles/globalstyles"; */
 import { SRegButton } from "../styles/globalstyles";
 
 export default function NoResultsTraveller() {
-  console.log("NO RESULTS");
-
   const handleClearSearch = () => {
     window.location.reload();
   };

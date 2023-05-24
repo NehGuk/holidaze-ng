@@ -1,14 +1,12 @@
 import styled from "styled-components";
 
 export const FormContainer = styled.div`
-  /* background: lightseagreen; */
   max-width: 800px;
   margin: 0 auto;
   padding: 2em;
 `;
 
 export const Sform = styled.form`
-  /* background: lightgoldenrodyellow; */
   display: grid;
   grid-template-areas:
     "name name"
@@ -23,7 +21,6 @@ export const Sform = styled.form`
 
   > div {
     display: grid;
-    /* width: 100%; */
   }
 
   > div > p {
@@ -51,21 +48,17 @@ export const Sform = styled.form`
 
 export const FormName = styled.div`
   grid-area: name;
-  /* background: green; */
 `;
 
 export const FormDesc = styled.div`
   grid-area: desc;
-  /* background: green; */
 `;
 
 export const FormMedia = styled.div`
   grid-area: media;
-  /* background: green; */
 `;
 
 export const FormPrice = styled.div`
-  /* background: green; */
   grid-area: price;
 
   > label > h3 {
@@ -116,20 +109,16 @@ export const FormFacilities = styled.div`
 
 export const FormAddress = styled.div`
   grid-area: address;
-  /* background: green; */
 `;
 
 export const FormCity = styled.div`
   grid-area: city;
-  /* background: green; */
 `;
 
 export const FormCountry = styled.div`
   grid-area: country;
-  /* background: green; */
 `;
 
 export const CTAs = styled.div`
   grid-area: ctas;
-  /* background: green; */
 `;

@@ -1,15 +1,13 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { PageArea1Container } from "../styles/globalstyles";
+import { PageArea1Container, Sh1Title } from "../styles/globalstyles";
+import useScrollTopAlways from "../../hooks/useScrollTopAlways";
 
 export default function RegistrationSuccess() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  useScrollTopAlways();
 
   return (
     <PageArea1Container>
-      <h2>Welcome!</h2>
+      <Sh1Title>Welcome!</Sh1Title>
       <p>
         Registration successful. Please <Link to="/login">log in</Link>.
       </p>

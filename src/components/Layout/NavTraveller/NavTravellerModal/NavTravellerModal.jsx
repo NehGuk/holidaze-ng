@@ -14,9 +14,6 @@ export default function NavTravellerModal({ showModal, setShowModal }) {
     to: { x: 0 },
   });
 
-  console.log(showModal);
-  console.log(setShowModal);
-
   const navigate = useNavigate();
 
   const handleHomeButton = () => {

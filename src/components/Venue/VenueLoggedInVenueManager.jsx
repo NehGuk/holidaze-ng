@@ -14,31 +14,18 @@ import { CTAArea, SLinkButton, SSpanPrice, SSpanTitle, Sbutton, Sh1Title, Sh2Car
 
 export default function VenueLoggedInVenueManager() {
   const params = useParams();
-  console.log(params.id);
-
   const { data, isLoading, isError, isSuccess } = useApi(api_endpoints(null, params.id).getVenue);
-
   const venueBookings = data.bookings;
-
   const [isDeleted, setIsDeleted] = useState(false);
-
   const [showBookings, setShowBookings] = useState(false);
-
   const navigate = useNavigate();
-
   const handleUpdateVenueButton = () => {
-    console.log("GO TO UPDATE");
     navigate(`/venue/${params.id}/update`);
   };
-
   const handleDeleteButton = () => {
-    console.log("DELETING VENUE");
     setIsDeleted(true);
   };
-
   const handleShowBookingsButton = () => {
-    console.log("SHOW BOOKINGS NOWW");
-
     setShowBookings((prevShowBookings) => !prevShowBookings);
   };
 

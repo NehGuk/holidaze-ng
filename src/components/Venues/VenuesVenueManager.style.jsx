@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const MyVenuesListContainer = styled.div`
-  /* display: none; */
-  /* background: green; */
   max-width: 900px;
   margin: 0 auto;
 
@@ -17,8 +15,6 @@ export const MyVenuesListContainer = styled.div`
 `;
 
 export const MyVenuesGrid = styled.div`
-  /* background: lightgreen; */
-  /* border: 2px solid ${(props) => props.theme.color.lightblue}; */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   display: grid;
   border-radius: 10px;
@@ -32,8 +28,6 @@ export const MyVenuesGrid = styled.div`
 
   > :nth-child(1) {
     grid-area: imgDiv;
-    /* border: 3px solid red; */
-    /* background: lightcoral; */
     width: 100%;
     position: relative;
     overflow-x: hidden;
@@ -51,12 +45,10 @@ export const MyVenuesGrid = styled.div`
   > :nth-child(2) {
     grid-area: contentDiv;
     background: ${(props) => props.theme.color.white};
-    /* text-align: center; */
     padding: 0 1em 3em 2em;
     border-radius: 0 10px 10px 0;
 
     > :nth-child(6) {
-      /* display: none; */
       margin-bottom: 2em;
     }
   }
@@ -68,7 +60,6 @@ export const MyVenuesGrid = styled.div`
   }
 
   @media (max-width: 1000px) {
-    /* margin: 2em; */
     grid-template-columns: 0.3fr 1.7fr;
   }
 `;

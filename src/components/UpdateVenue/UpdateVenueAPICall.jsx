@@ -9,23 +9,19 @@ import createMethod from "../../utilities/createMethod";
 import { SpWarning } from "../styles/globalstyles";
 
 export default function UpdateVenueAPICall({ formData }) {
-  console.log("COMPONENT RENDERED");
   const { id } = useParams();
-
   const { data: response, isLoading, isError, isSuccess } = useApi(api_endpoints(null, id).putVenue, createMethod("PUT", formData));
   const [errorMessage, setErrorMessage] = useState(null);
 
   function handleErrors() {
     const errorMessage = response?.errors?.[0]?.message ?? null;
     setErrorMessage(errorMessage);
-    console.log(errorMessage);
   }
 
   useEffect(() => {
     handleErrors();
   }, [response]);
 
-  console.log(isSuccess);
   return (
     <div>
       {isLoading && <LoadingForm />}

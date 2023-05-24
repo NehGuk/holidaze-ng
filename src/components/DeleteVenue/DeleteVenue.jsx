@@ -5,16 +5,11 @@ import { Sbutton } from "../styles/globalstyles";
 import { DeleteArea } from "./DeleteVenue.style";
 
 export default function DeleteVenue({ setIsDeleted }) {
-  console.log("MOUNTING DeleteVenue");
-
   const handleCancelButton = () => {
-    console.log("Testing cancel button");
     setIsDeleted(false);
   };
-
   const [confirmDelete, setConfirmDelete] = useState(false);
   const handleConfirmDeleteButton = () => {
-    console.log("YEE CONFIRM");
     setConfirmDelete(true);
   };
 
@@ -24,7 +19,6 @@ export default function DeleteVenue({ setIsDeleted }) {
       <Sbutton $negative onClick={handleConfirmDeleteButton}>
         Yes, delete!
       </Sbutton>
-
       <Sbutton $green onClick={handleCancelButton}>
         Cancel
       </Sbutton>

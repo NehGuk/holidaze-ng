@@ -1,11 +1,12 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { LoginFormContainer, RegisterAsOther } from "./Login.style";
 import LoginAPICall from "./LoginAPICall";
 import { Sh1Title, SpFormError, Sinput, SRegButton } from "../styles/globalstyles";
+import useScrollTopAlways from "../../hooks/useScrollTopAlways";
 
 const schema = yup.object().shape({
   email: yup
@@ -17,10 +18,7 @@ const schema = yup.object().shape({
 });
 
 export default function Login() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
+  useScrollTopAlways();
   const {
     register,
     handleSubmit,
@@ -28,10 +26,8 @@ export default function Login() {
   } = useForm({
     resolver: yupResolver(schema),
   });
-
   const [data, setData] = useState(null);
   const [createFormData, setCreateFormData] = useState(false);
-
   const onSubmit = async (data) => {
     setData(data);
     setCreateFormData(true);

@@ -5,20 +5,15 @@ import createMethod from "../../utilities/createMethod";
 import Loading from "../Loading/Loading";
 import { useState, useEffect } from "react";
 import formatDate from "../../utilities/formatDate";
-
 import { AllBookingsGrid, AllBookingsListContainer } from "./AllBookings.style";
 import logo from "../../assets/logo.png";
-import useScrollTop from "../../hooks/useScrollTop";
 import { CTAArea, SLinkButton, SSpanTitle, Sbutton } from "../styles/globalstyles";
+import useScrollTopAlways from "../../hooks/useScrollTopAlways";
 
 export default function AllBookings() {
-  useScrollTop();
-
+  useScrollTopAlways();
   const userInfo = useAuthUser();
-
   const { data, isLoading, isError, isSuccess } = useApi(api_endpoints(userInfo().name).getVenuesManager, createMethod("GET"));
-
-  // CALCULATE TOTAL BOOKINGS
   const [totalBookings, setTotalBookings] = useState(0);
   const countTotalBookings = () => {
     const totalBookings = data.reduce((acc, venue) => acc + venue.bookings.length, 0);
@@ -30,26 +25,15 @@ export default function AllBookings() {
     countTotalBookings();
   }, [data]);
 
-  // CALCULATE TOTAL BOOKINGS END
-
-  // TEST
-
-  // CREATE ARRAY STATE FOR VENUES WITH BOOKINGS ONLY
   const [venuesWithBookings, setVenuesWithBookings] = useState([]);
-
   useEffect(() => {
     for (let i = 0; i < data.length; i++) {
       if (data[i].bookings.length !== 0) {
-        /* console.log(data[i]); */
         venuesWithBookings.push(data[i]);
         setVenuesWithBookings(venuesWithBookings);
       }
     }
   }, [data]);
-
-  // CREATE ARRAY STATE FOR VENUES WITH BOOKINGS ONLY END SUCCESS
-
-  // CREATE ARRAY WITH ONE OBJECT FOR EACH BOOKING
 
   const bookingsArray = venuesWithBookings
     .map((property) => {
@@ -59,31 +43,15 @@ export default function AllBookings() {
     })
     .flat();
 
-  // CREATE ARRAY WITH ONE OBJECT FOR EACH BOOKING END
-
-  // SORT ORDER CHRONOLOGICALLY
-
   const bookingsArrayChronologically = bookingsArray.sort((a, b) => {
     const dateA = new Date(a.dateFrom);
     const dateB = new Date(b.dateFrom);
     return dateA - dateB;
   });
 
-  // SORT ORDER CHRONOLOGICALLY END
-
-  // CREATING AN ARRAY FOR PAST BOOKINGS
   const today = new Date();
   const pastBookings = bookingsArrayChronologically.filter((item) => new Date(item.dateTo) < today);
-
-  // CREATING AN ARRAY FOR PAST BOOKINGS END
-
-  // CREATING AN ARRAY FOR CURRENT BOOKINGS
   const currentBookings = bookingsArrayChronologically.filter((obj) => new Date(obj.dateFrom) >= today);
-
-  // CREATING AN ARRAY FOR UPCOMING BOOKINGS END
-
-  // TEST END
-
   const [showPastBookings, setShowPastBookings] = useState(false);
   const handleShowPastBookings = () => {
     setShowPastBookings(!showPastBookings);
@@ -194,22 +162,6 @@ export default function AllBookings() {
                         </div>
                       );
                     })}
-
-                    {/* {pastBookings.map((booking) => {
-                      return (
-                        <div key={booking.id}>
-                          {booking.media.length === 0 && <img src={logo} />}
-                          {booking.media.length > 0 && <img src={booking.media[0]} />}
-
-                          <h3>{booking.name}</h3>
-                          <p>Check-in: {formatDate(booking.dateFrom)}</p>
-                          <p>Check-out: {formatDate(booking.dateTo)}</p>
-                          <p>Guests: {booking.guests}</p>
-                          <p>Booking ID: {booking.id}</p>
-                          <Link to={`/booking-venue-manager/${booking.id}`}>Details</Link>
-                        </div>
-                      );
-                    })} */}
                   </div>
                 )}
               </div>

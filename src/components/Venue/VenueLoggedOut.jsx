@@ -9,19 +9,8 @@ import { VenueContainer, StarIcon, ParkingIcon, WifiIcon, BreakfastIcon, PetsIco
 
 export default function VenueLoggedOut() {
   const params = useParams();
-  console.log(params.id);
-
   const { data, isLoading, isError, isSuccess } = useApi(api_endpoints(null, params.id).getVenue);
-  console.log(isSuccess);
-
-  console.log(isLoading);
-  console.log(isError);
-
   const venueBookings = data.bookings;
-
-  if (isSuccess) {
-    console.log(data.location.address);
-  }
 
   return (
     <div>
@@ -115,74 +104,6 @@ export default function VenueLoggedOut() {
             </p>
           </Area3>
 
-          {/* <div>
-            <p>
-              <SSpanPrice> ${data.price}</SSpanPrice> per night
-            </p>
-          </div> */}
-          {/* <div>
-            <p>
-              <StarIcon /> Rating: {data.rating}
-            </p>
-          </div> */}
-          {/* <div>
-            <Sh2CardTitle $details>Details</Sh2CardTitle>
-            <p>
-              This property accepts a maximum of <strong>{data.maxGuests}</strong> guests.
-            </p>
-            <p>
-              <StarIcon /> Rating: {data.rating}
-            </p>
-            {data.meta.wifi && (
-              <p>
-                <WifiIcon /> Wifi{" "}
-              </p>
-            )}
-            {data.meta.parking && (
-              <p>
-                <ParkingIcon /> Parking{" "}
-              </p>
-            )}
-            {data.meta.breakfast && (
-              <p>
-                <BreakfastIcon /> Breakfast
-              </p>
-            )}
-            {data.meta.pets && (
-              <p>
-                <PetsIcon /> Pets allowed
-              </p>
-            )}
-          </div> */}
-
-          {/* <Sh2CardTitle $details>Location</Sh2CardTitle>
-          {(data.location.address === "" || data.location.address === "Unknown") && (
-            <p>
-              <em>For directions, please contact the owner.</em>
-            </p>
-          )}
-          <p>
-            <SSpanTitle>Address </SSpanTitle>
-            {data.location.address}
-          </p>
-          <p>
-            <SSpanTitle>City </SSpanTitle>
-            {data.location.city}
-          </p>
-          <p>
-            <SSpanTitle>Country </SSpanTitle>
-            {data.location.country}
-          </p>
-
-          <Sh2CardTitle $details>Owner</Sh2CardTitle>
-          <p>
-            <SSpanTitle>Name</SSpanTitle> {data.owner.name}
-          </p>
-          <p>
-            <SSpanTitle>Email </SSpanTitle>
-            {data.owner.email}
-          </p> */}
-
           <Area4>
             <Sh2CardTitle $details>Availability</Sh2CardTitle>
             {venueBookings && <ShowBookings venueBookings={venueBookings} />}
@@ -205,9 +126,6 @@ export default function VenueLoggedOut() {
               </SLinkButton>
             </div>
           </AreaCTAs>
-
-          {/* <Sh2CardTitle $details>Availability</Sh2CardTitle>
-          {venueBookings && <ShowBookings venueBookings={venueBookings} />} */}
         </VenueContainer>
       )}
     </div>

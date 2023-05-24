@@ -1,12 +1,11 @@
 import { useState } from "react";
-/* import { Link } from "react-router-dom"; */
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-
 import PostVenueAPICall from "./PostVenueAPICall";
 import { CTAs, FormAddress, FormCity, FormContainer, FormCountry, FormDesc, FormFacilities, FormGuests, FormMedia, FormName, FormPrice, Sform } from "./PostVenueForm.style";
 import { CTAArea, SLinkButton, Sbutton, Sh1Title, Sinput, SpFormError, Stextarea } from "../styles/globalstyles";
+import useScrollTopAlways from "../../hooks/useScrollTopAlways";
 
 const schema = Yup.object().shape({
   name: Yup.string().required("Please enter a name").max(100, "No more than 20 characters"),
@@ -33,9 +32,9 @@ const schema = Yup.object().shape({
 });
 
 export default function PostVenueForm() {
+  useScrollTopAlways();
   const [formData, setformData] = useState(null);
   const [formSubmitted, setFormSubmitted] = useState(false);
-
   const {
     register,
     handleSubmit,
@@ -43,17 +42,13 @@ export default function PostVenueForm() {
   } = useForm({
     resolver: yupResolver(schema),
   });
-
   const onSubmit = (formData) => {
     formData.price = parseFloat(formData.price);
     formData.maxGuests = parseFloat(formData.maxGuests);
     formData.media = [formData.media];
     setFormSubmitted(true);
-    /* console.log(formData); */
     setformData(formData);
   };
-
-  /* console.log(formSubmitted); */
 
   return (
     <div>

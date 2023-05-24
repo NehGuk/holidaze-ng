@@ -20,6 +20,6 @@ export const RegisterGrid = styled.div`
     > a {
       width: 80%;
     }
-    margin: 3em 2em; /* Adjust the side margin value for small screens */
+    margin: 3em 2em;
   }
 `;

@@ -8,29 +8,22 @@ import logoemptyvenue from "../../assets/logo-empty-venue.png";
 import Search from "../Search/Search";
 import NoResults from "../Search/NoResults";
 import { SLinkButton, SSpanTitle, Sh2CardTitle, Shr } from "../styles/globalstyles";
-/* import { Sh3CardTitle } from "../styles/globalstyles"; */
 
 export default function Venues() {
-  console.log("MOUNTING Venues component");
   const [venueList, setVenueList] = useState([]);
   const { data, isLoading, isError, isSuccess } = useAPI(api_endpoints().getVenues);
-
   useEffect(() => {
     if (isSuccess) {
       setVenueList(data);
     }
   }, [isSuccess, data]);
-
   const [searchTerm, setSearchTerm] = useState("");
   const handleChildData = (childData) => {
     setSearchTerm(childData);
   };
-
-  // scroll
-  const venuesListRef = useRef(null); // step 1
-
+  const venuesListRef = useRef(null);
   const scrollToVenuesList = () => {
-    venuesListRef.current.scrollIntoView({ behavior: "smooth" }); // Step 2: Create a function to scroll to the VenuesListContainer
+    venuesListRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -53,7 +46,7 @@ export default function Venues() {
                         {venue.media.length === 0 ? <VenueCardImg src={logoemptyvenue} /> : <VenueCardImg src={venue.media[0]} />}
                         <VenueCardTitle>
                           <Link to={`/venue/${venue.id}`}>
-                            <Sh2CardTitle>{venue.name}</Sh2CardTitle>
+                            <Sh2CardTitle>sss{venue.name}</Sh2CardTitle>
                           </Link>
                         </VenueCardTitle>
                         <VenueCardRating>

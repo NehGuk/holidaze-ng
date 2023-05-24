@@ -9,15 +9,8 @@ export const NavVenueManagerStyle = styled.nav`
   grid-template-columns: 1.6fr 0.4fr;
   gap: 1em;
   align-items: center;
-  > :nth-child(1) {
-    /* background: lightgreen; */
-    /* border: solid 3px blue; */
-  }
+
   > :nth-child(2) {
-    /* background: lightcyan; */
-    /* border: solid 3px blue; */
-    /* padding: 0.5em; */
-    /* margin-right: 3em; */
     align-items: center;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -30,14 +23,9 @@ export const NavVenueManagerStyle = styled.nav`
     }
 
     > :nth-child(1) {
-      /* background: red; */
-      /* border: solid 3px white; */
       color: #d4e4e8;
     }
     > :nth-child(2) {
-      /* background: lightgreen; */
-      /* border: solid 3px blue; */
-
       img {
         height: 2em;
         width: 2em;
@@ -46,8 +34,6 @@ export const NavVenueManagerStyle = styled.nav`
       }
     }
     > :nth-child(3) {
-      /* background: lightgreen; */
-      /* border: solid 3px blue; */
       color: #d4e4e8;
     }
     > button {

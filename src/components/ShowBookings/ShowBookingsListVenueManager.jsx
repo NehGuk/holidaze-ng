@@ -1,12 +1,9 @@
 import PropTypes from "prop-types";
-/* import { Link } from "react-router-dom"; */
 import formatDate from "../../utilities/formatDate";
 import { SLinkButton, SpWarning } from "../styles/globalstyles";
 import { BookingListGrid } from "./ShowBookingsListVenueManager.style";
 
 export default function ShowBookingsListVenueManager({ venueBookings }) {
-  console.log("MOUNTING SHOW BOOKINGS LIST VENUE MANAGER");
-
   const sortedBookings = venueBookings.sort((a, b) => new Date(a.dateFrom) - new Date(b.dateFrom));
 
   return (

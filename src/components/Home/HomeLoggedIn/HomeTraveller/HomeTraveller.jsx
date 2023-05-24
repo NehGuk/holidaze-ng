@@ -1,9 +1,8 @@
-/* import { useAuthUser } from "react-auth-kit"; */
-/* import VenuesTraveller from "../../../Venues/Venues"; */
 import VenuesTraveller from "../../../Venues/VenuesTraveller";
+import useScrollTopAlways from "../../../../hooks/useScrollTopAlways";
 
 export default function HomeTraveller() {
-  /* const userInfo = useAuthUser(); */
+  useScrollTopAlways();
   return (
     <div>
       <VenuesTraveller />

@@ -13,15 +13,10 @@ export default function SearchTraveller({ onChildData }) {
     onChildData(searchTerm);
   };
 
-  /* const handleButtonClick = () => {
-    scrollToVenuesList();
-  }; */
-
   return (
     <SearchInputArea>
       <div>
         <input onChange={handleSearchTerms} placeholder={`Search venues...${search}`} />
-        {/* <button onClick={handleButtonClick}>Go!</button> */}
       </div>
       <div></div>
     </SearchInputArea>
@@ -30,5 +25,4 @@ export default function SearchTraveller({ onChildData }) {
 
 SearchTraveller.propTypes = {
   onChildData: PropTypes.func.isRequired,
-  scrollToVenuesList: PropTypes.func.isRequired,
 };

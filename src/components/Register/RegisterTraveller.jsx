@@ -1,11 +1,12 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { RegisterFormContainer, RegisterAsOther } from "./RegisterTraveller.style";
 import RegisterAPICall from "./RegisterAPICall";
 import { Sh1Title, Sinput, SRegButton, SpFormError } from "../styles/globalstyles";
 import { Link } from "react-router-dom";
+import useScrollTopAlways from "../../hooks/useScrollTopAlways";
 
 const schema = yup.object().shape({
   name: yup.string().required("Please enter your name").max(20, "Name should no more than 20 characters"),
@@ -18,10 +19,7 @@ const schema = yup.object().shape({
 });
 
 export default function RegisterTraveller() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
+  useScrollTopAlways();
   const {
     register,
     handleSubmit,
@@ -29,10 +27,8 @@ export default function RegisterTraveller() {
   } = useForm({
     resolver: yupResolver(schema),
   });
-
   const [data, setData] = useState(null);
   const [formDataCreated, setFormDataCreated] = useState(false);
-
   const onSubmit = async (data) => {
     setData(data);
     setFormDataCreated(true);

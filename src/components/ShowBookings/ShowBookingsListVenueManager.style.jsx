@@ -6,11 +6,8 @@ export const BookingListGrid = styled.div`
 
   > div {
     background: ${(props) => props.theme.color.shade};
-
     border-radius: 10px;
-
     padding: 2em 2em;
-    /* gap: 1em; */
     max-width: 70%;
     margin: 0 auto;
     text-align: start;

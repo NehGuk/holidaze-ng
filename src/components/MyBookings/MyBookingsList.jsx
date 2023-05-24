@@ -4,23 +4,16 @@ import formatDate from "../../utilities/formatDate";
 import { MyBookingsGrid, MyBookingsListContainer } from "./MyBookingsList.style";
 import { useState } from "react";
 import logo from "../../assets/logo.png";
-/* import imgtest from "../../assets/hero3.jpg"; */
 import { CTAArea, Sbutton, Sh1Title, Shr2, SLinkButton, SSpanTitle } from "../styles/globalstyles";
 
 export default function MyBookingsList({ bookings }) {
-  console.log("MOUNTING MY BOOKINGS LIST");
-  console.log(bookings);
-
   const upcomingBookings = bookings.filter((booking) => {
     return new Date(booking.dateTo) >= new Date(new Date().setHours(0, 0, 0, 0));
   });
-
   const pastBookings = bookings.filter((booking) => {
     return new Date(booking.dateTo) < new Date(new Date().setHours(0, 0, 0, 0));
   });
-
   const [showPastBookings, setShowPastBookings] = useState(false);
-
   const handleShowPastBookings = () => {
     setShowPastBookings(!showPastBookings);
   };
@@ -49,7 +42,6 @@ export default function MyBookingsList({ bookings }) {
                 <div>
                   {booking.venue.media.length === 0 && <img src={logo} />}
                   {booking.venue.media.length > 0 && <img src={booking.venue.media[0]} />}
-                  {/* <img src={booking.venue.media[0]} /> */}
                 </div>
                 <div>
                   <div>
@@ -76,8 +68,6 @@ export default function MyBookingsList({ bookings }) {
                       <SSpanTitle>Estimated price:</SSpanTitle> ${estimatePrice(booking.dateFrom, booking.dateTo, booking.venue.price)}
                     </p>
                   </div>
-                  {/* <div>{booking.venue.location.city !== "Unknown" && booking.venue.location.city !== "" ? <p>{booking.venue.location.city}</p> : <p>Hidden city</p>}</div>
-                  <div>{booking.venue.location.country !== "Unknown" && booking.venue.location.country !== "" ? <p>{booking.venue.location.country}</p> : <p>Faraway country</p>}</div> */}
                   <div>
                     <SLinkButton $lightblue to={`/booking-traveller/${booking.id}`}>
                       Booking details
@@ -108,7 +98,6 @@ export default function MyBookingsList({ bookings }) {
                     <div>
                       {booking.venue.media.length === 0 && <img src={logo} />}
                       {booking.venue.media.length > 0 && <img src={booking.venue.media[0]} />}
-                      {/* <img src={booking.venue.media[0]} /> */}
                     </div>
                     <div>
                       <div>
@@ -135,8 +124,6 @@ export default function MyBookingsList({ bookings }) {
                           <SSpanTitle>Estimated price:</SSpanTitle> ${estimatePrice(booking.dateFrom, booking.dateTo, booking.venue.price)}
                         </p>
                       </div>
-                      {/* <div>{booking.venue.location.city !== "Unknown" && booking.venue.location.city !== "" ? <p>{booking.venue.location.city}</p> : <p>Hidden city</p>}</div>
-                  <div>{booking.venue.location.country !== "Unknown" && booking.venue.location.country !== "" ? <p>{booking.venue.location.country}</p> : <p>Faraway country</p>}</div> */}
                       <div>
                         <SLinkButton $lightblue to={`/booking-traveller/${booking.id}`}>
                           Booking details
@@ -144,20 +131,6 @@ export default function MyBookingsList({ bookings }) {
                       </div>
                     </div>
                   </MyBookingsGrid>
-
-                  {/* {booking.venue.media.length === 0 && <img src={logo} />}
-                  {booking.venue.media.length > 0 && <img src={booking.venue.media[0]} />}
-
-                  <h3>{booking.venue.name}</h3>
-                  <p>Check-in: {formatDate(booking.dateFrom)}</p>
-                  <p>Check-out: {formatDate(booking.dateTo)} </p>
-                  <p>Guests: {booking.guests}</p>
-                  <p>Estimated price: ${estimatePrice(booking.dateFrom, booking.dateTo, booking.venue.price)}</p>
-                  <Link to={`/booking-traveller/${booking.id}`}>Booking details</Link>
-                  <br></br>
-                  <br></br>
-                  <br></br>
-                  <br></br> */}
                 </div>
               );
             })}

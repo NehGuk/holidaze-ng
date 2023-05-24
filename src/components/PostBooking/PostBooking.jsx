@@ -1,9 +1,6 @@
 import PropTypes from "prop-types";
 
 export default function PostBooking({ bookings }) {
-  console.log("MOUNTS POST BOOKING COMPONENT");
-  console.log(bookings);
-
   return (
     <div>
       <h3>Post booking options here</h3>

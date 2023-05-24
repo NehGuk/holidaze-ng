@@ -19,16 +19,12 @@ export default function UpdateAvatar({ setAvatarForm, setChangeAvatarButton }) {
   } = useForm({
     resolver: yupResolver(schema),
   });
-
   const [formDataCreated, setFormDataCreated] = useState(false);
   const [formData, setFormData] = useState(null);
-
   const onSubmit = async (data) => {
-    console.log(data);
     setFormDataCreated(true);
     setFormData(data);
   };
-
   const hideAvatarForm = () => {
     setAvatarForm(false);
     setChangeAvatarButton(true);
@@ -37,8 +33,6 @@ export default function UpdateAvatar({ setAvatarForm, setChangeAvatarButton }) {
   return (
     <FormArea>
       <form onSubmit={handleSubmit(onSubmit)}>
-        {/* <Sh2CardTitle>Update avatar</Sh2CardTitle> */}
-
         <label htmlFor="url" hidden>
           Avatar URL
         </label>

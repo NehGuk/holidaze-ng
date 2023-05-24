@@ -1,10 +1,7 @@
 import styled from "styled-components";
 
 export const AllBookingsListContainer = styled.div`
-  /* display: none; */
-  /* background: green; */
   max-width: 900px;
-  /* max-width: 90vw; */
   margin: 0 auto;
 
   > div > h2 {
@@ -15,15 +12,9 @@ export const AllBookingsListContainer = styled.div`
   @media (max-width: 1000px) {
     margin: 2em;
   }
-
-  @media (max-width: 450px) {
-    /* display: none; */
-  }
 `;
 
 export const AllBookingsGrid = styled.div`
-  /* background: lightgreen; */
-  /* border: 2px solid ${(props) => props.theme.color.lightblue}; */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   display: grid;
   border-radius: 10px;
@@ -37,8 +28,6 @@ export const AllBookingsGrid = styled.div`
 
   > :nth-child(1) {
     grid-area: imgDiv;
-    /* border: 3px solid red; */
-    /* background: lightcoral; */
     width: 100%;
     position: relative;
   }
@@ -55,18 +44,15 @@ export const AllBookingsGrid = styled.div`
   > :nth-child(2) {
     grid-area: contentDiv;
     background: ${(props) => props.theme.color.white};
-    /* text-align: center; */
     padding: 0 1em 3em 2em;
     border-radius: 0 10px 10px 0;
 
     > :nth-child(6) {
-      /* display: none; */
       margin-bottom: 2em;
     }
 
     @media (max-width: 500px) {
       > :nth-child(5) {
-        /* display: none; */
       }
     }
   }
@@ -78,7 +64,6 @@ export const AllBookingsGrid = styled.div`
   }
 
   @media (max-width: 1000px) {
-    /* margin: 2em; */
     grid-template-columns: 0.3fr 1.7fr;
   }
 `;

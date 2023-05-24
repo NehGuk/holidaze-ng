@@ -14,7 +14,6 @@ export default function NavTraveller() {
   const [showModal, setShowModal] = useState(false);
 
   const openModal = () => {
-    console.log("OPENING MODAL");
     setShowModal((prev) => !prev);
   };
 
