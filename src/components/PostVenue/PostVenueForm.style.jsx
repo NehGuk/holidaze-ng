@@ -69,19 +69,15 @@ export const FormPrice = styled.div`
   grid-area: price;
   display: none;
 
-  > label {
-  }
-  > input {
-    /* width: 6em; */
+  > label > h3 {
+    color: ${(props) => props.theme.color.blue};
   }
 `;
 
 export const FormGuests = styled.div`
   grid-area: guests;
-  /* background: green; */
-  > input {
-    /* display: none; */
-    /* width: 6em; */
+  > label > h3 {
+    color: ${(props) => props.theme.color.blue};
   }
 `;
 
@@ -93,9 +89,10 @@ export const FormFacilities = styled.div`
   margin: 1em 0;
   padding: 2em;
   display: grid;
+
   place-content: center;
 
-  > h3 {
+  > div > h3 {
     color: ${(props) => props.theme.color.white};
   }
 
@@ -108,6 +105,12 @@ export const FormFacilities = styled.div`
     text-transform: uppercase;
     padding-left: 1em;
     color: ${(props) => props.theme.color.white};
+  }
+
+  > div > input[type="checkbox"] {
+    height: 2em;
+    width: 2em;
+    vertical-align: -0.5em;
   }
 `;
 

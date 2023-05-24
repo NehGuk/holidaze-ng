@@ -99,7 +99,9 @@ export default function PostVenueForm() {
 
           <FormFacilities>
             {/* <h3>Facilities</h3> */}
-            <h3>Facilities</h3>
+            <div>
+              <h3>Facilities</h3>
+            </div>
             <div>
               <input type="checkbox" {...register("meta.pets")} />
               <label htmlFor="pets">Pets</label>
@@ -114,6 +116,7 @@ export default function PostVenueForm() {
               <input type="checkbox" {...register("meta.wifi")} />
               <label htmlFor="breakfast">Wifi</label>
             </div>
+
             <div>
               <input type="checkbox" {...register("meta.parking")} />
               <label htmlFor="parking">Parking</label>
