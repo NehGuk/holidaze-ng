@@ -6,7 +6,6 @@ import { Navigate } from "react-router-dom";
 import { SpWarning } from "../styles/globalstyles";
 
 export default function PostVenueAPICall({ formData }) {
-  console.log("COMPONENT RENDERED");
   const options = {
     method: "POST",
     headers: {
@@ -21,14 +20,12 @@ export default function PostVenueAPICall({ formData }) {
   function handleErrors() {
     const errorMessage = response?.errors?.[0]?.message ?? null;
     setErrorMessage(errorMessage);
-    console.log(errorMessage);
   }
 
   useEffect(() => {
     handleErrors();
   }, [response]);
 
-  console.log(isSuccess);
   return (
     <div>
       {isLoading && <LoadingForm />}

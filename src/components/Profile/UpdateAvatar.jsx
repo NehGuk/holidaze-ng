@@ -22,7 +22,6 @@ export default function UpdateAvatar({ setAvatarForm, setChangeAvatarButton }) {
   const [formDataCreated, setFormDataCreated] = useState(false);
   const [formData, setFormData] = useState(null);
   const onSubmit = async (data) => {
-    console.log(data);
     setFormDataCreated(true);
     setFormData(data);
   };

@@ -17,7 +17,6 @@ export default function ProfileTraveller() {
   const signOut = useSignOut();
 
   const showAvatarForm = () => {
-    console.log("SHOE AVATAR FORM");
     setAvatarForm(true);
     setChangeAvatarButton(false);
   };

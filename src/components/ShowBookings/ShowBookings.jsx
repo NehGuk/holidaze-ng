@@ -70,7 +70,6 @@ export default function ShowBookings({ venueBookings, maxGuests, price, id }) {
       setHideBookThisVenueButton(true);
     }
   };
-  console.log(userIsAuth());
 
   return (
     <div>

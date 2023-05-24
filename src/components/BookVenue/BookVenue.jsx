@@ -15,7 +15,6 @@ export default function BookVenue({ bookingObject, numberOfGuests, price }) {
   };
 
   const handleConfirmButton = () => {
-    console.log("CONFIRM");
     setIsConfirmed(true);
   };
 

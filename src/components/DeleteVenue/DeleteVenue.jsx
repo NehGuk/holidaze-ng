@@ -10,7 +10,6 @@ export default function DeleteVenue({ setIsDeleted }) {
   };
   const [confirmDelete, setConfirmDelete] = useState(false);
   const handleConfirmDeleteButton = () => {
-    console.log("YEE CONFIRM");
     setConfirmDelete(true);
   };
 

@@ -16,7 +16,6 @@ export default function UpdateVenueAPICall({ formData }) {
   function handleErrors() {
     const errorMessage = response?.errors?.[0]?.message ?? null;
     setErrorMessage(errorMessage);
-    console.log(errorMessage);
   }
 
   useEffect(() => {

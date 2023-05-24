@@ -29,7 +29,6 @@ export default function AllBookings() {
   useEffect(() => {
     for (let i = 0; i < data.length; i++) {
       if (data[i].bookings.length !== 0) {
-        /* console.log(data[i]); */
         venuesWithBookings.push(data[i]);
         setVenuesWithBookings(venuesWithBookings);
       }
