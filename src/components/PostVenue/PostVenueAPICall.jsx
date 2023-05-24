@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import useApi from "../../hooks/useAPI";
-import Loading from "../Loading/Loading";
+import LoadingForm from "../Loading/LoadingForm";
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { SpWarning } from "../styles/globalstyles";
@@ -31,7 +31,7 @@ export default function PostVenueAPICall({ formData }) {
   console.log(isSuccess);
   return (
     <div>
-      {isLoading && <Loading />}
+      {isLoading && <LoadingForm />}
       {isError && <p>An error has occurred</p>}
       {errorMessage && <SpWarning>{errorMessage}</SpWarning>}
 
