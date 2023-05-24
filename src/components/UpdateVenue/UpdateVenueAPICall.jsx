@@ -6,6 +6,7 @@ import { Navigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import api_endpoints from "../../shared/shared";
 import createMethod from "../../utilities/createMethod";
+import { SpWarning } from "../styles/globalstyles";
 
 export default function UpdateVenueAPICall({ formData }) {
   console.log("COMPONENT RENDERED");
@@ -27,13 +28,12 @@ export default function UpdateVenueAPICall({ formData }) {
   console.log(isSuccess);
   return (
     <div>
-      <h3>helloo feedback here</h3>
-
       {isLoading && <Loading />}
-      {isError && <p>An error has occurred</p>}
-      {errorMessage && <p>{errorMessage}</p>}
+      {isError && <SpWarning>An error has occurred</SpWarning>}
 
-      {isSuccess && <p>Venue successfully Updated. Thank you!</p>}
+      {errorMessage && <SpWarning>{errorMessage}</SpWarning>}
+
+      {isSuccess && <p>Venue successfully updated.</p>}
       {isSuccess && <Navigate to={`/venue/${id}`} />}
     </div>
   );

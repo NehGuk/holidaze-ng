@@ -98,7 +98,6 @@ export default function PostVenueForm() {
           </FormGuests>
 
           <FormFacilities>
-            {/* <h3>Facilities</h3> */}
             <div>
               <h3>Facilities</h3>
             </div>
