@@ -28,7 +28,7 @@ export const ModalCloseIcon = styled(Close)`
   top: 5%;
   right: 2%;
   z-index: 999;
-  color: #eaf5fb;
+  color: ${(props) => props.theme.color.white};
   scale: 60%;
   cursor: pointer;
 `;
@@ -54,12 +54,12 @@ export const ModalContent = styled.div`
       text-transform: uppercase;
       font-size: small;
       margin-bottom: 0;
-      color: #d4e4e8;
+      color: ${(props) => props.theme.color.white};
     }
     > p {
       margin-top: 0.3em;
       font-size: larger;
-      color: #eaf5fb;
+      color: ${(props) => props.theme.color.white};
     }
   }
 
