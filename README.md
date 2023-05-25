@@ -34,9 +34,9 @@ The utility functions in this project are documented with JSDocs.
 - [ReactSpring](https://www.react-spring.dev)
 - [Yup](https://www.npmjs.com/package/yup)
 
-## Contributions
+## Privacy
 
-For suggestions and contributions, please fork this repository and open new pull requests. The main branch is protected. You're also welcome to post post on the [issues](https://github.com/NehGuk/noroff-shop/issues) tab.
+The deployed version of this project (https://holidaze-ng.netlify.app/) has Hotjar enabled.
 
 ## Design
 
@@ -45,3 +45,16 @@ The AA-compliant colour palette for this project is inspired by a 1596 painting 
 ![Colour palette](./src/assets/colour-palette.png)
 
 ![View of Toledo](./src/assets/el-greco-view-of-toledo-1596.png)
+
+## Contributions
+
+For suggestions and contributions, please fork this repository and open new pull requests. The main branch is protected. You're also welcome to post post on the [issues](https://github.com/NehGuk/noroff-shop/issues) tab.
+
+## Deliverables
+
+- Gantt chart for project timing
+- Mid-fidelity design prototype
+- Style guide
+- Kanban project board
+- [Repository link](https://github.com/NehGuk/holidaze-ng)
+- [Hosted application demo link](https://holidaze-ng.netlify.app/)

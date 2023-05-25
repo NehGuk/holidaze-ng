@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Menu } from "@styled-icons/material/Menu";
 
 export const NavVenueManagerStyle = styled.nav`
-  background: #293d51;
+  background: ${(props) => props.theme.color.blue};
   min-height: 80px;
   padding: 1em 0.1em 1em 1em;
   display: grid;
@@ -23,18 +23,18 @@ export const NavVenueManagerStyle = styled.nav`
     }
 
     > :nth-child(1) {
-      color: #d4e4e8;
+      color: ${(props) => props.theme.color.white};
     }
     > :nth-child(2) {
       img {
         height: 2em;
         width: 2em;
-        border: 0.2em solid #5879a2;
+        border: 0.2em solid ${(props) => props.theme.color.lightblue};
         object-fit: cover;
       }
     }
     > :nth-child(3) {
-      color: #d4e4e8;
+      color: ${(props) => props.theme.color.white};
     }
     > button {
       background: none;
