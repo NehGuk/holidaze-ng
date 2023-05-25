@@ -8,6 +8,7 @@ import logoemptyvenue from "../../assets/logo-empty-venue.png";
 import Search from "../Search/Search";
 import NoResults from "../Search/NoResults";
 import { SLinkButton, SSpanTitle, Sh2CardTitle, Shr } from "../styles/globalstyles";
+import ErrorPage from "../ErrorPage/ErrorPage";
 
 export default function Venues() {
   const [venueList, setVenueList] = useState([]);
@@ -29,7 +30,7 @@ export default function Venues() {
   return (
     <div>
       {isLoading && <Loading />}
-      {isError && <p>An error has occurred</p>}
+      {isError && <ErrorPage />}
       {isSuccess && (
         <div>
           <Search onChildData={handleChildData} scrollToVenuesList={scrollToVenuesList} />
