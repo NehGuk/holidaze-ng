@@ -48,13 +48,13 @@ The AA-compliant colour palette for this project is inspired by a 1596 painting 
 
 ## Contributions
 
-For suggestions and contributions, please fork this repository and open new pull requests. The main branch is protected. You're also welcome to post post on the [issues](https://github.com/NehGuk/noroff-shop/issues) tab.
+For suggestions and contributions, please fork this repository and open new pull requests. The main branch is protected. You're also welcome to post post on the issues tab.
 
 ## Deliverables
 
 - Gantt chart for project timing
 - Mid-fidelity design prototype
 - Style guide
-- Kanban project board
+- [Kanban project board](https://trello.com/b/FfHpyYcq/overview)
 - [Repository link](https://github.com/NehGuk/holidaze-ng)
 - [Hosted application demo link](https://holidaze-ng.netlify.app/)
