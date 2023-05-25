@@ -36,9 +36,8 @@ export default function VenuesVenueManager() {
               <div key={item.id}>
                 <MyVenuesGrid>
                   <div>
-                    {item.media.length === 0 && <img src={logo} />}
-                    {item.media.length > 0 && <img src={item.media[0]} />}
-                    {/* <img src={imgtest} /> */}
+                    {item.media.length === 0 && <img src={logo} alt="Holidaze logo" />}
+                    {item.media.length > 0 && <img src={item.media[0]} alt={`Cover image for the venue ${item.name}`} />}
                   </div>
 
                   <div>

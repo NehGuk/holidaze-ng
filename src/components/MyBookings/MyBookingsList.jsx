@@ -42,8 +42,8 @@ export default function MyBookingsList({ bookings }) {
             <div key={booking.id}>
               <MyBookingsGrid>
                 <div>
-                  {booking.venue.media.length === 0 && <img src={logo} />}
-                  {booking.venue.media.length > 0 && <img src={booking.venue.media[0]} />}
+                  {booking.venue.media.length === 0 && <img src={logo} alt="Holidaze logo" />}
+                  {booking.venue.media.length > 0 && <img src={booking.venue.media[0]} alt="Holidaze logo" />}
                 </div>
                 <div>
                   <div>
@@ -98,8 +98,8 @@ export default function MyBookingsList({ bookings }) {
                 <div key={booking.id}>
                   <MyBookingsGrid>
                     <div>
-                      {booking.venue.media.length === 0 && <img src={logo} />}
-                      {booking.venue.media.length > 0 && <img src={booking.venue.media[0]} />}
+                      {booking.venue.media.length === 0 && <img src={logo} alt="Holidaze logo" />}
+                      {booking.venue.media.length > 0 && <img src={booking.venue.media[0]} alt={`Cover image for the venue ${booking.name}`} />}
                     </div>
                     <div>
                       <div>

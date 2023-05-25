@@ -21,14 +21,14 @@ export default function NavTraveller() {
       <NavVenueManagerStyle>
         <div>
           <Link to="/home">
-            <LogoImg src={logolight} />
+            <LogoImg src={logolight} alt="Holidaze logo" />
           </Link>
         </div>
         <div>
           <p>{userInfo().name}</p>
           <Link to="/profile-venuemanager">
-            {userInfo().avatar === null && <AvatarImg src={avatar} />}
-            {userInfo().avatar !== null && <AvatarImg src={userInfo().avatar} />}
+            {userInfo().avatar === null && <AvatarImg src={avatar} alt="Avatar image" />}
+            {userInfo().avatar !== null && <AvatarImg src={userInfo().avatar} alt="Avatar image" />}
           </Link>
 
           <button onClick={openModal}>

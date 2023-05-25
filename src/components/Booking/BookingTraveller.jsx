@@ -33,8 +33,8 @@ export default function BookingTraveller() {
         <VenueContainer>
           <Sh1Title>Booking</Sh1Title>
 
-          {venue.media.length === 0 && <img src={logo} />}
-          {venue.media.length > 0 && <img src={venue.media[0]} />}
+          {venue.media.length === 0 && <img src={logo} alt="Holidaze logo" />}
+          {venue.media.length > 0 && <img src={venue.media[0]} alt={`Cover image for the venue ${venue.name}`} />}
 
           <Area1>
             <Sh2CardTitle>{venue.name}</Sh2CardTitle>

@@ -43,7 +43,7 @@ export default function Venues() {
                   return (
                     <div key={venue.id}>
                       <VenueCard>
-                        {venue.media.length === 0 ? <VenueCardImg src={logoemptyvenue} /> : <VenueCardImg src={venue.media[0]} />}
+                        {venue.media.length === 0 ? <VenueCardImg src={logoemptyvenue} alt="Holidaze logo" /> : <VenueCardImg src={venue.media[0]} alt={`Cover image for the venue ${venue.name}`} />}
                         <VenueCardTitle>
                           <Link to={`/venue/${venue.id}`}>
                             <Sh2CardTitle>{venue.name}</Sh2CardTitle>
