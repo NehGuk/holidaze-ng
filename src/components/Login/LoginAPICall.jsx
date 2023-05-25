@@ -3,7 +3,7 @@ import useApi from "../../hooks/useAPI";
 import api_endpoints from "../../shared/shared";
 import createUnAuthMethod from "../../utilities/createUnAuthMethod";
 import LoadingForm from "../Loading/LoadingForm";
-import { SpAPIErrorMessage } from "../styles/globalstyles";
+import { Sbutton, SpAPIErrorMessage } from "../styles/globalstyles";
 import { useSignIn } from "react-auth-kit";
 import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
@@ -20,6 +20,10 @@ export default function LoginAPICall({ data }) {
     }
   }, [isSuccess]);
 
+  const handleTryAgain = () => {
+    window.location.reload();
+  };
+
   return (
     <div>
       {isLoading && <LoadingForm />}
@@ -28,6 +32,7 @@ export default function LoginAPICall({ data }) {
       {!isSuccess && response?.errors && (
         <div>
           <SpAPIErrorMessage>{response.errors[0].message}</SpAPIErrorMessage>
+          <Sbutton onClick={handleTryAgain}>Click here to try again</Sbutton>
         </div>
       )}
 

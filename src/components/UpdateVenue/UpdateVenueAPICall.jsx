@@ -6,7 +6,7 @@ import { Navigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import api_endpoints from "../../shared/shared";
 import createMethod from "../../utilities/createMethod";
-import { SpWarning } from "../styles/globalstyles";
+import { CTAArea, Sbutton, SpWarning } from "../styles/globalstyles";
 
 export default function UpdateVenueAPICall({ formData }) {
   const { id } = useParams();
@@ -22,12 +22,23 @@ export default function UpdateVenueAPICall({ formData }) {
     handleErrors();
   }, [response]);
 
+  const handleTryAgain = () => {
+    window.location.reload();
+  };
+
   return (
     <div>
       {isLoading && <LoadingForm />}
       {isError && <SpWarning>An error has occurred</SpWarning>}
 
-      {errorMessage && <SpWarning>{errorMessage}</SpWarning>}
+      {errorMessage && (
+        <>
+          <SpWarning>{errorMessage}</SpWarning>
+          <CTAArea>
+            <Sbutton onClick={handleTryAgain}>Click here to try again</Sbutton>
+          </CTAArea>
+        </>
+      )}
 
       {isSuccess && <p>Venue successfully updated.</p>}
       {isSuccess && <Navigate to={`/venue/${id}`} />}
