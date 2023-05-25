@@ -8,7 +8,7 @@ export default function NavLoggedOut() {
     <NavLoggedOutStyle>
       <div>
         <Link to="/">
-          <LogoImg src={logobluename} />
+          <LogoImg src={logobluename} alt="Holidaze logo" />
         </Link>
       </div>
       <div>

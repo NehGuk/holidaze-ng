@@ -82,8 +82,8 @@ export default function AllBookings() {
                     <div key={booking.id}>
                       <AllBookingsGrid>
                         <div>
-                          {booking.media.length === 0 && <img src={logo} />}
-                          {booking.media.length > 0 && <img src={booking.media[0]} />}
+                          {booking.media.length === 0 && <img src={logo} alt="Holidaze logo" />}
+                          {booking.media.length > 0 && <img src={booking.media[0]} alt={`Cover image for the venue ${booking.name}`} />}
                         </div>
                         <div>
                           <h3>{booking.name}</h3>
@@ -105,7 +105,9 @@ export default function AllBookings() {
                           <p></p>
 
                           <div>
-                            <SLinkButton to={`/booking-venue-manager/${booking.id}`}>Details</SLinkButton>
+                            <SLinkButton $lightblue to={`/booking-venue-manager/${booking.id}`}>
+                              Details
+                            </SLinkButton>
                           </div>
                         </div>
                       </AllBookingsGrid>
@@ -132,8 +134,8 @@ export default function AllBookings() {
                         <div key={booking.id}>
                           <AllBookingsGrid>
                             <div>
-                              {booking.media.length === 0 && <img src={logo} />}
-                              {booking.media.length > 0 && <img src={booking.media[0]} />}
+                              {booking.media.length === 0 && <img src={logo} alt="Holidaze logo" />}
+                              {booking.media.length > 0 && <img src={booking.media[0]} alt={`Cover image for the venue ${booking.name}`} />}
                             </div>
                             <div>
                               <h3>{booking.name}</h3>
@@ -155,7 +157,9 @@ export default function AllBookings() {
                               <p></p>
 
                               <div>
-                                <SLinkButton to={`/booking-venue-manager/${booking.id}`}>Details</SLinkButton>
+                                <SLinkButton $lightblue to={`/booking-venue-manager/${booking.id}`}>
+                                  Details
+                                </SLinkButton>
                               </div>
                             </div>
                           </AllBookingsGrid>

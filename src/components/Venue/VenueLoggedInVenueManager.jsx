@@ -37,8 +37,8 @@ export default function VenueLoggedInVenueManager() {
         <div>
           <Sh1Title>{data.name}</Sh1Title>
 
-          {data.media.length === 0 && <img src={logo} />}
-          {data.media.length > 0 && <img src={data.media[0]} />}
+          {data.media.length === 0 && <img src={logo} alt="Holidaze logo" />}
+          {data.media.length > 0 && <img src={data.media[0]} alt={`Cover image for the venue ${data.name}`} />}
 
           <p>
             <SSpanTitle>Description: </SSpanTitle>

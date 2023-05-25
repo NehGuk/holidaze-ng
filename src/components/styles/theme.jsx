@@ -5,10 +5,10 @@ const theme = {
   color: {
     white: "#EAF5FB",
     offwhite: "#D4E4E8",
-    lightblue: "#5879A2",
+    lightblue: "#517096",
     blue: "#293D51",
-    green: "#7BAD23",
-    darkgreen: "#587D19",
+    green: "#6C991F",
+    darkgreen: "#567A18",
     shade: "#373C3C",
     dark: "#29211E",
   },

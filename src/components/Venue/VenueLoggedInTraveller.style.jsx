@@ -9,8 +9,11 @@ export const VenueContainer = styled.div`
   max-width: 600px;
   margin: 0 auto;
   padding: 2em;
-
   gap: 1em;
+
+  > h1 {
+    text-transform: capitalize;
+  }
 
   img {
     width: 100%;

@@ -3,7 +3,8 @@ import useApi from "../../hooks/useAPI";
 import api_endpoints from "../../shared/shared";
 import ShowBookings from "../ShowBookings/ShowBookings";
 import Loading from "../Loading/Loading";
-import logo from "../../assets/logo.png";
+/* import logo from "../../assets/logo.png"; */
+import logo from "../../assets/logo-empty-venue-blue.png";
 import { SLinkButton, SSpanPrice, SSpanTitle, Sh1Title, Sh2CardTitle } from "../styles/globalstyles";
 import { VenueContainer, StarIcon, ParkingIcon, WifiIcon, BreakfastIcon, PetsIcon, Area1, Area2, Area3, Area4, AreaCTAs } from "./VenueLoggedOut.style";
 
@@ -19,8 +20,8 @@ export default function VenueLoggedOut() {
       {isSuccess && (
         <VenueContainer>
           <Sh1Title>{data.name}</Sh1Title>
-          {data.media.length === 0 && <img src={logo} />}
-          {data.media.length > 0 && <img src={data.media[0]} />}
+          {data.media.length === 0 && <img src={logo} alt="Holidaze logo" />}
+          {data.media.length > 0 && <img src={data.media[0]} alt={`Cover image for the venue ${data.name}`} />}
 
           <div>
             {data.description.length > 10 && (

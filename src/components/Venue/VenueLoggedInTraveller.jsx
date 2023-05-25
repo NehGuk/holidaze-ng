@@ -20,8 +20,8 @@ export default function VenueLoggedInTraveller() {
       {isSuccess && (
         <VenueContainer>
           <Sh1Title>{name}</Sh1Title>
-          {media.length === 0 && <img src={logo} />}
-          {media.length > 0 && <img src={media[0]} />}
+          {media.length === 0 && <img src={logo} alt="Holidaze logo" />}
+          {media.length > 0 && <img src={media[0]} alt={`Cover image for the venue ${name}`} />}
 
           <div>
             {description.length > 10 && (

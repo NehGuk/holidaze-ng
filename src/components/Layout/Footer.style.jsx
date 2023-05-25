@@ -128,7 +128,7 @@ export const FooterLink = styled(Link)`
   :hover {
     position: relative;
     transition: ease-in-out 0.2s;
-    font-weight: 600;
+    /* font-weight: 600; */
     color: white;
   }
 `;

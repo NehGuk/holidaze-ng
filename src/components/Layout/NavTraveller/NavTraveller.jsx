@@ -22,14 +22,14 @@ export default function NavTraveller() {
       <NavTravellerStyle>
         <div>
           <Link to="/home">
-            <LogoImg src={logo} />
+            <LogoImg src={logo} alt="Holidaze logo" />
           </Link>
         </div>
         <div>
           <p>{userInfo().name}</p>
           <Link to="/profile-traveller">
-            {userInfo().avatar === null && <AvatarImg src={avatar} />}
-            {userInfo().avatar !== null && <AvatarImg src={userInfo().avatar} />}
+            {userInfo().avatar === null && <AvatarImg src={avatar} alt="Holidaze logo" />}
+            {userInfo().avatar !== null && <AvatarImg src={userInfo().avatar} alt="Holidaze logo" />}
           </Link>
           <button onClick={openModal}>
             <HamburgerMenu />

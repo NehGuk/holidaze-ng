@@ -94,6 +94,7 @@ export const VenueCardTitle = styled.div`
   grid-area: title;
   padding: 0 1em;
   margin: 0;
+  text-transform: capitalize;
 
   > a > h2 {
     margin: 0;

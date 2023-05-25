@@ -41,13 +41,18 @@ export const ModalContent = styled.div`
   place-items: center;
   gap: 1em;
 
+  > div > h1 {
+    color: ${(props) => props.theme.color.white};
+    text-transform: capitalize;
+  }
+
   > :nth-child(2) {
     text-align: center;
     > span {
       text-transform: uppercase;
       font-size: small;
       margin-bottom: 0;
-      color: ${(props) => props.theme.color.blue};
+      color: ${(props) => props.theme.color.white};
     }
     > p {
       margin-top: 0.3em;

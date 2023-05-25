@@ -28,8 +28,8 @@ export default function ProfileTraveller() {
       <ProfileTravellerContainer>
         <Sh1Title>Profile</Sh1Title>
         <ProfileImgArea>
-          {userInfo().avatar === null && <img src={avatar} />}
-          {userInfo().avatar !== null && <img src={userInfo().avatar} />}
+          {userInfo().avatar === null && <img src={avatar} alt="Avatar image" />}
+          {userInfo().avatar !== null && <img src={userInfo().avatar} alt="Avatar image" />}
         </ProfileImgArea>
 
         <CTAArea>

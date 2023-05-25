@@ -82,7 +82,6 @@ export default function ShowBookings({ venueBookings, maxGuests, price, id }) {
         </ShowBookingsContainer>
       )}
       <BookingMessageParagraph>Select dates:</BookingMessageParagraph>
-      {/* <p>Select the dates</p> */}
 
       <CalendarContainer>
         <ReactDatePicker minDate={new Date()} todayButton="Today" onChange={onChange} startDate={startDate} endDate={endDate} selectsRange selectsDisabledDaysInRange excludeDateIntervals={bookingsArray} monthsShown={1} inline fixedHeight></ReactDatePicker>

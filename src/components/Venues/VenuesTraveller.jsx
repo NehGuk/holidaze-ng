@@ -53,7 +53,7 @@ export default function VenuesTraveller() {
                   return (
                     <div key={venue.id}>
                       <VenueCard>
-                        {venue.media.length === 0 ? <VenueCardImg src={logoemptyvenue} /> : <VenueCardImg src={venue.media[0]} />}
+                        {venue.media.length === 0 ? <VenueCardImg src={logoemptyvenue} alt="Holidaze logo" /> : <VenueCardImg src={venue.media[0]} alt={`Cover image for the venue ${venue.name}`} />}
                         <VenueCardTitle>
                           <Link to={`/venue/${venue.id}`}>
                             <Sh2CardTitle>{venue.name}</Sh2CardTitle>
@@ -100,7 +100,9 @@ export default function VenuesTraveller() {
                         </VenueCardPrice>
 
                         <VenueCardCTA>
-                          <SLinkButton to={`/venue/${venue.id}`}>Book</SLinkButton>
+                          <SLinkButton $lightblue to={`/venue/${venue.id}`}>
+                            Book
+                          </SLinkButton>
                         </VenueCardCTA>
                       </VenueCard>
                     </div>

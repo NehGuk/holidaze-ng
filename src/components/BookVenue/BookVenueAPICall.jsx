@@ -4,7 +4,7 @@ import api_endpoints from "../../shared/shared";
 import createMethod from "../../utilities/createMethod";
 import LoadingForm from "../Loading/LoadingForm";
 import { Navigate } from "react-router-dom";
-import { SRegButton, SpWarning } from "../styles/globalstyles";
+import { CTAArea, SRegButton, SpWarning } from "../styles/globalstyles";
 
 export default function BookVenueAPICall({ bookingObject, setShowConfirmAndCancel }) {
   const { data, isLoading, isError, isSuccess } = useApi(api_endpoints().postBooking, createMethod("POST", bookingObject));
@@ -27,9 +27,11 @@ export default function BookVenueAPICall({ bookingObject, setShowConfirmAndCance
       {!isSuccess && data && data.errors && (
         <div>
           <SpWarning>{data.errors[0].message}</SpWarning>
-          <SRegButton $negative onClick={handlePleaseTryAgain}>
-            Please try again
-          </SRegButton>
+          <CTAArea>
+            <SRegButton $negative onClick={handlePleaseTryAgain}>
+              Please try again
+            </SRegButton>
+          </CTAArea>
         </div>
       )}
       {data && data.errors && setShowConfirmAndCancel(false)}

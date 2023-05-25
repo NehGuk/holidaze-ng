@@ -3,6 +3,7 @@ import estimatePrice from "../../utilities/estiamatePrice";
 import formatDate from "../../utilities/formatDate";
 import { MyBookingsGrid, MyBookingsListContainer } from "./MyBookingsList.style";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { CTAArea, Sbutton, Sh1Title, Shr2, SLinkButton, SSpanTitle } from "../styles/globalstyles";
 
@@ -25,8 +26,9 @@ export default function MyBookingsList({ bookings }) {
         {upcomingBookings.length === 0 && (
           <div>
             <h3>You have no upcoming bookings.</h3>
-            <h4>No worries! Check out home page and find the perfect place to stay!</h4>
-            <SLinkButton to="/home">Home</SLinkButton>
+            <p>
+              No worries! Check out our <Link to="/home">home page</Link> and find the perfect place to stay!
+            </p>
           </div>
         )}
         {upcomingBookings.length > 0 && (
@@ -40,8 +42,8 @@ export default function MyBookingsList({ bookings }) {
             <div key={booking.id}>
               <MyBookingsGrid>
                 <div>
-                  {booking.venue.media.length === 0 && <img src={logo} />}
-                  {booking.venue.media.length > 0 && <img src={booking.venue.media[0]} />}
+                  {booking.venue.media.length === 0 && <img src={logo} alt="Holidaze logo" />}
+                  {booking.venue.media.length > 0 && <img src={booking.venue.media[0]} alt="Holidaze logo" />}
                 </div>
                 <div>
                   <div>
@@ -96,8 +98,8 @@ export default function MyBookingsList({ bookings }) {
                 <div key={booking.id}>
                   <MyBookingsGrid>
                     <div>
-                      {booking.venue.media.length === 0 && <img src={logo} />}
-                      {booking.venue.media.length > 0 && <img src={booking.venue.media[0]} />}
+                      {booking.venue.media.length === 0 && <img src={logo} alt="Holidaze logo" />}
+                      {booking.venue.media.length > 0 && <img src={booking.venue.media[0]} alt={`Cover image for the venue ${booking.name}`} />}
                     </div>
                     <div>
                       <div>

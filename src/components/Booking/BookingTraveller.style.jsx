@@ -52,6 +52,7 @@ export const Area1 = styled.div`
   > h2 {
     margin-bottom: 0;
     color: ${(props) => props.theme.color.white};
+    text-transform: capitalize;
   }
 
   > p {

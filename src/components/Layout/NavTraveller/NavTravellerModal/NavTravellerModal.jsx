@@ -48,16 +48,13 @@ export default function NavTravellerModal({ showModal, setShowModal }) {
               <ModalCloseIcon aria-label="Close modal" onClick={() => setShowModal((prev) => !prev)} />
               <ModalContent>
                 <div>
-                  {userInfo().avatar === null && <SimgAvatarMenu src={avatar} />}
-                  {userInfo().avatar !== null && <SimgAvatarMenu src={userInfo().avatar} />}
+                  {userInfo().avatar === null && <SimgAvatarMenu src={avatar} alt="Avatar image" />}
+                  {userInfo().avatar !== null && <SimgAvatarMenu src={userInfo().avatar} alt="Avatar image" />}
                 </div>
                 <div>
-                  <span>
-                    <strong>User name</strong>
-                  </span>
-                  <p>
+                  <h1>
                     <strong>{userInfo().name}</strong>
-                  </p>
+                  </h1>
                   <span>
                     <strong>Account type</strong>
                   </span>

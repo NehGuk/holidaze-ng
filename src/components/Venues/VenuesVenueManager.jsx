@@ -28,13 +28,6 @@ export default function VenuesVenueManager() {
         {myVenuesList.length === 0 && <h2>You are not managing any venues yet.</h2>}
         {myVenuesList.length > 0 && <h2>You are currently managing {myVenuesList.length} venues.</h2>}
 
-        {/* {myVenuesList.length === 0 && (
-          <div>
-            <div>
-              <Link to="/post-new-venue">Create new venue</Link>
-            </div>
-          </div>
-        )} */}
         {isLoading && <Loading />}
         {isError && <p>An error has occurred</p>}
         {isSuccess && (
@@ -43,9 +36,8 @@ export default function VenuesVenueManager() {
               <div key={item.id}>
                 <MyVenuesGrid>
                   <div>
-                    {item.media.length === 0 && <img src={logo} />}
-                    {item.media.length > 0 && <img src={item.media[0]} />}
-                    {/* <img src={imgtest} /> */}
+                    {item.media.length === 0 && <img src={logo} alt="Holidaze logo" />}
+                    {item.media.length > 0 && <img src={item.media[0]} alt={`Cover image for the venue ${item.name}`} />}
                   </div>
 
                   <div>
@@ -82,7 +74,9 @@ export default function VenuesVenueManager() {
                     </div>
 
                     <div>
-                      <SLinkButton to={`/venue/${item.id}`}>Manage</SLinkButton>
+                      <SLinkButton $lightblue to={`/venue/${item.id}`}>
+                        Manage
+                      </SLinkButton>
                     </div>
                   </div>
                 </MyVenuesGrid>

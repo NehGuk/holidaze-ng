@@ -1,14 +1,13 @@
 import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
-/* import PropTypes from "prop-types"; */
 
+// avatar
 export const SimgAvatarMenu = styled.img`
   width: 7em;
   height: 7em;
   border: 0.3em solid ${(props) => props.theme.color.blue};
   border-radius: 50%;
   object-fit: cover;
-
   @media (min-width: 600px) {
     width: 9em;
     height: 9em;
@@ -75,13 +74,11 @@ export const Sbutton = styled.button`
         background: ${(props) => props.theme.color.dark};
       }
     `};
-
   @media (min-width: 600px) {
     min-width: 400px;
   }
 `;
 
-// regular buttons
 export const SRegButton = styled.button`
   background: ${(props) => props.theme.color.lightblue};
   border: none;
@@ -120,13 +117,11 @@ export const SRegButton = styled.button`
         background: ${(props) => props.theme.color.darkgreen};
       }
     `};
-
   @media (min-width: 600px) {
-    /* min-width: 3em; */
   }
 `;
 
-// link buttons
+// button-like links
 export const SLinkButton = styled(Link)`
   background: ${(props) => props.theme.color.blue};
   color: ${(props) => props.theme.color.white};
@@ -185,7 +180,6 @@ export const SLinkButton = styled(Link)`
         background: white;
       }
     `};
-
   @media (max-width: 400px) {
     font-size: small;
     font-weight: 600;
@@ -194,7 +188,6 @@ export const SLinkButton = styled(Link)`
 `;
 
 // typography
-
 export const Sh1Title = styled.h1`
   color: ${(props) => props.theme.color.blue};
 `;
@@ -229,14 +222,12 @@ export const SpFormError = styled.p`
 `;
 
 export const SpAPIErrorMessage = styled.p`
-  /* margin: em 0 1em 0.5em; */
   font-weight: 600;
   font-size: medium;
   color: ${(props) => props.theme.color.blue};
 `;
 
 export const SpWarning = styled.p`
-  /* text-align: center; */
   text-transform: uppercase;
   font-size: smaller;
   font-weight: 800;
@@ -274,13 +265,10 @@ export const Shr2 = styled.hr`
   border: none;
   border-top: 1px solid ${(props) => props.theme.color.lightblue};
   height: 2px;
-  /* margin-top: 1em; */
-  /* margin-bottom: -2em; */
   opacity: 80%;
 `;
 
-// input
-
+// input field
 export const Sinput = styled.input`
   padding: 0.5em 1em;
   border-radius: 10px;
@@ -308,20 +296,16 @@ export const Stextarea = styled.textarea`
   }
 `;
 
-/* export const StextareaTrick = ({ rows, ...rest }) => {
-  return <Stextarea rows={rows} {...rest} />;
-}; */
-
-/* StextareaTrick.propTypes = {
-  rows: PropTypes.number, // Add this prop validation
-}; */
-
 export const SinputNumber = styled.input`
   padding: 0.5em 1em;
   width: 4em;
   border-radius: 10px;
   border: none;
   font-size: large;
+  text-align: center;
+  color: ${(props) => props.theme.color.lightblue};
+  font-weight: 800;
+  font-size: x-large;
 
   :focus {
     background: white;
@@ -335,12 +319,7 @@ export const PageArea0Container = styled.div`
   margin: 3em auto 0 auto;
   padding: 2em;
   max-width: 900px;
-  /* background: ${(props) => props.theme.color.white}; */
-  /* border-radius: 10px; */
-  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); */
   display: grid;
-  /* place-items: center; */
-  /* text-align: center; */
   @media (max-width: 700px) {
     max-width: 50%;
   }

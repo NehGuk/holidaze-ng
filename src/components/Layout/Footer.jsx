@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <FooterContainer>
       <FooterLogo>
-        <img src={logo} />
+        <img src={logo} alt="Holidaze logo" />
       </FooterLogo>
 
       <FooterContent1>
