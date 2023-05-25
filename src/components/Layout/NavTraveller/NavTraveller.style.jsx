@@ -33,6 +33,7 @@ export const NavTravellerStyle = styled.nav`
 
     > button {
       background: none;
+      color: ${(props) => props.theme.color.blue};
       border: none;
       cursor: pointer;
     }
