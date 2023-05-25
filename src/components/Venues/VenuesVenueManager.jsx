@@ -28,13 +28,6 @@ export default function VenuesVenueManager() {
         {myVenuesList.length === 0 && <h2>You are not managing any venues yet.</h2>}
         {myVenuesList.length > 0 && <h2>You are currently managing {myVenuesList.length} venues.</h2>}
 
-        {/* {myVenuesList.length === 0 && (
-          <div>
-            <div>
-              <Link to="/post-new-venue">Create new venue</Link>
-            </div>
-          </div>
-        )} */}
         {isLoading && <Loading />}
         {isError && <p>An error has occurred</p>}
         {isSuccess && (
@@ -82,7 +75,9 @@ export default function VenuesVenueManager() {
                     </div>
 
                     <div>
-                      <SLinkButton to={`/venue/${item.id}`}>Manage</SLinkButton>
+                      <SLinkButton $lightblue to={`/venue/${item.id}`}>
+                        Manage
+                      </SLinkButton>
                     </div>
                   </div>
                 </MyVenuesGrid>

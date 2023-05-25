@@ -1,5 +1,5 @@
 import { NoResultsContainer } from "./NoResults.style";
-import { SRegButton } from "../styles/globalstyles";
+import { SRegButton, Sh2CardTitle } from "../styles/globalstyles";
 
 export default function NoResults() {
   const handleClearSearch = () => {
@@ -9,8 +9,8 @@ export default function NoResults() {
   return (
     <NoResultsContainer>
       <div>
-        <h2>Oops!</h2>
-        <p>No venues match the search term.</p>
+        <Sh2CardTitle>Oops!</Sh2CardTitle>
+        <h3>No venues match the search term.</h3>
         <SRegButton onClick={handleClearSearch}>Try again</SRegButton>
       </div>
     </NoResultsContainer>

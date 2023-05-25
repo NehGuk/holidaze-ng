@@ -100,7 +100,9 @@ export default function VenuesTraveller() {
                         </VenueCardPrice>
 
                         <VenueCardCTA>
-                          <SLinkButton to={`/venue/${venue.id}`}>Book</SLinkButton>
+                          <SLinkButton $lightblue to={`/venue/${venue.id}`}>
+                            Book
+                          </SLinkButton>
                         </VenueCardCTA>
                       </VenueCard>
                     </div>

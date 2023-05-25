@@ -61,7 +61,9 @@ export default function BookingVenueManager() {
             </VenueDetails>
 
             <CTAArea>
-              <SLinkButton to="/all-bookings">All bookings</SLinkButton>
+              <SLinkButton $lightblue to="/all-bookings">
+                All bookings
+              </SLinkButton>
               <SLinkButton to="/home">Back to home</SLinkButton>
             </CTAArea>
           </BookingVenueManagerContainer>

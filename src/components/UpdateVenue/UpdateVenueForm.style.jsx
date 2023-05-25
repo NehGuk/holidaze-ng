@@ -76,7 +76,7 @@ export const FormGuests = styled.div`
 
 export const FormFacilities = styled.div`
   grid-area: facilities;
-  background: ${(props) => props.theme.color.blue};
+  background: ${(props) => props.theme.color.lightblue};
 
   border-radius: 10px;
   margin: 1em 0;

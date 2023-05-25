@@ -3,7 +3,8 @@ import useApi from "../../hooks/useAPI";
 import api_endpoints from "../../shared/shared";
 import ShowBookings from "../ShowBookings/ShowBookings";
 import Loading from "../Loading/Loading";
-import logo from "../../assets/logo.png";
+/* import logo from "../../assets/logo.png"; */
+import logo from "../../assets/logo-empty-venue-blue.png";
 import { SLinkButton, SSpanPrice, SSpanTitle, Sh1Title, Sh2CardTitle } from "../styles/globalstyles";
 import { VenueContainer, StarIcon, ParkingIcon, WifiIcon, BreakfastIcon, PetsIcon, Area1, Area2, Area3, Area4, AreaCTAs } from "./VenueLoggedOut.style";
 

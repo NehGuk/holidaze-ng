@@ -56,12 +56,7 @@ export default function NavVenueManagerModal({ showModal, setShowModal }) {
                   {userInfo().avatar !== null && <SimgAvatarMenu src={userInfo().avatar} />}
                 </div>
                 <div>
-                  <span>
-                    <strong>User name</strong>
-                  </span>
-                  <p>
-                    <strong>{userInfo().name}</strong>
-                  </p>
+                  <h1>{userInfo().name}</h1>
                   <span>
                     <strong>Account type</strong>
                   </span>

@@ -105,7 +105,9 @@ export default function AllBookings() {
                           <p></p>
 
                           <div>
-                            <SLinkButton to={`/booking-venue-manager/${booking.id}`}>Details</SLinkButton>
+                            <SLinkButton $lightblue to={`/booking-venue-manager/${booking.id}`}>
+                              Details
+                            </SLinkButton>
                           </div>
                         </div>
                       </AllBookingsGrid>
@@ -155,7 +157,9 @@ export default function AllBookings() {
                               <p></p>
 
                               <div>
-                                <SLinkButton to={`/booking-venue-manager/${booking.id}`}>Details</SLinkButton>
+                                <SLinkButton $lightblue to={`/booking-venue-manager/${booking.id}`}>
+                                  Details
+                                </SLinkButton>
                               </div>
                             </div>
                           </AllBookingsGrid>
