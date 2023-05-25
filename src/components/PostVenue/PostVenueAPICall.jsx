@@ -3,7 +3,7 @@ import useApi from "../../hooks/useAPI";
 import LoadingForm from "../Loading/LoadingForm";
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
-import { SpWarning } from "../styles/globalstyles";
+import { CTAArea, Sbutton, SpWarning } from "../styles/globalstyles";
 
 export default function PostVenueAPICall({ formData }) {
   const options = {
@@ -26,11 +26,22 @@ export default function PostVenueAPICall({ formData }) {
     handleErrors();
   }, [response]);
 
+  const handleTryAgain = () => {
+    window.location.reload();
+  };
+
   return (
     <div>
       {isLoading && <LoadingForm />}
       {isError && <p>An error has occurred</p>}
-      {errorMessage && <SpWarning>{errorMessage}</SpWarning>}
+      {errorMessage && (
+        <>
+          <SpWarning>{errorMessage}</SpWarning>
+          <CTAArea>
+            <Sbutton onClick={handleTryAgain}>Click here to try again</Sbutton>
+          </CTAArea>
+        </>
+      )}
 
       {/* {!isSuccess && <p>Something went wrong.</p>} */}
       {isSuccess && <p>Venue successfully uploaded.</p>}
