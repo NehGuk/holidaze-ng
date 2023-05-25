@@ -1,6 +1,6 @@
 {
   "name": "holidaze-ng",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@hookform/resolvers": "^3.0.1",
