@@ -302,6 +302,10 @@ export const SinputNumber = styled.input`
   border-radius: 10px;
   border: none;
   font-size: large;
+  text-align: center;
+  color: ${(props) => props.theme.color.lightblue};
+  font-weight: 800;
+  font-size: x-large;
 
   :focus {
     background: white;
