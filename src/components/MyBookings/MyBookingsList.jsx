@@ -27,7 +27,7 @@ export default function MyBookingsList({ bookings }) {
           <div>
             <h3>You have no upcoming bookings.</h3>
             <p>
-              No worries! Check out <Link to="/home">home page</Link> and find the perfect place to stay!
+              No worries! Check out our <Link to="/home">home page</Link> and find the perfect place to stay!
             </p>
           </div>
         )}
