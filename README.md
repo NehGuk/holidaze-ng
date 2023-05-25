@@ -8,7 +8,7 @@ This project has been delivered as part of my Frontend Development programme at 
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/eef52305-099c-4304-9507-4ebfc61b1e24/deploy-status)](https://app.netlify.com/sites/holidaze-ng/deploys)
 
-- ![GitHub repo size](https://img.shields.io/github/repo-size/NehGuk/holidaze-ng?style=plastic)
+![GitHub repo size](https://img.shields.io/github/repo-size/NehGuk/holidaze-ng?style=plastic)
 
 ## Built with
 
