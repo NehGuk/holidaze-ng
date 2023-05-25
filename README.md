@@ -6,7 +6,8 @@
 
 This project has been delivered as part of my Frontend Development programme at the Norwegian School of Technology and Digital Media, Noroff. It consists of a React frontend for the Holidaze brand. It is a platform where travellers can find venues and where venue owners can manage their properties.
 
-- [![Netlify Status](https://api.netlify.com/api/v1/badges/b52e5475-33ab-40e8-af26-4014be6167c6/deploy-status)](https://app.netlify.com/sites/jsf-shop/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/eef52305-099c-4304-9507-4ebfc61b1e24/deploy-status)](https://app.netlify.com/sites/holidaze-ng/deploys)
+
 - ![GitHub repo size](https://img.shields.io/github/repo-size/NehGuk/holidaze-ng?style=plastic)
 
 ## Built with
