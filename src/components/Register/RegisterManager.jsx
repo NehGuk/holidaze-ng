@@ -13,7 +13,7 @@ const schema = yup.object().shape({
   email: yup
     .string()
     .email("Enter a valid @noroff.no email address")
-    .matches(/^[\w\-.]+@(stud\.)?noroff\.no$/, "Enter a valid @noroff.no email address")
+    .matches(/^[\w\-.]+@stud\.noroff\.no$/, "Enter a valid @stud.noroff.no email address")
     .required("Please enter your email address"),
   password: yup.string().required("Please enter your password").min(8, "Password should be at least 8 characters"),
 });
