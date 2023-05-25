@@ -41,6 +41,10 @@ export default function ProfileTraveller() {
             <span>User name</span>
             <br></br> {userInfo().name}
           </p>
+          <p>
+            <span>Email</span>
+            <br></br> {userInfo().email}
+          </p>
           {!userInfo().venueManager && (
             <p>
               <span>Account type</span>

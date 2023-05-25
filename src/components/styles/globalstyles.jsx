@@ -274,6 +274,7 @@ export const Sinput = styled.input`
   border-radius: 10px;
   border: none;
   font-size: large;
+  max-width: 100%;
 
   :focus {
     background: white;
@@ -321,7 +322,7 @@ export const PageArea0Container = styled.div`
   max-width: 900px;
   display: grid;
   @media (max-width: 700px) {
-    max-width: 50%;
+    max-width: 90%;
   }
 `;
 

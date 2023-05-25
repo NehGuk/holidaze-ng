@@ -26,6 +26,7 @@ export const ProfileImgArea = styled.div`
 
 export const Area1 = styled.div`
   max-width: 100%;
+  word-break: break-all;
   margin: 2em 0 2em 0;
   padding: 2em;
   border-radius: 10px;
@@ -43,5 +44,6 @@ export const Area1 = styled.div`
     font-size: small;
     font-weight: 800;
     text-transform: uppercase;
+    word-wrap: break-word;
   }
 `;

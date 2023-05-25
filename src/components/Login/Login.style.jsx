@@ -11,7 +11,8 @@ export const LoginFormContainer = styled.div`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
   @media (max-width: 600px) {
-    margin: 3em 2em;
+    max-width: 70%;
+    margin: 0 auto;
   }
 `;
 

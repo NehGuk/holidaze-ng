@@ -33,6 +33,7 @@ export const Area1 = styled.div`
   color: ${(props) => props.theme.color.white};
   display: grid;
   place-content: center;
+  word-break: break-all;
 
   > h2 {
     margin-bottom: 0;
