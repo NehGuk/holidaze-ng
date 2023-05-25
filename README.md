@@ -13,26 +13,35 @@ This project has been delivered as part of my Frontend Development programme at 
 ## Built with
 
 - React (CRA)
-- Styled Components
 - [Noroff API](https://docs.noroff.dev/)
-
-## Instructions
-
-- `npm install`: Starts node and installs dependencies
-
-## Dependencies
 
 ## JSDocs
 
 The utility functions in this project are documented with JSDocs.
 
+## Instructions
+
+- `npm install`: Starts node and installs dependencies
+- `npm run lint`: Runs eslint
+
+## External libraries
+
+- [StyledComponents](https://styled-components.com)
+- [StyledIcons](https://styled-icons.dev)
+- [ReactAuthKit](https://www.npmjs.com/package/react-auth-kit)
+- [ReactDatePicker](https://www.npmjs.com/package/react-datepicker)
+- [ReactSpinners](https://www.npmjs.com/package/react-spinners)
+- [ReactSpring](https://www.react-spring.dev)
+- [Yup](https://www.npmjs.com/package/yup)
+
 ## Contributions
 
 For suggestions and contributions, please fork this repository and open new pull requests. The main branch is protected. You're also welcome to post post on the [issues](https://github.com/NehGuk/noroff-shop/issues) tab.
 
-## Curiosity
+## Design
 
-The AA-compliant colour palette that I use in this project has been inspired by [Marc Chagall](https://en.wikipedia.org/wiki/Marc_Chagall)'s _The miller, his son and the donkey_.
+The AA-compliant colour palette for this project is inspired by a 1596 painting called _View of Toledo_, by Domḗnikos Theotokópoulos. Travelling is the main theme of this painting -- the artist was a traveller himself. I found it would be a fitting starting point to develop the colour palette for the Holidaze project:
 
-![Homepage screenshot](./src/assets/marc-chagall-the-miller-his-son-and-the-donkey.png)
 ![Colour palette](./src/assets/colour-palette.png)
+
+![View of Toledo](./src/assets/el-greco-view-of-toledo-1596.png)
