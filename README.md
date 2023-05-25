@@ -52,7 +52,7 @@ For suggestions and contributions, please fork this repository and open new pull
 
 ## Deliverables
 
-- Gantt chart for project timing
+- [Gantt chart for project timing](https://github.com/NehGuk/holidaze-ng/blob/90b899339cdc93c31a7347e78f647beeefd4caa6/src/assets/gantt-chart.pdf)
 - Mid-fidelity design prototype
 - Style guide
 - [Kanban project board](https://trello.com/b/FfHpyYcq/overview)
