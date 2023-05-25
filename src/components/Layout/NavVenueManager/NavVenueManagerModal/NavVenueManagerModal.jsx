@@ -74,7 +74,7 @@ export default function NavVenueManagerModal({ showModal, setShowModal }) {
                 <div>
                   <Sbutton onClick={handleHomeButton}>Home</Sbutton>
                   <Sbutton onClick={handleMyVenuesButton}>My venues</Sbutton>
-                  <Sbutton onClick={handleMyBookingsButton}>My bookings</Sbutton>
+                  <Sbutton onClick={handleMyBookingsButton}>All bookings</Sbutton>
                   <Sbutton onClick={handleProfileButton}>Profile</Sbutton>
                   <Sbutton $negative onClick={handleSignOut}>
                     Sing out
