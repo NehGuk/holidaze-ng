@@ -1,3 +1,21 @@
+/**
+ * Returns an API endpoint
+ * @param {string} name User name
+ * @param {string} venueID Specific venue ID
+ * @param {string} bookingID Specific booking ID
+ * @example
+ * ```js
+ * // Get the putAvatar endpoint:
+ * const name = TravellerX
+ * api_endpoints(TravellerX).putAvatar = `https://api.noroff.dev/api/v1/holidaze/profiles/TravellerX/media";
+ * ```
+ * @example
+ * ```js
+ * // Get the deleteBooking endpoint:
+ * const bookingID = "abc123abc123"
+ * api_endpoints(null, null, bookingID).deleteBooking = "deleteBooking: `https://api.noroff.dev/api/v1/holidaze/bookings/abc123abc123";
+ * ```
+ */
 export default function api_endpoints(name, venueID, bookingID) {
   const endPoints = {
     postRegister: `https://api.noroff.dev/api/v1/holidaze/auth/register`,
