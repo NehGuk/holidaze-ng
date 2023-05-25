@@ -274,6 +274,7 @@ export const Sinput = styled.input`
   border-radius: 10px;
   border: none;
   font-size: large;
+  max-width: 100%;
 
   :focus {
     background: white;
