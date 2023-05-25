@@ -67,7 +67,7 @@ export default function RegisterManager() {
       </form>
       <RegisterAsOther>
         <p>
-          Or click <Link to="/register-traveller">here</Link> to sign up as a venue manager instead.
+          Or <Link to="/register-traveller">click here</Link> to sign up as a venue manager instead.
         </p>
       </RegisterAsOther>
     </div>
