@@ -16,8 +16,6 @@ export default function useApi(url, fetchOptions) {
         setData(json);
         if (fetchedData.status >= 200 && fetchedData.status < 300) {
           setIsSuccess(true);
-        } else {
-          throw Error();
         }
       } catch (error) {
         console.log(error);
