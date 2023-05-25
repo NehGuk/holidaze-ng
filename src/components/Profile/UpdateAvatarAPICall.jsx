@@ -4,7 +4,7 @@ import useAPI from "../../hooks/useAPI.jsx";
 import api_endpoints from "../../shared/shared.js";
 import createMethod from "../../utilities/createMethod.js";
 import { useAuthUser } from "react-auth-kit";
-import { SpWarning } from "../styles/globalstyles.jsx";
+import { CTAArea, Sbutton, SpWarning } from "../styles/globalstyles.jsx";
 
 export default function UpdateAvatarAPICall({ data }) {
   const userInfo = useAuthUser();
@@ -14,11 +14,22 @@ export default function UpdateAvatarAPICall({ data }) {
     window.location.reload();
   }
 
+  const handleTryAgain = () => {
+    window.location.reload();
+  };
+
   return (
     <div>
       {isLoading && <LoadingForm />}
       {isError && <SpWarning>An error has occurred</SpWarning>}
-      {!isSuccess && response.errors && <SpWarning>{response.errors[0].message}</SpWarning>}
+      {!isSuccess && response.errors && (
+        <>
+          <SpWarning>{response.errors[0].message}</SpWarning>
+          <CTAArea>
+            <Sbutton onClick={handleTryAgain}>Click here to try again</Sbutton>
+          </CTAArea>
+        </>
+      )}
       {isSuccess && <p>Success!</p>}
     </div>
   );
