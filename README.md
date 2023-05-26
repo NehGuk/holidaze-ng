@@ -22,6 +22,7 @@ The utility functions in this project are documented with JSDocs.
 ## Instructions
 
 - `npm install`: Starts node and installs dependencies
+- `npm run start`: Opens project in development mode
 - `npm run lint`: Runs eslint
 
 ## External libraries
