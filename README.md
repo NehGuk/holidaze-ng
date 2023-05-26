@@ -55,7 +55,7 @@ For suggestions and contributions, please fork this repository and open new pull
 - [Gantt chart for project timing](https://github.com/NehGuk/holidaze-ng/blob/90b899339cdc93c31a7347e78f647beeefd4caa6/src/assets/gantt-chart.pdf)
 - [Kanban project board](https://trello.com/b/FfHpyYcq/overview)
 - [Information architecture diagram](https://www.figma.com/file/t3D9vU3tb32x53wSlld48Y/holidaze-information-architecture-diagram?type=whiteboard&node-id=0-1)
-- Style guide
-- Mid-fidelity design prototype
+- [Style guide](https://xd.adobe.com/view/44d2016e-94c7-426d-a2b6-212193051673-1181/)
+- [Mid-fidelity design prototype](https://xd.adobe.com/view/a31cc755-a746-43d3-9c3c-61ea6b5613a5-f64f/)
 - [Repository link](https://github.com/NehGuk/holidaze-ng)
 - [Hosted application demo link](https://holidaze-ng.netlify.app/)
