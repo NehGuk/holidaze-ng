@@ -156,11 +156,41 @@ export const VenueCardCTA = styled.div`
 export const FilterButtonsArea = styled.div`
   padding-top: 10em;
   text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+  @media (min-width: 2300px) {
+    max-width: 1200px;
+  }
+`;
+
+export const FilterBigButton = styled.button`
+  background: ${(props) => props.theme.color.white};
+  color: ${(props) => props.theme.color.blue};
+  width: 100%;
+  border: none;
+  border-radius: 7px;
+  padding: 1em 2em;
+  margin-bottom: 0.3em;
+  transition: ease-in-out 0.2s;
+  font-weight: 600;
+  :hover {
+    transition: ease-in-out 0.2s;
+    background: white;
+    font-weight: 600;
+  }
+  @media (max-width: 950px) {
+    width: 90%;
+    margin: 0 auto;
+  }
+`;
+
+export const Filters = styled.div`
+  margin-top: 1em;
   > button {
     border: none;
     border-radius: 7px;
     margin: 0.3em 0.3em;
-    padding: 1em 2em;
+    padding: 1em 1em;
     font-size: small;
     background: ${(props) => props.theme.color.blue};
     background: ${(props) => props.theme.color.white};
@@ -170,7 +200,11 @@ export const FilterButtonsArea = styled.div`
       background: white;
     }
   }
-  @media (max-width: 600px) {
+  @media (max-width: 950px) {
     display: grid;
+    > button {
+      border-radius: 0px;
+      margin: 0;
+    }
   }
 `;
