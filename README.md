@@ -39,6 +39,10 @@ The utility functions in this project are documented with JSDocs.
 
 The deployed version of this project (https://holidaze-ng.netlify.app/) has Hotjar enabled.
 
+## Testing
+
+- The development of this project counted on two sessions of usability tests with five different users. Each session lasted 20 minutes and each user was asked to perform all the tasks described in the project's "user stories". Around 85% of the tasks were successfully accomplished during the first session. In the second session, after having implemented the feedback suggested by the testers, 99% of the tasks were performed successfully.
+
 ## Design
 
 The AA-compliant colour palette for this project is inspired by a 1596 painting called _View of Toledo_, by Domḗnikos Theotokópoulos. Travelling is the main theme of this painting -- the artist was a traveller himself. I found it would be a fitting starting point to develop the colour palette for the Holidaze project:
@@ -57,6 +61,6 @@ For suggestions and contributions, please fork this repository and open new pull
 - [Kanban project board](https://trello.com/b/FfHpyYcq/overview)
 - [Information architecture diagram](https://www.figma.com/file/t3D9vU3tb32x53wSlld48Y/holidaze-information-architecture-diagram?type=whiteboard&node-id=0-1)
 - [Style guide](https://xd.adobe.com/view/44d2016e-94c7-426d-a2b6-212193051673-1181/)
-- [Mid-fidelity design prototype](https://xd.adobe.com/view/a31cc755-a746-43d3-9c3c-61ea6b5613a5-f64f/)
+- [Mid-fidelity design web prototype](https://xd.adobe.com/view/a31cc755-a746-43d3-9c3c-61ea6b5613a5-f64f/)
 - [Repository link](https://github.com/NehGuk/holidaze-ng)
 - [Hosted application demo link](https://holidaze-ng.netlify.app/)
