@@ -47,7 +47,7 @@ export default function Venues() {
                         {venue.media.length === 0 ? <VenueCardImg src={logoemptyvenue} alt="Holidaze logo" /> : <VenueCardImg src={venue.media[0]} alt={`Cover image for the venue ${venue.name}`} />}
                         <VenueCardTitle>
                           <Link to={`/venue/${venue.id}`}>
-                            <Sh2CardTitle>{venue.name}</Sh2CardTitle>
+                            <Sh2CardTitle>{`${venue.name}`.slice(0, 40)}</Sh2CardTitle>
                           </Link>
                         </VenueCardTitle>
                         <VenueCardRating>
