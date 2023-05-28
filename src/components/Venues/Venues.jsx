@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import useAPI from "../../hooks/useAPI";
 import api_endpoints from "../../shared/shared";
 import Loading from "../Loading/Loading";
-import { VenuesListContainer, VenueListGrid, VenueCard, VenueCardImg, VenueCardTitle, VenueCardRating, VenueCardCountry, VenueCardCity, VenueCardGuests, VenueCardPrice, VenueCardCTA } from "./Venues.style";
+import { VenuesListContainer, VenueListGrid, VenueCard, VenueCardImg, VenueCardTitle, VenueCardRating, VenueCardCountry, VenueCardCity, VenueCardGuests, VenueCardPrice, VenueCardCTA, FilterButtonsArea } from "./Venues.style";
 import logoemptyvenue from "../../assets/logo-empty-venue.png";
 import Search from "../Search/Search";
 import NoResults from "../Search/NoResults";
@@ -11,13 +11,16 @@ import { SLinkButton, SSpanTitle, Sh2CardTitle, Shr } from "../styles/globalstyl
 import ErrorPage from "../ErrorPage/ErrorPage";
 
 export default function Venues() {
+  const [order, setOrder] = useState(api_endpoints().getVenues);
   const [venueList, setVenueList] = useState([]);
-  const { data, isLoading, isError, isSuccess } = useAPI(api_endpoints().getVenues);
+  const { data, isLoading, isError, isSuccess } = useAPI(order);
+
   useEffect(() => {
     if (isSuccess) {
       setVenueList(data);
     }
   }, [isSuccess, data]);
+
   const [searchTerm, setSearchTerm] = useState("");
   const handleChildData = (childData) => {
     setSearchTerm(childData);
@@ -25,6 +28,24 @@ export default function Venues() {
   const venuesListRef = useRef(null);
   const scrollToVenuesList = () => {
     venuesListRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleOldestFirst = () => {
+    setOrder(api_endpoints().getVenuesAsc);
+  };
+
+  const handleNewestFirst = () => {
+    setOrder(api_endpoints().getVenues);
+  };
+
+  const handleLowestPrice = () => {
+    const sortedByPriceVenueList = [...venueList].sort((a, b) => a.price - b.price);
+    setVenueList(sortedByPriceVenueList);
+  };
+
+  const handleHighestPrice = () => {
+    const sortedByPriceVenueList = [...venueList].sort((a, b) => b.price - a.price);
+    setVenueList(sortedByPriceVenueList);
   };
 
   return (
@@ -35,6 +56,12 @@ export default function Venues() {
         <div>
           <Search onChildData={handleChildData} scrollToVenuesList={scrollToVenuesList} />
           <VenuesListContainer ref={venuesListRef}>
+            <FilterButtonsArea>
+              <button onClick={handleNewestFirst}>Newest first</button>
+              <button onClick={handleOldestFirst}>Oldest first</button>
+              <button onClick={handleLowestPrice}>Lowest price</button>
+              <button onClick={handleHighestPrice}>Highest price</button>
+            </FilterButtonsArea>
             <VenueListGrid>
               {venueList
                 .filter((item) => {
@@ -47,7 +74,7 @@ export default function Venues() {
                         {venue.media.length === 0 ? <VenueCardImg src={logoemptyvenue} alt="Holidaze logo" /> : <VenueCardImg src={venue.media[0]} alt={`Cover image for the venue ${venue.name}`} />}
                         <VenueCardTitle>
                           <Link to={`/venue/${venue.id}`}>
-                            <Sh2CardTitle>{venue.name}</Sh2CardTitle>
+                            <Sh2CardTitle>{`${venue.name}`.slice(0, 40)}</Sh2CardTitle>
                           </Link>
                         </VenueCardTitle>
                         <VenueCardRating>
