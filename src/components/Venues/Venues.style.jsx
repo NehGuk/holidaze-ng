@@ -153,4 +153,7 @@ export const FilterButtonsArea = styled.div`
       background: white;
     }
   }
+  @media (max-width: 600px) {
+    display: grid;
+  }
 `;

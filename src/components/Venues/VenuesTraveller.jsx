@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import useAPI from "../../hooks/useAPI";
 import api_endpoints from "../../shared/shared";
 import Loading from "../Loading/Loading";
-import { VenuesListContainer, VenueListGrid, VenueCard, VenueCardImg, VenueCardTitle, VenueCardRating, VenueCardCountry, VenueCardCity, VenueCardGuests, VenueCardPrice, VenueCardCTA, GreetingArea, GlobeIcon } from "./VenuesTraveller.style";
+import { VenuesListContainer, VenueListGrid, VenueCard, VenueCardImg, VenueCardTitle, VenueCardRating, VenueCardCountry, VenueCardCity, VenueCardGuests, VenueCardPrice, VenueCardCTA, GreetingArea, GlobeIcon, FilterButtonsArea } from "./VenuesTraveller.style";
 import logoemptyvenue from "../../assets/logo-empty-venue.png";
 import SearchTraveller from "../Search/SearchTraveller";
 import { SLinkButton, SSpanTitle, Sh1Title, Sh2CardTitle, Shr } from "../styles/globalstyles";
@@ -15,8 +15,9 @@ export default function VenuesTraveller() {
   useScrollTopAlways();
 
   const userInfo = useAuthUser();
+  const [order, setOrder] = useState(api_endpoints().getVenues);
   const [venueList, setVenueList] = useState([]);
-  const { data, isLoading, isError, isSuccess } = useAPI(api_endpoints().getVenues);
+  const { data, isLoading, isError, isSuccess } = useAPI(order);
 
   useEffect(() => {
     if (isSuccess) {
@@ -27,6 +28,24 @@ export default function VenuesTraveller() {
   const [searchTerm, setSearchTerm] = useState("");
   const handleChildData = (childData) => {
     setSearchTerm(childData);
+  };
+
+  const handleOldestFirst = () => {
+    setOrder(api_endpoints().getVenuesAsc);
+  };
+
+  const handleNewestFirst = () => {
+    setOrder(api_endpoints().getVenues);
+  };
+
+  const handleLowestPrice = () => {
+    const sortedByPriceVenueList = [...venueList].sort((a, b) => a.price - b.price);
+    setVenueList(sortedByPriceVenueList);
+  };
+
+  const handleHighestPrice = () => {
+    const sortedByPriceVenueList = [...venueList].sort((a, b) => b.price - a.price);
+    setVenueList(sortedByPriceVenueList);
   };
 
   return (
@@ -44,6 +63,13 @@ export default function VenuesTraveller() {
           </GreetingArea>
           <SearchTraveller onChildData={handleChildData} />
           <VenuesListContainer>
+            <FilterButtonsArea>
+              <button onClick={handleNewestFirst}>Newest first</button>
+              <button onClick={handleOldestFirst}>Oldest first</button>
+              <button onClick={handleLowestPrice}>Lowest price</button>
+              <button onClick={handleHighestPrice}>Highest price</button>
+            </FilterButtonsArea>
+
             <VenueListGrid>
               {venueList
                 .filter((item) => {
@@ -56,7 +82,7 @@ export default function VenuesTraveller() {
                         {venue.media.length === 0 ? <VenueCardImg src={logoemptyvenue} alt="Holidaze logo" /> : <VenueCardImg src={venue.media[0]} alt={`Cover image for the venue ${venue.name}`} />}
                         <VenueCardTitle>
                           <Link to={`/venue/${venue.id}`}>
-                            <Sh2CardTitle>{venue.name}</Sh2CardTitle>
+                            <Sh2CardTitle>{`${venue.name}`.slice(0, 40)}</Sh2CardTitle>
                           </Link>
                         </VenueCardTitle>
                         <VenueCardRating>

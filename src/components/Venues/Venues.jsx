@@ -12,14 +12,15 @@ import ErrorPage from "../ErrorPage/ErrorPage";
 
 export default function Venues() {
   const [order, setOrder] = useState(api_endpoints().getVenues);
-
   const [venueList, setVenueList] = useState([]);
   const { data, isLoading, isError, isSuccess } = useAPI(order);
+
   useEffect(() => {
     if (isSuccess) {
       setVenueList(data);
     }
   }, [isSuccess, data]);
+
   const [searchTerm, setSearchTerm] = useState("");
   const handleChildData = (childData) => {
     setSearchTerm(childData);
@@ -37,6 +38,16 @@ export default function Venues() {
     setOrder(api_endpoints().getVenues);
   };
 
+  const handleLowestPrice = () => {
+    const sortedByPriceVenueList = [...venueList].sort((a, b) => a.price - b.price);
+    setVenueList(sortedByPriceVenueList);
+  };
+
+  const handleHighestPrice = () => {
+    const sortedByPriceVenueList = [...venueList].sort((a, b) => b.price - a.price);
+    setVenueList(sortedByPriceVenueList);
+  };
+
   return (
     <div>
       {isLoading && <Loading />}
@@ -48,6 +59,8 @@ export default function Venues() {
             <FilterButtonsArea>
               <button onClick={handleNewestFirst}>Newest first</button>
               <button onClick={handleOldestFirst}>Oldest first</button>
+              <button onClick={handleLowestPrice}>Lowest price</button>
+              <button onClick={handleHighestPrice}>Highest price</button>
             </FilterButtonsArea>
             <VenueListGrid>
               {venueList
