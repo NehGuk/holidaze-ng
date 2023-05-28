@@ -21,9 +21,8 @@ The utility functions in this project are documented with JSDocs.
 
 ## Instructions
 
-- `npm install`: Starts node and installs dependencies
-- `npm run start`: Opens project in development mode
-- `npm run lint`: Runs eslint
+- `npm install` Starts node and installs dependencies
+- `npm run start` Opens project in development mode
 
 ## External libraries
 
@@ -35,15 +34,15 @@ The utility functions in this project are documented with JSDocs.
 - [ReactSpring](https://www.react-spring.dev)
 - [Yup](https://www.npmjs.com/package/yup)
 
-## Privacy
-
-The deployed version of this project (https://holidaze-ng.netlify.app/) has Hotjar enabled.
-
 ## Testing
 
 - `npm test` Runs unit tests written for the utility functions.
 
 - The development of this project counted on two sessions of usability tests with five different users. Each session lasted 20 minutes and each user was asked to perform all the tasks described in the project's "user stories". Around 85% of the tasks were successfully accomplished during the first session. In the second session, after having implemented the feedback suggested by the testers, 99% of the tasks were performed successfully.
+
+## Privacy
+
+The deployed version of this project (https://holidaze-ng.netlify.app/) has Hotjar enabled.
 
 ## Design
 

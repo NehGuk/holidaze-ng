@@ -152,3 +152,25 @@ export const VenueCardCTA = styled.div`
   justify-self: end;
   align-self: self-end;
 `;
+
+export const FilterButtonsArea = styled.div`
+  padding-top: 10em;
+  text-align: center;
+  > button {
+    border: none;
+    border-radius: 7px;
+    margin: 0.3em 0.3em;
+    padding: 1em 2em;
+    font-size: small;
+    background: ${(props) => props.theme.color.blue};
+    background: ${(props) => props.theme.color.white};
+    transition: ease-in-out 0.2s;
+    :hover {
+      transition: ease-in-out 0.2s;
+      background: white;
+    }
+  }
+  @media (max-width: 600px) {
+    display: grid;
+  }
+`;
