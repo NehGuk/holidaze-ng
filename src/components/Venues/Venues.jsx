@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import useAPI from "../../hooks/useAPI";
 import api_endpoints from "../../shared/shared";
 import Loading from "../Loading/Loading";
-import { VenuesListContainer, VenueListGrid, VenueCard, VenueCardImg, VenueCardTitle, VenueCardRating, VenueCardCountry, VenueCardCity, VenueCardGuests, VenueCardPrice, VenueCardCTA, FilterButtonsArea } from "./Venues.style";
+import { VenuesListContainer, VenueListGrid, VenueCard, VenueCardImg, VenueCardTitle, VenueCardRating, VenueCardCountry, VenueCardCity, VenueCardGuests, VenueCardPrice, VenueCardCTA, FilterButtonsArea, FilterBigButton, Filters } from "./Venues.style";
 import logoemptyvenue from "../../assets/logo-empty-venue.png";
 import Search from "../Search/Search";
 import NoResults from "../Search/NoResults";
@@ -30,6 +30,12 @@ export default function Venues() {
     venuesListRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
+  ///
+  const [showFilters, setShowFilters] = useState(false);
+  const handleShowFilters = () => {
+    setShowFilters(!showFilters);
+  };
+
   const handleOldestFirst = () => {
     setOrder(api_endpoints().getVenuesAsc);
   };
@@ -48,6 +54,26 @@ export default function Venues() {
     setVenueList(sortedByPriceVenueList);
   };
 
+  const handleWifi = () => {
+    const venuesWifi = venueList.filter((item) => item.meta.wifi === true);
+    setVenueList(venuesWifi);
+  };
+
+  const handleBreakfast = () => {
+    const venuesBreakfast = venueList.filter((item) => item.meta.breakfast === true);
+    setVenueList(venuesBreakfast);
+  };
+
+  const handleParking = () => {
+    const venuesParking = venueList.filter((item) => item.meta.parking === true);
+    setVenueList(venuesParking);
+  };
+
+  const handlePets = () => {
+    const venuesPets = venueList.filter((item) => item.meta.pets === true);
+    setVenueList(venuesPets);
+  };
+
   return (
     <div>
       {isLoading && <Loading />}
@@ -57,10 +83,19 @@ export default function Venues() {
           <Search onChildData={handleChildData} scrollToVenuesList={scrollToVenuesList} />
           <VenuesListContainer ref={venuesListRef}>
             <FilterButtonsArea>
-              <button onClick={handleNewestFirst}>Newest first</button>
-              <button onClick={handleOldestFirst}>Oldest first</button>
-              <button onClick={handleLowestPrice}>Lowest price</button>
-              <button onClick={handleHighestPrice}>Highest price</button>
+              <FilterBigButton onClick={handleShowFilters}>{!showFilters ? "Show filters" : "Hide filters"}</FilterBigButton>
+              {showFilters && (
+                <Filters>
+                  <button onClick={handleNewestFirst}>Newest first</button>
+                  <button onClick={handleOldestFirst}>Oldest first</button>
+                  <button onClick={handleLowestPrice}>Lowest price</button>
+                  <button onClick={handleHighestPrice}>Highest price</button>
+                  <button onClick={handleWifi}>Wifi</button>
+                  <button onClick={handleBreakfast}>Breakfast</button>
+                  <button onClick={handleParking}>Parking</button>
+                  <button onClick={handlePets}>Pets</button>
+                </Filters>
+              )}
             </FilterButtonsArea>
             <VenueListGrid>
               {venueList

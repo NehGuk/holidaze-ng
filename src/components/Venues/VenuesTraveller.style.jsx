@@ -170,7 +170,11 @@ export const FilterButtonsArea = styled.div`
       background: white;
     }
   }
-  @media (max-width: 600px) {
+  @media (max-width: 950px) {
     display: grid;
+    > button {
+      border-radius: 0px;
+      margin: 0;
+    }
   }
 `;
