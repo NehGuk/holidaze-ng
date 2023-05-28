@@ -41,7 +41,7 @@ The deployed version of this project (https://holidaze-ng.netlify.app/) has Hotj
 
 ## Testing
 
-- The development of this project counted on two sessions of usability tests with five different users. Each session lasted 20 minutes and each user was asked to perform all the tasks described in the project's "user stories". Around 85% of the tasks were successfully accomplished during the first session. In the second session, after having implemented the feedback suggested by the testers, 99% of the tasks were performed successfully.
+The development of this project counted on two sessions of usability tests with five different users. Each session lasted 20 minutes and each user was asked to perform all the tasks described in the project's "user stories". Around 85% of the tasks were successfully accomplished during the first session. In the second session, after having implemented the feedback suggested by the testers, 99% of the tasks were performed successfully.
 
 ## Design
 
