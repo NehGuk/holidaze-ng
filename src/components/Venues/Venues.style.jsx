@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const VenuesListContainer = styled.div`
   > div {
-    padding-top: 12em;
     padding-bottom: 1em;
   }
 `;
@@ -135,4 +134,23 @@ export const VenueCardCTA = styled.div`
   margin: 0 0 2em 0;
   justify-self: end;
   align-self: self-end;
+`;
+
+export const FilterButtonsArea = styled.div`
+  padding-top: 10em;
+  text-align: center;
+  > button {
+    border: none;
+    border-radius: 7px;
+    margin: 0 0.3em;
+    padding: 1em 2em;
+    font-size: small;
+    background: ${(props) => props.theme.color.blue};
+    background: ${(props) => props.theme.color.white};
+    transition: ease-in-out 0.2s;
+    :hover {
+      transition: ease-in-out 0.2s;
+      background: white;
+    }
+  }
 `;

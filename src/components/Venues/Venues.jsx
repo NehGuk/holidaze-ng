@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import useAPI from "../../hooks/useAPI";
 import api_endpoints from "../../shared/shared";
 import Loading from "../Loading/Loading";
-import { VenuesListContainer, VenueListGrid, VenueCard, VenueCardImg, VenueCardTitle, VenueCardRating, VenueCardCountry, VenueCardCity, VenueCardGuests, VenueCardPrice, VenueCardCTA } from "./Venues.style";
+import { VenuesListContainer, VenueListGrid, VenueCard, VenueCardImg, VenueCardTitle, VenueCardRating, VenueCardCountry, VenueCardCity, VenueCardGuests, VenueCardPrice, VenueCardCTA, FilterButtonsArea } from "./Venues.style";
 import logoemptyvenue from "../../assets/logo-empty-venue.png";
 import Search from "../Search/Search";
 import NoResults from "../Search/NoResults";
@@ -11,8 +11,10 @@ import { SLinkButton, SSpanTitle, Sh2CardTitle, Shr } from "../styles/globalstyl
 import ErrorPage from "../ErrorPage/ErrorPage";
 
 export default function Venues() {
+  const [order, setOrder] = useState(api_endpoints().getVenues);
+
   const [venueList, setVenueList] = useState([]);
-  const { data, isLoading, isError, isSuccess } = useAPI(api_endpoints().getVenues);
+  const { data, isLoading, isError, isSuccess } = useAPI(order);
   useEffect(() => {
     if (isSuccess) {
       setVenueList(data);
@@ -27,6 +29,14 @@ export default function Venues() {
     venuesListRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
+  const handleOldestFirst = () => {
+    setOrder(api_endpoints().getVenuesAsc);
+  };
+
+  const handleNewestFirst = () => {
+    setOrder(api_endpoints().getVenues);
+  };
+
   return (
     <div>
       {isLoading && <Loading />}
@@ -35,6 +45,10 @@ export default function Venues() {
         <div>
           <Search onChildData={handleChildData} scrollToVenuesList={scrollToVenuesList} />
           <VenuesListContainer ref={venuesListRef}>
+            <FilterButtonsArea>
+              <button onClick={handleNewestFirst}>Newest first</button>
+              <button onClick={handleOldestFirst}>Oldest first</button>
+            </FilterButtonsArea>
             <VenueListGrid>
               {venueList
                 .filter((item) => {
