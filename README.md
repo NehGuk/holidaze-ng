@@ -1,4 +1,4 @@
-# Holidaze | Project Exam 2
+# Holidaze
 
 ![Homepage screenshot](./src/assets/screenshot.png)
 
